@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "운동을 넘어 함께 성장하는 여정에 당신을 초대합니다!",
 };
 
-export default function RootLayout({
+export default function HTMLLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
