@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
-import ValidationIcon from "./_components/ValidationIcon";
+import ValidationMessage from "./_components/ValidationMessage";
 
 function SignUpPage() {
   const [email, setEmail] = useState<string>("");
@@ -101,24 +101,12 @@ function SignUpPage() {
                     : "focus:border-primary-100 "
                 } `}
               />
-              <p
-                className={`flex mt-2 text-xs text-gray-500 ${
-                  isEmailValid ? "text-primary-100" : ""
-                } ${
-                  !isEmailValid && focusedInput === "email"
-                    ? "text-red-500"
-                    : ""
-                }`}
-              >
-                <ValidationIcon
-                  isValid={isEmailValid}
-                  focusedInput={focusedInput}
-                  focusedInputName="email"
-                />
-                <span className="flex items-center">
-                  유효한 형식의 이메일이어야 합니다.
-                </span>
-              </p>
+              <ValidationMessage
+                isValid={isEmailValid}
+                focusedInput={focusedInput}
+                focusedInputName="email"
+                message="이메일 주소는 유효한 형식이어야 합니다."
+              />
             </li>
             <li className="flex flex-col">
               <label htmlFor="" className="text-neutral-70">
@@ -137,42 +125,18 @@ function SignUpPage() {
                     : "focus:border-primary-100 "
                 }`}
               />
-              <p
-                className={`flex mt-2 text-xs  text-gray-500 ${
-                  isLengthOfPasswordValid ? "text-primary-100" : ""
-                } ${
-                  !isLengthOfPasswordValid && focusedInput === "password"
-                    ? "text-red-500"
-                    : ""
-                }`}
-              >
-                <ValidationIcon
-                  isValid={isLengthOfPasswordValid}
-                  focusedInput={focusedInput}
-                  focusedInputName="password"
-                />
-                <span className="flex items-center">
-                  비밀번호는 8자리 이상이어야 합니다
-                </span>
-              </p>
-              <p
-                className={`flex mt-2 text-xs  text-gray-500 ${
-                  isCombinationOfPasswordValid ? "text-primary-100" : ""
-                } ${
-                  !isCombinationOfPasswordValid && focusedInput === "password"
-                    ? "text-red-500"
-                    : ""
-                }`}
-              >
-                <ValidationIcon
-                  isValid={isCombinationOfPasswordValid}
-                  focusedInput={focusedInput}
-                  focusedInputName="password"
-                />
-                <span className="flex items-center">
-                  대소문자, 특수문자가 1개 이상 포함되어야 합니다.
-                </span>
-              </p>
+              <ValidationMessage
+                isValid={isLengthOfPasswordValid}
+                focusedInput={focusedInput}
+                focusedInputName="password"
+                message="비밀번호는 8자리 이상이어야 합니다."
+              />
+              <ValidationMessage
+                isValid={isCombinationOfPasswordValid}
+                focusedInput={focusedInput}
+                focusedInputName="password"
+                message="대소문자, 특수문자가 최소 1개씩 포함되어야 합니다."
+              />
             </li>
             <li className="flex flex-col">
               <label htmlFor="" className="text-neutral-70">
@@ -190,24 +154,12 @@ function SignUpPage() {
                     : "focus:border-primary-100 "
                 }`}
               />
-              <p
-                className={`flex mt-2 text-xs  text-gray-500 ${
-                  isPasswordCheckValid ? "text-primary-100" : ""
-                } ${
-                  !isPasswordCheckValid && focusedInput === "passwordCheck"
-                    ? "text-red-500"
-                    : ""
-                }`}
-              >
-                <ValidationIcon
-                  isValid={isPasswordCheckValid}
-                  focusedInput={focusedInput}
-                  focusedInputName="passwordCheck"
-                />
-                <span className="flex items-center">
-                  비밀번호와 일치해야 합니다.
-                </span>
-              </p>
+              <ValidationMessage
+                isValid={isPasswordCheckValid}
+                focusedInput={focusedInput}
+                focusedInputName="passwordCheck"
+                message="비밀번호와 일치해야 합니다."
+              />
             </li>
           </ul>
           <button
