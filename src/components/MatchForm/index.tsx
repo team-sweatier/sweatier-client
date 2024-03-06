@@ -1,6 +1,7 @@
 "use client";
 
 import MatchDto from "@/types/MatchDto";
+import dayjs from "dayjs";
 import { useEffect } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import FormOuter from "../FormOuter";
@@ -28,6 +29,9 @@ function MatchForm({ editValues }: MatchFormProps) {
   const onSubmit: SubmitHandler<FieldValues> = (matctData) => {
     if (matctData.hasOwnProperty("players")) {
       matctData.players = parseInt(matctData.players, 10);
+    }
+    if (matctData.hasOwnProperty("date")) {
+      matctData.date = dayjs(matctData.date).format("YYYY-MM-DD");
     }
     //todo : post api 연동
     console.log(matctData);
@@ -87,7 +91,7 @@ function MatchForm({ editValues }: MatchFormProps) {
           values={["혼성", "남성", "여성"]}
           valuesHolders={["both", "male", "female"]}
         />
-        <CalendarForm />
+        <CalendarForm control={control} />
         <InputForm
           label="시간"
           id="time"
