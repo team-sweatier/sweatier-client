@@ -1,5 +1,7 @@
 import { PropsWithChildren } from "react";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+import FormOuter from "../FormOuter";
+import Label from "../Label";
 
 type TextareaFormProps = PropsWithChildren<{
   label: string;
@@ -21,18 +23,18 @@ function TextareaForm({
   const hasError = !!(errors && errorMessages);
 
   return (
-    <div>
-      <label htmlFor={id}>{label}</label>
+    <FormOuter>
+      <Label id={id} label={label} />
       <textarea
         id={id}
         aria-label={label}
         placeholder={placeholder}
-        className=""
+        className="resize-none rounded-md w-full h-40 p-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         {...register(`${id}`, { required: `${placeholder}` })}
         {...props}
       />
       {hasError && <p>{errorMessages}</p>}
-    </div>
+    </FormOuter>
   );
 }
 
