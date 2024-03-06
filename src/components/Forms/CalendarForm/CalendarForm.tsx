@@ -1,7 +1,7 @@
 import calendarIcon from "@/../public/assets/calendar_month.png";
 import FormOuter from "@/components/FormOuter";
+import Label from "@/components/Forms/Label";
 import Icon from "@/components/Icon";
-import Label from "@/components/Label";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { Control, Controller, FieldValues } from "react-hook-form";

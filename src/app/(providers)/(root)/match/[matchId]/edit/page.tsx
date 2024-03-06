@@ -1,4 +1,4 @@
-import MatchForm from "@/components/MatchForm";
+import MatchForm from "@/components/Forms/MatchForm/MatchForm";
 import MatchDto from "@/types/MatchDto";
 
 //todo: 임시 수정 데이터

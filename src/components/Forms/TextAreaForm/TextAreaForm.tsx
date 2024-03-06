@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
-import FormOuter from "../FormOuter";
+import FormOuter from "../../FormOuter";
 import Label from "../Label";
 
 type TextareaFormProps = PropsWithChildren<{
