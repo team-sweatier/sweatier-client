@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
+import SignUpInput from "./_components/SignUpInput";
 import ValidationMessage from "./_components/ValidationMessage";
 
 function SignUpPage() {
@@ -85,21 +86,18 @@ function SignUpPage() {
         <form onSubmit={handleSubmit} className="mx-auto max-w-lg p-10">
           <ul className="flex flex-col">
             <li className="flex flex-col">
-              <label htmlFor="email" className="text-neutral-70">
-                이메일
-              </label>
-              <input
+              <SignUpInput
                 ref={emailRef}
+                htmlFor="email"
+                label="이메일"
                 id="email"
                 type="text"
                 value={email}
                 onChange={handleEmailChange}
                 placeholder="이메일을 입력해주세요."
-                className={`h-12 border bg-primary-20 text-neutral-50 rounded-md pl-4 mt-2 outline-none transition-all duration-500 ease-in-out ${
-                  !isEmailValid && focusedInput === "email"
-                    ? "input-error"
-                    : "focus:border-primary-100 "
-                } `}
+                isValid={isEmailValid}
+                focusedInput={focusedInput}
+                focusedInputType="email"
               />
               <ValidationMessage
                 isValid={isEmailValid}
@@ -109,21 +107,20 @@ function SignUpPage() {
               />
             </li>
             <li className="flex flex-col">
-              <label htmlFor="" className="text-neutral-70">
-                비밀번호
-              </label>
-              <input
+              <SignUpInput
                 ref={passwordRef}
+                htmlFor="password"
+                label="비밀번호"
+                id="password"
                 type="password"
-                onChange={handlePasswordChange}
                 value={password}
+                onChange={handlePasswordChange}
                 placeholder="비밀번호를 입력해주세요."
-                className={`h-12 border bg-primary-20 text-neutral-50 rounded-md pl-4 mt-2 outline-none transition-all duration-500 ease-in-out ${
-                  (!isLengthOfPasswordValid || !isCombinationOfPasswordValid) &&
-                  focusedInput === "password"
-                    ? "input-error"
-                    : "focus:border-primary-100 "
-                }`}
+                isValid={
+                  isLengthOfPasswordValid && isCombinationOfPasswordValid
+                }
+                focusedInput={focusedInput}
+                focusedInputType="password"
               />
               <ValidationMessage
                 isValid={isLengthOfPasswordValid}
@@ -139,20 +136,18 @@ function SignUpPage() {
               />
             </li>
             <li className="flex flex-col">
-              <label htmlFor="" className="text-neutral-70">
-                비밀번호 확인
-              </label>
-              <input
+              <SignUpInput
                 ref={passwordCheckRef}
+                htmlFor="passwordCheck"
+                label="비밀번호 확인"
+                id="passwordCheck"
                 type="password"
-                onChange={handlePasswordCheckChange}
                 value={passwordCheck}
+                onChange={handlePasswordCheckChange}
                 placeholder="비밀번호를 한번 더 입력해주세요."
-                className={`h-12 border bg-primary-20 text-neutral-50 rounded-md pl-4 mt-2 outline-none transition-all duration-500 ease-in-out ${
-                  !isPasswordCheckValid && focusedInput === "passwordCheck"
-                    ? "input-error"
-                    : "focus:border-primary-100 "
-                }`}
+                isValid={isPasswordCheckValid}
+                focusedInput={focusedInput}
+                focusedInputType="passwordCheck"
               />
               <ValidationMessage
                 isValid={isPasswordCheckValid}
@@ -176,11 +171,11 @@ function SignUpPage() {
             가입하기
           </button>
           <div className="flex items-center justify-center space-x-2">
-            <div className="flex-1 border-t-2 border-dotted border-gray-400"></div>
-            <span className="px-2 text-xs text-gray-600 bg-white">
+            <div className="flex-1 border-t-2 border-dotted border-neutral-40"></div>
+            <span className="px-2 text-xs text-neutral-70 bg-white">
               소셜 회원가입
             </span>
-            <div className="flex-1 border-t-2 border-dotted border-gray-400"></div>
+            <div className="flex-1 border-t-2 border-dotted border-neutral-40"></div>
           </div>
           <button className="bg-yellow-300 w-full px-6 rounded-md text- font-semibold h-12 mt-10 transition hover:-translate-y-1 active:translate-y-0">
             <div className="h-full flex items-center justify-center">
