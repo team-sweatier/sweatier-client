@@ -4,7 +4,7 @@ import Page from "@/components/Page";
 function CreateMatchPage() {
   return (
     <Page>
-      <div className="w-full">
+      <div className="w-full max-w-screen-md">
         <h2 className="text-2xl font-bold text-gray-900 py-6">
           Match 생성 페이지
         </h2>
