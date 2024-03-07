@@ -1,13 +1,12 @@
 import MatchForm from "@/components/Forms/MatchForm/MatchForm";
+import Heading from "@/components/Heading";
 import Page from "@/components/Page";
 
 function CreateMatchPage() {
   return (
     <Page>
       <div className="w-full max-w-screen-md">
-        <h2 className="text-2xl font-bold text-gray-900 py-6">
-          Match 생성 페이지
-        </h2>
+        <Heading>게시물 작성</Heading>
         <MatchForm />
       </div>
     </Page>
