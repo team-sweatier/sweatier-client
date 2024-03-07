@@ -1,30 +1,19 @@
 import { MatchTypesObject } from "@/utils/matchTypes";
-import {
-  Control,
-  Controller,
-  FieldValues,
-  UseFormWatch,
-} from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import postIcon from "../../../../public/assets/postIcon.svg";
 import Button from "../../Button";
 import FormOuter from "../FormOuter";
 import Label from "../Label";
 
 interface TypesButtonGroupProps {
-  control: Control<FieldValues, any>;
-  watch: UseFormWatch<FieldValues>;
   label: string;
   id: string;
   typeString: MatchTypesObject[];
 }
 
-function TypesButtonGroup({
-  control,
-  watch,
-  id,
-  label,
-  typeString,
-}: TypesButtonGroupProps) {
+function TypesButtonGroup({ id, label, typeString }: TypesButtonGroupProps) {
+  const { control, watch } = useFormContext();
+
   return (
     <FormOuter>
       <Label id={id} label={label} iconSrc={postIcon} />

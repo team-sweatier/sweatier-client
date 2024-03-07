@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import postIcon from "../../../../public/assets/postIcon.svg";
 import FormOuter from "../FormOuter";
 import Label from "../Label";
@@ -8,18 +8,13 @@ type TextareaFormProps = PropsWithChildren<{
   label: string;
   id: string;
   placeholder: string;
-  register: UseFormRegister<FieldValues>;
-  errors: FieldErrors<FieldValues>;
 }>;
 
-function TextareaForm({
-  label,
-  id,
-  placeholder,
-  register,
-  errors,
-  ...props
-}: TextareaFormProps) {
+function TextareaForm({ label, id, placeholder }: TextareaFormProps) {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
   const errorMessages = errors[id] ? errors[id]!.message?.toString() : "";
   const hasError = !!(errors && errorMessages);
 
@@ -32,7 +27,6 @@ function TextareaForm({
         placeholder={placeholder}
         className=" border border-natural-50 text-natural-50 text-sm rounded-lg focus:ring-primary-100 focus:border-primary-100 block w-full dark:bg-natural-50 dark:border-natural-50 dark:placeholder-natural-50 dark:text-white dark:focus:ring-primary-100 dark:focus:border-primary-100 px-5 py-3 font-light resize-none  h-32 p-4"
         {...register(`${id}`, { required: `${placeholder}` })}
-        {...props}
       />
       {hasError && <p>{errorMessages}</p>}
     </FormOuter>

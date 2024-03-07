@@ -31,6 +31,7 @@ function DropDownBox({ options, registerId }: DropDownBoxProps) {
     <div className="w-24">
       <div className="relative">
         <button
+          type="button"
           className="w-full text-left bg-white border-2 px-5 py-2 block appearance-none border-natural-30 leading-tight focus:outline-none focus:shadow-outline rounded-2xl text-natural-50"
           onClick={toggleDropdown}
         >

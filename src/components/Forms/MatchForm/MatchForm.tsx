@@ -28,11 +28,8 @@ function MatchForm({ editValues }: MatchFormProps) {
     defaultValues: editValues || {},
   });
   const {
-    register,
     handleSubmit,
-    control,
-    watch,
-    formState: { errors, isValid },
+    formState: { isValid },
   } = methods;
 
   const onSubmit: SubmitHandler<FieldValues> = (matchData) => {
@@ -60,43 +57,32 @@ function MatchForm({ editValues }: MatchFormProps) {
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <TypesButtonGroup
-          control={control}
-          watch={watch}
           id="sport"
           label="종목"
           typeString={matchTypes.sports}
         />
-        <InputForm
-          label="제목"
-          id="title"
-          placeholder="제목을 입력해주세요."
-          register={register}
-          errors={errors}
-        />
+
+        <InputForm label="제목" id="title" placeholder="제목을 입력해주세요." />
+
         <TextareaForm
           label="내용"
           id="content"
           placeholder="내용을 입력해주세요."
-          register={register}
-          errors={errors}
         />
 
         <TypesButtonGroup
-          control={control}
-          watch={watch}
           id="gender"
           label="모집성별"
           typeString={matchTypes.gender}
         />
 
         <TypesButtonGroup
-          control={control}
-          watch={watch}
           id="players"
           label="모집인원"
           typeString={matchTypes.players}
         />
-        <CalendarForm control={control} />
+
+        <CalendarForm />
 
         <DropDownGroup id="time" label="경기 시작 시간" />
 

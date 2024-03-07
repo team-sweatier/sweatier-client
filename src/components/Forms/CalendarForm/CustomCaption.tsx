@@ -9,6 +9,7 @@ function CustomCaption(props: CaptionProps) {
   return (
     <div className="flex item-center justify-center gap-x-3 py-2 mb-4">
       <button
+        type="button"
         disabled={!previousMonth}
         onClick={() => previousMonth && goToMonth(previousMonth)}
       >
@@ -18,6 +19,7 @@ function CustomCaption(props: CaptionProps) {
         {format(props.displayMonth, "yyyy.M")}
       </span>
       <button
+        type="button"
         disabled={!nextMonth}
         onClick={() => nextMonth && goToMonth(nextMonth)}
       >

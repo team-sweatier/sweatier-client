@@ -2,16 +2,14 @@ import FormOuter from "@/components/Forms/FormOuter";
 import Label from "@/components/Forms/Label";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
-import { Control, Controller, FieldValues } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import postIcon from "../../../../public/assets/postIcon.svg";
 import CustomCaption from "./CustomCaption";
 import "./calendar.css";
 
-interface CalendarFormProps {
-  control: Control<FieldValues, any>;
-}
+function CalendarForm() {
+  const { control } = useFormContext();
 
-function CalendarForm({ control }: CalendarFormProps) {
   return (
     <FormOuter>
       <Label label="날짜" id="date" iconSrc={postIcon} />

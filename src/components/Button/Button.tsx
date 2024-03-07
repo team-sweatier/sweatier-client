@@ -19,7 +19,12 @@ function Button({
   } ${className || ""}`;
 
   return (
-    <button className={buttonClassName} onClick={onClick} {...props}>
+    <button
+      type="button"
+      className={buttonClassName}
+      onClick={onClick}
+      {...props}
+    >
       {label}
     </button>
   );
