@@ -1,7 +1,5 @@
-import calendarIcon from "@/../public/assets/calendar_month.png";
 import FormOuter from "@/components/FormOuter";
 import Label from "@/components/Forms/Label";
-import Icon from "@/components/Icon";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { Control, Controller, FieldValues } from "react-hook-form";
@@ -15,11 +13,7 @@ interface CalendarFormProps {
 function CalendarForm({ control }: CalendarFormProps) {
   return (
     <FormOuter>
-      <div className="flex gap-x-1">
-        <Icon src={calendarIcon} alt="calendar-icon" />
-        <Label label="날짜를 선택해주세요." id="date" />
-      </div>
-
+      <Label label="날짜" id="date" />
       <Controller
         control={control}
         name="date"

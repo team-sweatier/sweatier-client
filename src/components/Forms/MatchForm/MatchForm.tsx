@@ -1,5 +1,6 @@
 "use client";
 
+import SportTypesButton from "@/components/SportTypesButton";
 import MatchDto from "@/types/MatchDto";
 import dayjs from "dayjs";
 import { useEffect } from "react";
@@ -43,21 +44,7 @@ function MatchForm({ editValues }: MatchFormProps) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <SelectForm
-        label="종목을 선택해주세요."
-        id="sport"
-        placeholder="매칭 종목을 입력해주세요."
-        register={register}
-        errors={errors}
-        values={["테니스", "축구", "농구", "야구", "배드민턴"]}
-        valuesHolders={[
-          "tennis",
-          "soccer",
-          "basketball",
-          "baseball",
-          "badminton",
-        ]}
-      />
+      <SportTypesButton id="sport" label="종목" />
       <InputForm
         label="제목"
         id="title"
