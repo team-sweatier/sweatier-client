@@ -1,14 +1,14 @@
 "use client";
 
-import SportTypesButton from "@/components/SportTypesButton";
+import TypesButtonGroup from "@/components/TypesButtonGroup";
 import MatchDto from "@/types/MatchDto";
+import matchTypes from "@/utils/matchTypes";
 import dayjs from "dayjs";
 import { useEffect } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import FormOuter from "../../FormOuter";
 import CalendarForm from "../CalendarForm/CalendarForm";
 import InputForm from "../InputForm/InputForm";
-import SelectForm from "../SelectForm/SelectForm";
 import TextareaForm from "../TextAreaForm/TextAreaForm";
 
 //* 수정데이터가 있다면(editValues) 해당 values를 defaultValues로, 아니면 {}로
@@ -21,6 +21,7 @@ function MatchForm({ editValues }: MatchFormProps) {
     register,
     handleSubmit,
     control,
+    watch,
     setFocus,
     formState: { errors, isValid },
   } = useForm<FieldValues>({
@@ -44,7 +45,13 @@ function MatchForm({ editValues }: MatchFormProps) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <SportTypesButton id="sport" label="종목" />
+      <TypesButtonGroup
+        control={control}
+        watch={watch}
+        id="sport"
+        label="종목"
+        typeString={matchTypes.sports}
+      />
       <InputForm
         label="제목"
         id="title"
@@ -59,24 +66,23 @@ function MatchForm({ editValues }: MatchFormProps) {
         register={register}
         errors={errors}
       />
-      <SelectForm
-        label="모집인원"
-        id="players"
-        placeholder="모집인원을 입력해주세요."
-        register={register}
-        errors={errors}
-        values={["2명", "4명", "6명", "8명"]}
-        valuesHolders={["2", "4", "6", "8"]}
-      />
-      <SelectForm
-        label="모집인원 성별"
+
+      <TypesButtonGroup
+        control={control}
+        watch={watch}
         id="gender"
-        placeholder="모집인원의 성별을 입력해주세요."
-        register={register}
-        errors={errors}
-        values={["혼성", "남성", "여성"]}
-        valuesHolders={["both", "male", "female"]}
+        label="모집성별"
+        typeString={matchTypes.gender}
       />
+
+      <TypesButtonGroup
+        control={control}
+        watch={watch}
+        id="players"
+        label="모집인원"
+        typeString={matchTypes.players}
+      />
+
       <CalendarForm control={control} />
       <InputForm
         label="시간"

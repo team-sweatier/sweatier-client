@@ -29,7 +29,7 @@ function TextareaForm({
         id={id}
         aria-label={label}
         placeholder={placeholder}
-        className="resize-none rounded-md w-full h-40 p-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        className=" border border-natural-50 text-natural-50 text-sm rounded-lg focus:ring-primary-100 focus:border-primary-100 block w-full dark:bg-natural-50 dark:border-natural-50 dark:placeholder-natural-50 dark:text-white dark:focus:ring-primary-100 dark:focus:border-primary-100 px-5 py-3 font-light resize-none  h-32 p-4"
         {...register(`${id}`, { required: `${placeholder}` })}
         {...props}
       />
