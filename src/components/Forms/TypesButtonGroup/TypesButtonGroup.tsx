@@ -5,9 +5,10 @@ import {
   FieldValues,
   UseFormWatch,
 } from "react-hook-form";
-import Button from "../Button";
+import postIcon from "../../../../public/assets/postIcon.svg";
+import Button from "../../Button";
 import FormOuter from "../FormOuter";
-import Label from "../Forms/Label";
+import Label from "../Label";
 
 interface TypesButtonGroupProps {
   control: Control<FieldValues, any>;
@@ -26,13 +27,14 @@ function TypesButtonGroup({
 }: TypesButtonGroupProps) {
   return (
     <FormOuter>
-      <Label id={id} label={label} />
+      <Label id={id} label={label} iconSrc={postIcon} />
       <div className="flex flex-wrap gap-2 gap-y-2.5">
         {typeString.map((type, i) => (
           <Controller
             key={`${type}-${i}`}
             name={id}
             control={control}
+            rules={{ required: "이 필드는 필수입니다." }}
             render={({ field }) => (
               <Button
                 key={i}

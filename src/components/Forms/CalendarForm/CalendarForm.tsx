@@ -1,8 +1,9 @@
-import FormOuter from "@/components/FormOuter";
+import FormOuter from "@/components/Forms/FormOuter";
 import Label from "@/components/Forms/Label";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { Control, Controller, FieldValues } from "react-hook-form";
+import postIcon from "../../../../public/assets/postIcon.svg";
 import CustomCaption from "./CustomCaption";
 import "./calendar.css";
 
@@ -13,10 +14,11 @@ interface CalendarFormProps {
 function CalendarForm({ control }: CalendarFormProps) {
   return (
     <FormOuter>
-      <Label label="날짜" id="date" />
+      <Label label="날짜" id="date" iconSrc={postIcon} />
       <Controller
         control={control}
         name="date"
+        rules={{ required: "이 필드는 필수입니다." }}
         render={({ field }) => (
           <DayPicker
             mode="single"

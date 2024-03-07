@@ -1,6 +1,7 @@
 import { PropsWithChildren } from "react";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
-import FormOuter from "../../FormOuter";
+import postIcon from "../../../../public/assets/postIcon.svg";
+import FormOuter from "../FormOuter";
 import Label from "../Label";
 
 type InputFormProps = PropsWithChildren<{
@@ -24,7 +25,7 @@ function InputForm({
 
   return (
     <FormOuter>
-      <Label id={id} label={label} />
+      <Label id={id} label={label} iconSrc={postIcon} />
       <input
         id={id}
         type="text"
