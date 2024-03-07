@@ -24,26 +24,36 @@ interface MatchFormProps {
 }
 
 function MatchForm({ editValues }: MatchFormProps) {
+  const methods = useForm<FieldValues>({
+    defaultValues: editValues || {},
+  });
   const {
     register,
     handleSubmit,
     control,
     watch,
     formState: { errors, isValid },
-  } = useForm<FieldValues>({
-    defaultValues: editValues || {},
-  });
-  const methods = useForm();
+  } = methods;
 
-  const onSubmit: SubmitHandler<FieldValues> = (matctData) => {
-    if (matctData.hasOwnProperty("players")) {
-      matctData.players = parseInt(matctData.players, 10);
-    }
-    if (matctData.hasOwnProperty("date")) {
-      matctData.date = dayjs(matctData.date).format("YYYY-MM-DD");
+  const onSubmit: SubmitHandler<FieldValues> = (matchData) => {
+    //* 1. date 날짜 formatting
+    if (matchData.hasOwnProperty("date")) {
+      matchData.date = dayjs(matchData.date).format("YYYY-MM-DD");
     }
 
-    console.log(matctData);
+    //* 2. hour과 minute을 합쳐 matchTime 생성
+    const matchTime = `${matchData.hour}:${matchData.minute}`;
+
+    //* 3. hour과 minute 제외
+    const { hour, minute, ...restOfMatchData } = matchData;
+
+    //* 4. hour과 minute 제외하고, matchTime를 추가한 새로운 객체 생성
+    const requestData = {
+      ...restOfMatchData,
+      matchTime: matchTime,
+    };
+
+    console.log(requestData);
   };
 
   return (

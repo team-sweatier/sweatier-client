@@ -8,7 +8,7 @@ interface DropDownBoxProps {
 }
 
 function DropDownBox({ options, registerId }: DropDownBoxProps) {
-  const { register, setValue, watch, unregister } = useFormContext();
+  const { setValue, watch, unregister } = useFormContext();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   //* 현재 선택된 값을 실시간으로 watch
@@ -24,26 +24,25 @@ function DropDownBox({ options, registerId }: DropDownBoxProps) {
   };
 
   useEffect(() => {
-    register(registerId);
     return () => unregister(registerId); // 필드가 언마운트될 때 react-hook-form에서 해당 필드를 해제
-  }, [register, registerId, unregister]);
+  }, [unregister, registerId]);
 
   return (
-    <div className="w-28">
+    <div className="w-24">
       <div className="relative">
         <button
-          className="w-full text-left bg-white border px-4 py-2 block appearance-none border-natural-30 pr-8 leading-tight focus:outline-none focus:shadow-outline rounded-2xl text-natural-50"
+          className="w-full text-left bg-white border-2 px-5 py-2 block appearance-none border-natural-30 leading-tight focus:outline-none focus:shadow-outline rounded-2xl text-natural-50"
           onClick={toggleDropdown}
         >
           {selectedValue || options[0]}
-          <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+          <span className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
             <svg
-              className="w-4 h-4"
+              className="w-5 h-5"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
-              {isOpen ? (
+              {!isOpen ? (
                 <path
                   fillRule="evenodd"
                   d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -67,7 +66,7 @@ function DropDownBox({ options, registerId }: DropDownBoxProps) {
           {options.map((option, index) => (
             <li
               key={index}
-              className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+              className="px-5 py-2 hover:bg-gray-100 cursor-pointer"
               onClick={() => handleOptionClick(option)}
             >
               {option}
