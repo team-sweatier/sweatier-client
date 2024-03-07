@@ -29,10 +29,10 @@ function DropDownBox({ options, registerId }: DropDownBoxProps) {
   }, [register, registerId, unregister]);
 
   return (
-    <div className="w-36">
+    <div className="w-28">
       <div className="relative">
         <button
-          className="w-full text-left bg-white border px-4 py-2 block appearance-none border-natural-30 pr-8 leading-tight focus:outline-none focus:shadow-outline rounded-2xl text-natural-5"
+          className="w-full text-left bg-white border px-4 py-2 block appearance-none border-natural-30 pr-8 leading-tight focus:outline-none focus:shadow-outline rounded-2xl text-natural-50"
           onClick={toggleDropdown}
         >
           {selectedValue || options[0]}
@@ -62,7 +62,7 @@ function DropDownBox({ options, registerId }: DropDownBoxProps) {
         <ul
           className={`${
             isOpen ? "block" : "hidden"
-          } absolute bg-white w-full border border-gray-300 rounded-md mt-1 max-h-60 overflow-auto`}
+          } absolute bg-white w-full border border-gray-300 rounded-md mt-1 max-h-60 overflow-auto text-natural-50 scrollbar-hide`}
         >
           {options.map((option, index) => (
             <li
