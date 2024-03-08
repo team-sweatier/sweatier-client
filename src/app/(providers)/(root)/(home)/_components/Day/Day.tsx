@@ -20,7 +20,7 @@ function Day({
 
   return (
     <div
-      className={`flex justify-center items-center w-14 h-14 text-center border-b-2 border-transparent cursor-pointer ${
+      className={`flex justify-center items-center w-[58px] h-14 text-center border-b-2 border-transparent cursor-pointer ${
         isSelected
           ? "font-bold border-b-2 border-b-black"
           : "border-b-2 border-b-transparent"

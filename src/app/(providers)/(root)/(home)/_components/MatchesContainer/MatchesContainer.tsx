@@ -15,7 +15,7 @@ function MatchesContainer() {
   const [selectedRegion, setSelectedRegion] = useState<string>("");
 
   return (
-    <section className="w-full">
+    <section className="w-full relative">
       <WeeklyCalendar
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
@@ -28,6 +28,7 @@ function MatchesContainer() {
         selectedRegion={selectedRegion}
         setSelectedRegion={setSelectedRegion}
       />
+
       <MatchCardsList
         selectedDate={selectedDate}
         selectedSports={selectedSports}
