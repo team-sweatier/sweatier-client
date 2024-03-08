@@ -11,7 +11,7 @@ const sports: MatchTypesObject[] = [
 ];
 
 const gender: MatchTypesObject[] = [
-  { 혼성: "both" },
+  { "남녀 모두": "both" },
   { 남성: "male" },
   { 여성: "female" },
 ];
