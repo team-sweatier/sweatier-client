@@ -19,7 +19,6 @@ function MatchCard({ match }: { match: Match }) {
           <AvailabilityButton
             imagePath={matchAvailableInfo.imagePath}
             label={matchAvailableInfo.label}
-            className={matchAvailableInfo.className}
           />
         </div>
       </div>

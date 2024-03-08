@@ -25,7 +25,7 @@ function MatchCardsList({
     createdAt: new Date(),
     updatedAt: new Date(),
     sportsTypeId: "농구",
-    applicants: 5,
+    applicants: 2,
     matchTime: "13:00",
   };
 

@@ -1,24 +1,16 @@
 import { Match } from "@/types/Match.type";
 
 export default function getMatchAvailableInfo(match: Match) {
-  const applicants = match.applicants;
-  const capability = match.capability;
-  let className;
-  let label: string;
-  let imagePath: string | undefined;
+  const { applicants, capability } = match;
 
-  if (applicants / capability < 0.8) {
-    label = "신청 가능";
-    imagePath = "/assets/event_available.svg";
-    className = "border text-primary-100 border-primary-100";
-  } else if (applicants / capability === 1) {
-    label = "마감";
-    className = "bg-[#E7E7E7] text-[#9BA2A8]";
-  } else {
-    label = "마감 임박";
-    imagePath = "/assets/alarm.svg";
-    className = "border border-warning text-warning";
-  }
+  const ratio = applicants / capability;
+  const label = ratio < 0.8 ? "신청 가능" : ratio === 1 ? "마감" : "마감 임박";
+  const imagePath =
+    ratio < 0.8
+      ? "/assets/event_available.svg"
+      : ratio > 0.8 && ratio < 1
+      ? "/assets/alarm.svg"
+      : undefined;
 
-  return { label, imagePath, className };
+  return { label, imagePath };
 }
