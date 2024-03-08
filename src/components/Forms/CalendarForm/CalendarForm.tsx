@@ -24,7 +24,6 @@ function CalendarForm() {
             onSelect={(date) => field.onChange(date)}
             fromDate={new Date()}
             showOutsideDays
-            initialFocus
             classNames={{
               table: "w-full border-collapse",
               head_row: "flex font-medium text-gray-900",
@@ -35,7 +34,7 @@ function CalendarForm() {
               day_range_end: "day-range-end",
               day_selected:
                 "rounded-md bg-primary-100 text-white hover:bg-primary-60 hover:text-white focus:bg-primary-100 focus:text-white text-center",
-              day_today: "text-primary-100",
+              day_today: "text-primary-100 bg-red-400",
               day_outside:
                 "day-outside text-natural-40 opacity-50 aria-selected:bg-gray-500 aria-selected:text-gray-900 aria-selected:bg-opacity-10 cursor-not-allowed",
               day_disabled: "text-natural-40 cursor-not-allowed",

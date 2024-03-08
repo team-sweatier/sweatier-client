@@ -1,181 +1,91 @@
-// "use client";
+"use client";
 
-import { KAKAO_SDK_URL } from "@/app/layout";
-import matchTypes from "@/utils/matchTypes";
-import { useEffect, useState } from "react";
-import { useWatch } from "react-hook-form";
-import { Map, MapMarker } from "react-kakao-maps-sdk";
+import Link from "next/link";
+import { useState } from "react";
+import "react-kakao-maps-sdk";
+import { CustomOverlayMap, Map, MapMarker } from "react-kakao-maps-sdk";
 
-function KakaoMap() {
-  const { latitude, longitude } = matchTypes.originCoordinates;
+const KakaoMap = () => {
+  // const { register, watch } = useForm();
+  // const getAddress = watch("location"); //* 사용자가 input에 입력한 주소
 
-  const [map, setMap] = useState<any>();
-  const [markers, setMarkers] = useState<any>([]);
-
-  const searchLocation = useWatch({
-    name: "location",
+  //* 주소 string
+  const [address, setAddress] = useState<string>("");
+  //* 좌표
+  const [coordinates, setCoordinates] = useState<{
+    latitude: number;
+    longitude: number;
+  }>({
+    latitude: 0,
+    longitude: 0,
   });
 
-  // useEffect(() => {
-  //   setMap(searchLocation);
-  // }, [searchLocation]);
+  const originCoordinates = { lat: 37.5685159133492, lng: 126.98020965303 };
+  const originAddress = "서울 중구 청계천로 24";
 
-  // SDK를 동적으로 로드하는 함수
-  const loadKakaoMapsSDK = () => {
-    const script = document.createElement("script");
-    script.async = true;
-    script.src = KAKAO_SDK_URL;
-    document.head.appendChild(script);
-    script.onload = () => {
-      kakao.maps.load(() => {
-        setMap(true); // SDK 로드 완료 시 map 상태를 true로 설정
+  //* 좌표 가져오는 함수
+  const kakaoMapGeoCoder = () => {
+    window.kakao.maps.load(() => {
+      const geocoder = new window.kakao.maps.services.Geocoder(); // 주소-좌표 변환 객체 생성
+
+      // 주소로 좌표를 검색
+      geocoder.addressSearch(address, function (result, status) {
+        // 정상적으로 검색이 완료
+        if (status === window.kakao.maps.services.Status.OK) {
+          setCoordinates(() => ({
+            latitude: Number(result[0].y),
+            longitude: Number(result[0].x),
+          }));
+        }
+        return;
       });
-    };
+    });
   };
 
-  useEffect(() => {
-    if (
-      !window.kakao ||
-      !window.kakao.maps ||
-      !window.kakao.maps.services ||
-      !window.kakao.maps.services.Places
-    ) {
-      loadKakaoMapsSDK();
-    } else {
-      setMap(true); // SDK가 이미 로드된 경우
-    }
-  }, []);
-
-  //*   검색어가 바뀔 때마다 재렌더링되도록
-  useEffect(() => {
-    //* 검색어가 없다면 바로 return
-    if (!map || !searchLocation) return;
-    // const kakao = (window as any).kakao;
-
-    // const mapOption = {
-    //   center: new kakao.map.LatLng(latitude, longitude), // 지도의 중심좌표
-    //   level: 3, // 지도의 확대 레벨
-    // };
-    // // 지도를 생성
-    // const map = new kakao.maps.Map(searchLocation, mapOption);
-
-    // // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성
-    // const infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
-
-    // 장소 검색 객체를 생성
-    const ps = new kakao.maps.services.Places();
-
-    //* 검색어를 통한 장소 검색하는 함수
-    const handlerSearchPlace = (data: any, status: any, pagination: any) => {
-      if (status === kakao.maps.services.Status.OK) {
-        const bounds = new kakao.maps.LatLngBounds();
-        const markers = [];
-
-        for (let i = 0; i < data.length; i++) {
-          // @ts-ignore
-          markers.push({
-            position: {
-              lat: data[i].y,
-              lng: data[i].x,
-            },
-            content: data[i].place_name,
-          });
-          // @ts-ignore
-          bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
-        }
-        setMarkers(markers);
-        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-        map.setBounds(bounds);
-      }
-    };
-
-    // 장소검색 객체를 통해 키워드로 장소검색을 요청
-    ps.keywordSearch(searchLocation, handlerSearchPlace);
-  }, [map, searchLocation]);
-
-  // 키워드로 장소를 검색합니다
-  // searchPlaces();
-
   return (
-    <>
-      <Map
-        center={{ lat: latitude, lng: longitude }}
-        level={3}
-        onCreate={setMap}
-        className="w-full h-full rounded-[10px]"
-      >
-        {markers.map((marker: any) => (
-          <MapMarker
-            key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
-            position={marker.position}
-          >
-            <div style={{ color: "#000" }}>{marker.content}</div>
-          </MapMarker>
-        ))}
-      </Map>
-    </>
+    <main className="w-full">
+      <div style={{ marginTop: "600px" }}>
+        <input
+          className=" border border-natural-50 placeholder:text-natural-50 text-sm rounded-lg focus:ring-primary-100 focus:border-primary-100 block w-full dark:bg-natural-50 dark:border-natural-50 dark:placeholder-natural-50 dark:text-white dark:focus:ring-primary-100 dark:focus:border-primary-100 px-5 py-3 font-light"
+          type="text"
+          value={address}
+          onChange={(e) => {
+            setAddress(e.target.value);
+          }}
+        />
+        <button
+          type="button"
+          className="border-natural-50 bg-primary-100 py-2 px-4 text-white"
+          onClick={kakaoMapGeoCoder}
+        >
+          확인
+        </button>
+        <p>위도: {coordinates.latitude}</p>
+        <p>경도: {coordinates.longitude}</p>
+      </div>
+      <div className="mapWrap bg-red-400">
+        <Map
+          className="map w-full sm:h-60 h-48 absolute rounded-[10px]"
+          center={originCoordinates} // 지도의 초기 위치
+          isPanto={true} // 부드럽게 이동할 지 유무
+          level={3} // 지도의 확대 레벨
+        >
+          <MapMarker position={originCoordinates}></MapMarker>
+          <CustomOverlayMap position={originCoordinates} yAnchor={1}>
+            <div className="customoverlay">
+              <Link
+                href={`https://map.kakao.com/link/map/${address},${coordinates.latitude},${coordinates.longitude}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="title">{address}</span>
+              </Link>
+            </div>
+          </CustomOverlayMap>
+        </Map>
+      </div>
+    </main>
   );
-}
+};
 
 export default KakaoMap;
-
-// import { useEffect, useState } from "react";
-// import { useFormContext, useWatch } from "react-hook-form";
-// import { Map, MapMarker } from "react-kakao-maps-sdk";
-
-// function KakaoMap() {
-//   const { register, watch } = useFormContext();
-//   const [map, setMap] = useState(null);
-//   const [marker, setMarker] = useState(null);
-
-//   const address = useWatch({
-//     name: "location", // without supply name will watch the entire form, or ['firstName', 'lastName'] to watch both
-//   });
-
-//   console.log(address);
-
-//   const latitude = 37.5685159133492;
-//   const longitude = 126.98020965303;
-
-//   useEffect(() => {
-//     const kakao = (window as any).kakao;
-//     kakao.maps.load(() => {
-//       const options = {
-//         center: new kakao.maps.LatLng(latitude, longitude),
-//       };
-//       const map = new kakao.maps.Map(location, options);
-//       console.log("map", map);
-
-//       setMap(map);
-//       const markerPosition = new kakao.maps.LatLng(latitude, longitude);
-
-//       console.log("markerPosition", markerPosition);
-
-//       const marker = new kakao.maps.Marker({
-//         position: markerPosition,
-//       });
-//       marker.setMap(map);
-//     });
-//   }, [address, latitude, longitude]);
-
-//   console.log(map);
-
-//   return (
-//     <>
-//       <Map
-//         center={{ lat: latitude, lng: longitude }}
-//         level={3}
-//         className="w-full h-full rounded-[10px]"
-//       >
-//         <MapMarker
-//           position={{
-//             lat: latitude,
-//             lng: longitude,
-//           }}
-//         />
-//       </Map>
-//     </>
-//   );
-// }
-
-// export default KakaoMap;

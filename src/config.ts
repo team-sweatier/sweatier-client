@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-export const KAKAO_SDK_URL = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_APP_JS_KEY}&libraries=clusterer&autoload=false`;
+export const KAKAO_SDK_URL = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_APP_JS_KEY}&libraries=clusterer&libraries=services&autoload=false`;
 
 export const metadata: Metadata = {
   title: "SweaTier",

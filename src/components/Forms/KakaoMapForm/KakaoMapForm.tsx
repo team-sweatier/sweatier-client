@@ -11,14 +11,13 @@ function KakaoMapForm() {
       <div className="relative bg-primary-20 rounded-[10px] py-5 px-5">
         <div className="flex mb-4">
           <Input
-            id="location"
+            id="address"
             label="경기 위치"
             placeholder="경기장명을 입력하세요."
           />
         </div>
-        <main className="w-full sm:h-60 h-48 left-0 top-0">
-          <KakaoMap />
-        </main>
+
+        <KakaoMap />
       </div>
     </FormOuter>
   );

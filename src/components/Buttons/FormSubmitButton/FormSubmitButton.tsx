@@ -1,5 +1,5 @@
 import MatchDto from "@/types/MatchDto";
-import FormOuter from "../FormOuter";
+import FormOuter from "../../Forms/FormOuter";
 
 interface FormSubmitButtonProps {
   editValues?: MatchDto;

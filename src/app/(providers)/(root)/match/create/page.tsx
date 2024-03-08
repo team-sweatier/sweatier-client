@@ -1,16 +1,20 @@
 import MatchForm from "@/components/Forms/MatchForm/MatchForm";
 import Heading from "@/components/Heading";
 import Page from "@/components/Page";
-import { NextPage } from "next";
+import { KAKAO_SDK_URL } from "@/config";
+import Script from "next/script";
 
-const CreateMatchPage: NextPage = () => {
+const CreateMatchPage = () => {
   return (
-    <Page>
-      <div className="w-full max-w-screen-md">
-        <Heading>게시물 작성</Heading>
-        <MatchForm />
-      </div>
-    </Page>
+    <body>
+      <Page>
+        <div className="w-full max-w-screen-md">
+          <Heading>게시물 작성</Heading>
+          <MatchForm />
+        </div>
+      </Page>
+      <Script src={KAKAO_SDK_URL} strategy="beforeInteractive" />
+    </body>
   );
 };
 

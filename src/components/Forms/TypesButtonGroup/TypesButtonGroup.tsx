@@ -1,9 +1,9 @@
 import { MatchTypesObject } from "@/utils/matchTypes";
 import { StaticImageData } from "next/image";
 import { Controller, useFormContext } from "react-hook-form";
+import RoundButton from "../../Buttons/RoundButton";
 import FormOuter from "../FormOuter";
 import Label from "../Label";
-import RoundButton from "../RoundButton";
 
 interface TypesButtonGroupProps {
   label: string;
