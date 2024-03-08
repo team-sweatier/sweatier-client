@@ -26,7 +26,7 @@ const config: Config = {
           20: "#E7F3FF",
         },
         warning: "#FD4C36",
-        neautral: {
+        natural: {
           100: "#000B15",
           90: "#0B1E2F",
           80: "#082F54",
@@ -43,6 +43,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar-hide")],
 };
 export default config;
