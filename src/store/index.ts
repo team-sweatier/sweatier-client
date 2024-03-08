@@ -1,5 +1,3 @@
-function store() {
-  return;
-}
+import useModalStore from "./modal.store";
 
-export default store;
+export { useModalStore };
