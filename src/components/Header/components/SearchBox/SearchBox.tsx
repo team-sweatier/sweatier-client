@@ -11,8 +11,8 @@ function SearchBox() {
         <Image
           src="/assets/search.svg"
           layout="responsive"
-          width={20}
-          height={20}
+          width={1}
+          height={1}
           alt="search-icon"
         />
       </div>
