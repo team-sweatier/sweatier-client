@@ -1,6 +1,6 @@
+import MatchCard from "@/components/MatchCard";
 import { Match } from "@/types/Match.type";
 import { Dayjs } from "dayjs";
-import MatchCard from "../../../../../../components/MatchCard";
 
 function MatchCardsList({
   selectedDate,

@@ -1,5 +1,5 @@
+import SportsType from "@/components/SportsType";
 import { Dispatch, SetStateAction } from "react";
-import SportsType from "../../../../../../components/SportsType";
 
 function SportsTypesList({
   selectedSports,

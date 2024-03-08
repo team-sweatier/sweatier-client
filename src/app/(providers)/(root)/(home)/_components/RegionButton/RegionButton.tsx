@@ -12,12 +12,12 @@ function Region({
 }) {
   const [isClicked, setIsClicked] = useState(false);
   const handleClickButton = () => {
-    setIsClicked((current) => !current);
+    setIsClicked((prev) => !prev);
   };
   return (
     <div className="w-[100%] my-4">
       <div className="flex gap-1">
-        <span className="text-[14px] font-bold text-neutral-60">{`${
+        <span className="text-sm font-bold text-neutral-60">{`${
           selectedRegion ? selectedRegion : "지역"
         }`}</span>
         <Image
