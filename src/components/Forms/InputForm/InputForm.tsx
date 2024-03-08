@@ -4,7 +4,6 @@ import { PropsWithChildren } from "react";
 import { useFormContext } from "react-hook-form";
 import FormOuter from "../FormOuter";
 import Label from "../Label";
-matchIcons;
 
 type InputFormProps = PropsWithChildren<{
   label: string;
@@ -13,31 +12,19 @@ type InputFormProps = PropsWithChildren<{
 }>;
 
 function InputForm({ label, id, placeholder }: InputFormProps) {
-  const { register, watch } = useFormContext();
+  const { register } = useFormContext();
 
   return (
     <FormOuter>
       <div className="flex items-center">
         <Label id={id} label={label} iconSrc={matchIcons.title} />
         <div className="flex pl-1 pb-2 items-center">
-          <Icon
-            src={
-              String(watch(id)).length >= 5
-                ? matchIcons.blueDot
-                : matchIcons.grayDot
-            }
-            alt="title-required-message"
-          />
-          <p
-            className={`text-natural-50 text-xs pl-1 ${
-              String(watch(id)).length >= 5 ? "text-primary-100" : ""
-            }`}
-          >
+          <Icon src={matchIcons.grayDot} alt="title-required-message" />
+          <p className="text-natural-50 text-xs pl-1 ">
             제목은 5글자 이상이어야 합니다.
           </p>
         </div>
       </div>
-
       <input
         id={id}
         type="text"
