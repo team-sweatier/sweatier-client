@@ -1,7 +1,12 @@
 import Page from "@/components/Page";
+import Banner from "./_components/Banner";
 
 function HomePage() {
-  return <Page>홈페이지입니다.</Page>;
+  return (
+    <Page>
+      <Banner />
+    </Page>
+  );
 }
 
 export default HomePage;
