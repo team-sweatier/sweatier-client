@@ -1,7 +1,7 @@
 import { MatchTypesObject } from "@/utils/matchTypes";
 import { StaticImageData } from "next/image";
 import { Controller, useFormContext } from "react-hook-form";
-import Button from "../../Button";
+import Button from "../Button";
 import FormOuter from "../FormOuter";
 import Label from "../Label";
 
