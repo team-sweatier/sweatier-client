@@ -62,38 +62,30 @@ function MatchForm({ editValues }: MatchFormProps) {
           label="종목"
           typeString={matchTypes.sports}
         />
-
         <InputForm label="제목" id="title" placeholder="제목을 입력해주세요." />
-
         <TextareaForm
           label="내용"
           id="content"
           placeholder="내용을 입력해주세요."
         />
-
         <TypesButtonGroup
           iconSrc={matchIcons.gender}
           id="gender"
           label="모집성별"
           typeString={matchTypes.gender}
         />
-
         <TypesButtonGroup
           iconSrc={matchIcons.players}
           id="players"
           label="모집인원"
           typeString={matchTypes.players}
         />
-
         <CalendarForm />
-
         <DropDownGroup id="time" label="경기 시작 시간" />
-
         <FormOuter>
           <Label id={"place"} label={"경기 지역"} iconSrc={matchIcons.place} />
           <div className="w-full h-60 bg-natural-30" />
         </FormOuter>
-
         <FormOuter>
           <input
             type="submit"
