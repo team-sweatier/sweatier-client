@@ -1,9 +1,9 @@
 import { MatchTypesObject } from "@/utils/matchTypes";
 import { StaticImageData } from "next/image";
 import { Controller, useFormContext } from "react-hook-form";
-import Button from "../Button";
 import FormOuter from "../FormOuter";
 import Label from "../Label";
+import RoundButton from "../RoundButton";
 
 interface TypesButtonGroupProps {
   label: string;
@@ -31,7 +31,7 @@ function TypesButtonGroup({
             control={control}
             rules={{ required: "이 필드는 필수입니다." }}
             render={({ field }) => (
-              <Button
+              <RoundButton
                 key={i}
                 label={Object.keys(type)[0]}
                 onClick={() => field.onChange(Object.values(type)[0])}

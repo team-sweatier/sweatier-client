@@ -1,6 +1,7 @@
 "use client";
 
 import TypesButtonGroup from "@/components/Forms/TypesButtonGroup";
+import KakaoMapForm from "@/components/KakaoMapForm";
 import MatchDto from "@/types/MatchDto";
 import matchIcons from "@/utils/matchIcons";
 import matchTypes from "@/utils/matchTypes";
@@ -15,7 +16,6 @@ import CalendarForm from "../CalendarForm/CalendarForm";
 import DropDownGroup from "../DropDownGroup";
 import FormOuter from "../FormOuter";
 import InputForm from "../InputForm/InputForm";
-import Label from "../Label";
 import TextareaForm from "../TextAreaForm/TextAreaForm";
 
 //* 수정데이터가 있다면(editValues) 해당 values를 defaultValues로, 아니면 {}로
@@ -82,10 +82,7 @@ function MatchForm({ editValues }: MatchFormProps) {
         />
         <CalendarForm />
         <DropDownGroup id="time" label="경기 시작 시간" />
-        <FormOuter>
-          <Label id={"place"} label={"경기 지역"} iconSrc={matchIcons.place} />
-          <div className="w-full h-60 bg-natural-30" />
-        </FormOuter>
+        <KakaoMapForm />
         <FormOuter>
           <input
             type="submit"
