@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
+
+export const KAKAO_SDK_URL = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_APP_JS_KEY}&libraries=clusterer&autoload=false`;
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +25,7 @@ export default function HTMLLayout({
           as="style"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
         />
+        <Script strategy="beforeInteractive" src={KAKAO_SDK_URL} />
       </head>
       <body className={inter.className}>{children}</body>
     </html>

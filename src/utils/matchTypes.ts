@@ -60,12 +60,18 @@ const timeHours = [
 
 const timeMinutes = ["00", "30"];
 
+const originCoordinates = {
+  latitude: 37.5685159133492,
+  longitude: 126.98020965303,
+};
+
 const matchTypes = {
   sports,
   players,
   gender,
   timeHours,
   timeMinutes,
+  originCoordinates,
 };
 
 export default matchTypes;

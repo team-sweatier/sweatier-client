@@ -1,7 +1,7 @@
 "use client";
 
+import KakaoMapForm from "@/components/Forms/KakaoMapForm";
 import TypesButtonGroup from "@/components/Forms/TypesButtonGroup";
-import KakaoMapForm from "@/components/KakaoMapForm";
 import MatchDto from "@/types/MatchDto";
 import matchIcons from "@/utils/matchIcons";
 import matchTypes from "@/utils/matchTypes";
