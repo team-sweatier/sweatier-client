@@ -1,8 +1,9 @@
 import MatchForm from "@/components/Forms/MatchForm/MatchForm";
 import Heading from "@/components/Heading";
 import Page from "@/components/Page";
+import { NextPage } from "next";
 
-function CreateMatchPage() {
+const CreateMatchPage: NextPage = () => {
   return (
     <Page>
       <div className="w-full max-w-screen-md">
@@ -11,6 +12,6 @@ function CreateMatchPage() {
       </div>
     </Page>
   );
-}
+};
 
 export default CreateMatchPage;
