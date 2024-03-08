@@ -1,9 +1,9 @@
 import FormOuter from "@/components/Forms/FormOuter";
 import Label from "@/components/Forms/Label";
+import matchIcons from "@/utils/matchIcons";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { Controller, useFormContext } from "react-hook-form";
-import postIcon from "../../../../public/assets/postIcon.svg";
 import CustomCaption from "./CustomCaption";
 import "./calendar.css";
 
@@ -12,7 +12,7 @@ function CalendarForm() {
 
   return (
     <FormOuter>
-      <Label label="날짜" id="date" iconSrc={postIcon} />
+      <Label label="날짜" id="date" iconSrc={matchIcons.post} />
       <Controller
         control={control}
         name="date"

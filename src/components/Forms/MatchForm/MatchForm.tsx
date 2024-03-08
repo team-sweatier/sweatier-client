@@ -2,6 +2,7 @@
 
 import TypesButtonGroup from "@/components/Forms/TypesButtonGroup";
 import MatchDto from "@/types/MatchDto";
+import matchIcons from "@/utils/matchIcons";
 import matchTypes from "@/utils/matchTypes";
 import dayjs from "dayjs";
 import {
@@ -10,10 +11,6 @@ import {
   SubmitHandler,
   useForm,
 } from "react-hook-form";
-import genderIcon from "../../../../public/assets/genderIcon.svg";
-import placeIcon from "../../../../public/assets/placeIcon.svg";
-import playersIcon from "../../../../public/assets/playersIcon.svg";
-import postIcon from "../../../../public/assets/postIcon.svg";
 import CalendarForm from "../CalendarForm/CalendarForm";
 import DropDownGroup from "../DropDownGroup";
 import FormOuter from "../FormOuter";
@@ -60,7 +57,7 @@ function MatchForm({ editValues }: MatchFormProps) {
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <TypesButtonGroup
-          iconSrc={postIcon}
+          iconSrc={matchIcons.post}
           id="sport"
           label="종목"
           typeString={matchTypes.sports}
@@ -75,14 +72,14 @@ function MatchForm({ editValues }: MatchFormProps) {
         />
 
         <TypesButtonGroup
-          iconSrc={genderIcon}
+          iconSrc={matchIcons.gender}
           id="gender"
           label="모집성별"
           typeString={matchTypes.gender}
         />
 
         <TypesButtonGroup
-          iconSrc={playersIcon}
+          iconSrc={matchIcons.players}
           id="players"
           label="모집인원"
           typeString={matchTypes.players}
@@ -93,7 +90,7 @@ function MatchForm({ editValues }: MatchFormProps) {
         <DropDownGroup id="time" label="경기 시작 시간" />
 
         <FormOuter>
-          <Label id={"place"} label={"경기 지역"} iconSrc={placeIcon} />
+          <Label id={"place"} label={"경기 지역"} iconSrc={matchIcons.place} />
           <div className="w-full h-60 bg-natural-30" />
         </FormOuter>
 

@@ -1,11 +1,10 @@
 import Icon from "@/components/Icon";
+import matchIcons from "@/utils/matchIcons";
 import { PropsWithChildren } from "react";
 import { useFormContext } from "react-hook-form";
-import blueDot from "../../../../public/assets/blueDot.svg";
-import grayDot from "../../../../public/assets/grayDot.svg";
-import titleIcon from "../../../../public/assets/titleIcon.svg";
 import FormOuter from "../FormOuter";
 import Label from "../Label";
+matchIcons;
 
 type InputFormProps = PropsWithChildren<{
   label: string;
@@ -19,10 +18,14 @@ function InputForm({ label, id, placeholder }: InputFormProps) {
   return (
     <FormOuter>
       <div className="flex items-center">
-        <Label id={id} label={label} iconSrc={titleIcon} />
+        <Label id={id} label={label} iconSrc={matchIcons.title} />
         <div className="flex pl-1 pb-2 items-center">
           <Icon
-            src={String(watch(id)).length >= 5 ? blueDot : grayDot}
+            src={
+              String(watch(id)).length >= 5
+                ? matchIcons.blueDot
+                : matchIcons.grayDot
+            }
             alt="title-required-message"
           />
           <p

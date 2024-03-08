@@ -1,9 +1,7 @@
 import Icon from "@/components/Icon";
+import matchIcons from "@/utils/matchIcons";
 import { PropsWithChildren } from "react";
 import { useFormContext } from "react-hook-form";
-import blueDot from "../../../../public/assets/blueDot.svg";
-import contentIcon from "../../../../public/assets/contentIcon.svg";
-import grayDot from "../../../../public/assets/grayDot.svg";
 import FormOuter from "../FormOuter";
 import Label from "../Label";
 
@@ -19,10 +17,14 @@ function TextareaForm({ label, id, placeholder }: TextareaFormProps) {
   return (
     <FormOuter>
       <div className="flex items-center">
-        <Label id={id} label={label} iconSrc={contentIcon} />
+        <Label id={id} label={label} iconSrc={matchIcons.content} />
         <div className="flex pl-1 pb-2">
           <Icon
-            src={String(watch(id)).length >= 10 ? blueDot : grayDot}
+            src={
+              String(watch(id)).length >= 10
+                ? matchIcons.blueDot
+                : matchIcons.grayDot
+            }
             alt="title-required-message"
           />
           <p
