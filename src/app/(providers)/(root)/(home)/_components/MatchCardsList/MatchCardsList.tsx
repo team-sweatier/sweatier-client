@@ -1,7 +1,6 @@
-// import { Match } from "@/types/Match.type";
 import { Match } from "@/types/Match.type";
 import { Dayjs } from "dayjs";
-import MatchCard from "../MatchCard";
+import MatchCard from "../../../../../../components/MatchCard";
 
 function MatchCardsList({
   selectedDate,
@@ -12,6 +11,7 @@ function MatchCardsList({
   selectedSports: string;
   selectedRegion: string;
 }) {
+  // todo 임시데이터 수정
   const match: Match = {
     id: "matchId",
     hostId: "hostId",
