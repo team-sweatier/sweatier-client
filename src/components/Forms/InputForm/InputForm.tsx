@@ -14,11 +14,7 @@ type InputFormProps = PropsWithChildren<{
 }>;
 
 function InputForm({ label, id, placeholder }: InputFormProps) {
-  const {
-    register,
-    watch,
-    formState: { errors },
-  } = useFormContext();
+  const { register, watch } = useFormContext();
 
   return (
     <FormOuter>
@@ -26,7 +22,7 @@ function InputForm({ label, id, placeholder }: InputFormProps) {
         <Label id={id} label={label} iconSrc={titleIcon} />
         <div className="flex pl-1 pb-2 items-center">
           <Icon
-            src={String(watch(id)).length >= 10 ? blueDot : grayDot}
+            src={String(watch(id)).length >= 5 ? blueDot : grayDot}
             alt="title-required-message"
           />
           <p

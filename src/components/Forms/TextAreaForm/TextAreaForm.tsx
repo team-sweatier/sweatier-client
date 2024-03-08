@@ -14,13 +14,7 @@ type TextareaFormProps = PropsWithChildren<{
 }>;
 
 function TextareaForm({ label, id, placeholder }: TextareaFormProps) {
-  const {
-    register,
-    watch,
-    formState: { errors },
-  } = useFormContext();
-  const errorMessages = errors[id] ? errors[id]!.message?.toString() : "";
-  const hasError = !!(errors && errorMessages);
+  const { register, watch } = useFormContext();
 
   return (
     <FormOuter>
@@ -47,7 +41,6 @@ function TextareaForm({ label, id, placeholder }: TextareaFormProps) {
         className=" border border-natural-50 placeholder:text-natural-50 text-sm rounded-lg focus:ring-primary-100 focus:border-primary-100 block w-full dark:bg-natural-50 dark:border-natural-50 dark:placeholder-natural-50 dark:text-white dark:focus:ring-primary-100 dark:focus:border-primary-100 px-5 py-3 font-light resize-none h-32 p-4"
         {...register(`${id}`, { required: true, minLength: 10 })}
       />
-      {/* {hasError && <p>{errorMessages}</p>} */}
     </FormOuter>
   );
 }
