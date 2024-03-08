@@ -16,7 +16,6 @@ function KakaoMapForm() {
             placeholder="경기장명을 입력하세요."
           />
         </div>
-
         <KakaoMap />
       </div>
     </FormOuter>
