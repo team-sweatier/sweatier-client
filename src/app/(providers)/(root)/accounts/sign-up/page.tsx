@@ -14,9 +14,6 @@ function SignUpPage() {
   const { mutateAsync: signUp, isPending } = useMutation({
     mutationFn: api.auth.signUp,
   });
-  const { mutateAsync: signUpWithKaKao } = useMutation({
-    mutationFn: api.auth.signUpWithKaKao,
-  });
   const { logIn } = useAuthStore();
   const router = useRouter();
 
