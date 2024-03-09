@@ -95,7 +95,9 @@ function SignUpPage() {
 
   const handleClickKaKaoButton = async () => {
     // 백엔드 주소 매핑 /users/sign-in/kakao
-    await signUpWithKaKao();
+    router.push(
+      "https://sweatier-server-he2ntmjbhq-du.a.run.app/users/sign-in/kakao"
+    );
   };
 
   const handleClickOutside = () => {

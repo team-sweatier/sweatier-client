@@ -6,10 +6,6 @@ async function signUp(dto: SignUpDto) {
   console.log(response);
 }
 
-async function signUpWithKaKao() {
-  await client.get("/users/sign-in/kakao");
-}
-
 async function signIn(dto: SignInDto) {
   const response = await client.post("/users/sign-in", dto);
   console.log(response);
@@ -17,7 +13,6 @@ async function signIn(dto: SignInDto) {
 
 const authAPI = {
   signUp,
-  signUpWithKaKao,
   signIn,
 };
 
