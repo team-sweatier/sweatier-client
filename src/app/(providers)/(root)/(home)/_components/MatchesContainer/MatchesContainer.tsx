@@ -1,6 +1,7 @@
 "use client";
 
 import day from "@/utils/day";
+import matchTypes from "@/utils/matchTypes";
 import { Dayjs } from "dayjs";
 import { useState } from "react";
 import MatchCardsList from "../MatchCardsList";
@@ -14,7 +15,7 @@ function MatchesContainer() {
   const [selectedSports, setSelectedSports] = useState<string>("농구");
   const [selectedRegion, setSelectedRegion] = useState<string>("");
 
-  const sportsList = ["농구", "배드민턴", "야구", "축구", "테니스"];
+  const sportsList = matchTypes.sports.map((sport) => Object.keys(sport)[0]);
 
   return (
     <section className="w-full relative">

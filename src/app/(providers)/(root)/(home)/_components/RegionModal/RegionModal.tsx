@@ -1,6 +1,7 @@
 import Heading from "@/components/Heading";
 import Modal from "@/components/Modal";
 import { useModalStore } from "@/store";
+import matchTypes from "@/utils/matchTypes";
 import { Dispatch, SetStateAction } from "react";
 import TypesList from "../TypesList";
 
@@ -13,33 +14,12 @@ function RegionModal({
 }) {
   const { close } = useModalStore();
 
-  // Todo : 따로 파일에 저장
-  const regions = [
-    "서울",
-    "경기",
-    "인천",
-    "강원",
-    "대전",
-    "세종",
-    "충남",
-    "충북",
-    "대구",
-    "경북",
-    "부산",
-    "울산",
-    "경남",
-    "광주",
-    "전남",
-    "전북",
-    "제주",
-  ];
-
   return (
     <Modal>
       <ul className="w-full mx-auto px-5 py-8 flex flex-col items-center">
         <Heading>지역 선택</Heading>
         <TypesList
-          typesList={regions}
+          typesList={matchTypes.regions}
           selectedTypes={selectedRegion}
           setSelectedTypes={setSelectedRegion}
           className="grid grid-cols-5 gap-2 mt-9"

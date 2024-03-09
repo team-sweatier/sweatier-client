@@ -19,7 +19,9 @@ function TypesList({
           <Button
             label={type}
             isSelected={type === selectedTypes}
-            onClick={() => setSelectedTypes(type)}
+            onClick={() => {
+              setSelectedTypes(type);
+            }}
             key={type}
           />
         </li>
