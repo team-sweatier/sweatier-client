@@ -12,7 +12,7 @@ function ValidationMessage(props: ValidationMessageProps) {
 
   return (
     <p
-      className={`flex mt-2 text-xs text-gray-500 ${
+      className={`flex mt-2 text-xs text-neutral-50 ${
         isValid ? "text-primary-100" : ""
       } ${!isValid && focusedInput === "email" ? "text-red-500" : ""}`}
     >

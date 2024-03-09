@@ -1,6 +1,7 @@
 "use client";
 
 import api from "@/api";
+import Page from "@/components/Page";
 import useAuthStore from "@/store/auth.store";
 import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
@@ -16,7 +17,7 @@ function SignUpPage() {
   const { mutateAsync: signUpWithKaKao } = useMutation({
     mutationFn: api.auth.signUpWithKaKao,
   });
-  const { isLoggedIn, logIn } = useAuthStore();
+  const { logIn } = useAuthStore();
   const router = useRouter();
 
   const [email, setEmail] = useState<string>("");
@@ -102,16 +103,22 @@ function SignUpPage() {
   };
 
   return (
-    <main onClick={handleClickOutside}>
-      <section>
-        <h2 className="text-3xl font-bold text-center pt-24 text-neutral-90">
-          회원가입
+    <Page>
+      <section className="pb-3 w-full" onClick={handleClickOutside}>
+        <h2 className="a11y-hidden text-3xl font-bold text-center pt-24 text-neutral-90">
+          회원가입하기
         </h2>
         <form
           onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}
-          className="mx-auto max-w-lg p-10"
+          className="mx-auto max-w-lg py-3 px-5"
         >
-          <ul className="flex flex-col">
+          <p className="py-4 text-2xl font-black tracking-[-.1em]">
+            수준별 운동 매칭 서비스
+          </p>
+          <p className="font-bold tracking-tighter">
+            지금 스웨티어에 가입하세요
+          </p>
+          <ul className="flex flex-col py-5">
             <li className="flex flex-col">
               <SignUpInput
                 ref={emailRef}
@@ -185,7 +192,8 @@ function SignUpPage() {
             </li>
           </ul>
           <button
-            className={`w-full px-6 rounded-md text-white font-semibold h-12 mt-10 mb-16 transition active:translate-y-0 ${
+            onClick={handleClickSignUpButton}
+            className={`w-full px-6 rounded-md text-white font-semibold h-12 mt-10 mb-10 transition active:translate-y-0 ${
               isEmailValid &&
               isLengthOfPasswordValid &&
               isCombinationOfPasswordValid &&
@@ -193,17 +201,15 @@ function SignUpPage() {
                 ? `bg-primary-100 hover:-translate-y-1`
                 : `bg-gray-400/50`
             }`}
-            onClick={handleClickSignUpButton}
-            disabled={isPending}
           >
             가입하기
           </button>
           <div className="flex items-center justify-center space-x-2">
-            <div className="flex-1 border-t-2 border-dotted border-neutral-40"></div>
+            <div className="flex-1 border-t border-neutral-40"></div>
             <span className="px-2 text-xs text-neutral-70 bg-white">
-              소셜 회원가입
+              간편 회원가입
             </span>
-            <div className="flex-1 border-t-2 border-dotted border-neutral-40"></div>
+            <div className="flex-1 border-t border-neutral-40"></div>
           </div>
           <button
             onClick={handleClickKaKaoButton}
@@ -221,7 +227,7 @@ function SignUpPage() {
           </button>
         </form>
       </section>
-    </main>
+    </Page>
   );
 }
 

@@ -22,11 +22,15 @@ function LogInModal() {
   const [password, setPassword] = useState<string>("");
 
   const handleClickLogIn = async () => {
-    await signIn({ email, password });
-    logIn();
-    modal.close();
-    alert("로그인 처리되었습니다"); // toastify 적용예정
-    router.push("/");
+    try {
+      await signIn({ email, password });
+      logIn();
+      modal.close();
+      alert("로그인 처리되었습니다"); // toastify 적용예정
+      router.push("/");
+    } catch (e) {
+      alert("로그인에 실패하였습니다.");
+    }
   };
 
   const handleClickGoToSignUp = () => {
@@ -49,7 +53,7 @@ function LogInModal() {
             <input
               type="text"
               id="email"
-              className="h-10 border text-neutral-70 border-slate-300 focus:border-black outline-none transition rounded-lg pl-4"
+              className="h-10 border text-neutral-70 border-slate-300 focus:border-primary-100 outline-none transition rounded-lg pl-4"
               value={email}
               placeholder="이메일을 입력해주세요."
               onChange={(e) => setEmail(e.target.value)}
@@ -62,7 +66,7 @@ function LogInModal() {
             <input
               type="password"
               id="password"
-              className="h-10 border text-neutral-70 border-slate-300 focus:border-black outline-none transition rounded-lg pl-4"
+              className="h-10 border text-neutral-70 border-slate-300 focus:border-primary-100 outline-none transition rounded-lg pl-4"
               value={password}
               placeholder="비밀번호를 입력해주세요."
               onChange={(e) => setPassword(e.target.value)}
@@ -77,11 +81,11 @@ function LogInModal() {
           로그인
         </button>
         <div className="flex items-center justify-center space-x-2">
-          <div className="flex-1 border-t-2 border-dotted border-neutral-40"></div>
+          <div className="flex-1 border-t border-neutral-40"></div>
           <span className="px-2 text-xs text-neutral-70 bg-white">
             간편 로그인
           </span>
-          <div className="flex-1 border-t-2 border-dotted border-neutral-40"></div>
+          <div className="flex-1 border-t border-neutral-40"></div>
         </div>
         <button className="h-10 bg-yellow-300 w-full px-6 rounded-lg font-semibold my-4 transition hover:-translate-y-1 active:translate-y-0">
           <div className="h-full flex items-center justify-center">
