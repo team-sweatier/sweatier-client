@@ -1,12 +1,18 @@
 import LogInModal from "@/app/(providers)/(root)/accounts/_components/LogInModal";
-import { useModalStore } from "@/store";
+import { useAuthStore, useModalStore } from "@/store";
 import Link from "next/link";
 import SearchBox from "./components/SearchBox";
 
 function Header() {
   const modal = useModalStore();
+  const { isLoggedIn, logOut } = useAuthStore();
   const handleClickLogInButton = () => {
     modal.open(<LogInModal />);
+  };
+
+  const handleClickLogOutButton = () => {
+    logOut();
+    alert("로그아웃 처리 되었습니다."); //toastify 적용 예정
   };
 
   return (
@@ -19,12 +25,21 @@ function Header() {
           <SearchBox />
         </div>
 
-        <button
-          onClick={handleClickLogInButton}
-          className="font-bold w-14 text-sm text-primary-100"
-        >
-          로그인
-        </button>
+        {isLoggedIn ? (
+          <button
+            onClick={handleClickLogOutButton}
+            className="font-bold w-14 text-sm text-primary-100"
+          >
+            로그아웃
+          </button>
+        ) : (
+          <button
+            onClick={handleClickLogInButton}
+            className="font-bold w-14 text-sm text-primary-100"
+          >
+            로그인
+          </button>
+        )}
       </div>
     </header>
   );

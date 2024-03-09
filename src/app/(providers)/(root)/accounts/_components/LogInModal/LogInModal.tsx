@@ -1,17 +1,33 @@
 "use client";
 
+import api from "@/api";
 import Heading from "@/components/Heading";
 import Modal from "@/components/Modal";
-import { useModalStore } from "@/store";
+import { useAuthStore, useModalStore } from "@/store";
+import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 function LogInModal() {
+  const { mutateAsync: signIn, isPending } = useMutation({
+    mutationFn: api.auth.signIn,
+  });
+  const { logIn } = useAuthStore();
   const modal = useModalStore();
+  const router = useRouter();
+
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const handleClickLogIn = () => {};
+
+  const handleClickLogIn = async () => {
+    await signIn({ email, password });
+    logIn();
+    modal.close();
+    alert("로그인 처리되었습니다"); // toastify 적용예정
+    router.push("/");
+  };
 
   const handleClickGoToSignUp = () => {
     modal.close();
@@ -22,7 +38,7 @@ function LogInModal() {
       <Heading className="text-center">로그인</Heading>
       <form
         action=""
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}
         className="flex flex-col gap-y-4 px-5 py-5"
       >
         <ul className="flex flex-col gap-y-4">
@@ -55,6 +71,7 @@ function LogInModal() {
         </ul>
         <button
           onClick={handleClickLogIn}
+          disabled={isPending}
           className="h-10 bg-primary-100 text-white rounded-lg font-semibold my-4 transition hover:-translate-y-1 active:translate-y-0"
         >
           로그인
