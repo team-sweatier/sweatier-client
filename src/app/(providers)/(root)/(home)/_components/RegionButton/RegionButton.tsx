@@ -1,27 +1,23 @@
 "use client";
+import { useModalStore } from "@/store";
+import useFilterStore from "@/store/filter.store";
 import Image from "next/image";
-import { Dispatch, SetStateAction, useState } from "react";
 import RegionModal from "../RegionModal";
 
-function Region({
-  selectedRegion,
-  setSelectedRegion,
-}: {
-  selectedRegion: string;
-  setSelectedRegion: Dispatch<SetStateAction<string>>;
-}) {
-  const [isClicked, setIsClicked] = useState(false);
-  const handleClickButton = () => {
-    setIsClicked((prev) => !prev);
-  };
+function RegionButton() {
+  const { open } = useModalStore();
+  const region = useFilterStore((state) => state.region);
+
   return (
-    <div className="w-[100%] my-4">
+    <div
+      className="w-full my-4 px-2 hover:cursor-pointer"
+      onClick={() => open(<RegionModal />)}
+    >
       <div className="flex gap-1">
         <span className="text-sm font-bold text-neutral-60">{`${
-          selectedRegion ? selectedRegion : "지역"
+          region ? region : "지역"
         }`}</span>
         <Image
-          onClick={handleClickButton}
           src="/assets/tune.svg"
           width={20}
           height={20}
@@ -29,15 +25,8 @@ function Region({
           className="object-cover"
         />
       </div>
-
-      {isClicked ? (
-        <RegionModal
-          selectedRegion={selectedRegion}
-          setSelectedRegion={setSelectedRegion}
-        />
-      ) : null}
     </div>
   );
 }
 
-export default Region;
+export default RegionButton;
