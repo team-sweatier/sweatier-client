@@ -1,11 +1,24 @@
 "use client";
 
+import api from "@/api";
+import useAuthStore from "@/store/auth.store";
+import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import SignUpInput from "./_components/SignUpInput";
 import ValidationMessage from "./_components/ValidationMessage";
 
 function SignUpPage() {
+  const { mutateAsync: signUp, isPending } = useMutation({
+    mutationFn: api.auth.signUp,
+  });
+  const { mutateAsync: signUpWithKaKao } = useMutation({
+    mutationFn: api.auth.signUpWithKaKao,
+  });
+  const { isLoggedIn, logIn } = useAuthStore();
+  const router = useRouter();
+
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [passwordCheck, setPasswordCheck] = useState<string>("");
@@ -50,15 +63,21 @@ function SignUpPage() {
     setIsPasswordCheckValid(e.target.value === password);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleClickSignUpButton = async () => {
     if (
       isEmailValid &&
       isCombinationOfPasswordValid &&
       isLengthOfPasswordValid &&
       isPasswordCheckValid
     ) {
-      console.log({ email, password });
+      // api호출 함수 실행 - signUp 진행.
+      try {
+        await signUp({ email, password });
+        logIn(); // isLoggedIn 전역상태를 true로 변경
+        router.push("user-registration");
+      } catch (e) {
+        alert("회원가입에 실패하였습니다."); // alert창 toastify로 바꿀예정
+      }
     } else {
       if (!isEmailValid) {
         setFocusedInput("email");
@@ -73,6 +92,11 @@ function SignUpPage() {
     }
   };
 
+  const handleClickKaKaoButton = async () => {
+    // 백엔드 주소 매핑 /users/sign-in/kakao
+    await signUpWithKaKao();
+  };
+
   const handleClickOutside = () => {
     setFocusedInput("");
   };
@@ -83,7 +107,10 @@ function SignUpPage() {
         <h2 className="text-3xl font-bold text-center pt-24 text-neutral-90">
           회원가입
         </h2>
-        <form onSubmit={handleSubmit} className="mx-auto max-w-lg p-10">
+        <form
+          onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}
+          className="mx-auto max-w-lg p-10"
+        >
           <ul className="flex flex-col">
             <li className="flex flex-col">
               <SignUpInput
@@ -166,7 +193,8 @@ function SignUpPage() {
                 ? `bg-primary-100 hover:-translate-y-1`
                 : `bg-gray-400/50`
             }`}
-            type="submit"
+            onClick={handleClickSignUpButton}
+            disabled={isPending}
           >
             가입하기
           </button>
@@ -177,7 +205,10 @@ function SignUpPage() {
             </span>
             <div className="flex-1 border-t-2 border-dotted border-neutral-40"></div>
           </div>
-          <button className="bg-yellow-300 w-full px-6 rounded-md text- font-semibold h-12 mt-10 transition hover:-translate-y-1 active:translate-y-0">
+          <button
+            onClick={handleClickKaKaoButton}
+            className="bg-yellow-300 w-full px-6 rounded-md font-semibold h-12 mt-10 transition hover:-translate-y-1 active:translate-y-0"
+          >
             <div className="h-full flex items-center justify-center">
               <Image
                 src="/assets/kakaotalk.svg"
