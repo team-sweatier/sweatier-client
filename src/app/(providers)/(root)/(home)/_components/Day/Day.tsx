@@ -1,21 +1,15 @@
 "use client";
 
+import useFilterStore from "@/store/filter.store";
 import { Dayjs } from "dayjs";
-import { Dispatch, SetStateAction } from "react";
 
-function Day({
-  day,
-  selectedDate,
-  setSelectedDate,
-}: {
-  day: Dayjs;
-  selectedDate: Dayjs;
-  setSelectedDate: Dispatch<SetStateAction<Dayjs>>;
-}) {
-  const isSelected = selectedDate.isSame(day, "day");
+function Day({ day }: { day: Dayjs }) {
+  const { date, setDate } = useFilterStore();
+
+  const isSelected = date.isSame(day, "day");
 
   const handleClickDay = () => {
-    setSelectedDate(day);
+    setDate(day);
   };
 
   return (

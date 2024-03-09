@@ -1,26 +1,30 @@
 import Button from "@/components/Forms/Button";
-import { Dispatch, SetStateAction } from "react";
+import useFilterStore from "@/store/filter.store";
 
 function TypesList({
+  typeName,
   typesList,
-  selectedTypes,
-  setSelectedTypes,
   className,
 }: {
+  typeName: string;
   typesList: string[];
-  selectedTypes: string;
-  setSelectedTypes: Dispatch<SetStateAction<string>>;
   className?: string;
 }) {
+  const filterStore = useFilterStore();
+  const selectedState =
+    typeName === "sports" ? filterStore.sports : filterStore.region;
+  const setSelectedState =
+    typeName === "sports" ? filterStore.setSports : filterStore.setRegion;
+
   return (
     <ul className={`flex items-center mt-2 gap-1 ${className}`}>
       {typesList.map((type) => (
         <li key={type}>
           <Button
             label={type}
-            isSelected={type === selectedTypes}
+            isSelected={type === selectedState}
             onClick={() => {
-              setSelectedTypes(type);
+              setSelectedState(type);
             }}
             key={type}
           />
