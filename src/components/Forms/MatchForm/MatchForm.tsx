@@ -86,6 +86,7 @@ function MatchForm({ editValues }: MatchFormProps) {
         <FormSubmitButton
           buttonLabel={editValues ? "수정 완료" : "작성 완료"}
           isValid={isValid}
+          className="h-18 "
         />
       </form>
     </FormProvider>
