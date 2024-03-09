@@ -60,10 +60,25 @@ const timeHours = [
 
 const timeMinutes = ["00", "30"];
 
-const originCoordinates = {
-  latitude: 37.5685159133492,
-  longitude: 126.98020965303,
-};
+const regions = [
+  "서울",
+  "경기",
+  "인천",
+  "강원",
+  "대전",
+  "세종",
+  "충남",
+  "충북",
+  "대구",
+  "경북",
+  "부산",
+  "울산",
+  "경남",
+  "광주",
+  "전남",
+  "전북",
+  "제주",
+];
 
 const matchTypes = {
   sports,
@@ -71,7 +86,7 @@ const matchTypes = {
   gender,
   timeHours,
   timeMinutes,
-  originCoordinates,
+  regions,
 };
 
 export default matchTypes;
