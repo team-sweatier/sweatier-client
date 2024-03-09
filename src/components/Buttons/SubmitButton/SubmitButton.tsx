@@ -1,22 +1,27 @@
-import MatchDto from "@/types/MatchDto";
 import FormOuter from "../../Forms/FormOuter";
 
 interface FormSubmitButtonProps {
-  editValues?: MatchDto;
+  buttonLabel: string;
   isValid: boolean;
+  onclick?: () => void;
 }
 
-function FormSubmitButton({ editValues, isValid }: FormSubmitButtonProps) {
+function SubmitButton({
+  buttonLabel,
+  isValid,
+  onclick,
+}: FormSubmitButtonProps) {
   return (
     <FormOuter>
       <input
         type="submit"
-        value={editValues ? "수정 완료" : "작성 완료"}
+        value={buttonLabel}
         className="text-white bg-primary-100 font-medium rounded-lg text-sm px-5 py-5 text-center disabled:cursor-not-allowed cursor-pointer w-full disabled:bg-gray-300"
         disabled={!isValid}
+        onClick={onclick}
       />
     </FormOuter>
   );
 }
 
-export default FormSubmitButton;
+export default SubmitButton;

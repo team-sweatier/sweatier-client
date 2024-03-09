@@ -20,15 +20,6 @@ interface KakaoMapProps {
   keyword: string;
 }
 
-interface Coordinates {
-  lat: number;
-  lng: number;
-}
-
-interface Details {
-  address: string;
-}
-
 function KakaoMap({ keyword }: KakaoMapProps) {
   // 기본 위치 설정
   const [coordinates, setCoordinates] = useState({

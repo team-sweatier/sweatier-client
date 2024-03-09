@@ -12,7 +12,7 @@ import {
   SubmitHandler,
   useForm,
 } from "react-hook-form";
-import FormSubmitButton from "../../Buttons/FormSubmitButton";
+import FormSubmitButton from "../../Buttons/SubmitButton";
 import CalendarForm from "../CalendarForm/CalendarForm";
 import DropDownGroup from "../DropDownGroup";
 import InputForm from "../InputForm/InputForm";
@@ -83,7 +83,10 @@ function MatchForm({ editValues }: MatchFormProps) {
         <CalendarForm />
         <DropDownGroup id="time" label="경기 시작 시간" />
         <KakaoMapForm />
-        <FormSubmitButton editValues={editValues} isValid={isValid} />
+        <FormSubmitButton
+          buttonLabel={editValues ? "수정 완료" : "작성 완료"}
+          isValid={isValid}
+        />
       </form>
     </FormProvider>
   );

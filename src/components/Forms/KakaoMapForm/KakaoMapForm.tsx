@@ -1,8 +1,10 @@
 "use client";
+import SubmitButton from "@/components/Buttons/SubmitButton";
 import matchIcons from "@/utils/matchIcons";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import FormOuter from "../FormOuter";
+import Input from "../Input";
 import KakaoMap from "../KakaoMap";
 import Label from "../Label";
 
@@ -26,19 +28,21 @@ function KakaoMapForm() {
     <FormOuter>
       <Label id={"place"} label={"경기장 위치"} iconSrc={matchIcons.place} />
       <div className="relative rounded-[10px] p-5 h-svh border-2 border-natural-20">
-        <div>
+        <div className="flex">
           <Controller
             control={control}
             name="address"
             render={({ field }) => (
-              <input
+              <Input
+                id="address"
+                label="경기장 위치"
                 {...field}
                 placeholder="키워드를 입력하세요. 예: 올림픽 경기장"
                 className="input-class"
               />
             )}
           />
-          <button onClick={handleSearch}>확인</button>
+          <SubmitButton buttonLabel={"작성 완료"} isValid={isSearched} />
           {isSearched && <KakaoMap keyword={searchKeyword} />}
         </div>
       </div>
@@ -47,3 +51,5 @@ function KakaoMapForm() {
 }
 
 export default KakaoMapForm;
+
+// onClick={handleSearch}
