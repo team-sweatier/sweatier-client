@@ -77,7 +77,7 @@ function MatchForm({ editValues }: MatchFormProps) {
         <TypesButtonGroup
           iconSrc={matchIcons.players}
           id="players"
-          label="모집인원"
+          label="매치유형"
           typeString={matchTypes.players}
         />
         <CalendarForm />

@@ -27,8 +27,8 @@ function KakaoMapForm() {
   return (
     <FormOuter>
       <Label id={"place"} label={"경기장 위치"} iconSrc={matchIcons.place} />
-      <div className="grid grid-rows-2 relative rounded-[10px] p-5 h-svh border-2 border-natural-20 w-full">
-        <div className="grid grid-cols-4 items-center gap-x-4 w-full">
+      <div className="grid grid-rows-2 relative rounded-[10px] px-5 border-2 border-natural-20 w-full  h-[330px] sm:h-[480px]">
+        <div className="grid grid-cols-4 items-center gap-x-4 w-full ">
           <Controller
             control={control}
             name="address"

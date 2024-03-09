@@ -67,8 +67,8 @@ function KakaoMap({ keyword }: KakaoMapProps) {
   return (
     <Map
       center={coordinates}
-      style={{ width: "100%", height: "360px" }}
       level={3}
+      className="w-full col-span-4 h-[210px] sm:h-[360px] rounded-md"
     >
       <MapMarker position={coordinates}></MapMarker>
       <div className="customoverlay relative">
