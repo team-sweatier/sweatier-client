@@ -1,22 +1,24 @@
 import FormOuter from "../../Forms/FormOuter";
 
-interface FormSubmitButtonProps {
+interface SubmitButtonProps {
   buttonLabel: string;
   isValid: boolean;
   onclick?: () => void;
+  className?: string;
 }
 
 function SubmitButton({
   buttonLabel,
   isValid,
   onclick,
-}: FormSubmitButtonProps) {
+  className,
+}: SubmitButtonProps) {
   return (
     <FormOuter>
       <input
         type="submit"
         value={buttonLabel}
-        className="text-white bg-primary-100 font-medium rounded-lg text-sm px-5 py-5 text-center disabled:cursor-not-allowed cursor-pointer w-full disabled:bg-gray-300"
+        className={`bg-primary-100 text-white font-medium rounded-lg text-sm px-5 py-5 text-center disabled:cursor-not-allowed cursor-pointer w-full disabled:bg-natural-20 disabled:text-natural-40 ${className}`}
         disabled={!isValid}
         onClick={onclick}
       />

@@ -28,7 +28,7 @@ function KakaoMapForm() {
     <FormOuter>
       <Label id={"place"} label={"경기장 위치"} iconSrc={matchIcons.place} />
       <div className="relative rounded-[10px] p-5 h-svh border-2 border-natural-20">
-        <div className="flex">
+        <div className="flex items-center">
           <Controller
             control={control}
             name="address"
@@ -38,11 +38,15 @@ function KakaoMapForm() {
                 label="경기장 위치"
                 {...field}
                 placeholder="키워드를 입력하세요. 예: 올림픽 경기장"
-                className="input-class"
+                className="w-full 0 h-16"
               />
             )}
           />
-          <SubmitButton buttonLabel={"작성 완료"} isValid={isSearched} />
+          <SubmitButton
+            buttonLabel={"검색"}
+            isValid={isSearched}
+            onclick={handleSearch}
+          />
           {isSearched && <KakaoMap keyword={searchKeyword} />}
         </div>
       </div>
@@ -51,5 +55,3 @@ function KakaoMapForm() {
 }
 
 export default KakaoMapForm;
-
-// onClick={handleSearch}
