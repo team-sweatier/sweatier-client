@@ -5,7 +5,7 @@ import { Dayjs } from "dayjs";
 import { useState } from "react";
 import MatchCardsList from "../MatchCardsList";
 import Region from "../RegionButton/RegionButton";
-import SportsTypesList from "../SportsTypesList";
+import TypesList from "../TypesList";
 import WeeklyCalendar from "../WeeklyCalendar";
 
 function MatchesContainer() {
@@ -14,15 +14,18 @@ function MatchesContainer() {
   const [selectedSports, setSelectedSports] = useState<string>("농구");
   const [selectedRegion, setSelectedRegion] = useState<string>("");
 
+  const sportsList = ["농구", "배드민턴", "야구", "축구", "테니스"];
+
   return (
     <section className="w-full relative">
       <WeeklyCalendar
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
       />
-      <SportsTypesList
-        selectedSports={selectedSports}
-        setSelectedSports={setSelectedSports}
+      <TypesList
+        typesList={sportsList}
+        selectedTypes={selectedSports}
+        setSelectedTypes={setSelectedSports}
       />
       <Region
         selectedRegion={selectedRegion}

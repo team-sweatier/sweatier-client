@@ -1,27 +1,32 @@
 "use client";
+import { useModalStore } from "@/store";
 import Image from "next/image";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import RegionModal from "../RegionModal";
 
-function Region({
+function RegionButton({
   selectedRegion,
   setSelectedRegion,
 }: {
   selectedRegion: string;
   setSelectedRegion: Dispatch<SetStateAction<string>>;
 }) {
-  const [isClicked, setIsClicked] = useState(false);
-  const handleClickButton = () => {
-    setIsClicked((prev) => !prev);
-  };
+  const { open } = useModalStore();
   return (
-    <div className="w-[100%] my-4">
+    <div className="w-full my-4">
       <div className="flex gap-1">
         <span className="text-sm font-bold text-neutral-60">{`${
           selectedRegion ? selectedRegion : "지역"
         }`}</span>
         <Image
-          onClick={handleClickButton}
+          onClick={() =>
+            open(
+              <RegionModal
+                selectedRegion={selectedRegion}
+                setSelectedRegion={setSelectedRegion}
+              />
+            )
+          }
           src="/assets/tune.svg"
           width={20}
           height={20}
@@ -29,15 +34,8 @@ function Region({
           className="object-cover"
         />
       </div>
-
-      {isClicked ? (
-        <RegionModal
-          selectedRegion={selectedRegion}
-          setSelectedRegion={setSelectedRegion}
-        />
-      ) : null}
     </div>
   );
 }
 
-export default Region;
+export default RegionButton;
