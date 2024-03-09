@@ -1,4 +1,4 @@
-import RatingRequestModal from "@/app/(providers)/(root)/(home)/_components/RatingRequestModal";
+import LogInModal from "@/app/(providers)/(root)/accounts/_components/LogInModal";
 import { useModalStore } from "@/store";
 import Link from "next/link";
 import SearchBox from "./components/SearchBox";
@@ -17,7 +17,7 @@ function Header() {
         </div>
 
         <button
-          onClick={() => open(<RatingRequestModal />)}
+          onClick={() => open(<LogInModal />)}
           className="font-bold w-14 text-sm text-primary-100"
         >
           로그인
