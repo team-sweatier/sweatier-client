@@ -13,7 +13,7 @@ function Modal({ children }: { children: React.ReactNode }) {
       onClick={handleClickBackdrop}
     >
       <div
-        className="bg-white rounded-md w-full max-w-[400px] px-5 py-8"
+        className="bg-white rounded-[15px] w-full max-w-[400px] px-5 py-8"
         onClick={(e) => e.stopPropagation()}
       >
         {children}
