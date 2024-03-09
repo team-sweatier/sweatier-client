@@ -1,5 +1,5 @@
 import MatchForm from "@/components/Forms/MatchForm/MatchForm";
-import MatchDto from "@/types/MatchDto";
+import MatchDto from "@/types/matchDto.type";
 
 //todo: 임시 수정 데이터
 const editValues: MatchDto = {

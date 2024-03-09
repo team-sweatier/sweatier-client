@@ -2,7 +2,7 @@
 
 import KakaoMapForm from "@/components/Forms/KakaoMapForm";
 import TypesButtonGroup from "@/components/Forms/TypesButtonGroup";
-import MatchDto from "@/types/MatchDto";
+import MatchDto from "@/types/matchDto.type";
 import matchIcons from "@/utils/matchIcons";
 import matchTypes from "@/utils/matchTypes";
 import dayjs from "dayjs";

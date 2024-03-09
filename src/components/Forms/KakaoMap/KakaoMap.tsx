@@ -1,20 +1,8 @@
 "use client";
 
+import { SearchResult } from "@/types/kakaoMap.type";
 import { useEffect, useState } from "react";
 import { CustomOverlayMap, Map, MapMarker } from "react-kakao-maps-sdk";
-
-declare global {
-  interface Window {
-    kakao: any;
-  }
-}
-
-interface SearchResult {
-  address_name: string;
-  road_address_name?: string;
-  x: string;
-  y: string;
-}
 
 interface KakaoMapProps {
   keyword: string;
