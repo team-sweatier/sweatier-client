@@ -11,9 +11,15 @@ async function signIn(dto: SignInDto) {
   console.log(response);
 }
 
+async function signInKaKao() {
+  const response = await client.get("/users/sign-in/kakao");
+  console.log(response);
+}
+
 const authAPI = {
   signUp,
   signIn,
+  signInKaKao,
 };
 
 export default authAPI;
