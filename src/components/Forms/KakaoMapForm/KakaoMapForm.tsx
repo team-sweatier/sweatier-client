@@ -13,15 +13,14 @@ type addressData = {
 };
 
 function KakaoMapForm() {
-  const { control, watch, setValue } = useForm<addressData>();
+  const { control, watch } = useForm<addressData>();
+  // const { control, watch } = useFormContext();
   const [searchKeyword, setSearchKeyword] = useState<string>("웅진IT 본사"); //* 입력한 키워드 값 (초기값 : 웅진 본사)
-  const [isSearched, setIsSearched] = useState<boolean>(false); //* 확인 버튼 유효성 검사
   const keyword = watch("address");
 
-  // "확인 버튼" 클릭 시 실행될 함수
+  // "검색 버튼" 클릭 시 실행될 함수
   const handleSearch = () => {
     setSearchKeyword(keyword);
-    setIsSearched(true); // 검색 실행을 나타내는 상태 업데이트
   };
 
   return (

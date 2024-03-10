@@ -60,33 +60,12 @@ const timeHours = [
 
 const timeMinutes = ["00", "30"];
 
-const regions = [
-  "서울",
-  "경기",
-  "인천",
-  "강원",
-  "대전",
-  "세종",
-  "충남",
-  "충북",
-  "대구",
-  "경북",
-  "부산",
-  "울산",
-  "경남",
-  "광주",
-  "전남",
-  "전북",
-  "제주",
-];
-
 const matchTypes = {
   sports,
   players,
   gender,
   timeHours,
   timeMinutes,
-  regions,
 };
 
 export default matchTypes;
