@@ -1,4 +1,4 @@
-import Button from "@/components/Forms/Button";
+import RoundButton from "@/components/Buttons/RoundButton";
 import useFilterStore from "@/store/filter.store";
 
 function TypesList({
@@ -20,7 +20,7 @@ function TypesList({
     <ul className={`flex items-center mt-2 gap-1 ${className}`}>
       {typesList.map((type) => (
         <li key={type}>
-          <Button
+          <RoundButton
             label={type}
             isSelected={type === selectedState}
             onClick={() => {

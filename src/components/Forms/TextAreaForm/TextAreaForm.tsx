@@ -12,26 +12,15 @@ type TextareaFormProps = PropsWithChildren<{
 }>;
 
 function TextareaForm({ label, id, placeholder }: TextareaFormProps) {
-  const { register, watch } = useFormContext();
+  const { register } = useFormContext();
 
   return (
     <FormOuter>
       <div className="flex items-center">
         <Label id={id} label={label} iconSrc={matchIcons.content} />
         <div className="flex pl-1 pb-2">
-          <Icon
-            src={
-              String(watch(id)).length >= 10
-                ? matchIcons.blueDot
-                : matchIcons.grayDot
-            }
-            alt="title-required-message"
-          />
-          <p
-            className={`text-natural-50 text-xs pl-1 ${
-              String(watch(id)).length >= 10 ? "text-primary-100" : ""
-            }`}
-          >
+          <Icon src={matchIcons.grayDot} alt="title-required-message" />
+          <p className="text-natural-50 text-xs pl-1 ">
             내용은 10글자 이상이어야 합니다.
           </p>
         </div>
