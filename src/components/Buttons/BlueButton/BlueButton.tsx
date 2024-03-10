@@ -1,6 +1,6 @@
 import FormOuter from "../../Forms/FormOuter";
 
-interface SubmitButtonProps {
+interface BlueButtonProps {
   buttonLabel: string;
   isValid: boolean;
   onclick?: () => void;
@@ -8,13 +8,13 @@ interface SubmitButtonProps {
   type?: string;
 }
 
-function SubmitButton({
+function BlueButton({
   buttonLabel,
   isValid,
   onclick,
   className,
   type = "button",
-}: SubmitButtonProps) {
+}: BlueButtonProps) {
   return (
     <FormOuter>
       <input
@@ -28,4 +28,4 @@ function SubmitButton({
   );
 }
 
-export default SubmitButton;
+export default BlueButton;
