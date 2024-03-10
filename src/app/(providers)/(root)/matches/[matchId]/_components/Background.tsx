@@ -4,9 +4,15 @@ import { PropsWithChildren } from "react";
 
 function Background({ children }: PropsWithChildren) {
   return (
-    <div className="relative h-full w-full overflow-hidden">
-      <Image src={tennisBannel} layout="fill" objectFit="cover" alt="Tennis" />
-      <div className="absolute inset-0 bg-black bg-opacity-50">{children}</div>
+    <div className="relative h-full w-full">
+      <Image
+        src={tennisBannel}
+        layout="relative"
+        objectFit="cover"
+        alt="Tennis background Image"
+        className="w-full"
+      />
+      {children}
     </div>
   );
 }

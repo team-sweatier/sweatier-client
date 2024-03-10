@@ -2,7 +2,7 @@ import { PropsWithChildren } from "react";
 
 function OverlayBackground({ children }: PropsWithChildren) {
   return (
-    <div className="absolute top-20 left-1/2 transform -translate-x-1/2 rounded-top-lg shadow-md p-6 bg-red-500 h-screen w-full">
+    <div className="absolute left-1/2 transform -translate-x-1/2 rounded-t-3xl mt-[-50px] shadow-md bg-white h-screen w-full overflow-hidden z-10">
       {children}
     </div>
   );
