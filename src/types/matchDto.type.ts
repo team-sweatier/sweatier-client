@@ -1,4 +1,4 @@
-type MatchDto = {
+type matchDto = {
   title: string;
   content: string;
   players: string;
@@ -8,4 +8,4 @@ type MatchDto = {
   place: string;
 };
 
-export default MatchDto;
+export default matchDto;

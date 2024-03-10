@@ -1,7 +1,8 @@
 "use client";
 
+import KakaoMapForm from "@/components/Forms/KakaoMapForm";
 import TypesButtonGroup from "@/components/Forms/TypesButtonGroup";
-import MatchDto from "@/types/MatchDto";
+import MatchDto from "@/types/matchDto.type";
 import matchIcons from "@/utils/matchIcons";
 import matchTypes from "@/utils/matchTypes";
 import dayjs from "dayjs";
@@ -11,11 +12,10 @@ import {
   SubmitHandler,
   useForm,
 } from "react-hook-form";
+import SubmitButton from "../../Buttons/SubmitButton";
 import CalendarForm from "../CalendarForm/CalendarForm";
 import DropDownGroup from "../DropDownGroup";
-import FormOuter from "../FormOuter";
 import InputForm from "../InputForm/InputForm";
-import Label from "../Label";
 import TextareaForm from "../TextAreaForm/TextAreaForm";
 
 //* 수정데이터가 있다면(editValues) 해당 values를 defaultValues로, 아니면 {}로
@@ -32,23 +32,37 @@ function MatchForm({ editValues }: MatchFormProps) {
     formState: { isValid },
   } = methods;
 
-  const onSubmit: SubmitHandler<FieldValues> = (matchData) => {
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    const matchDate =
+      dayjs(data.date).format("YYYY-MM-DD") +
+      " " +
+      data.time.hour +
+      ":" +
+      data.time.minute;
+
     //* 1. date 날짜 formatting
-    if (matchData.hasOwnProperty("date")) {
-      matchData.date = dayjs(matchData.date).format("YYYY-MM-DD");
+    if (data.hasOwnProperty("date")) {
+      data.date = dayjs(data.date).format("YYYY-MM-DD");
     }
 
-    //* 2. hour과 minute을 합쳐 matchTime 생성
-    const matchTime = `${matchData.hour}:${matchData.minute}`;
-
-    //* 3. hour과 minute 제외
-    const { hour, minute, ...restOfMatchData } = matchData;
-
-    //* 4. hour과 minute 제외하고, matchTime를 추가한 새로운 객체 생성
     const requestData = {
-      ...restOfMatchData,
-      matchTime: matchTime,
+      ...data,
+      matchDate: matchDate,
+      // hour: undefined,
+      // minute: undefined,
     };
+
+    // 2. hour과 minute을 합쳐 matchTime 생성
+    // const matchTime = `${data.hour}:${data.minute}`;
+
+    // 3. hour과 minute 제외
+    // const { hour, minute, ...restOfMatchData } = data;
+
+    //  4. hour과 minute 제외하고, matchTime를 추가한 새로운 객체 생성
+    // const requestData = {
+    //   ...restOfMatchData,
+    //   matchTime: matchTime,
+    // };
 
     console.log(requestData);
   };
@@ -77,23 +91,17 @@ function MatchForm({ editValues }: MatchFormProps) {
         <TypesButtonGroup
           iconSrc={matchIcons.players}
           id="players"
-          label="모집인원"
+          label="매치유형"
           typeString={matchTypes.players}
         />
         <CalendarForm />
         <DropDownGroup id="time" label="경기 시작 시간" />
-        <FormOuter>
-          <Label id={"place"} label={"경기 지역"} iconSrc={matchIcons.place} />
-          <div className="w-full h-60 bg-natural-30" />
-        </FormOuter>
-        <FormOuter>
-          <input
-            type="submit"
-            value={editValues ? "수정 완료" : "작성 완료"}
-            className="text-white bg-primary-100 font-medium rounded-lg text-sm px-5 py-5 text-center disabled:cursor-not-allowed cursor-pointer w-full disabled:bg-gray-300"
-            disabled={!isValid}
-          />
-        </FormOuter>
+        <KakaoMapForm />
+        <SubmitButton
+          buttonLabel={editValues ? "수정 완료" : "작성 완료"}
+          isValid={isValid}
+          type="submit"
+        />
       </form>
     </FormProvider>
   );
