@@ -1,4 +1,4 @@
-import matchCreateIcons from "@/utils/matchCreateIcons";
+import { matchCreateIcons } from "@/utils/matchIcons";
 import matchTypes from "@/utils/matchTypes";
 import DropDownBox from "../DropDownBox";
 import FormOuter from "../FormOuter";

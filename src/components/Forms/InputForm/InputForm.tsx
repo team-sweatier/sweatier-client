@@ -1,5 +1,5 @@
 import Icon from "@/components/Icon";
-import matchCreateIcons from "@/utils/matchCreateIcons";
+import { matchCreateIcons } from "@/utils/matchIcons";
 import { PropsWithChildren } from "react";
 import FormOuter from "../FormOuter";
 import Input from "../Input";

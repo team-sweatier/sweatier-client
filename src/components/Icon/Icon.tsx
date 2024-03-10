@@ -9,7 +9,7 @@ type IconProps = PropsWithChildren<{
 
 function Icon({ src, alt, classStyles, ...props }: IconProps) {
   return (
-    <span>
+    <span className="items-stretch">
       <Image src={src} alt={alt} {...props} className={classStyles} />
     </span>
   );

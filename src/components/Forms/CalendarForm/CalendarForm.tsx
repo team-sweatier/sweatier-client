@@ -1,6 +1,6 @@
 import FormOuter from "@/components/Forms/FormOuter";
 import Label from "@/components/Forms/Label";
-import matchCreateIcons from "@/utils/matchCreateIcons";
+import { matchCreateIcons } from "@/utils/matchIcons";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { Controller, useFormContext } from "react-hook-form";

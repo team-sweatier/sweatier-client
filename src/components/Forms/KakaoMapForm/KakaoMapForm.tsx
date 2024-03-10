@@ -1,6 +1,6 @@
 "use client";
 import SubmitButton from "@/components/Buttons/SubmitButton";
-import matchCreateIcons from "@/utils/matchCreateIcons";
+import { matchCreateIcons } from "@/utils/matchIcons";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import FormOuter from "../FormOuter";
