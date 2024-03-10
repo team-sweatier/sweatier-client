@@ -4,11 +4,7 @@ import Page from "@/components/Page";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import DropDownBoxOfBank from "./_components/DropDownBoxOfBank";
-
-enum Gender {
-  Male = "male",
-  Female = "female",
-}
+import GenderButton, { Gender } from "./_components/GenderButton";
 
 const bankName = [
   "국민은행",
@@ -28,21 +24,21 @@ function UserResigtrationPage() {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleGenderSelect = (gender: Gender) => {
+  const handleSelectGender = (gender: Gender) => {
     setGender(gender);
   };
 
-  // const handleSelectImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const file = e.target.files?.[0];
-  //   if (file && file.type.startsWith("image/")) {
-  //     setImage(file);
-  //     setImageUrl(URL.createObjectURL(file));
-  //   }
-  // };
+  const handleSelectImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file && file.type.startsWith("image/")) {
+      setImage(file);
+      setImageUrl(URL.createObjectURL(file));
+    }
+  };
 
-  // const handleClickCameraIcon = () => {
-  //   fileInputRef.current?.click();
-  // };
+  const handleClickCameraIcon = () => {
+    fileInputRef.current?.click();
+  };
 
   return (
     <Page>
@@ -64,10 +60,10 @@ function UserResigtrationPage() {
           <ul className="flex flex-col py-10 gap-y-7">
             <li className="flex flex-col pb-6">
               <div className="w-32 h-32 rounded-full bg-neutral-30 mx-auto flex relative">
-                {/* {imageUrl && (
+                {imageUrl && (
                   <Image src={imageUrl} alt="이미지" width={128} height={128} />
-                )} */}
-                <button>
+                )}
+                <button onClick={handleClickCameraIcon} className="">
                   <Image
                     src="/assets/camera.svg"
                     alt="카메라"
@@ -75,12 +71,12 @@ function UserResigtrationPage() {
                     height={36}
                     className="absolute bottom-2 right-2"
                   />
-                  {/* <input
+                  <input
                     ref={fileInputRef}
                     type="file"
                     onChange={handleSelectImage}
                     className="a11y-hidden"
-                  /> */}
+                  />
                 </button>
               </div>
             </li>
@@ -110,24 +106,16 @@ function UserResigtrationPage() {
             <li className="flex flex-col gap-y-4">
               <p className="font-bold text-neutral-70">성별</p>
               <div className="flex items-center gap-x-3">
-                <button
-                  type="button" // 폼 제출을 트리거하지 않도록 type을 button으로 설정합니다.
-                  className={`px-4 py-2 rounded-3xl text-neutral-50 border border-neutral-40 ${
-                    gender === Gender.Male && "bg-primary-100 text-white"
-                  }`}
-                  onClick={() => handleGenderSelect(Gender.Male)}
-                >
-                  남성
-                </button>
-                <button
-                  type="button"
-                  className={`px-4 py-2 rounded-3xl text-neutral-50 border border-neutral-40 ${
-                    gender === Gender.Female && "bg-primary-100 text-white"
-                  }`}
-                  onClick={() => handleGenderSelect(Gender.Female)}
-                >
-                  여성
-                </button>
+                <GenderButton
+                  gender={Gender.Male}
+                  selectedGender={gender}
+                  onSelect={handleSelectGender}
+                />
+                <GenderButton
+                  gender={Gender.Female}
+                  selectedGender={gender}
+                  onSelect={handleSelectGender}
+                />
               </div>
             </li>
             <li className="flex flex-col">
