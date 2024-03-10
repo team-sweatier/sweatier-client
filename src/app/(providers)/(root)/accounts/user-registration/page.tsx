@@ -2,7 +2,7 @@
 
 import Page from "@/components/Page";
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import DropDownBoxOfBank from "./_components/DropDownBoxOfBank";
 
 enum Gender {
@@ -24,10 +24,25 @@ const bankName = [
 
 function UserResigtrationPage() {
   const [gender, setGender] = useState<Gender | "">("");
+  const [image, setImage] = useState<File | null>(null);
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleGenderSelect = (gender: Gender) => {
     setGender(gender);
   };
+
+  // const handleSelectImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = e.target.files?.[0];
+  //   if (file && file.type.startsWith("image/")) {
+  //     setImage(file);
+  //     setImageUrl(URL.createObjectURL(file));
+  //   }
+  // };
+
+  // const handleClickCameraIcon = () => {
+  //   fileInputRef.current?.click();
+  // };
 
   return (
     <Page>
@@ -48,7 +63,26 @@ function UserResigtrationPage() {
           </p>
           <ul className="flex flex-col py-10 gap-y-7">
             <li className="flex flex-col pb-6">
-              <div className="w-32 h-32 rounded-full bg-neutral-30 mx-auto"></div>
+              <div className="w-32 h-32 rounded-full bg-neutral-30 mx-auto flex relative">
+                {/* {imageUrl && (
+                  <Image src={imageUrl} alt="이미지" width={128} height={128} />
+                )} */}
+                <button>
+                  <Image
+                    src="/assets/camera.svg"
+                    alt="카메라"
+                    width={36}
+                    height={36}
+                    className="absolute bottom-2 right-2"
+                  />
+                  {/* <input
+                    ref={fileInputRef}
+                    type="file"
+                    onChange={handleSelectImage}
+                    className="a11y-hidden"
+                  /> */}
+                </button>
+              </div>
             </li>
             <li className="flex flex-col">
               <div className="flex">
@@ -95,10 +129,6 @@ function UserResigtrationPage() {
                   여성
                 </button>
               </div>
-              {/* <label htmlFor="" className="font-bold text-neutral-70">
-                성별
-              </label>
-              <input type="text" name="" id="" /> */}
             </li>
             <li className="flex flex-col">
               <label htmlFor="" className="font-bold text-neutral-70">
@@ -132,92 +162,7 @@ function UserResigtrationPage() {
                 등록하기
               </button>
             </li>
-
-            {/* <li className="flex flex-col">
-              <SignUpInput
-                ref={passwordRef}
-                htmlFor="password"
-                label="비밀번호"
-                id="password"
-                type="password"
-                value={password}
-                onChange={handlePasswordChange}
-                placeholder="비밀번호를 입력해주세요."
-                isValid={
-                  isLengthOfPasswordValid && isCombinationOfPasswordValid
-                }
-                focusedInput={focusedInput}
-                focusedInputType="password"
-              />
-              <ValidationMessage
-                isValid={isLengthOfPasswordValid}
-                focusedInput={focusedInput}
-                focusedInputName="password"
-                message="비밀번호는 8자리 이상이어야 합니다."
-              />
-              <ValidationMessage
-                isValid={isCombinationOfPasswordValid}
-                focusedInput={focusedInput}
-                focusedInputName="password"
-                message="대소문자, 특수문자가 최소 1개씩 포함되어야 합니다."
-              />
-            </li>
-            <li className="flex flex-col">
-              <SignUpInput
-                ref={passwordCheckRef}
-                htmlFor="passwordCheck"
-                label="비밀번호 확인"
-                id="passwordCheck"
-                type="password"
-                value={passwordCheck}
-                onChange={handlePasswordCheckChange}
-                placeholder="비밀번호를 한번 더 입력해주세요."
-                isValid={isPasswordCheckValid}
-                focusedInput={focusedInput}
-                focusedInputType="passwordCheck"
-              />
-              <ValidationMessage
-                isValid={isPasswordCheckValid}
-                focusedInput={focusedInput}
-                focusedInputName="passwordCheck"
-                message="비밀번호와 일치해야 합니다."
-              />
-            </li> */}
           </ul>
-          {/* <button
-            onClick={handleClickSignUpButton}
-            className={`w-full px-6 rounded-md text-white font-semibold h-12 mt-10 mb-10 transition active:translate-y-0 ${
-              isEmailValid &&
-              isLengthOfPasswordValid &&
-              isCombinationOfPasswordValid &&
-              isPasswordCheckValid
-                ? `bg-primary-100 hover:-translate-y-1`
-                : `bg-gray-400/50`
-            }`}
-          >
-            가입하기
-          </button>
-          <div className="flex items-center justify-center space-x-2">
-            <div className="flex-1 border-t border-neutral-40"></div>
-            <span className="px-2 text-xs text-neutral-70 bg-white">
-              간편 회원가입
-            </span>
-            <div className="flex-1 border-t border-neutral-40"></div>
-          </div>
-          <button
-            onClick={handleClickKaKaoButton}
-            className="bg-yellow-300 w-full px-6 rounded-md font-semibold h-12 mt-10 transition hover:-translate-y-1 active:translate-y-0"
-          >
-            <div className="h-full flex items-center justify-center">
-              <Image
-                src="/assets/kakaotalk.svg"
-                alt="카카오톡"
-                width={24}
-                height={24}
-              />
-              <span>카카오로 계속하기</span>
-            </div>
-          </button> */}
         </form>
       </section>
     </Page>
