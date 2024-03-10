@@ -5,6 +5,7 @@ import MatchMapContainer from "./_components/MatchMapContainer";
 import MatchRuleContainer from "./_components/MatchRuleContainer";
 import MatchUpContainer from "./_components/MatchUpContainer";
 import MatchUpTypeContainer from "./_components/MatchUpTypeContainer";
+import UserProfileContainer from "./_components/UserProfileContainer";
 
 function MatchDetailPage() {
   return (
@@ -20,6 +21,7 @@ function MatchDetailPage() {
           accountBank={"신한은행"}
           accountNumber={"1111-11-11111"}
         />
+        <UserProfileContainer />
       </Background>
     </main>
   );
