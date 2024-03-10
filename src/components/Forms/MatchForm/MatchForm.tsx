@@ -32,37 +32,23 @@ function MatchForm({ editValues }: MatchFormProps) {
     formState: { isValid },
   } = methods;
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    const matchDate =
-      dayjs(data.date).format("YYYY-MM-DD") +
-      " " +
-      data.time.hour +
-      ":" +
-      data.time.minute;
-
+  const onSubmit: SubmitHandler<FieldValues> = (matchData) => {
     //* 1. date 날짜 formatting
-    if (data.hasOwnProperty("date")) {
-      data.date = dayjs(data.date).format("YYYY-MM-DD");
+    if (matchData.hasOwnProperty("date")) {
+      matchData.date = dayjs(matchData.date).format("YYYY-MM-DD");
     }
 
+    //* 2. hour과 minute을 합쳐 matchTime 생성
+    const matchTime = `${matchData.hour}:${matchData.minute}`;
+
+    //* 3. hour과 minute 제외
+    const { hour, minute, ...restOfMatchData } = matchData;
+
+    //* 4. hour과 minute 제외하고, matchTime를 추가한 새로운 객체 생성
     const requestData = {
-      ...data,
-      matchDate: matchDate,
-      // hour: undefined,
-      // minute: undefined,
+      ...restOfMatchData,
+      matchTime: matchTime,
     };
-
-    // 2. hour과 minute을 합쳐 matchTime 생성
-    // const matchTime = `${data.hour}:${data.minute}`;
-
-    // 3. hour과 minute 제외
-    // const { hour, minute, ...restOfMatchData } = data;
-
-    //  4. hour과 minute 제외하고, matchTime를 추가한 새로운 객체 생성
-    // const requestData = {
-    //   ...restOfMatchData,
-    //   matchTime: matchTime,
-    // };
 
     console.log(requestData);
   };
@@ -100,7 +86,7 @@ function MatchForm({ editValues }: MatchFormProps) {
         <FormSubmitButton
           buttonLabel={editValues ? "수정 완료" : "작성 완료"}
           isValid={isValid}
-          className="h-18"
+          className="h-18 "
         />
       </form>
     </FormProvider>

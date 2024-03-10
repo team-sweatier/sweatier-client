@@ -1,6 +1,7 @@
 import Icon from "@/components/Icon";
 import matchIcons from "@/utils/matchIcons";
 import { PropsWithChildren } from "react";
+import { useFormContext } from "react-hook-form";
 import FormOuter from "../FormOuter";
 import Input from "../Input";
 import Label from "../Label";
@@ -12,6 +13,8 @@ type InputFormProps = PropsWithChildren<{
 }>;
 
 function InputForm({ label, id, placeholder }: InputFormProps) {
+  const { register } = useFormContext();
+
   return (
     <FormOuter>
       <div className="flex items-center">
