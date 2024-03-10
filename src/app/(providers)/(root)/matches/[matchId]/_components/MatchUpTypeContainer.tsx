@@ -32,7 +32,7 @@ const temporaryDataLabel: { [key: string]: string } = {
 
 function MatchUpTypeContainer() {
   return (
-    <div>
+    <div className="pb-8">
       {Object.entries(temporaryDataLabel).map(([key, label]) => {
         if (key === "id" || !(key in temporaryData)) return null;
 

@@ -1,5 +1,6 @@
 import ApplyStateButton from "./_components/ApplyStateButton";
 import Background from "./_components/Background";
+import MatchMapContainer from "./_components/MatchMapContainer";
 import MatchUpContainer from "./_components/MatchUpContainer";
 import MatchUpTypeContainer from "./_components/MatchUpTypeContainer";
 import OverlayBackground from "./_components/OverlayBackground";
@@ -12,6 +13,7 @@ function MatchDetailPage() {
           <ApplyStateButton />
           <MatchUpContainer />
           <MatchUpTypeContainer />
+          <MatchMapContainer />
         </OverlayBackground>
       </Background>
     </main>
