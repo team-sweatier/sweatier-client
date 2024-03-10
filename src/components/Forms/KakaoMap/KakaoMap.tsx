@@ -34,7 +34,7 @@ function KakaoMap({ keyword }: KakaoMapProps) {
             const administrativeDistrict = WholeAddress.slice(0, 2);
 
             console.log(
-              `입력 장소: ${keyword}, 행정구역: ${administrativeDistrict}, 위도: ${firstResult.y}, 경도: ${firstResult.x}`
+              `입력 장소: ${keyword}, 행정구역: ${administrativeDistrict}, 주소:${WholeAddress}, 위도: ${firstResult.y}, 경도: ${firstResult.x}`
             );
           }
         });
