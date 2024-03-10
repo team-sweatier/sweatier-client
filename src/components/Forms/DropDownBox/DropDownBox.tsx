@@ -62,7 +62,7 @@ function DropDownBox({ options, registerId }: DropDownBoxProps) {
         <ul
           className={`${
             isOpen ? "block" : "hidden"
-          } absolute bg-white w-full border border-gray-300 rounded-md mt-1 max-h-60 overflow-auto text-natural-50 scrollbar-hide`}
+          } absolute bg-white w-full border border-gray-300 rounded-md mt-1 max-h-60 overflow-auto text-natural-50 scrollbar-hide z-10`}
         >
           {options.map((option, index) => (
             <li

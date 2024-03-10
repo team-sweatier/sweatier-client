@@ -2,15 +2,15 @@ import MatchForm from "@/components/Forms/MatchForm/MatchForm";
 import Heading from "@/components/Heading";
 import Page from "@/components/Page";
 
-function CreateMatchPage() {
+const CreateMatchPage = () => {
   return (
     <Page>
-      <div className="w-full max-w-screen-md">
+      <div className="w-full relative">
         <Heading>게시물 작성</Heading>
         <MatchForm />
       </div>
     </Page>
   );
-}
+};
 
 export default CreateMatchPage;
