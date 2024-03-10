@@ -5,7 +5,7 @@ import OverlayBackground from "./OverlayBackground";
 
 function Background({ children }: PropsWithChildren) {
   return (
-    <div className="relative h-full w-full">
+    <div className="relative h-full w-full overflow-y-auto">
       <Image
         src={tennisBannel}
         layout="relative"
