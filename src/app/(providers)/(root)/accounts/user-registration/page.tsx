@@ -20,7 +20,7 @@ const bankName = [
   "토스뱅크",
 ];
 
-function UserResigtrationPage() {
+function UserRegistrationPage() {
   const { mutateAsync: registerUser, isPending } = useMutation({
     mutationFn: api.user.registerUser,
   });
@@ -201,4 +201,4 @@ function UserResigtrationPage() {
   );
 }
 
-export default UserResigtrationPage;
+export default UserRegistrationPage;
