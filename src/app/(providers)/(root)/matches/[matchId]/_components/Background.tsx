@@ -1,6 +1,7 @@
 import tennisBannel from "@/../public/assets/match_detail_page/bannels/bannel_tennis_mobile.svg";
 import Image from "next/image";
 import { PropsWithChildren } from "react";
+import OverlayBackground from "./OverlayBackground";
 
 function Background({ children }: PropsWithChildren) {
   return (
@@ -12,7 +13,7 @@ function Background({ children }: PropsWithChildren) {
         alt="Tennis background Image"
         className="w-full"
       />
-      {children}
+      <OverlayBackground>{children}</OverlayBackground>
     </div>
   );
 }
