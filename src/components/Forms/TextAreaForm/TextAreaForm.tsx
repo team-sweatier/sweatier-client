@@ -1,5 +1,5 @@
 import Icon from "@/components/Icon";
-import matchIcons from "@/utils/matchIcons";
+import matchCreateIcons from "@/utils/matchCreateIcons";
 import { PropsWithChildren } from "react";
 import { useFormContext } from "react-hook-form";
 import FormOuter from "../FormOuter";
@@ -17,9 +17,9 @@ function TextareaForm({ label, id, placeholder }: TextareaFormProps) {
   return (
     <FormOuter>
       <div className="flex items-center">
-        <Label id={id} label={label} iconSrc={matchIcons.content} />
+        <Label id={id} label={label} iconSrc={matchCreateIcons.content} />
         <div className="flex pl-1 pb-2">
-          <Icon src={matchIcons.grayDot} alt="title-required-message" />
+          <Icon src={matchCreateIcons.grayDot} alt="title-required-message" />
           <p className="text-natural-50 text-xs pl-1 ">
             내용은 10글자 이상이어야 합니다.
           </p>

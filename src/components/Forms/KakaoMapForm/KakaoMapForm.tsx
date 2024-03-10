@@ -1,6 +1,6 @@
 "use client";
 import SubmitButton from "@/components/Buttons/SubmitButton";
-import matchIcons from "@/utils/matchIcons";
+import matchCreateIcons from "@/utils/matchCreateIcons";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import FormOuter from "../FormOuter";
@@ -25,7 +25,11 @@ function KakaoMapForm() {
 
   return (
     <FormOuter>
-      <Label id={"place"} label={"경기장 위치"} iconSrc={matchIcons.place} />
+      <Label
+        id={"place"}
+        label={"경기장 위치"}
+        iconSrc={matchCreateIcons.place}
+      />
       <div className="grid grid-rows-2 relative rounded-[10px] px-5 border-2 border-natural-20 w-full  h-[315px] sm:h-[480px]">
         <div className="grid grid-cols-4 items-center gap-x-4 w-full">
           <Controller
