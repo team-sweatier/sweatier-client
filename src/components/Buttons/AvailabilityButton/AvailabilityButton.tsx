@@ -20,13 +20,7 @@ function AvailabilityButton({
     <div className={`${baseClass} ${conditionClass}`}>
       {imagePath && (
         <div>
-          <Image
-            src={imagePath}
-            width={10}
-            height={10}
-            alt="alarm-image"
-            className="object-cover"
-          />
+          <Image src={imagePath} width={10} height={12} alt="alarm-image" />
         </div>
       )}
 

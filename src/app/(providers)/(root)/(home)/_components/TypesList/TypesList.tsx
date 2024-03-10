@@ -1,30 +1,45 @@
 import RoundButton from "@/components/Buttons/RoundButton";
 import useFilterStore from "@/store/filter.store";
+import { Dispatch, SetStateAction } from "react";
 
 function TypesList({
   typeName,
   typesList,
   className,
+  selectedState,
+  setSelectedState,
 }: {
   typeName: string;
   typesList: string[];
   className?: string;
+  selectedState?: string;
+  setSelectedState?: Dispatch<SetStateAction<string>>;
 }) {
   const filterStore = useFilterStore();
-  const selectedState =
-    typeName === "sports" ? filterStore.sports : filterStore.region;
-  const setSelectedState =
-    typeName === "sports" ? filterStore.setSports : filterStore.setRegion;
 
+  const isSelected = (type: string) => {
+    if (typeName === "sports") {
+      return type === filterStore.sports;
+    }
+    return type === selectedState;
+  };
+
+  const handleClickButton = (type: string) => {
+    if (typeName === "sports") {
+      filterStore.setSports(type);
+    } else {
+      setSelectedState?.(type);
+    }
+  };
   return (
     <ul className={`flex items-center mt-2 gap-1 ${className}`}>
       {typesList.map((type) => (
         <li key={type}>
           <RoundButton
             label={type}
-            isSelected={type === selectedState}
+            isSelected={isSelected(type)}
             onClick={() => {
-              setSelectedState(type);
+              handleClickButton(type);
             }}
             key={type}
           />
