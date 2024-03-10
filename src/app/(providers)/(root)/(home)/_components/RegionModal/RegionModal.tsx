@@ -1,11 +1,17 @@
+import BlueButton from "@/components/Buttons/BlueButton";
 import Heading from "@/components/Heading";
 import Modal from "@/components/Modal";
 import { useModalStore } from "@/store";
+import useFilterStore from "@/store/filter.store";
 import matchTypes from "@/utils/matchTypes";
+import { useState } from "react";
 import TypesList from "../TypesList";
 
 function RegionModal() {
   const { close } = useModalStore();
+  const [selectedRegion, setSelectedRegion] = useState<string>("");
+  const { setRegion } = useFilterStore();
+
   return (
     <Modal>
       <ul className="w-full mx-auto flex flex-col items-center">
@@ -14,13 +20,17 @@ function RegionModal() {
           typeName="region"
           typesList={matchTypes.regions}
           className="grid grid-cols-5 gap-2 mt-9"
+          selectedState={selectedRegion}
+          setSelectedState={setSelectedRegion}
         />
-        <button
-          onClick={() => close()}
-          className="w-full py-2 text-sm font-bold rounded-[10px] bg-primary-100 text-white mt-11"
-        >
-          확인
-        </button>
+        <BlueButton
+          buttonLabel="확인"
+          onclick={() => {
+            setRegion(selectedRegion);
+            close();
+          }}
+          isValid
+        />
       </ul>
     </Modal>
   );
