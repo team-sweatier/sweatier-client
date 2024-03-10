@@ -13,7 +13,7 @@ function GenderButton({ gender, selectedGender, onSelect }: GenderButtonProps) {
   return (
     <button
       type="button"
-      className={`px-4 py-2 rounded-3xl text-neutral-50 border border-neutral-40 ${
+      className={`px-4 py-2 rounded-3xl text-neutral-50 border border-neutral-40 focus:border-primary-80 outline-none ${
         selectedGender === gender ? "bg-primary-100 text-white" : ""
       }`}
       onClick={() => onSelect(gender)}

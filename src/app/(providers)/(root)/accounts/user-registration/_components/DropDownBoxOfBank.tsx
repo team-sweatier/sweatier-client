@@ -2,15 +2,17 @@ import { useState } from "react";
 
 interface DropDownBoxProps {
   options: string[];
+  onSelect: (bankName: string) => void;
 }
 
-function DropDownBoxOfBank({ options }: DropDownBoxProps) {
+function DropDownBoxOfBank({ options, onSelect }: DropDownBoxProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState("은행선택");
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
   const handleOptionClick = (value: string) => {
+    onSelect(value);
     setSelectedValue(value);
     setIsOpen(false);
   };
@@ -20,7 +22,7 @@ function DropDownBoxOfBank({ options }: DropDownBoxProps) {
       <div className="relative">
         <button
           type="button"
-          className="w-full text-left bg-white text-neutral-70 border-2 px-5 py-2 block appearance-none border-natural-30 leading-tight focus:outline-none focus:shadow-outline rounded-full text-natural-50"
+          className="w-full text-left bg-white text-neutral-70 focus:border-primary-80 outline-none border-2 px-5 py-2 block appearance-none border-natural-30 leading-tight focus:outline-none focus:shadow-outline rounded-full text-natural-50"
           onClick={toggleDropdown}
         >
           {selectedValue}

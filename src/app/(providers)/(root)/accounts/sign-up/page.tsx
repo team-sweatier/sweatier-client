@@ -14,6 +14,9 @@ function SignUpPage() {
   const { mutateAsync: signUp, isPending } = useMutation({
     mutationFn: api.auth.signUp,
   });
+  const { mutateAsync: signInKaKao } = useMutation({
+    mutationFn: api.auth.signInKaKao,
+  });
   const { logIn } = useAuthStore();
   const router = useRouter();
 
@@ -92,9 +95,10 @@ function SignUpPage() {
 
   const handleClickKaKaoButton = async () => {
     // 백엔드 주소 매핑 /users/sign-in/kakao
-    router.push(
-      "https://sweatier-server-he2ntmjbhq-du.a.run.app/users/sign-in/kakao"
-    );
+    await signInKaKao();
+    // await router.push(
+    //   "https://sweatier-server-he2ntmjbhq-du.a.run.app/users/sign-in/kakao"
+    // );
   };
 
   const handleClickOutside = () => {

@@ -1,8 +1,10 @@
 "use client";
 
+import api from "@/api";
 import Page from "@/components/Page";
+import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { FormEventHandler, useRef, useState } from "react";
 import DropDownBoxOfBank from "./_components/DropDownBoxOfBank";
 import GenderButton, { Gender } from "./_components/GenderButton";
 
@@ -19,25 +21,59 @@ const bankName = [
 ];
 
 function UserResigtrationPage() {
+  const { mutateAsync: registerUser, isPending } = useMutation({
+    mutationFn: api.user.registerUser,
+  });
+  const [nickname, setNickname] = useState<string>("");
   const [gender, setGender] = useState<Gender | "">("");
-  const [image, setImage] = useState<File | null>(null);
+  const [file, setFile] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [selectedBankName, setSelectedBankName] = useState<string>("");
+  const [accountNumber, setAccountNumber] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  // 성별선택
   const handleSelectGender = (gender: Gender) => {
     setGender(gender);
   };
 
+  // 카메라 아이콘 클릭
+  const handleClickCameraIcon = () => {
+    fileInputRef.current?.click();
+  };
+
+  // 이미지 선택
   const handleSelectImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file && file.type.startsWith("image/")) {
-      setImage(file);
+      setFile(file);
       setImageUrl(URL.createObjectURL(file));
     }
   };
 
-  const handleClickCameraIcon = () => {
-    fileInputRef.current?.click();
+  // 은행명 선택
+  const handleSelectBankName = (bankName: string) => {
+    setSelectedBankName(bankName);
+  };
+
+  // 폼데이터 제출
+  const handleSubmitForm: FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
+
+    if (!file) return alert("이미지를 선택해주세요!");
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("nickname", nickname);
+    formData.append("gender", gender);
+    formData.append("phoneNumber", phoneNumber);
+    formData.append("bankName", selectedBankName);
+    formData.append("accountNumber", accountNumber);
+
+    const response = await registerUser(formData);
+
+    console.log(response);
   };
 
   return (
@@ -45,8 +81,8 @@ function UserResigtrationPage() {
       <section className="pb-3 w-full">
         <h2 className="a11y-hidden">유저 정보 등록</h2>
         <form
-          onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}
           className="mx-auto max-w-lg py-3 px-5"
+          onSubmit={handleSubmitForm}
         >
           <p className="py-4 text-2xl font-black tracking-[-.1em]">
             유저 정보 등록
@@ -100,6 +136,8 @@ function UserResigtrationPage() {
               <input
                 type="text"
                 placeholder="닉네임을 입력해주세요."
+                onChange={(e) => setNickname(e.target.value)}
+                value={nickname}
                 className={`h-12 border border-slate-300 rounded-md pl-4 mt-2 focus:border-primary-80 outline-none transition-all duration-500 ease-in-out`}
               />
             </li>
@@ -125,7 +163,8 @@ function UserResigtrationPage() {
               <input
                 type="text"
                 placeholder="휴대폰 번호를 입력해주세요."
-                name=""
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                value={phoneNumber}
                 id=""
                 className={`h-12 border border-slate-300 rounded-md pl-4 mt-2 focus:border-primary-80 outline-none transition-all duration-500 ease-in-out`}
               />
@@ -134,18 +173,23 @@ function UserResigtrationPage() {
               <label htmlFor="" className="font-bold text-neutral-70">
                 계좌 정보
               </label>
-              <DropDownBoxOfBank options={bankName} />
+              <DropDownBoxOfBank
+                options={bankName}
+                onSelect={handleSelectBankName}
+              />
               <input
                 type="text"
                 placeholder="계좌번호를 입력해주세요."
-                name=""
+                onChange={(e) => setAccountNumber(e.target.value)}
+                value={accountNumber}
                 id=""
                 className={`h-12 border border-slate-300 rounded-md pl-4 mt-2 focus:border-primary-80 outline-none transition-all duration-500 ease-in-out`}
               />
             </li>
             <li>
               <button
-                className={`w-full px-6 rounded-md text-white font-semibold h-12 mt-10 mb-10 transition active:translate-y-0 ${`bg-primary-100 hover:-translate-y-1`}`}
+                type="submit"
+                className={`w-full px-6 rounded-md text-white font-semibold h-12 mt-10 mb-10 transition active:translate-y-0 border-2 focus:border-primary-80 outline-none ${`bg-primary-100 hover:-translate-y-1`}`}
               >
                 등록하기
               </button>
