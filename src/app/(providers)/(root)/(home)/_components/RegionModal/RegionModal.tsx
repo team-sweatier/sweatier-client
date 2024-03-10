@@ -8,7 +8,7 @@ function RegionModal() {
   const { close } = useModalStore();
   return (
     <Modal>
-      <ul className="w-full mx-auto px-5 py-8 flex flex-col items-center">
+      <ul className="w-full mx-auto flex flex-col items-center">
         <Heading>지역 선택</Heading>
         <TypesList
           typeName="region"
