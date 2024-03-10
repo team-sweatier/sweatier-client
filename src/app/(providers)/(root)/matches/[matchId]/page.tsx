@@ -1,3 +1,4 @@
+import AccountContainer from "./_components/AccountContainer";
 import ApplyStateButton from "./_components/ApplyStateButton";
 import Background from "./_components/Background";
 import MatchMapContainer from "./_components/MatchMapContainer";
@@ -14,6 +15,11 @@ function MatchDetailPage() {
         <MatchUpTypeContainer />
         <MatchMapContainer />
         <MatchRuleContainer />
+        <AccountContainer
+          isApply={true}
+          accountBank={"신한은행"}
+          accountNumber={"1111-11-11111"}
+        />
       </Background>
     </main>
   );
