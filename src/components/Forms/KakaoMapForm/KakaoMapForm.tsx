@@ -21,6 +21,9 @@ function KakaoMapForm() {
     setSearchKeyword(keyword || "웅진IT 본사");
   };
 
+  console.log("keyword", keyword);
+  console.log("searchKeyword", searchKeyword);
+
   return (
     <FormOuter>
       <Label id="place" label="경기장 위치" iconSrc={matchCreateIcons.place} />
@@ -35,7 +38,8 @@ function KakaoMapForm() {
                 label="경기장 위치"
                 placeholder="경기장명을 입력하세요."
                 className="sm:h-11 h-9 col-span-3"
-                {...field}
+                onChange={field.onChange}
+                value={field.value || ""}
               />
             )}
           />
