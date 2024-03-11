@@ -1,7 +1,11 @@
 "use client";
 
+import BlueButton from "@/components/Buttons/BlueButton";
+import CalendarForm from "@/components/Forms/CalendarForm";
+import DropDownGroup from "@/components/Forms/DropDownGroup";
 import KakaoMapForm from "@/components/Forms/KakaoMapForm";
 import TypesButtonGroup from "@/components/Forms/TypesButtonGroup";
+import { MatchResonseType } from "@/types/match.response.type";
 import { matchCreateIcons } from "@/utils/matchIcons";
 import matchTypes from "@/utils/matchTypes";
 import dayjs from "dayjs";
@@ -11,14 +15,19 @@ import {
   SubmitHandler,
   useForm,
 } from "react-hook-form";
-import BlueButton from "../../Buttons/BlueButton";
-import CalendarForm from "../CalendarForm/CalendarForm";
-import DropDownGroup from "../DropDownGroup";
-import InputForm from "../InputForm/InputForm";
-import TextareaForm from "../TextAreaForm/TextAreaForm";
 
-function MatchForm() {
-  const methods = useForm<FieldValues>();
+import InputForm from "@/components/Forms/InputForm";
+import TextareaForm from "@/components/Forms/TextAreaForm/TextAreaForm";
+
+//* 수정데이터가 있다면(editValues) 해당 values를 defaultValues로, 아니면 {}로
+interface MatchFormProps {
+  editValues?: MatchResonseType;
+}
+
+function EditMatchForm({ editValues }: MatchFormProps) {
+  const methods = useForm<FieldValues>({
+    defaultValues: editValues || {},
+  });
   const {
     handleSubmit,
     formState: { isValid },
@@ -40,21 +49,9 @@ function MatchForm() {
     const requestData = {
       ...data,
       matchDate: matchDate,
-      // hour: undefined,
-      // minute: undefined,
     };
 
-    // 2. hour과 minute을 합쳐 matchTime 생성
-    // const matchTime = `${data.hour}:${data.minute}`;
-
-    // 3. hour과 minute 제외
-    // const { hour, minute, ...restOfMatchData } = data;
-
-    //  4. hour과 minute 제외하고, matchTime를 추가한 새로운 객체 생성
-    // const requestData = {
-    //   ...restOfMatchData,
-    //   matchTime: matchTime,
-    // };
+    console.log("requestData", requestData);
   };
 
   return (
@@ -86,11 +83,11 @@ function MatchForm() {
         />
         <CalendarForm />
         <DropDownGroup id="time" label="경기 시작 시간" />
-        <KakaoMapForm />
-        <BlueButton buttonLabel="작성 완료" isValid={isValid} type="submit" />
+        <KakaoMapForm editValues={editValues} />
+        <BlueButton buttonLabel={"수정 완료"} isValid={isValid} type="submit" />
       </form>
     </FormProvider>
   );
 }
 
-export default MatchForm;
+export default EditMatchForm;

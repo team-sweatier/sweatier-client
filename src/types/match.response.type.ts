@@ -1,7 +1,7 @@
 export type MatchResonseType = {
   // id: string;
   // hostId: string;
-  sportsType: string;
+  sport: string;
   title: string;
   content: string;
   applicants: number;
