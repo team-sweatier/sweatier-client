@@ -9,7 +9,7 @@ interface Data {
 
 // 아이콘에 대한 인덱스 시그니처 추가
 interface Icons {
-  [key: string]: StaticImageData;
+  [key: string]: string | StaticImageData;
 }
 
 const matchIcons: Icons = matchDetailIcons as Icons;
