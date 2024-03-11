@@ -1,5 +1,6 @@
 "use client";
 
+import arrow from "@/../public/assets/main_page/arrow.svg";
 import dayjs, { Dayjs } from "dayjs";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -32,7 +33,7 @@ function WeeklyCalendar() {
             className="px-2 border-b border-transparent sm:flex items-center hidden"
           >
             <Image
-              src={`/assets/arrow.svg`}
+              src={arrow}
               width={30}
               height={30}
               alt="left-arrow"
@@ -55,7 +56,7 @@ function WeeklyCalendar() {
             className="px-2 border-b border-transparent sm:flex items-center hidden"
           >
             <Image
-              src={`/assets/arrow.svg`}
+              src={arrow}
               width={30}
               height={30}
               alt="right-arrow"
