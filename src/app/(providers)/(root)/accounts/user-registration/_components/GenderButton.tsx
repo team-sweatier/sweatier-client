@@ -1,3 +1,5 @@
+import RoundButton from "@/components/Buttons/RoundButton";
+
 export enum Gender {
   Male = "male",
   Female = "female",
@@ -10,16 +12,15 @@ interface GenderButtonProps {
 }
 
 function GenderButton({ gender, selectedGender, onSelect }: GenderButtonProps) {
+  const label = gender === Gender.Male ? "남성" : "여성";
+
   return (
-    <button
-      type="button"
-      className={`px-4 py-2 rounded-3xl text-neutral-50 border border-neutral-40 focus:border-primary-80 outline-none ${
-        selectedGender === gender ? "bg-primary-100 text-white" : ""
-      }`}
+    <RoundButton
       onClick={() => onSelect(gender)}
-    >
-      {gender === Gender.Male ? "남성" : "여성"}
-    </button>
+      isSelected={gender === selectedGender}
+      label={label}
+      className="text-neutral-50 px-4 py-2"
+    />
   );
 }
 
