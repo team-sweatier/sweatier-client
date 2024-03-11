@@ -39,7 +39,7 @@ function MatchApplyButton({ state }: MatchApplyButtonProps) {
             alt="상태 아이콘"
             width={18}
             height={18}
-            classStyles="mb-1"
+            classStyles="sm:mb-[1px] mb-1"
           />
         )}
         {state}

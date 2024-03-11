@@ -25,7 +25,7 @@ function MatchDetailPage(props: { params: { matchId: string } }) {
         {isUserPost ? (
           <UserPostControlButtons matchId={matchId} />
         ) : (
-          <MatchApplyButton state="신청 가능" />
+          <MatchApplyButton state="마감 임박" />
         )}
         <MatchUpContainer isUserPost={isUserPost} />
         <MatchUpTypeContainer />
