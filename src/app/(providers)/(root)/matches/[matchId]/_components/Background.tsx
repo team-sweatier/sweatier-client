@@ -9,7 +9,6 @@ function Background({ children }: PropsWithChildren) {
       <Image
         src={tennisBannel}
         sizes="100vw"
-        priority
         objectFit="cover"
         alt="Tennis background Image"
         className="w-full"
