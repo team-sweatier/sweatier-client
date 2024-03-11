@@ -203,7 +203,17 @@ function UserRegistrationPage() {
             <li>
               <button
                 type="submit"
-                className={`w-full px-6 rounded-md text-white font-semibold h-12 mt-10 mb-10 transition active:translate-y-0 border-2 focus:border-primary-80 outline-none ${`bg-primary-100 hover:-translate-y-1`}`}
+                className={`w-full px-6 rounded-md text-white font-semibold h-12 mt-10 mb-10 transition active:translate-y-0 border-2 focus:border-primary-80 outline-none 
+                ${
+                  !gender ||
+                  !nickname ||
+                  !phoneNumber ||
+                  !accountNumber ||
+                  selectedBankName === "은행선택" ||
+                  !file
+                    ? `bg-neutral-20 text-neutral-40`
+                    : `bg-primary-100 hover:-translate-y-1`
+                }`}
               >
                 등록하기
               </button>
