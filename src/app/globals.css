@@ -3,6 +3,29 @@
 @tailwind utilities;
 
 @layer utilities {
+  .a11y-hidden {
+    @apply overflow-hidden absolute;
+    clip: rect(0, 0, 0, 0);
+    @apply w-px h-px m-[-1px] border-0 p-0;
+  }
+
+  .input-error {
+    @apply border-2 border-warning focus:border-warning;
+    animation: shake 0.5s ease-in-out;
+  }
+
+  @keyframes shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-5px);
+    }
+    75% {
+      transform: translateX(5px);
+    }
+  }
 }
 
 html,
