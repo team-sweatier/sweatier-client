@@ -1,10 +1,33 @@
+"use client";
+
 import LogInModal from "@/app/(providers)/(root)/accounts/_components/LogInModal";
-import { useModalStore } from "@/store";
+import { useAuthStore, useModalStore } from "@/store";
 import Link from "next/link";
 import SearchBox from "./components/SearchBox";
 
 function Header() {
-  const { open } = useModalStore();
+  const modal = useModalStore();
+  const { isLoggedIn, logOut, logIn } = useAuthStore();
+  const handleClickLogInButton = () => {
+    modal.open(<LogInModal />);
+  };
+
+  // useEffect(() => {
+  //   // 쿠키의 존재 유무 => 로그인 상태 업데이트
+  //   const accessToken = document.cookie
+  //     .split(";")
+  //     .find((item) => item.startsWith("accessToken="))
+  //     ?.split("=")[1];
+
+  //   if (accessToken) {
+  //     logIn();
+  //   }
+  // }, [logIn]);
+
+  const handleClickLogOutButton = () => {
+    logOut();
+    alert("로그아웃 처리 되었습니다."); //toastify 적용 예정
+  };
 
   return (
     <header className="border shadow-sm ">
@@ -16,12 +39,21 @@ function Header() {
           <SearchBox />
         </div>
 
-        <button
-          onClick={() => open(<LogInModal />)}
-          className="font-bold w-14 text-sm text-primary-100"
-        >
-          로그인
-        </button>
+        {isLoggedIn ? (
+          <button
+            onClick={handleClickLogOutButton}
+            className="font-bold w-14 text-sm text-primary-100"
+          >
+            로그아웃
+          </button>
+        ) : (
+          <button
+            onClick={handleClickLogInButton}
+            className="font-bold w-14 text-sm text-primary-100"
+          >
+            로그인
+          </button>
+        )}
       </div>
     </header>
   );

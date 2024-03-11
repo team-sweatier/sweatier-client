@@ -13,7 +13,7 @@ function WeeklyCalendar() {
       tempWeeksList.push(tempWeeksList[tempWeeksList.length - 1].add(1, "day"));
     }
     setWeeksList(tempWeeksList);
-  }, []);
+  }, [date]);
 
   const scroll = (scrollOffset: number) => {
     if (scrollContainerRef.current) {

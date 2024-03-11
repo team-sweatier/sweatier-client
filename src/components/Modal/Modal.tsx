@@ -1,7 +1,11 @@
 import { useModalStore } from "@/store";
-import React from "react";
+import { PropsWithChildren } from "react";
 
-function Modal({ children }: { children: React.ReactNode }) {
+interface ModalProps {
+  className?: string;
+}
+
+function Modal({ children, className }: PropsWithChildren<ModalProps>) {
   const modal = useModalStore();
   const handleClickBackdrop = () => {
     modal.close();
@@ -9,11 +13,13 @@ function Modal({ children }: { children: React.ReactNode }) {
 
   return (
     <div
-      className="bg-black/50 flex items-center justify-center fixed top-0 left-0 right-0 bottom-0 z-30"
+      className="bg-black/50 flex items-center justify-center fixed top-0 left-0 right-0 bottom-0 z-50"
       onClick={handleClickBackdrop}
     >
       <div
-        className="bg-white rounded-[15px] w-full max-w-[400px] px-5 py-8"
+        className={`bg-white rounded-md w-full max-w-[400px] px-5 py-8 ${
+          className || ""
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         {children}
