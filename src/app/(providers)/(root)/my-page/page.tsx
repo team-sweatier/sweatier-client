@@ -4,6 +4,7 @@ import Heading from "@/components/Heading";
 import Page from "@/components/Page";
 import { useModalStore } from "@/store";
 import Image from "next/image";
+import Hexagon from "./_components/Hexagon";
 import TiersInformationModal from "./_components/TiersInformationModal";
 
 function MyPage() {
@@ -14,7 +15,7 @@ function MyPage() {
 
   return (
     <Page>
-      <section className="pb-6 w-full">
+      <section className="pb-6 w-full border-b-2 border-[#F8F8F8]">
         <Heading className="text-2xl">마이페이지</Heading>
         <div className="flex items-center">
           <h4 className="py-4 font-black text-lg">내 정보</h4>
@@ -54,7 +55,7 @@ function MyPage() {
         </ul>
       </section>
 
-      <section className="py-6 w-full">
+      <section className="py-6 w-full border-b-2 border-[#F8F8F8]">
         <div className="flex items-center">
           <h4 className="py-4 font-black text-lg pr-1">나의 티어</h4>
           <button onClick={handleClickInformationButton}>
@@ -68,18 +69,16 @@ function MyPage() {
           <p className="pl-3 text-xs">매일 오전 12시에 티어가 재배정됩니다.</p>
         </div>
         <div className="flex justify-center gap-x-4 py-4">
-          <div className="bg-neutral-20 w-20 h-20">
-            <span>농구</span>
-          </div>
-          <div className="bg-neutral-20 w-20 h-20">배드민턴</div>
-          <div className="bg-neutral-20 w-20 h-20">야구</div>
+          <Hexagon label="농구" />
+          <Hexagon label="배드민턴" />
+          <Hexagon label="야구" />
         </div>
         <div className="flex justify-center gap-x-4">
-          <div className="bg-neutral-20 w-20 h-20">축구</div>
-          <div className="bg-neutral-20 w-20 h-20">테니스</div>
+          <Hexagon label="축구" />
+          <Hexagon label="테니스" />
         </div>
       </section>
-      <section className="w-full flex justify-between gap-x-5">
+      <section className="w-full flex justify-between gap-x-5 pt-6">
         <button className="rounded-lg border border-neutral-50 w-1/2 h-12 font-bold hover:text-primary-100 hover:border-primary-100">
           신청 내역 조회
         </button>
