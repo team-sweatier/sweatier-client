@@ -43,10 +43,10 @@ function LogInModal() {
       <form
         action=""
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}
-        className="flex flex-col gap-y-4 px-5 py-5"
+        className="flex flex-col gap-y-4 sm:px-5 sm:py-5 "
       >
         <ul className="flex flex-col gap-y-4">
-          <li className="flex flex-col">
+          <li className="flex flex-col ">
             <label htmlFor="email" className="text-neutral-70">
               이메일
             </label>

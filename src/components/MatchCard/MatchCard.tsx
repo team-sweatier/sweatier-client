@@ -10,8 +10,8 @@ function MatchCard({ match }: { match: Match }) {
 
   const matchAvailableInfo = getMatchAvailableInfo(match);
   return (
-    <Link href={`/match/${match.id}`}>
-      <div className="px-5 relative py-4 rounded-[10px] flex flex-col gap-y-4 shadow border-solid">
+    <Link href={`/matches/${match.id}`}>
+      <div className="px-5 relative py-4 rounded-[10px] flex flex-col gap-y-4 shadow border-solid mx-3">
         <div className="font-bold">{match.matchTime}</div>
         <div className="text-sm">{match.address}</div>
         <div className="text-[11px] flex justify-between">

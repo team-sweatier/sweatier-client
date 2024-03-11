@@ -1,3 +1,4 @@
+"use client";
 import MatchCard from "@/components/MatchCard";
 import useFilterStore from "@/store/filter.store";
 import { Match } from "@/types/Match.type";

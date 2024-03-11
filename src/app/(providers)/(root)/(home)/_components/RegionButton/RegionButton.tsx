@@ -1,4 +1,5 @@
 "use client";
+import filter from "@/../public/assets/main_page/filter.svg";
 import { useModalStore } from "@/store";
 import useFilterStore from "@/store/filter.store";
 import Image from "next/image";
@@ -18,7 +19,7 @@ function RegionButton() {
           region ? region : "지역"
         }`}</span>
         <Image
-          src="/assets/tune.svg"
+          src={filter}
           width={20}
           height={20}
           alt="alarm-image"
