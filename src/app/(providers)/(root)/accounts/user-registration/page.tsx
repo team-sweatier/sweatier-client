@@ -86,6 +86,7 @@ function UserRegistrationPage() {
       formData.append("oneLiner", oneLiner);
 
       const profile = await registerUser(formData);
+      console.log(profile);
       setProfile(profile);
       alert(`환영합니다 ${nickname}님!!`);
       router.push("/my-page");

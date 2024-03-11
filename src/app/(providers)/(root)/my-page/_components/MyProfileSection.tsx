@@ -1,6 +1,9 @@
+import useProfileStore from "@/store/profile.store";
 import Image from "next/image";
 
 function MyProfileSection() {
+  const { profile } = useProfileStore();
+
   return (
     <>
       <div className="flex items-center">
@@ -10,17 +13,21 @@ function MyProfileSection() {
         </button>
       </div>
       <div className="rounded-md bg-primary-20 flex px-6 py-4">
-        <div className="w-20 h-20 rounded-full bg-neutral-50">
-          <Image
-            src="/assets/profileDummy.svg"
-            width={80}
-            height={80}
-            alt="프로필 이미지"
-          />
+        <div className="w-20 h-20 rounded-full bg-neutral-50 flex items-center justify-center">
+          {profile?.imageUrl ? (
+            <Image
+              src={profile?.imageUrl}
+              layout="fill"
+              objectFit="cover"
+              alt="프로필 이미지"
+            />
+          ) : (
+            <span className="text-xs">no image</span>
+          )}
         </div>
         <div className="flex flex-col justify-center gap-y-2 mx-7">
-          <h6 className="font-bold">닉네임</h6>
-          <p className="text-sm">한 줄 자기소개</p>
+          <h6 className="font-bold">{profile?.profile.nickName}</h6>
+          <p className="text-sm">{profile?.profile.oneLiner}</p>
         </div>
       </div>
       <ul>
@@ -29,14 +36,16 @@ function MyProfileSection() {
             휴대폰 번호
           </span>
           <span className="text-neutral-70">|</span>
-          <span className="text-xs pl-3">010-0000-0000</span>
+          <span className="text-xs pl-3">{profile?.profile.phoneNumber}</span>
         </li>
         <li>
           <span className="font-bold inline-block text-xs w-1/5">
             계좌 정보
           </span>
           <span className="text-neutral-70">|</span>
-          <span className="text-xs pl-3">신한은행 000-00-000000</span>
+          <span className="text-xs pl-3">
+            {profile?.profile.bankName} {profile?.profile.accountNumber}
+          </span>
         </li>
       </ul>
     </>
