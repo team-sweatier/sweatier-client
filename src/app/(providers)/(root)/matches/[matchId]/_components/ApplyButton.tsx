@@ -2,7 +2,7 @@ interface ApplyButtonProps {
   isAbledApply: boolean;
 }
 
-function ApplyButton({ isAbledApply = false }: ApplyButtonProps) {
+function ApplyButton({ isAbledApply }: ApplyButtonProps) {
   // todo: 신청하기 disabled 상태 전환
   return (
     <button
