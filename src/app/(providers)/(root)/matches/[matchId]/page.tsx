@@ -1,7 +1,7 @@
 import AccountContainer from "./_components/AccountContainer";
 import Background from "./_components/Background";
+import GetKakaoMap from "./_components/GetKakaoMap";
 import MatchApplyButton from "./_components/MatchApplyButton";
-import MatchMapContainer from "./_components/MatchMapContainer";
 import MatchRuleContainer from "./_components/MatchRuleContainer";
 import MatchUpContainer from "./_components/MatchUpContainer";
 import MatchUpTypeContainer from "./_components/MatchUpTypeContainer";
@@ -14,7 +14,7 @@ function MatchDetailPage() {
         <MatchApplyButton />
         <MatchUpContainer />
         <MatchUpTypeContainer />
-        <MatchMapContainer />
+        <GetKakaoMap />
         <MatchRuleContainer />
         <AccountContainer
           isApply={true}

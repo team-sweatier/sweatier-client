@@ -6,7 +6,7 @@ const temporaryDataLabel = {
   address: "서울 서초구 매헌로 99 (양재동)",
 };
 
-function MatchMapContainer() {
+function GetKakaoMap() {
   //todo: 장소 위치 받아오기
   return (
     <div className="flex flex-col item-center pb-14">
@@ -24,4 +24,4 @@ function MatchMapContainer() {
   );
 }
 
-export default MatchMapContainer;
+export default GetKakaoMap;
