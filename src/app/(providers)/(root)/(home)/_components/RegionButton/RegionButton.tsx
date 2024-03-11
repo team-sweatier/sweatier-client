@@ -18,7 +18,7 @@ function RegionButton() {
           region ? region : "지역"
         }`}</span>
         <Image
-          src="/assets/tune.svg"
+          src="/assets/filter.svg"
           width={20}
           height={20}
           alt="alarm-image"

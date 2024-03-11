@@ -13,7 +13,7 @@ function WeeklyCalendar() {
       tempWeeksList.push(tempWeeksList[tempWeeksList.length - 1].add(1, "day"));
     }
     setWeeksList(tempWeeksList);
-  }, [date]);
+  }, []);
 
   const scroll = (scrollOffset: number) => {
     if (scrollContainerRef.current) {
@@ -24,17 +24,17 @@ function WeeklyCalendar() {
   return (
     <>
       {weeksList ? (
-        <div className="mb-4 flex items-center justify-center sticky z-30 top-0 bg-white h-14 ">
+        <div className="mb-4 flex items-center justify-center sticky z-30 top-0 bg-white h-14 border-b ">
           <button
             onClick={() => scroll(-100)}
-            className="px-2 border-b border-transparent flex items-center"
+            className="px-2 items-center hidden sm:flex"
           >
             <Image
-              src={`/assets/arrow-point.png`}
-              width={20}
-              height={20}
+              src={`/assets/arrow.svg`}
+              width={30}
+              height={30}
               alt="left-arrow"
-              className="-rotate-180 mb-1"
+              className="mb-[6px]"
             />
           </button>
           <ul
@@ -48,13 +48,13 @@ function WeeklyCalendar() {
             ))}
           </ul>
 
-          <button onClick={() => scroll(100)} className="px-2 ">
+          <button onClick={() => scroll(100)} className="px-2 hidden sm:flex ">
             <Image
-              src={`/assets/arrow-point.png`}
-              width={20}
-              height={20}
+              src={`/assets/arrow.svg`}
+              width={30}
+              height={30}
               alt="right-arrow"
-              className="mb-1"
+              className="mb-[6px] -rotate-180"
             />
           </button>
         </div>
