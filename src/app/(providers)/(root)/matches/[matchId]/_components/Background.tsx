@@ -4,17 +4,19 @@ import { PropsWithChildren } from "react";
 import OverlayBackground from "./OverlayBackground";
 
 function Background({ children }: PropsWithChildren) {
-  const matchSportType = "badminton";
+  //todo : matchSportType --> 경기 종목 (sport)
+  const matchSportType = "tennis";
   const matchSportBannerSrc = matchBanner[matchSportType];
 
   return (
     <div className="relative h-full w-full overflow-y-auto scrollbar-hide">
       <Image
         src={matchSportBannerSrc}
-        layout="fill"
-        objectFit="cover"
-        alt={`${matchSportType} background image`}
+        sizes="100vw"
         priority
+        objectFit="cover"
+        alt="Tennis background Image"
+        className="w-full"
       />
       <OverlayBackground>{children}</OverlayBackground>
     </div>
