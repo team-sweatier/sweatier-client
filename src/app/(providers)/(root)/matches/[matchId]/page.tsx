@@ -8,7 +8,9 @@ import MatchUpTypeContainer from "./_components/MatchUpTypeContainer";
 import UserPostControlButtons from "./_components/UserPostControlButtons";
 import UserProfileContainer from "./_components/UserProfileContainer";
 
-function MatchDetailPage() {
+function MatchDetailPage(props: { params: { matchId: string } }) {
+  const matchId = props.params.matchId;
+
   // todo 1. [matchId]에 따른 정보 가져오기 -> reqct-query
   //todo 2.[matchId] 글이 유저의 글인지 다른 사용자의 글인지 확인 -> isUserPost
   //todo 3.[matchId]에 따른 정보 중 sport 정보 Background banner바꾸기
@@ -21,7 +23,7 @@ function MatchDetailPage() {
     <main className="pb-[50px] mx-auto max-w-screen-md flex flex-col w-full items-center justify-start h-screen relative">
       <Background>
         {isUserPost ? (
-          <UserPostControlButtons />
+          <UserPostControlButtons matchId={matchId} />
         ) : (
           <ApplyStateButton state="마감 임박" />
         )}
