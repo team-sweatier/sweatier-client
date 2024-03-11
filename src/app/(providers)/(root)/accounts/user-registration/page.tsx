@@ -64,19 +64,23 @@ function UserRegistrationPage() {
   // 폼데이터 제출
   const handleSubmitForm: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    if (!file) return alert("프로필 이미지는 필수입니다!");
 
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("gender", gender);
-    formData.append("phoneNumber", phoneNumber);
-    formData.append("bankName", selectedBankName);
-    formData.append("accountNumber", accountNumber);
-    formData.append("nickname", nickname);
-    formData.append("oneLiner", oneLiner);
+    try {
+      if (!file) return alert("프로필 이미지는 필수입니다!");
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("gender", gender);
+      formData.append("phoneNumber", phoneNumber);
+      formData.append("bankName", selectedBankName);
+      formData.append("accountNumber", accountNumber);
+      formData.append("nickName", nickname);
+      formData.append("oneLiner", oneLiner);
 
-    const response = await registerUser(formData);
-    console.log(response);
+      const profile = await registerUser(formData);
+      console.log(profile);
+    } catch (error) {
+      alert("유저 정보 등록에 실패하였습니다."); // 현재 타입에러 때문에 임시로 에러메시지 수기작성함. => 추후 백엔드 에러메시지 띄울 예정.
+    }
   };
 
   return (
@@ -166,12 +170,6 @@ function UserRegistrationPage() {
                 휴대폰 번호
               </label>
               <PhoneNumberInput setPhoneNumber={setPhoneNumber} />
-              {/* <RegistrationInput
-                value={phoneNumber}
-                setValue={setPhoneNumber}
-                placeholder="휴대폰 번호를 입력해주세요."
-                id="phoneNumber"
-              /> */}
             </li>
             <li className="flex flex-col">
               <label
