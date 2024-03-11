@@ -14,42 +14,50 @@ function Banner() {
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={50}
         slidesPerView={1}
-        // navigation
-
-        autoplay
         pagination={{ clickable: true }}
       >
         <SwiperSlide>
           <Image
             src="/assets/carousel-image-1.svg"
-            layout="responsive"
+            sizes="100vw"
+            style={{
+              width: "100%",
+              height: "auto",
+            }}
             width={350}
             height={114}
             alt="carousel-image"
-            loading="lazy"
+            priority
           />
         </SwiperSlide>
         <SwiperSlide>
           <Image
             src="/assets/carousel-image-1.svg"
-            layout="responsive"
+            sizes="100vw"
+            style={{
+              width: "100%",
+              height: "auto",
+            }}
             width={350}
             height={114}
             alt="carousel-image"
-            loading="lazy"
+            priority
           />
         </SwiperSlide>
         <SwiperSlide>
-          {" "}
           <Image
             src="/assets/carousel-image-1.svg"
-            layout="responsive"
+            sizes="100vw"
+            style={{
+              width: "100%",
+              height: "auto",
+            }}
             width={350}
             height={114}
             alt="carousel-image"
-            loading="lazy"
+            priority
           />
-        </SwiperSlide>{" "}
+        </SwiperSlide>
       </Swiper>
     </div>
   );

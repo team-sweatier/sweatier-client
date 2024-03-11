@@ -1,3 +1,4 @@
+"use client";
 import RoundButton from "@/components/Buttons/RoundButton";
 import useFilterStore from "@/store/filter.store";
 import { Dispatch, SetStateAction } from "react";

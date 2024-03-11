@@ -1,5 +1,3 @@
-"use client";
-
 import matchTypes from "@/utils/matchTypes";
 import MatchCardsList from "../MatchCardsList";
 import Region from "../RegionButton/RegionButton";
