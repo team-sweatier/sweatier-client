@@ -4,6 +4,7 @@ import api from "@/api";
 import Page from "@/components/Page";
 import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { FormEventHandler, useRef, useState } from "react";
 import DropDownBoxOfBank from "./_components/DropDownBoxOfBank";
 import GenderButton, { Gender } from "./_components/GenderButton";
@@ -36,6 +37,7 @@ function UserRegistrationPage() {
   const [oneLiner, setOneLiner] = useState<string>("");
 
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   // 성별선택
   const handleSelectGender = (gender: Gender) => {
@@ -64,19 +66,24 @@ function UserRegistrationPage() {
   // 폼데이터 제출
   const handleSubmitForm: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    if (!file) return alert("프로필 이미지는 필수입니다!");
 
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("gender", gender);
-    formData.append("phoneNumber", phoneNumber);
-    formData.append("bankName", selectedBankName);
-    formData.append("accountNumber", accountNumber);
-    formData.append("nickname", nickname);
-    formData.append("oneLiner", oneLiner);
+    try {
+      if (!file) return alert("프로필 이미지는 필수입니다!");
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("gender", gender);
+      formData.append("phoneNumber", phoneNumber);
+      formData.append("bankName", selectedBankName);
+      formData.append("accountNumber", accountNumber);
+      formData.append("nickName", nickname);
+      formData.append("oneLiner", oneLiner);
 
-    const response = await registerUser(formData);
-    console.log(response);
+      await registerUser(formData);
+      alert(`환영합니다 ${nickname}님!!`);
+      router.push("/my-page");
+    } catch (error) {
+      alert("유저 정보 등록에 실패하였습니다."); // 현재 타입에러 때문에 임시로 에러메시지 수기작성함. => 추후 백엔드 에러메시지 띄울 예정.
+    }
   };
 
   return (
@@ -98,17 +105,24 @@ function UserRegistrationPage() {
           </p>
           <ul className="flex flex-col py-10 gap-y-7">
             <li className="flex flex-col pb-6">
-              <div className="w-32 h-32 rounded-full bg-neutral-30 mx-auto flex relative">
-                {imageUrl && (
-                  <Image src={imageUrl} alt="이미지" width={128} height={128} />
-                )}
-                <button onClick={handleClickCameraIcon} className="">
+              <div className="w-32 h-32 mx-auto relative">
+                <div className="w-full h-full rounded-full bg-neutral-30 mx-auto flex relative overflow-hidden">
+                  {imageUrl && (
+                    <Image
+                      src={imageUrl}
+                      alt="이미지"
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                  )}
+                </div>
+                <button type="button" onClick={handleClickCameraIcon}>
                   <Image
                     src="/assets/camera.svg"
                     alt="카메라"
                     width={36}
                     height={36}
-                    className="absolute bottom-2 right-2"
+                    className="absolute bottom-0 right-2"
                   />
                   <input
                     ref={fileInputRef}
