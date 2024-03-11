@@ -22,8 +22,6 @@ function KakaoMapForm({ editValues }: KakaoMapFormProps) {
   const [searchKeyword, setSearchKeyword] = useState<string>("웅진IT 본사");
   const keyword = watch("address");
 
-  console.log("editValues", editValues);
-
   useEffect(() => {
     if (editValues) {
       setSearchKeyword(editValues?.keyword);

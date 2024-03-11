@@ -80,7 +80,7 @@ function MatchForm() {
         />
         <TypesButtonGroup
           iconSrc={matchCreateIcons.players}
-          id="players"
+          id="capability"
           label="매치유형"
           typeString={matchTypes.players}
         />

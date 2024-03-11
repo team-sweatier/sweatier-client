@@ -1,9 +1,10 @@
 "use client";
-
 import BlueButton from "@/components/Buttons/BlueButton";
 import CalendarForm from "@/components/Forms/CalendarForm";
 import DropDownGroup from "@/components/Forms/DropDownGroup";
+import InputForm from "@/components/Forms/InputForm";
 import KakaoMapForm from "@/components/Forms/KakaoMapForm";
+import TextareaForm from "@/components/Forms/TextAreaForm/TextAreaForm";
 import TypesButtonGroup from "@/components/Forms/TypesButtonGroup";
 import { MatchResonseType } from "@/types/match.response.type";
 import { matchCreateIcons } from "@/utils/matchIcons";
@@ -14,60 +15,41 @@ import {
   FormProvider,
   SubmitHandler,
   useForm,
+  useWatch,
 } from "react-hook-form";
 
-import InputForm from "@/components/Forms/InputForm";
-import TextareaForm from "@/components/Forms/TextAreaForm/TextAreaForm";
-import { useEffect } from "react";
-
-//* 수정데이터가 있다면(editValues) 해당 values를 defaultValues로, 아니면 {}로
 interface MatchFormProps {
   editValues?: MatchResonseType;
 }
 
 function EditMatchForm({ editValues }: MatchFormProps) {
-  const methods = useForm<FieldValues>({
+  const methods = useForm({
     defaultValues: editValues || {},
   });
   const {
     handleSubmit,
     formState: { isValid },
-    setValue,
+    control,
   } = methods;
 
-  //* capability에 따른 매치 유형 선택하기 (ex. 2 -> 1:1)
-  useEffect(() => {
-    if (editValues?.capability) {
-      const foundItem = matchTypes.players.find((item) =>
-        Object.values(item).includes(editValues.capability)
-      );
-      const matchingKey = foundItem ? Object.keys(foundItem)[0] : null;
+  const watchedCapability = useWatch({
+    control,
+    name: "capability",
+  });
 
-      if (matchingKey) {
-        setValue("players", matchingKey, { shouldValidate: true });
-      }
-    }
-  }, [editValues, setValue]);
+  const selectedPlayersKey = Object.entries(matchTypes.players).find(
+    ([_, value]) => typeof value === "number" && value === watchedCapability
+  )?.[0];
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    const matchDate =
-      dayjs(data.date).format("YYYY-MM-DD") +
-      " " +
-      data.time.hour +
-      ":" +
-      data.time.minute;
-
-    //* 1. date 날짜 formatting
-    if (data.hasOwnProperty("date")) {
-      data.date = dayjs(data.date).format("YYYY-MM-DD");
-    }
+    const matchDate = dayjs(data?.matchDay).format("YYYY-MM-DD HH:mm");
 
     const requestData = {
       ...data,
-      matchDate: matchDate,
+      matchDate,
     };
 
-    console.log("requestData", requestData);
+    console.log("Form Submission", requestData);
   };
 
   return (
@@ -93,17 +75,20 @@ function EditMatchForm({ editValues }: MatchFormProps) {
         />
         <TypesButtonGroup
           iconSrc={matchCreateIcons.players}
-          id="players"
+          id="capability"
           label="매치유형"
           typeString={matchTypes.players}
+          selectedValue={selectedPlayersKey}
         />
         <CalendarForm />
         <DropDownGroup id="time" label="경기 시작 시간" />
         <KakaoMapForm editValues={editValues} />
-        <BlueButton buttonLabel={"수정 완료"} isValid={isValid} type="submit" />
+        <BlueButton buttonLabel="수정 완료" isValid={isValid} type="submit" />
       </form>
     </FormProvider>
   );
 }
 
 export default EditMatchForm;
+
+// matchDay : Fri Apr 12 2024 19:30:00 GMT+0900 (한국 표준시)

@@ -10,7 +10,7 @@ const editValues: MatchResonseType = {
   content:
     "함께 테니스 치실 분 모집합니다. 참가신청 해주세요. 함께 테니스 치실 분 모집합니다. 참가신청 해주세요. 함께 테니스 치실 분 모집합니다. 참가신청 해주세요!",
   applicants: 1,
-  capability: 2,
+  capability: 4,
   gender: "female",
   matchDay: new Date(2024, 3, 12, 19, 30),
   keyword: "매현시민의 숲 테니스장",
