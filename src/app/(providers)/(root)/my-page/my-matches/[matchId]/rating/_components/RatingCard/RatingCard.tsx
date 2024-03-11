@@ -3,7 +3,7 @@ import { Rating } from "@/types/Rating.type";
 import participantDto from "@/types/participantDto";
 import Image from "next/image";
 import { Dispatch, SetStateAction } from "react";
-import Star from "../Star/Star";
+import Stars from "../Stars";
 
 interface RatingCardProps {
   participant: participantDto;
@@ -28,7 +28,7 @@ function RatingCard({
       </div>
       <div className="flex flex-col justify-center gap-y-5">
         <div>{participant.nickname}</div>
-        <Star participant={participant} setRatingList={setRatingList} />
+        <Stars participant={participant} setRatingList={setRatingList} />
       </div>
     </div>
   );
