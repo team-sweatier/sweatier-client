@@ -2,7 +2,7 @@
 
 import KakaoMapForm from "@/components/Forms/KakaoMapForm";
 import TypesButtonGroup from "@/components/Forms/TypesButtonGroup";
-import MatchDto from "@/types/matchDto.type";
+import { MatchResonseType } from "@/types/match.response.type";
 import { matchCreateIcons } from "@/utils/matchIcons";
 import matchTypes from "@/utils/matchTypes";
 import dayjs from "dayjs";
@@ -20,7 +20,7 @@ import TextareaForm from "../TextAreaForm/TextAreaForm";
 
 //* 수정데이터가 있다면(editValues) 해당 values를 defaultValues로, 아니면 {}로
 interface MatchFormProps {
-  editValues?: MatchDto;
+  editValues?: MatchResonseType;
 }
 
 function MatchForm({ editValues }: MatchFormProps) {

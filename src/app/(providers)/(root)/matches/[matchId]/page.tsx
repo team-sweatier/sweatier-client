@@ -17,7 +17,7 @@ function MatchDetailPage(props: { params: { matchId: string } }) {
   //todo 4. AccountContainer에 유저 계좌 정보 보내기
 
   //* 해당 post가 유저가 작성한 글인지 판별하는 임시 변수
-  const isUserPost = false;
+  const isUserPost = true;
 
   return (
     <main className="pb-[50px] mx-auto max-w-screen-md flex flex-col w-full items-center justify-start h-screen relative">

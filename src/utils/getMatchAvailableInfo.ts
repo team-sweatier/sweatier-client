@@ -1,4 +1,4 @@
-import { Match } from "@/types/Match.type";
+import { Match } from "@/types/match.response.type";
 
 export default function getMatchAvailableInfo(match: Match) {
   const { applicants, capability } = match;

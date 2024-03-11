@@ -1,5 +1,5 @@
 import AvailabilityButton from "@/components/Buttons/AvailabilityButton";
-import { Match } from "@/types/Match.type";
+import { Match } from "@/types/match.response.type";
 import getMatchAvailableInfo from "@/utils/getMatchAvailableInfo";
 import translateGender from "@/utils/translateGender";
 import Link from "next/link";

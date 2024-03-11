@@ -1,7 +1,7 @@
 "use client";
 import MatchCard from "@/components/MatchCard";
 import useFilterStore from "@/store/filter.store";
-import { Match } from "@/types/Match.type";
+import { Match } from "@/types/match.response.type";
 
 // todo 임시데이터 수정
 const match: Match = {
