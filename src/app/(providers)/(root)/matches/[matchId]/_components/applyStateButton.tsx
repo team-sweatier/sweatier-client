@@ -1,4 +1,4 @@
-import Icon from "@/components/Icon"; // Icon 컴포넌트 경로를 정확하게 지정
+import Icon from "@/components/Icon";
 import { matchDetailIcons } from "@/utils/matchIcons";
 
 interface ApplyStateButtonProps {
@@ -31,10 +31,16 @@ function ApplyStateButton({ state }: ApplyStateButtonProps) {
         type="button"
         className={`${buttonClass} ${
           state === "마감" ? "text-neutral-40" : ""
-        } text-sm py-[6px] px-5 w-26 rounded-full font-bold flex items-center justify-center gap-x-2`}
+        } text-sm py-[6px] px-3 w-28 rounded-full font-bold flex items-center justify-center gap-x-2`}
       >
         {isIconVisible && (
-          <Icon src={iconSrc} alt="상태 아이콘" classStyles="" />
+          <Icon
+            src={iconSrc}
+            alt="상태 아이콘"
+            width={18}
+            height={18}
+            classStyles="mb-1"
+          />
         )}
         {state}
       </button>
