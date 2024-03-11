@@ -1,3 +1,4 @@
+import { TRACE_OUTPUT_VERSION } from "next/dist/shared/lib/constants";
 import AccountContainer from "./_components/AccountContainer";
 import ApplyStateButton from "./_components/ApplyStateButton";
 import Background from "./_components/Background";
@@ -5,13 +6,26 @@ import MatchMapContainer from "./_components/MatchMapContainer";
 import MatchRuleContainer from "./_components/MatchRuleContainer";
 import MatchUpContainer from "./_components/MatchUpContainer";
 import MatchUpTypeContainer from "./_components/MatchUpTypeContainer";
+import UserPostControlButtons from "./_components/UserPostControlButtons";
 import UserProfileContainer from "./_components/UserProfileContainer";
 
 function MatchDetailPage() {
+  // todo 1. [matchId]에 따른 정보 가져오기 -> reqct-query
+  //todo 2.[matchId] 글이 유저의 글인지 다른 사용자의 글인지 확인 -> isUserPost
+  //todo 3.[matchId]에 따른 정보 중 sport 정보 Background banner바꾸기
+  //todo 4. AccountContainer에 유저 계좌 정보 보내기
+
+  //* 해당 post가 유저가 작성한 글인지 판별하는 임시 변수
+  const isUserPost = TRACE_OUTPUT_VERSION;
+
   return (
     <main className="pb-[50px] mx-auto max-w-screen-md flex flex-col w-full items-center justify-start h-screen relative">
       <Background>
-        <ApplyStateButton state="마감 임박" />
+        {isUserPost ? (
+          <UserPostControlButtons />
+        ) : (
+          <ApplyStateButton state="마감 임박" />
+        )}
         <MatchUpContainer />
         <MatchUpTypeContainer />
         <MatchMapContainer />
