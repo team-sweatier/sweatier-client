@@ -8,7 +8,7 @@ import { FormEventHandler, useRef, useState } from "react";
 import DropDownBoxOfBank from "./_components/DropDownBoxOfBank";
 import GenderButton, { Gender } from "./_components/GenderButton";
 import PhoneNumberInput from "./_components/PhoneNumberInput";
-import RegistrationInput from "./_components/registrationInput";
+import RegistrationInput from "./_components/RegistrationInput";
 
 const bankName = [
   "국민은행",
