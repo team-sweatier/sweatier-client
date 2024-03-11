@@ -7,7 +7,9 @@ interface HeadingProps {
 function Heading({ children, className }: PropsWithChildren<HeadingProps>) {
   return (
     <h2
-      className={`text-2xl font-bold text-natural-90 py-2 ${className || ""}`}
+      className={`text-2xl w-full font-bold text-natural-90 py-2 ${
+        className || ""
+      }`}
     >
       {children}
     </h2>

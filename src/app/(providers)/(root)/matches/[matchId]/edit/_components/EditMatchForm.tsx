@@ -18,6 +18,7 @@ import {
 
 import InputForm from "@/components/Forms/InputForm";
 import TextareaForm from "@/components/Forms/TextAreaForm/TextAreaForm";
+import { useEffect } from "react";
 
 //* 수정데이터가 있다면(editValues) 해당 values를 defaultValues로, 아니면 {}로
 interface MatchFormProps {
@@ -31,7 +32,22 @@ function EditMatchForm({ editValues }: MatchFormProps) {
   const {
     handleSubmit,
     formState: { isValid },
+    setValue,
   } = methods;
+
+  //* capability에 따른 매치 유형 선택하기 (ex. 2 -> 1:1)
+  useEffect(() => {
+    if (editValues?.capability) {
+      const foundItem = matchTypes.players.find((item) =>
+        Object.values(item).includes(editValues.capability)
+      );
+      const matchingKey = foundItem ? Object.keys(foundItem)[0] : null;
+
+      if (matchingKey) {
+        setValue("players", matchingKey, { shouldValidate: true });
+      }
+    }
+  }, [editValues, setValue]);
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     const matchDate =

@@ -1,3 +1,4 @@
+import Heading from "@/components/Heading";
 import Page from "@/components/Page";
 import { MatchResonseType } from "@/types/match.response.type";
 import EditMatchForm from "./_components/EditMatchForm";
@@ -21,8 +22,10 @@ const editValues: MatchResonseType = {
 function EditMatchPage() {
   return (
     <Page>
-      <h2>Match 수정 페이지</h2>
-      <EditMatchForm editValues={editValues} />
+      <div className="w-full relative">
+        <Heading>게시물 수정</Heading>
+        <EditMatchForm editValues={editValues} />
+      </div>
     </Page>
   );
 }
