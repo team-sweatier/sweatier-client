@@ -1,19 +1,28 @@
+import { Rating } from "@/types/Rating.type";
 import participantDto from "@/types/participantDto";
+import { Dispatch, SetStateAction } from "react";
 import RatingCard from "../RatingCard";
 
-const participants: participantDto[] = [
-  { userId: "1", nickname: "닉네임1" },
-  { userId: "2", nickname: "닉네임3" },
-  { userId: "3", nickname: "닉네임3" },
-];
-
-function RatingCardsList() {
+interface RatingCardsListProps {
+  participants: participantDto[];
+  ratingList: Rating[];
+  setRatingList: Dispatch<SetStateAction<Rating[]>>;
+}
+function RatingCardsList({
+  participants,
+  ratingList,
+  setRatingList,
+}: RatingCardsListProps) {
   return (
     <div className="w-full">
       <ul className="flex flex-col gap-y-4">
         {participants.map((participant) => (
           <li key={participant.userId}>
-            <RatingCard participant={participant} />
+            <RatingCard
+              ratingList={ratingList}
+              setRatingList={setRatingList}
+              participant={participant}
+            />
           </li>
         ))}
       </ul>

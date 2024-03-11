@@ -1,8 +1,9 @@
-import Heading from "@/components/Heading";
+"use client";
 import MatchCard from "@/components/MatchCard";
 import Page from "@/components/Page";
 import { Match } from "@/types/Match.type";
-import RatingCardsList from "./_components/RatingCardsList";
+import participantDto from "@/types/participantDto";
+import RatingForm from "./_components/RatingForm";
 
 const match: Match = {
   id: "matchId",
@@ -21,6 +22,12 @@ const match: Match = {
   matchTime: "13:00",
 };
 
+const participants: participantDto[] = [
+  { userId: "1", nickname: "닉네임1" },
+  { userId: "2", nickname: "닉네임3" },
+  { userId: "3", nickname: "닉네임3" },
+];
+
 function RatingPage() {
   return (
     <Page>
@@ -28,10 +35,7 @@ function RatingPage() {
         <MatchCard match={match} />
       </div>
       <div className="w-screen sm:w-full border-b-4 border-primary-20 my-6" />
-      <Heading className="sm:text-xl text-sm w-full mb-6 ">
-        티어평가 하기
-      </Heading>
-      <RatingCardsList />
+      <RatingForm participants={participants} />
     </Page>
   );
 }

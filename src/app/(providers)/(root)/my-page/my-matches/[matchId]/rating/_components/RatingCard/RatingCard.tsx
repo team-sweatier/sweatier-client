@@ -1,9 +1,21 @@
 import profile from "@/../public/assets/rating_page/profileImage.svg";
+import { Rating } from "@/types/Rating.type";
 import participantDto from "@/types/participantDto";
 import Image from "next/image";
+import { Dispatch, SetStateAction } from "react";
 import Star from "../Star/Star";
 
-function RatingCard({ participant }: { participant: participantDto }) {
+interface RatingCardProps {
+  participant: participantDto;
+  ratingList: Rating[];
+  setRatingList: Dispatch<SetStateAction<Rating[]>>;
+}
+
+function RatingCard({
+  participant,
+  ratingList,
+  setRatingList,
+}: RatingCardProps) {
   return (
     <div className="w-full flex px-6 py-4 rounded-[10px] bg-primary-20 gap-x-6">
       <div>
@@ -16,7 +28,7 @@ function RatingCard({ participant }: { participant: participantDto }) {
       </div>
       <div className="flex flex-col justify-center gap-y-5">
         <div>{participant.nickname}</div>
-        <Star />
+        <Star participant={participant} setRatingList={setRatingList} />
       </div>
     </div>
   );
