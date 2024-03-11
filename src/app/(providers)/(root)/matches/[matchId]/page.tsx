@@ -1,6 +1,6 @@
 import AccountContainer from "./_components/AccountContainer";
-import ApplyStateButton from "./_components/ApplyStateButton";
 import Background from "./_components/Background";
+import MatchApplyButton from "./_components/MatchApplyButton";
 import MatchMapContainer from "./_components/MatchMapContainer";
 import MatchRuleContainer from "./_components/MatchRuleContainer";
 import MatchUpContainer from "./_components/MatchUpContainer";
@@ -11,7 +11,7 @@ function MatchDetailPage() {
   return (
     <main className="pb-[50px] mx-auto max-w-screen-md flex flex-col w-full items-center justify-start h-screen relative">
       <Background>
-        <ApplyStateButton />
+        <MatchApplyButton />
         <MatchUpContainer />
         <MatchUpTypeContainer />
         <MatchMapContainer />

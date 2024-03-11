@@ -1,7 +1,4 @@
-interface ApplyStateButtonProps {}
-
-function ApplyStateButton({}: ApplyStateButtonProps) {
-  // todo : 신청여부 상태 4가지
+function MatchApplyButton() {
   return (
     <div className="pb-5">
       <button
@@ -14,4 +11,4 @@ function ApplyStateButton({}: ApplyStateButtonProps) {
   );
 }
 
-export default ApplyStateButton;
+export default MatchApplyButton;
