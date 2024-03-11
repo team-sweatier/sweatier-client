@@ -1,17 +1,26 @@
-import Image, { StaticImageData } from "next/image";
-import { PropsWithChildren } from "react";
+// Icon 컴포넌트 수정
+import { StaticImageData } from "next/image";
+import Image from "next/legacy/image";
 
-type IconProps = PropsWithChildren<{
-  src: StaticImageData;
+type IconProps = {
+  src: string | StaticImageData;
   alt: string;
+  width?: number;
+  height?: number;
   classStyles?: string;
-}>;
+};
 
-function Icon({ src, alt, classStyles, ...props }: IconProps) {
+function Icon({ src, alt, classStyles, width, height }: IconProps) {
   return (
-    <span>
-      <Image src={src} alt={alt} {...props} className={classStyles} />
-    </span>
+    <div className={`flex items-center ${classStyles}`}>
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        objectFit="contain"
+      />
+    </div>
   );
 }
 

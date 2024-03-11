@@ -1,8 +1,11 @@
+import facebook from "@/../public/assets/commons/facebook.svg";
+import instagram from "@/../public/assets/commons/instagram.svg";
+import youtube from "@/../public/assets/commons/youtube.svg";
 import Image from "next/image";
 
 function Footer() {
   return (
-    <footer className="text-neutral-40 px-11 py-10  mx-auto text-center  bg-[#f3f3f3] text-[12px]">
+    <footer className="text-neutral-40 px-11 py-10  mx-auto text-center  bg-[#f3f3f3] text-[12px] relative">
       <p>이용약관 ❘ 개인정보 처리방침 ❘ 사업자 정보 확인</p>
       <div className="mt-4">
         <p>고유번호 : XXX-XX-XXXXX ❘ 이사장 : XXX </p>
@@ -20,29 +23,14 @@ function Footer() {
       </div>
       <ul className="flex gap-4 justify-center mt-10">
         <li>
-          <Image
-            src="/assets/instagram.svg"
-            width={30}
-            height={30}
-            alt="instagram-image"
-          />
+          <Image src={instagram} width={30} height={30} alt="instagram-image" />
         </li>
         <li>
-          <Image
-            src="/assets/youtube.svg"
-            width={30}
-            height={30}
-            alt="youtube-image"
-          />
+          <Image src={youtube} width={30} height={30} alt="youtube-image" />
         </li>
 
         <li>
-          <Image
-            src="/assets/facebook.svg"
-            width={30}
-            height={30}
-            alt="facebook-image"
-          />
+          <Image src={facebook} width={30} height={30} alt="facebook-image" />
         </li>
       </ul>
     </footer>
