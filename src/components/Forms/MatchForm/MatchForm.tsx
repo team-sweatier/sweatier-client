@@ -3,7 +3,7 @@
 import KakaoMapForm from "@/components/Forms/KakaoMapForm";
 import TypesButtonGroup from "@/components/Forms/TypesButtonGroup";
 import MatchDto from "@/types/matchDto.type";
-import matchIcons from "@/utils/matchIcons";
+import { matchCreateIcons } from "@/utils/matchIcons";
 import matchTypes from "@/utils/matchTypes";
 import dayjs from "dayjs";
 import {
@@ -64,14 +64,14 @@ function MatchForm({ editValues }: MatchFormProps) {
     //   matchTime: matchTime,
     // };
 
-    console.log(requestData);
+    console.log("requestData", requestData);
   };
 
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <TypesButtonGroup
-          iconSrc={matchIcons.post}
+          iconSrc={matchCreateIcons.post}
           id="sport"
           label="종목"
           typeString={matchTypes.sports}
@@ -83,13 +83,13 @@ function MatchForm({ editValues }: MatchFormProps) {
           placeholder="내용을 입력해주세요."
         />
         <TypesButtonGroup
-          iconSrc={matchIcons.gender}
+          iconSrc={matchCreateIcons.gender}
           id="gender"
           label="모집성별"
           typeString={matchTypes.gender}
         />
         <TypesButtonGroup
-          iconSrc={matchIcons.players}
+          iconSrc={matchCreateIcons.players}
           id="players"
           label="매치유형"
           typeString={matchTypes.players}

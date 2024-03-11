@@ -1,5 +1,5 @@
-import leftArrow from "@/../public/assets/left-arrow-md.png";
-import rightArrow from "@/../public/assets/right-arrow-md.png";
+import leftArrow from "@/../public/assets/match_create_page/left-arrow-md.png";
+import rightArrow from "@/../public/assets/match_create_page/right-arrow-md.png";
 import Icon from "@/components/Icon";
 import { format } from "date-fns";
 import { CaptionProps, useNavigation } from "react-day-picker";
