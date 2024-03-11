@@ -1,11 +1,12 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 function Banner() {
   return (
-    <div className="flex justify-center relative w-full mb-5">
+    <div className="relative w-full mb-5 ">
       <Image
         src="/assets/carousel-image-1.svg"
-        layout="responsive"
+        sizes="100vw"
+        priority
         width={350}
         height={114}
         alt="carousel-image"

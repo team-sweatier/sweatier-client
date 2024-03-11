@@ -1,5 +1,5 @@
 "use client";
-import SubmitButton from "@/components/Buttons/SubmitButton";
+import BlueButton from "@/components/Buttons/BlueButton";
 import matchIcons from "@/utils/matchIcons";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
@@ -41,7 +41,7 @@ function KakaoMapForm() {
               />
             )}
           />
-          <SubmitButton
+          <BlueButton
             buttonLabel={"검색"}
             isValid={!!keyword}
             onclick={handleSearch}

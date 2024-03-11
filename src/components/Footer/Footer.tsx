@@ -22,7 +22,6 @@ function Footer() {
         <li>
           <Image
             src="/assets/instagram.svg"
-            layout="responsive"
             width={30}
             height={30}
             alt="instagram-image"
@@ -31,7 +30,6 @@ function Footer() {
         <li>
           <Image
             src="/assets/youtube.svg"
-            layout="responsive"
             width={30}
             height={30}
             alt="youtube-image"
@@ -41,7 +39,6 @@ function Footer() {
         <li>
           <Image
             src="/assets/facebook.svg"
-            layout="responsive"
             width={30}
             height={30}
             alt="facebook-image"
