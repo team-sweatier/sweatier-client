@@ -24,8 +24,14 @@ interface MatchFormProps {
 
 function EditMatchForm({ editValues }: MatchFormProps) {
   const methods = useForm({
-    defaultValues: editValues || {},
+    defaultValues: {
+      ...editValues,
+      matchDay: editValues ? dayjs(editValues.matchDay).toDate() : new Date(),
+      hour: editValues ? dayjs(editValues.matchDay).format("HH") : "",
+      minute: editValues ? dayjs(editValues.matchDay).format("mm") : "",
+    },
   });
+
   const {
     handleSubmit,
     formState: { isValid },
@@ -81,7 +87,7 @@ function EditMatchForm({ editValues }: MatchFormProps) {
           selectedValue={selectedPlayersKey}
         />
         <CalendarForm />
-        <DropDownGroup id="time" label="경기 시작 시간" />
+        <DropDownGroup />
         <KakaoMapForm editValues={editValues} />
         <BlueButton buttonLabel="수정 완료" isValid={isValid} type="submit" />
       </form>

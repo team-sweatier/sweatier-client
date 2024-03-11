@@ -1,5 +1,6 @@
 import FormOuter from "@/components/Forms/FormOuter";
 import Label from "@/components/Forms/Label";
+import { MatchResonseType } from "@/types/match.response.type";
 import { matchCreateIcons } from "@/utils/matchIcons";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
@@ -8,20 +9,20 @@ import CustomCaption from "./CustomCaption";
 import "./calendar.css";
 
 function CalendarForm() {
-  const { control } = useFormContext();
+  const { control } = useFormContext<MatchResonseType>();
 
   return (
     <FormOuter>
-      <Label label="날짜" id="date" iconSrc={matchCreateIcons.post} />
+      <Label label="날짜" id="matchDay" iconSrc={matchCreateIcons.post} />
       <Controller
+        name="matchDay"
         control={control}
-        name="date"
         rules={{ required: "이 필드는 필수입니다." }}
         render={({ field }) => (
           <DayPicker
             mode="single"
             selected={field.value}
-            onSelect={(date) => field.onChange(date)}
+            onSelect={field.onChange}
             fromDate={new Date()}
             showOutsideDays
             classNames={{

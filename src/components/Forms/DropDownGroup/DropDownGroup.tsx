@@ -1,25 +1,36 @@
 import { matchCreateIcons } from "@/utils/matchIcons";
 import matchTypes from "@/utils/matchTypes";
+import { Controller, useFormContext } from "react-hook-form";
 import DropDownBox from "../DropDownBox";
 import FormOuter from "../FormOuter";
 import Label from "../Label";
 
-interface DropDownGroupProps {
-  label: string;
-  id: string;
-}
+function DropDownGroup() {
+  const { control } = useFormContext();
 
-function DropDownGroup({ label, id }: DropDownGroupProps) {
   return (
     <FormOuter>
-      <Label id={id} label={label} iconSrc={matchCreateIcons.time} />
       <div className="flex gap-x-8 items-center">
         <div className="flex items-center gap-x-2">
-          <DropDownBox options={matchTypes.timeHours} registerId={"hour"} />
+          <Label id="hour" label="시간" iconSrc={matchCreateIcons.time} />
+          <Controller
+            control={control}
+            name="hour"
+            render={({ field }) => (
+              <DropDownBox options={matchTypes.timeHours} {...field} />
+            )}
+          />
           <span>시</span>
         </div>
         <div className="flex items-center gap-x-2">
-          <DropDownBox options={matchTypes.timeMinutes} registerId={"minute"} />
+          <Label id="minute" label="분" iconSrc={matchCreateIcons.time} />
+          <Controller
+            control={control}
+            name="minute"
+            render={({ field }) => (
+              <DropDownBox options={matchTypes.timeHours} {...field} />
+            )}
+          />
           <span>분</span>
         </div>
       </div>

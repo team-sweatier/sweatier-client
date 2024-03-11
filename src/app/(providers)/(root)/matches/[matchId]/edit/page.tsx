@@ -12,7 +12,7 @@ const editValues: MatchResonseType = {
   applicants: 1,
   capability: 4,
   gender: "female",
-  matchDay: new Date(2024, 3, 12, 19, 30),
+  matchDay: new Date(2024, 3, 12, 21, 30),
   keyword: "매현시민의 숲 테니스장",
   address: "서울 서초구 매헌로 99",
   latitude: 37.4730498033959,
