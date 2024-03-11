@@ -7,6 +7,7 @@ import Image from "next/image";
 import { FormEventHandler, useRef, useState } from "react";
 import DropDownBoxOfBank from "./_components/DropDownBoxOfBank";
 import GenderButton, { Gender } from "./_components/GenderButton";
+import PhoneNumberInput from "./_components/PhoneNumberInput";
 import RegistrationInput from "./_components/registrationInput";
 
 const bankName = [
@@ -164,12 +165,13 @@ function UserRegistrationPage() {
               >
                 휴대폰 번호
               </label>
-              <RegistrationInput
+              <PhoneNumberInput setPhoneNumber={setPhoneNumber} />
+              {/* <RegistrationInput
                 value={phoneNumber}
                 setValue={setPhoneNumber}
                 placeholder="휴대폰 번호를 입력해주세요."
                 id="phoneNumber"
-              />
+              /> */}
             </li>
             <li className="flex flex-col">
               <label
