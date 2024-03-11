@@ -17,7 +17,7 @@ function Modal({ children, className }: PropsWithChildren<ModalProps>) {
       onClick={handleClickBackdrop}
     >
       <div
-        className={`bg-white rounded-2xl w-80 sm:w-full max-w-[400px] px-4 py-8 ${
+        className={`bg-white rounded-2xl min-w-80 sm:w-full max-w-[400px] px-4 py-8 ${
           className || ""
         }`}
         onClick={(e) => e.stopPropagation()}
