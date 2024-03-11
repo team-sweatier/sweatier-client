@@ -2,7 +2,7 @@ import Image from "next/image";
 
 function Footer() {
   return (
-    <footer className="text-neutral-40 px-11 py-10  mx-auto text-center  bg-[#f3f3f3] text-[12px]">
+    <footer className="text-neutral-40 px-11 py-10  mx-auto text-center  bg-[#f3f3f3] text-[12px] relative">
       <p>이용약관 ❘ 개인정보 처리방침 ❘ 사업자 정보 확인</p>
       <div className="mt-4">
         <p>고유번호 : XXX-XX-XXXXX ❘ 이사장 : XXX </p>

@@ -1,4 +1,4 @@
-import matchIcons from "@/utils/matchIcons";
+import { matchCreateIcons } from "@/utils/matchIcons";
 import matchTypes from "@/utils/matchTypes";
 import DropDownBox from "../DropDownBox";
 import FormOuter from "../FormOuter";
@@ -12,7 +12,7 @@ interface DropDownGroupProps {
 function DropDownGroup({ label, id }: DropDownGroupProps) {
   return (
     <FormOuter>
-      <Label id={id} label={label} iconSrc={matchIcons.time} />
+      <Label id={id} label={label} iconSrc={matchCreateIcons.time} />
       <div className="flex gap-x-8 items-center">
         <div className="flex items-center gap-x-2">
           <DropDownBox options={matchTypes.timeHours} registerId={"hour"} />
