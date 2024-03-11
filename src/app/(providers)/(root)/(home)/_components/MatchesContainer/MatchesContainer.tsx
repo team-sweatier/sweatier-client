@@ -1,4 +1,5 @@
 import matchTypes from "@/utils/matchTypes";
+import FloatingButton from "../FloatingButton";
 import MatchCardsList from "../MatchCardsList";
 import Region from "../RegionButton/RegionButton";
 import TypesList from "../TypesList";
@@ -13,6 +14,7 @@ function MatchesContainer() {
       <TypesList typeName="sports" typesList={sportsList} className="px-1" />
       <Region />
       <MatchCardsList />
+      <FloatingButton />
     </section>
   );
 }
