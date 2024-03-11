@@ -1,8 +1,17 @@
+"use client";
+
 import Heading from "@/components/Heading";
 import Page from "@/components/Page";
+import { useModalStore } from "@/store";
 import Image from "next/image";
+import TiersInformationModal from "./_components/TiersInformationModal";
 
 function MyPage() {
+  const modal = useModalStore();
+  const handleClickInformationButton = () => {
+    modal.open(<TiersInformationModal />);
+  };
+
   return (
     <Page>
       <section className="pb-6 w-full">
@@ -15,7 +24,12 @@ function MyPage() {
         </div>
         <div className="rounded-md bg-primary-20 flex px-6 py-4">
           <div className="w-20 h-20 rounded-full bg-neutral-50">
-            <Image></Image>
+            <Image
+              src="/assets/profileDummy.svg"
+              width={80}
+              height={80}
+              alt="프로필 이미지"
+            />
           </div>
           <div className="flex flex-col justify-center gap-y-2 mx-7">
             <h6 className="font-bold">닉네임</h6>
@@ -43,7 +57,7 @@ function MyPage() {
       <section className="py-6 w-full">
         <div className="flex items-center">
           <h4 className="py-4 font-black text-lg pr-1">나의 티어</h4>
-          <button>
+          <button onClick={handleClickInformationButton}>
             <Image
               src="/assets/Info@3x.svg"
               width={14}
