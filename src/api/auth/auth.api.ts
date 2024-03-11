@@ -14,11 +14,6 @@ async function signInKaKao(code: string) {
   await client.get(`/users/sign-in/kakao/callback?code=${code}`);
 }
 
-async function signInKaKao() {
-  const response = await client.get("/users/sign-in/kakao");
-  console.log(response);
-}
-
 const authAPI = {
   signUp,
   signIn,
