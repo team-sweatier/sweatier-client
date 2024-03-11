@@ -15,7 +15,7 @@ function WeeklyCalendar() {
       tempWeeksList.push(tempWeeksList[tempWeeksList.length - 1].add(1, "day"));
     }
     setWeeksList(tempWeeksList);
-  }, []);
+  }, [date]);
 
   return (
     <div className="mb-4  flex justify-center sticky z-30 top-0 bg-white">

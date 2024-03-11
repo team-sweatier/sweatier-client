@@ -7,8 +7,11 @@ async function signUp(dto: SignUpDto) {
 }
 
 async function signIn(dto: SignInDto) {
-  const response = await client.post("/users/sign-in", dto);
-  console.log(response);
+  await client.post("/users/sign-in", dto);
+}
+
+async function signInKaKao(code: string) {
+  await client.get(`/users/sign-in/kakao/callback?code=${code}`);
 }
 
 async function signInKaKao() {
