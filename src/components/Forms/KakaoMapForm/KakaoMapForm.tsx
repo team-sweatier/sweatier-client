@@ -3,9 +3,9 @@ import BlueButton from "@/components/Buttons/BlueButton";
 import { matchCreateIcons } from "@/utils/matchIcons";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import CreateKakaoMap from "../CreateKakaoMap";
 import FormOuter from "../FormOuter";
 import Input from "../Input";
-import KakaoMap from "../KakaoMap";
 import Label from "../Label";
 
 type AddressData = {
@@ -48,7 +48,7 @@ function KakaoMapForm() {
             isValid={!!keyword}
             onclick={handleSearch}
           />
-          <KakaoMap keyword={searchKeyword} />
+          <CreateKakaoMap keyword={searchKeyword} />
         </div>
       </div>
     </FormOuter>

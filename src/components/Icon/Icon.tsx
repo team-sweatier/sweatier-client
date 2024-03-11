@@ -19,6 +19,7 @@ function Icon({ src, alt, classStyles, width, height }: IconProps) {
         width={width}
         height={height}
         objectFit="contain"
+        priority
       />
     </div>
   );

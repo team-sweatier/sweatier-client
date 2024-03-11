@@ -1,7 +1,7 @@
 import AccountContainer from "./_components/AccountContainer";
 import Background from "./_components/Background";
+import GetKakaoMap from "./_components/GetKakaoMap";
 import MatchApplyButton from "./_components/MatchApplyButton";
-import MatchMapContainer from "./_components/MatchMapContainer";
 import MatchRuleContainer from "./_components/MatchRuleContainer";
 import MatchUpContainer from "./_components/MatchUpContainer";
 import MatchUpTypeContainer from "./_components/MatchUpTypeContainer";
@@ -29,10 +29,10 @@ function MatchDetailPage(props: { params: { matchId: string } }) {
         )}
         <MatchUpContainer isUserPost={isUserPost} />
         <MatchUpTypeContainer />
-        <MatchMapContainer />
+        <GetKakaoMap />
         <MatchRuleContainer />
         <AccountContainer
-          isApply={true}
+          isApply={false} //* 현재 로그인한 유저의 해당 post 신청 유무
           accountBank={"신한은행"}
           accountNumber={"1111-11-11111"}
         />
