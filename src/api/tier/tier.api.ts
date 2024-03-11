@@ -1,9 +1,9 @@
 import { Response } from "@/types/Response.type";
 import { client } from "..";
-import { GetUserTiersData } from "./tier.data";
+import { GetUserTiersData, TiersData } from "./tier.data";
 
 async function getTiersInformation() {
-  const response = await client.get<Response>("/tiers");
+  const response = await client.get<Response<TiersData>>("/tiers");
   const data = response.data;
   if (!data.success) throw new Error(data.message);
 
