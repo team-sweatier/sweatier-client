@@ -8,6 +8,8 @@ import postIcon from "@/../public/assets/match_create_page/postIcon.svg";
 import timeIcon from "@/../public/assets/match_create_page/timeIcon.svg";
 import titleIcon from "@/../public/assets/match_create_page/titleIcon.svg";
 import address_blue from "@/../public/assets/match_detail_page/icons/address_blue.svg";
+import alarm_white from "@/../public/assets/match_detail_page/icons/alarm_white.svg";
+import apply_white from "@/../public/assets/match_detail_page/icons/apply_white.svg";
 import gender_blue from "@/../public/assets/match_detail_page/icons/gender_blue.svg";
 import matchType_blue from "@/../public/assets/match_detail_page/icons/matchType_blue.svg";
 import playes_blue from "@/../public/assets/match_detail_page/icons/playes_blue.svg";
@@ -31,4 +33,6 @@ export const matchDetailIcons = {
   capability: playes_blue,
   tier: tier_blue,
   address: address_blue,
+  alarm: alarm_white,
+  apply: apply_white,
 };
