@@ -39,4 +39,6 @@ const SignUpInput = forwardRef(
   }
 );
 
+SignUpInput.displayName = "SignUpInput";
+
 export default SignUpInput;
