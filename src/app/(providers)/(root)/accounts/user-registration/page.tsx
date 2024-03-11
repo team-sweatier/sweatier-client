@@ -31,6 +31,8 @@ function UserRegistrationPage() {
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [selectedBankName, setSelectedBankName] = useState<string>("");
   const [accountNumber, setAccountNumber] = useState<string>("");
+  const [oneLiner, setOneLiner] = useState<string>("");
+
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // 성별선택
@@ -60,19 +62,18 @@ function UserRegistrationPage() {
   // 폼데이터 제출
   const handleSubmitForm: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-
-    if (!file) return alert("이미지를 선택해주세요!");
+    if (!file) return alert("프로필 이미지는 필수입니다!");
 
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("nickname", nickname);
     formData.append("gender", gender);
     formData.append("phoneNumber", phoneNumber);
     formData.append("bankName", selectedBankName);
     formData.append("accountNumber", accountNumber);
+    formData.append("nickname", nickname);
+    formData.append("oneLiner", oneLiner);
 
     const response = await registerUser(formData);
-
     console.log(response);
   };
 
@@ -182,6 +183,19 @@ function UserRegistrationPage() {
                 placeholder="계좌번호를 입력해주세요."
                 onChange={(e) => setAccountNumber(e.target.value)}
                 value={accountNumber}
+                id=""
+                className={`h-12 border border-slate-300 rounded-md pl-4 mt-2 focus:border-primary-80 outline-none transition-all duration-500 ease-in-out`}
+              />
+            </li>
+            <li className="flex flex-col">
+              <label htmlFor="" className="font-bold text-neutral-70">
+                한 줄 소개
+              </label>
+              <input
+                type="text"
+                placeholder="한 줄 소개를 입력해주세요."
+                onChange={(e) => setOneLiner(e.target.value)}
+                value={oneLiner}
                 id=""
                 className={`h-12 border border-slate-300 rounded-md pl-4 mt-2 focus:border-primary-80 outline-none transition-all duration-500 ease-in-out`}
               />
