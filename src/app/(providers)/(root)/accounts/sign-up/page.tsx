@@ -73,6 +73,7 @@ function SignUpPage() {
       try {
         await signUp({ email, password });
         logIn(); // isLoggedIn 전역상태를 true로 변경
+        alert("회원가입에 성공하였습니다!");
         router.push("user-registration");
       } catch (e) {
         alert("회원가입에 실패하였습니다."); // alert창 toastify로 바꿀예정
@@ -91,12 +92,10 @@ function SignUpPage() {
     }
   };
 
-  const handleClickKaKaoButton = async () => {
+  const handleClickKaKaoButton = () => {
     // 백엔드 주소 매핑 /users/sign-in/kakao
     // await signInKaKao();
-    router.push(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/users/sign-in/kakao`
-    );
+    router.push(`${process.env.NEXT_PUBLIC_SERVER_URL}/users/sign-in/kakao`);
   };
 
   const handleClickOutside = () => {
@@ -218,7 +217,7 @@ function SignUpPage() {
           >
             <div className="h-full flex items-center justify-center">
               <Image
-                src="/assets/kakaotalk.svg"
+                src="/assets/sign-up_page/kakaotalk.svg"
                 alt="카카오톡"
                 width={24}
                 height={24}

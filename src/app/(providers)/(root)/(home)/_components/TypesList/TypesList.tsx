@@ -1,3 +1,4 @@
+"use client";
 import RoundButton from "@/components/Buttons/RoundButton";
 import useFilterStore from "@/store/filter.store";
 import { Dispatch, SetStateAction } from "react";
@@ -32,7 +33,7 @@ function TypesList({
     }
   };
   return (
-    <ul className={`flex items-center mt-2 gap-1 ${className}`}>
+    <ul className={`flex items-center mt-2 gap-1 sm:gap-2 ${className}`}>
       {typesList.map((type) => (
         <li key={type}>
           <RoundButton
@@ -42,6 +43,7 @@ function TypesList({
               handleClickButton(type);
             }}
             key={type}
+            className="px-3.5"
           />
         </li>
       ))}

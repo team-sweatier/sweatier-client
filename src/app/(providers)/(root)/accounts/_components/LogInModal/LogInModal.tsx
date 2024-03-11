@@ -43,10 +43,10 @@ function LogInModal() {
       <form
         action=""
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}
-        className="flex flex-col gap-y-4 px-5 py-5"
+        className="flex flex-col gap-y-4 sm:px-5 sm:py-5 "
       >
         <ul className="flex flex-col gap-y-4">
-          <li className="flex flex-col">
+          <li className="flex flex-col ">
             <label htmlFor="email" className="text-neutral-70">
               이메일
             </label>
@@ -90,7 +90,7 @@ function LogInModal() {
         <button className="h-10 bg-yellow-300 w-full px-6 rounded-lg font-semibold my-4 transition hover:-translate-y-1 active:translate-y-0">
           <div className="h-full flex items-center justify-center">
             <Image
-              src="/assets/kakaotalk.svg"
+              src="/assets/sign-up_page/kakaotalk.svg"
               alt="카카오톡"
               width={24}
               height={24}
