@@ -44,11 +44,7 @@ function MatchUpTypeContainer() {
 
         return (
           <div key={key} className="flex item-center gap-x-2 pb-1">
-            <Icon
-              alt={label}
-              src={matchIcons[key]}
-              classStyles="h-full w-full"
-            />
+            <Icon alt={label} src={matchIcons[key]} classStyles="mb-1" />
             <span>{label}</span>
             <span>|</span>
             <span className="font-bold">{value}</span>

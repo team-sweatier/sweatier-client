@@ -10,12 +10,13 @@ type LabelProps = PropsWithChildren<{
 
 function Label({ id, label, iconSrc }: LabelProps) {
   return (
-    <div className="flex gap-x-1 py-1">
-      <Icon src={iconSrc} alt="postIcon-icon" />
-      <label className="font-bold pb-2" htmlFor={id}>
-        {label}
-      </label>
-    </div>
+    <label
+      className="font-bold pb-2 flex items-center gap-x-1 py-1"
+      htmlFor={id}
+    >
+      <Icon src={iconSrc} alt="postIcon-icon" classStyles="mb-1" />
+      {label}
+    </label>
   );
 }
 

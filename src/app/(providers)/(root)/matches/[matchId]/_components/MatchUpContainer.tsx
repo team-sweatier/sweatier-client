@@ -10,9 +10,11 @@ const temporaryData = {
     "함께 테니스 치실 분 모집합니다. 참가신청 해주세요. 함께 테니스 치실 분 모집합니다. 참가신청 해주세요. 함께 테니스 치실 분 모집합니다. 참가신청 해주세요. ",
 };
 
-interface MatchUpContainerProps {}
+interface MatchUpContainerProps {
+  isUserPost: boolean;
+}
 
-function MatchUpContainer({}: MatchUpContainerProps) {
+function MatchUpContainer({ isUserPost }: MatchUpContainerProps) {
   //todo : 게시물의 글 정보 가져오기
   return (
     <div>
@@ -28,7 +30,7 @@ function MatchUpContainer({}: MatchUpContainerProps) {
           <div className="text-neutral-90 text-xl">{temporaryData.keword}</div>
         </div>
 
-        <ApplyButton isAbledApply={true} />
+        {!isUserPost && <ApplyButton isAbledApply={true} />}
       </div>
       <div className="mt-6 pb-8 text-neutral-70 tex-sm leading-7">
         {temporaryData.content}

@@ -1,4 +1,5 @@
 import MatchForm from "@/components/Forms/MatchForm/MatchForm";
+import Page from "@/components/Page";
 import MatchDto from "@/types/matchDto.type";
 
 //todo: 임시 수정 데이터
@@ -14,10 +15,10 @@ const editValues: MatchDto = {
 
 function EditMatchPage() {
   return (
-    <div>
+    <Page>
       <h2>Match 수정 페이지</h2>
       <MatchForm editValues={editValues} />
-    </div>
+    </Page>
   );
 }
 
