@@ -2,7 +2,7 @@ import axios from "axios";
 import authAPI from "./auth/auth.api";
 
 export const client = axios.create({
-  baseURL: "https://sweatier-server-he2ntmjbhq-du.a.run.app",
+  baseURL: process.env.NEXT_PUBLIC_SERVER_URL,
   withCredentials: true,
 });
 
