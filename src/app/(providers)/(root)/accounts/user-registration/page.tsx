@@ -116,7 +116,7 @@ function UserRegistrationPage() {
                     />
                   )}
                 </div>
-                <button onClick={handleClickCameraIcon}>
+                <button type="button" onClick={handleClickCameraIcon}>
                   <Image
                     src="/assets/camera.svg"
                     alt="카메라"
