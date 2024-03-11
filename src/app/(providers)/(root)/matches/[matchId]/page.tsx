@@ -1,6 +1,6 @@
 import AccountContainer from "./_components/AccountContainer";
-import ApplyStateButton from "./_components/ApplyStateButton";
 import Background from "./_components/Background";
+import MatchApplyButton from "./_components/MatchApplyButton";
 import MatchMapContainer from "./_components/MatchMapContainer";
 import MatchRuleContainer from "./_components/MatchRuleContainer";
 import MatchUpContainer from "./_components/MatchUpContainer";
@@ -25,7 +25,7 @@ function MatchDetailPage(props: { params: { matchId: string } }) {
         {isUserPost ? (
           <UserPostControlButtons matchId={matchId} />
         ) : (
-          <ApplyStateButton state="마감 임박" />
+          <MatchApplyButton state="신청 가능" />
         )}
         <MatchUpContainer isUserPost={isUserPost} />
         <MatchUpTypeContainer />

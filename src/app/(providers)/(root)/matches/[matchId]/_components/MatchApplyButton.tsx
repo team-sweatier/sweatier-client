@@ -1,11 +1,11 @@
 import Icon from "@/components/Icon";
 import { matchDetailIcons } from "@/utils/matchIcons";
 
-interface ApplyStateButtonProps {
+interface MatchApplyButtonProps {
   state: "신청 가능" | "마감 임박" | "마감" | "신청 완료";
 }
 
-function ApplyStateButton({ state }: ApplyStateButtonProps) {
+function MatchApplyButton({ state }: MatchApplyButtonProps) {
   const getButtonClass = (state: string) => {
     switch (state) {
       case "신청 완료":
@@ -48,4 +48,4 @@ function ApplyStateButton({ state }: ApplyStateButtonProps) {
   );
 }
 
-export default ApplyStateButton;
+export default MatchApplyButton;
