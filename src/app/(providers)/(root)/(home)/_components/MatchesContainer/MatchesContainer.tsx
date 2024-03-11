@@ -12,7 +12,7 @@ function MatchesContainer() {
   return (
     <section className="w-full relative">
       <WeeklyCalendar />
-      <TypesList typeName="sports" typesList={sportsList} />
+      <TypesList typeName="sports" typesList={sportsList} className="px-1" />
       <Region />
       <MatchCardsList />
     </section>

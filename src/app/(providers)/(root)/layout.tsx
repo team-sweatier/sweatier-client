@@ -1,5 +1,4 @@
 "use client";
-
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { useModalStore } from "@/store";
@@ -11,7 +10,6 @@ function RootLayout({ children }: { children: React.ReactNode }) {
     <>
       <Header />
       {children}
-      {/* {isOpened ? <LogInModal /> : null} */}
       {modalElement}
       <Footer />
     </>
