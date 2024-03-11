@@ -1,3 +1,4 @@
+// Icon 컴포넌트 수정
 import { StaticImageData } from "next/image";
 import Image from "next/legacy/image";
 import { PropsWithChildren } from "react";
@@ -6,18 +7,21 @@ type IconProps = PropsWithChildren<{
   src: string | StaticImageData;
   alt: string;
   classStyles?: string;
+  width?: number;
+  height?: number;
 }>;
 
-function Icon({ src, alt, classStyles }: IconProps) {
+function Icon({ src, alt, classStyles, width, height }: IconProps) {
   return (
-    <span className="items-stretch">
+    <div className={`flex items-center ${classStyles}`}>
       <Image
-        objectFit="contain" // 종횡비 유지
         src={src}
         alt={alt}
-        className={classStyles}
+        objectFit="contain" // 종횡비 유지
+        width={width}
+        height={height}
       />
-    </span>
+    </div>
   );
 }
 

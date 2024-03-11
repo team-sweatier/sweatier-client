@@ -11,7 +11,7 @@ function MatchDetailPage() {
   return (
     <main className="pb-[50px] mx-auto max-w-screen-md flex flex-col w-full items-center justify-start h-screen relative">
       <Background>
-        <ApplyStateButton />
+        <ApplyStateButton state="신청 가능" />
         <MatchUpContainer />
         <MatchUpTypeContainer />
         <MatchMapContainer />

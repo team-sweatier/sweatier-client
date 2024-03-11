@@ -14,7 +14,7 @@ function MatchMapContainer() {
         <Icon
           alt={"경기 장소"}
           src={matchDetailIcons.address}
-          classStyles="h-full w-full"
+          classStyles="mb-1"
         />
         <div className="font-bold tex-sm">{temporaryDataLabel.keyword}</div>
       </div>
