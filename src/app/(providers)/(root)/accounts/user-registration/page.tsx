@@ -3,6 +3,7 @@
 import api from "@/api";
 import RoundButton from "@/components/Buttons/RoundButton";
 import Page from "@/components/Page";
+import useProfileStore from "@/store/profile.store";
 import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -29,6 +30,7 @@ const bankName = [
 ];
 
 function UserRegistrationPage() {
+  const { setProfile } = useProfileStore();
   const { mutateAsync: registerUser, isPending } = useMutation({
     mutationFn: api.user.registerUser,
   });
@@ -83,7 +85,8 @@ function UserRegistrationPage() {
       formData.append("nickName", nickname);
       formData.append("oneLiner", oneLiner);
 
-      await registerUser(formData);
+      const profile = await registerUser(formData);
+      setProfile(profile);
       alert(`환영합니다 ${nickname}님!!`);
       router.push("/my-page");
     } catch (error) {
