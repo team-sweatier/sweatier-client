@@ -166,12 +166,6 @@ function UserRegistrationPage() {
                 휴대폰 번호
               </label>
               <PhoneNumberInput setPhoneNumber={setPhoneNumber} />
-              {/* <RegistrationInput
-                value={phoneNumber}
-                setValue={setPhoneNumber}
-                placeholder="휴대폰 번호를 입력해주세요."
-                id="phoneNumber"
-              /> */}
             </li>
             <li className="flex flex-col">
               <label

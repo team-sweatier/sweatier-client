@@ -108,9 +108,7 @@ function SignUpPage() {
   return (
     <Page>
       <section className="pb-3 w-full" onClick={handleClickOutside}>
-        <h2 className="a11y-hidden text-3xl font-bold text-center pt-24 text-neutral-90">
-          회원가입하기
-        </h2>
+        <h2 className="a11y-hidden">회원가입하기</h2>
         <form
           onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}
           className="mx-auto max-w-lg py-3 px-5"
