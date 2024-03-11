@@ -9,6 +9,10 @@
     @apply w-px h-px m-[-1px] border-0 p-0;
   }
 
+  .hexagon {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
   .input-error {
     @apply border-2 border-warning focus:border-warning;
     animation: shake 0.5s ease-in-out;
