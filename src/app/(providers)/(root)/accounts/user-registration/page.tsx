@@ -7,6 +7,7 @@ import Image from "next/image";
 import { FormEventHandler, useRef, useState } from "react";
 import DropDownBoxOfBank from "./_components/DropDownBoxOfBank";
 import GenderButton, { Gender } from "./_components/GenderButton";
+import RegistrationInput from "./_components/registrationInput";
 
 const bankName = [
   "국민은행",
@@ -119,7 +120,7 @@ function UserRegistrationPage() {
             </li>
             <li className="flex flex-col">
               <div className="flex">
-                <label htmlFor="" className="font-bold text-neutral-70">
+                <label htmlFor="nickname" className="font-bold text-neutral-70">
                   닉네임
                 </label>
                 <p className="flex items-center">
@@ -134,12 +135,11 @@ function UserRegistrationPage() {
                   </span>
                 </p>
               </div>
-              <input
-                type="text"
-                placeholder="닉네임을 입력해주세요."
-                onChange={(e) => setNickname(e.target.value)}
+              <RegistrationInput
                 value={nickname}
-                className={`h-12 border border-slate-300 rounded-md pl-4 mt-2 focus:border-primary-80 outline-none transition-all duration-500 ease-in-out`}
+                setValue={setNickname}
+                placeholder="닉네임을 입력해주세요."
+                id="nickname"
               />
             </li>
             <li className="flex flex-col gap-y-4">
@@ -158,46 +158,46 @@ function UserRegistrationPage() {
               </div>
             </li>
             <li className="flex flex-col">
-              <label htmlFor="" className="font-bold text-neutral-70">
+              <label
+                htmlFor="phoneNumber"
+                className="font-bold text-neutral-70"
+              >
                 휴대폰 번호
               </label>
-              <input
-                type="text"
-                placeholder="휴대폰 번호를 입력해주세요."
-                onChange={(e) => setPhoneNumber(e.target.value)}
+              <RegistrationInput
                 value={phoneNumber}
-                id=""
-                className={`h-12 border border-slate-300 rounded-md pl-4 mt-2 focus:border-primary-80 outline-none transition-all duration-500 ease-in-out`}
+                setValue={setPhoneNumber}
+                placeholder="휴대폰 번호를 입력해주세요."
+                id="phoneNumber"
               />
             </li>
             <li className="flex flex-col">
-              <label htmlFor="" className="font-bold text-neutral-70">
+              <label
+                htmlFor="accountNumber"
+                className="font-bold text-neutral-70"
+              >
                 계좌 정보
               </label>
               <DropDownBoxOfBank
                 options={bankName}
                 onSelect={handleSelectBankName}
               />
-              <input
-                type="text"
-                placeholder="계좌번호를 입력해주세요."
-                onChange={(e) => setAccountNumber(e.target.value)}
+              <RegistrationInput
                 value={accountNumber}
-                id=""
-                className={`h-12 border border-slate-300 rounded-md pl-4 mt-2 focus:border-primary-80 outline-none transition-all duration-500 ease-in-out`}
+                setValue={setAccountNumber}
+                placeholder="계좌번호를 입력해주세요."
+                id="accountNumber"
               />
             </li>
             <li className="flex flex-col">
-              <label htmlFor="" className="font-bold text-neutral-70">
+              <label htmlFor="oneLiner" className="font-bold text-neutral-70">
                 한 줄 소개
               </label>
-              <input
-                type="text"
-                placeholder="한 줄 소개를 입력해주세요."
-                onChange={(e) => setOneLiner(e.target.value)}
+              <RegistrationInput
                 value={oneLiner}
-                id=""
-                className={`h-12 border border-slate-300 rounded-md pl-4 mt-2 focus:border-primary-80 outline-none transition-all duration-500 ease-in-out`}
+                setValue={setOneLiner}
+                placeholder="한 줄 소개를 입력해주세요."
+                id="oneLiner"
               />
             </li>
             <li>
