@@ -32,7 +32,7 @@ function MatchDetailPage(props: { params: { matchId: string } }) {
         <GetKakaoMap />
         <MatchRuleContainer />
         <AccountContainer
-          isApply={true}
+          isApply={false} //* 현재 로그인한 유저의 해당 post 신청 유무
           accountBank={"신한은행"}
           accountNumber={"1111-11-11111"}
         />
