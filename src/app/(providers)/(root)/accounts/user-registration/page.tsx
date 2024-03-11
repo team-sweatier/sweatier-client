@@ -4,6 +4,7 @@ import api from "@/api";
 import Page from "@/components/Page";
 import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { FormEventHandler, useRef, useState } from "react";
 import DropDownBoxOfBank from "./_components/DropDownBoxOfBank";
 import GenderButton, { Gender } from "./_components/GenderButton";
@@ -36,6 +37,7 @@ function UserRegistrationPage() {
   const [oneLiner, setOneLiner] = useState<string>("");
 
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   // 성별선택
   const handleSelectGender = (gender: Gender) => {
@@ -76,8 +78,9 @@ function UserRegistrationPage() {
       formData.append("nickName", nickname);
       formData.append("oneLiner", oneLiner);
 
-      const profile = await registerUser(formData);
-      console.log(profile);
+      await registerUser(formData);
+      alert(`환영합니다 ${nickname}님!!`);
+      router.push("/my-page");
     } catch (error) {
       alert("유저 정보 등록에 실패하였습니다."); // 현재 타입에러 때문에 임시로 에러메시지 수기작성함. => 추후 백엔드 에러메시지 띄울 예정.
     }
