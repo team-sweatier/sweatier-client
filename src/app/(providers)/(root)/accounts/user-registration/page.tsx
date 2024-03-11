@@ -105,17 +105,24 @@ function UserRegistrationPage() {
           </p>
           <ul className="flex flex-col py-10 gap-y-7">
             <li className="flex flex-col pb-6">
-              <div className="w-32 h-32 rounded-full bg-neutral-30 mx-auto flex relative">
-                {imageUrl && (
-                  <Image src={imageUrl} alt="이미지" width={128} height={128} />
-                )}
-                <button onClick={handleClickCameraIcon} className="">
+              <div className="w-32 h-32 mx-auto relative">
+                <div className="w-full h-full rounded-full bg-neutral-30 mx-auto flex relative overflow-hidden">
+                  {imageUrl && (
+                    <Image
+                      src={imageUrl}
+                      alt="이미지"
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                  )}
+                </div>
+                <button onClick={handleClickCameraIcon}>
                   <Image
                     src="/assets/camera.svg"
                     alt="카메라"
                     width={36}
                     height={36}
-                    className="absolute bottom-2 right-2"
+                    className="absolute bottom-0 right-2"
                   />
                   <input
                     ref={fileInputRef}
