@@ -63,7 +63,11 @@ function MyTierSection({ onClickTierModal }: { onClickTierModal: () => void }) {
         {TranslatedMyTiers?.slice(0, 3)?.map(
           (myTier) =>
             myTier?.sportType?.name && (
-              <Hexagon tier={myTier.value} sportType={myTier.sportType.name} />
+              <Hexagon
+                key={myTier.sportType.name}
+                tier={myTier.value}
+                sportType={myTier.sportType.name}
+              />
             )
         )}
       </div>
@@ -71,7 +75,11 @@ function MyTierSection({ onClickTierModal }: { onClickTierModal: () => void }) {
         {TranslatedMyTiers?.slice(3, 5)?.map(
           (myTier) =>
             myTier?.sportType?.name && (
-              <Hexagon tier={myTier.value} sportType={myTier.sportType.name} />
+              <Hexagon
+                key={myTier.sportType.name}
+                tier={myTier.value}
+                sportType={myTier.sportType.name}
+              />
             )
         )}
       </div>
