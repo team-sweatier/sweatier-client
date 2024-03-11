@@ -1,5 +1,5 @@
 import tennisBannel from "@/../public/assets/match_detail_page/bannels/bannel_tennis_mobile.svg";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { PropsWithChildren } from "react";
 import OverlayBackground from "./OverlayBackground";
 
@@ -8,7 +8,8 @@ function Background({ children }: PropsWithChildren) {
     <div className="relative h-full w-full overflow-y-auto scrollbar-hide">
       <Image
         src={tennisBannel}
-        layout="relative"
+        sizes="100vw"
+        priority
         objectFit="cover"
         alt="Tennis background Image"
         className="w-full"
