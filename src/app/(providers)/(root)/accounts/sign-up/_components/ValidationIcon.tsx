@@ -15,14 +15,14 @@ function ValidationIcon(props: ValidationIconProps) {
         <>
           {isValid ? (
             <Image
-              src="/assets/validation_valid.svg"
+              src="/assets/sign-up_page/validation_valid.svg"
               alt="체크표시"
               width={20}
               height={20}
             />
           ) : (
             <Image
-              src="/assets/validation_invalid.svg"
+              src="/assets/sign-up_page/validation_invalid.svg"
               alt="X표시"
               width={20}
               height={20}
@@ -34,14 +34,14 @@ function ValidationIcon(props: ValidationIconProps) {
         <>
           {isValid ? (
             <Image
-              src="/assets/validation_valid.svg"
+              src="/assets/sign-up_page/validation_valid.svg"
               alt="체크표시"
               width={20}
               height={20}
             />
           ) : (
             <Image
-              src="/assets/validation_default.svg"
+              src="/assets/sign-up_page/validation_default.svg"
               alt="디폴트"
               width={20}
               height={20}

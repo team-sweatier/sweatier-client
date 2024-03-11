@@ -1,15 +1,20 @@
 "use client";
 
 import api from "@/api";
+import RoundButton from "@/components/Buttons/RoundButton";
 import Page from "@/components/Page";
 import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FormEventHandler, useRef, useState } from "react";
 import DropDownBoxOfBank from "./_components/DropDownBoxOfBank";
-import GenderButton, { Gender } from "./_components/GenderButton";
 import PhoneNumberInput from "./_components/PhoneNumberInput";
 import RegistrationInput from "./_components/RegistrationInput";
+
+enum Gender {
+  Male = "male",
+  Female = "female",
+}
 
 const bankName = [
   "국민은행",
@@ -118,7 +123,7 @@ function UserRegistrationPage() {
                 </div>
                 <button type="button" onClick={handleClickCameraIcon}>
                   <Image
-                    src="/assets/camera.svg"
+                    src="/assets/user-registration_page/camera.svg"
                     alt="카메라"
                     width={36}
                     height={36}
@@ -140,7 +145,7 @@ function UserRegistrationPage() {
                 </label>
                 <p className="flex items-center">
                   <Image
-                    src="/assets/validation_default.svg"
+                    src="/assets/sign-up_page/validation_default.svg"
                     alt="디폴트"
                     width={20}
                     height={20}
@@ -160,15 +165,17 @@ function UserRegistrationPage() {
             <li className="flex flex-col gap-y-4">
               <p className="font-bold text-neutral-70">성별</p>
               <div className="flex items-center gap-x-3">
-                <GenderButton
-                  gender={Gender.Male}
-                  selectedGender={gender}
-                  onSelect={handleSelectGender}
+                <RoundButton
+                  label="남성"
+                  onClick={() => handleSelectGender(Gender.Male)}
+                  isSelected={gender === Gender.Male}
+                  className="text-neutral-50 px-4 py-2"
                 />
-                <GenderButton
-                  gender={Gender.Female}
-                  selectedGender={gender}
-                  onSelect={handleSelectGender}
+                <RoundButton
+                  label="여성"
+                  onClick={() => handleSelectGender(Gender.Female)}
+                  isSelected={gender === Gender.Female}
+                  className="text-neutral-50 px-4 py-2"
                 />
               </div>
             </li>

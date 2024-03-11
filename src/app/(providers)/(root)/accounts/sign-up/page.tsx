@@ -215,7 +215,7 @@ function SignUpPage() {
           >
             <div className="h-full flex items-center justify-center">
               <Image
-                src="/assets/kakaotalk.svg"
+                src="/assets/sign-up_page/kakaotalk.svg"
                 alt="카카오톡"
                 width={24}
                 height={24}
