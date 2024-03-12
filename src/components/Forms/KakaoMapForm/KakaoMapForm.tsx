@@ -1,7 +1,8 @@
 "use client";
 import BlueButton from "@/components/Buttons/BlueButton";
+import { MatchResonseType } from "@/types/match.response.type";
 import { matchCreateIcons } from "@/utils/matchIcons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import CreateKakaoMap from "../CreateKakaoMap";
 import FormOuter from "../FormOuter";
@@ -12,17 +13,24 @@ type AddressData = {
   address: string;
 };
 
-function KakaoMapForm() {
+interface KakaoMapFormProps {
+  editValues?: MatchResonseType;
+}
+
+function KakaoMapForm({ editValues }: KakaoMapFormProps) {
   const { control, watch } = useForm<AddressData>();
   const [searchKeyword, setSearchKeyword] = useState<string>("웅진IT 본사");
   const keyword = watch("address");
 
+  useEffect(() => {
+    if (editValues) {
+      setSearchKeyword(editValues?.keyword);
+    }
+  }, [editValues]);
+
   const handleSearch = () => {
     setSearchKeyword(keyword || "웅진IT 본사");
   };
-
-  console.log("keyword", keyword);
-  console.log("searchKeyword", searchKeyword);
 
   return (
     <FormOuter>

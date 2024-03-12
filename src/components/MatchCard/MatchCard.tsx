@@ -1,10 +1,10 @@
 import AvailabilityButton from "@/components/Buttons/AvailabilityButton";
-import { Match } from "@/types/Match.type";
+
 import getMatchAvailableInfo from "@/utils/getMatchAvailableInfo";
 import translateGender from "@/utils/translateGender";
 import Link from "next/link";
 
-function MatchCard({ match }: { match: Match }) {
+function MatchCard({ match }: { match: any }) {
   const teamCapability = match.capability / 2;
   const gender = translateGender(match.gender);
 
