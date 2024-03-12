@@ -27,10 +27,10 @@ function WeeklyCalendar() {
   return (
     <>
       {weeksList ? (
-        <div className="mb-4 flex items-center justify-center z-30 top-0 bg-white h-14 sticky">
+        <div className="mb-4 flex items-center justify-center z-30 top-0 bg-white h-14 sticky border-b ">
           <button
             onClick={() => scroll(-150)}
-            className="px-2 border-b border-transparent sm:flex items-center hidden"
+            className="px-2 sm:flex items-center hidden"
           >
             <Image
               src={arrow}

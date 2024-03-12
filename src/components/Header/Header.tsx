@@ -1,5 +1,6 @@
 "use client";
 
+import mypageIcon from "@/../public/assets/commons/mypage.svg";
 import LogInModal from "@/app/(providers)/(root)/accounts/_components/LogInModal";
 import { useAuthStore, useModalStore } from "@/store";
 import Image from "next/image";
@@ -20,9 +21,10 @@ function Header() {
   //   alert("로그아웃 처리 되었습니다."); //toastify 적용 예정
   // };
 
-  const handleClickMyPageButton = () => {
-    router.push("/my-page");
-  };
+  //   if (accessToken) {
+  //     logIn();
+  //   }
+  // }, [logIn]);
 
   return (
     <header className="border shadow-sm ">
@@ -35,17 +37,19 @@ function Header() {
         </div>
 
         {isLoggedIn ? (
-          <button
-            onClick={handleClickMyPageButton}
-            className="font-bold text-sm text-primary-100 flex justify-end w-8 h-8"
-          >
+          <Link href={"/my-page"} className="w-14 flex justify-end">
             <Image
-              src="assets/commons/myProfile.svg"
-              alt="프로필 아이콘"
+              src={mypageIcon}
+              alt="mypageIcon"
               width={32}
               height={32}
+              sizes="100vw"
+              style={{
+                width: "70%",
+                height: "auto",
+              }}
             />
-          </button>
+          </Link>
         ) : (
           <button
             onClick={handleClickLogInButton}
