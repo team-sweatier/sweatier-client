@@ -1,7 +1,13 @@
+import api from "@/api";
 import useProfileStore from "@/store/profile.store";
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 
 function MyProfileSection() {
+  const { data: myProfile } = useQuery({
+    queryKey: ["myProfile"],
+    queryFn: api.user.getMyProfile,
+  });
   const { profile } = useProfileStore();
 
   return (
@@ -13,12 +19,13 @@ function MyProfileSection() {
         </button>
       </div>
       <div className="rounded-md bg-primary-20 flex px-6 py-4">
-        <div className="w-20 h-20 rounded-full overflow-hidden bg-neutral-50 flex items-center justify-center">
-          {profile?.imageUrl ? (
+        <div className="w-20 h-20 relative rounded-full overflow-hidden bg-neutral-50 flex items-center justify-center">
+          {myProfile ? (
+            // ${process.env.DEPLOYED_NEXT_PUBLIC_SERVER_IMAGE_URL}
             <Image
-              src={profile?.imageUrl}
-              width={80}
-              height={80}
+              src={`https://storage.googleapis.com/sweatier-user-profile-image/${myProfile?.userId}`}
+              layout="fill"
+              objectFit="cover"
               alt="프로필 이미지"
             />
           ) : (
@@ -26,8 +33,8 @@ function MyProfileSection() {
           )}
         </div>
         <div className="flex flex-col justify-center gap-y-2 mx-7">
-          <h6 className="font-bold">{profile?.profile.nickName}</h6>
-          <p className="text-sm">{profile?.profile.oneLiner}</p>
+          <h6 className="font-bold">{myProfile?.nickName}</h6>
+          <p className="text-sm">{myProfile?.oneLiner}</p>
         </div>
       </div>
       <ul>
@@ -36,7 +43,7 @@ function MyProfileSection() {
             휴대폰 번호
           </span>
           <span className="text-neutral-70">|</span>
-          <span className="text-xs pl-3">{profile?.profile.phoneNumber}</span>
+          <span className="text-xs pl-3">{myProfile?.phoneNumber}</span>
         </li>
         <li>
           <span className="font-bold inline-block text-xs w-1/5">
@@ -44,7 +51,7 @@ function MyProfileSection() {
           </span>
           <span className="text-neutral-70">|</span>
           <span className="text-xs pl-3">
-            {profile?.profile.bankName} {profile?.profile.accountNumber}
+            {myProfile?.bankName} {myProfile?.accountNumber}
           </span>
         </li>
       </ul>
