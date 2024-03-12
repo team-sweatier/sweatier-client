@@ -1,3 +1,4 @@
+import api from "@/api";
 import AccountContainer from "./_components/AccountContainer";
 import Background from "./_components/Background";
 import GetKakaoMap from "./_components/GetKakaoMap";
@@ -8,8 +9,15 @@ import MatchUpTypeContainer from "./_components/MatchUpTypeContainer";
 import UserPostControlButtons from "./_components/UserPostControlButtons";
 import UserProfileContainer from "./_components/UserProfileContainer";
 
-function MatchDetailPage(props: { params: { matchId: string } }) {
+async function MatchDetailPage(props: { params: { matchId: string } }) {
   const matchId = props.params.matchId;
+  const match = await api.match.getMatchesByMatchId(matchId);
+
+  if (!match) return null;
+
+  console.log("match :", match);
+
+  console.log("sportType :", match["sportType"]);
 
   // todo 1. [matchId]에 따른 정보 가져오기 -> reqct-query
   //todo 2.[matchId] 글이 유저의 글인지 다른 사용자의 글인지 확인 -> isUserPost
@@ -21,7 +29,7 @@ function MatchDetailPage(props: { params: { matchId: string } }) {
 
   return (
     <main className="pb-[50px] mx-auto max-w-screen-md flex flex-col w-full items-center justify-start h-screen relative">
-      <Background>
+      <Background sportType={match["sportType"]}>
         {isUserPost ? (
           <UserPostControlButtons matchId={matchId} />
         ) : (

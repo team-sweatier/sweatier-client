@@ -3,9 +3,16 @@ import Image from "next/legacy/image";
 import { PropsWithChildren } from "react";
 import OverlayBackground from "./OverlayBackground";
 
-function Background({ children }: PropsWithChildren) {
+interface BackgroundProps {
+  sportType: string;
+}
+
+function Background({
+  sportType,
+  children,
+}: PropsWithChildren<BackgroundProps>) {
   //todo : matchSportType --> 경기 종목 (sport)
-  const matchSportType = "tennis";
+  const matchSportType = sportType || "tennis";
   const matchSportBannerSrc = matchBanner[matchSportType];
 
   return (

@@ -1,3 +1,4 @@
+import { Response } from "@/types/Response.type";
 import { client } from "..";
 import { MatchDto } from "./match.dto";
 
@@ -43,15 +44,27 @@ async function createMatch(matchDto: MatchDto) {
   const data = response.data;
   if (!data.success) throw new Error(data.error.message);
 
-  const matches = data.result;
+  const result = data.result;
 
-  return matches;
+  return result;
+}
+
+async function getMatchesByMatchId(matchId: string) {
+  const response = await client.get<Response>(`/matches/${matchId}`);
+
+  const data = response.data;
+  if (!data.success) throw new Error(data.message);
+
+  const match = data.result;
+
+  return match;
 }
 
 const matchAPI = {
   getMatches,
   getMatchesByTitle,
   createMatch,
+  getMatchesByMatchId,
 };
 
 export default matchAPI;
