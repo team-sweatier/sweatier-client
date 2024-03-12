@@ -14,7 +14,7 @@ const match: Match = {
   address: "장충 체육관",
   matchDay: new Date("2024-03-14T13:00:00"),
   gender: "both",
-  tierId: "세미 프로",
+  tier: "세미 프로",
   createdAt: new Date(),
   updatedAt: new Date(),
   sportsTypeId: "농구",

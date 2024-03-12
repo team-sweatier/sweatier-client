@@ -3,7 +3,7 @@ import FormOuter from "../../Forms/FormOuter";
 interface BlueButtonProps {
   buttonLabel: string;
   isValid: boolean;
-  onclick?: () => void;
+  onClick?: () => void;
   className?: string;
   type?: string;
 }
@@ -11,7 +11,7 @@ interface BlueButtonProps {
 function BlueButton({
   buttonLabel,
   isValid,
-  onclick,
+  onClick,
   className,
   type = "button",
 }: BlueButtonProps) {
@@ -22,7 +22,7 @@ function BlueButton({
         value={buttonLabel}
         className={`bg-primary-100 text-white font-medium rounded-lg text-sm px-5 text-center disabled:cursor-not-allowed cursor-pointer w-full disabled:bg-natural-20 disabled:text-natural-40 sm:py-3 py-2 ${className}`}
         disabled={!isValid}
-        onClick={onclick}
+        onClick={onClick}
       />
     </FormOuter>
   );
