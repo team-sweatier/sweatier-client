@@ -34,7 +34,7 @@ function MatchUpTypeContainer() {
   return (
     <div className="pb-8">
       {Object.entries(temporaryDataLabel).map(([key, label]) => {
-        if (key === "id" || !(key in temporaryData)) return null;
+        if (key === "id" || !(key in temporaryDataLabel)) return null;
 
         let value: string | number = temporaryData[key];
 
