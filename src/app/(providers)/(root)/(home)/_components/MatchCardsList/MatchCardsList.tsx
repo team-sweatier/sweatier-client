@@ -1,9 +1,10 @@
 "use client";
 import MatchCard from "@/components/MatchCard";
 import useFilterStore from "@/store/filter.store";
+import { Match } from "@/types/Match.type";
 
 // todo 임시데이터 수정
-const match = {
+const match: Match = {
   id: "matchId",
   hostId: "hostId",
   title: "농구할 사람",
