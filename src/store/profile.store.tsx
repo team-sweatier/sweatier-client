@@ -2,8 +2,8 @@ import { Profile } from "@/types/Profile.type";
 import { create } from "zustand";
 
 interface ProfileState {
-  profile: Profile | null;
-  setProfile: (profile: Profile | null) => void;
+  profile: Profile["profile"] | null;
+  setProfile: (profile: Profile["profile"] | null) => void;
 }
 
 const useProfileStore = create<ProfileState>((set) => ({
