@@ -61,7 +61,7 @@ function MatchForm() {
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <TypesButtonGroup
-          iconSrc={matchCreateIcons.post}
+          iconSrc={matchCreateIcons.sport}
           id="sport"
           label="종목"
           typeString={matchTypes.sports}

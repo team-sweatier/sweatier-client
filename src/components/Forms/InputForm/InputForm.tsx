@@ -51,8 +51,12 @@ function InputForm({ label, id, placeholder }: InputFormProps) {
     <FormOuter>
       <div className="flex items-center">
         <Label id={id} label={label} iconSrc={matchCreateIcons.title} />
-        <div className="flex pl-1 pb-2 items-center">
-          <Icon src={matchCreateIcons.grayDot} alt="title-required-message" />
+        <div className="flex pl-1 items-center">
+          <Icon
+            src={matchCreateIcons.grayDot}
+            alt="title-required-message"
+            classStyles="pb-1"
+          />
           <p className="text-natural-50 text-xs pl-1">
             제목은 5글자 이상이어야 합니다.
           </p>

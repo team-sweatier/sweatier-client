@@ -18,8 +18,12 @@ function TextareaForm({ label, id, placeholder }: TextareaFormProps) {
     <FormOuter>
       <div className="flex items-center">
         <Label id={id} label={label} iconSrc={matchCreateIcons.content} />
-        <div className="flex pl-1 pb-2">
-          <Icon src={matchCreateIcons.grayDot} alt="title-required-message" />
+        <div className="flex pl-1 items-center">
+          <Icon
+            src={matchCreateIcons.grayDot}
+            alt="title-required-message"
+            classStyles="pb-1"
+          />
           <p className="text-natural-50 text-xs pl-1 ">
             내용은 10글자 이상이어야 합니다.
           </p>
