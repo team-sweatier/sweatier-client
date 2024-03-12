@@ -85,7 +85,7 @@ function MatchForm() {
           typeString={matchTypes.players}
         />
         <CalendarForm />
-        <DropDownGroup id="time" label="경기 시작 시간" />
+        <DropDownGroup />
         <KakaoMapForm />
         <BlueButton buttonLabel="작성 완료" isValid={isValid} type="submit" />
       </form>
