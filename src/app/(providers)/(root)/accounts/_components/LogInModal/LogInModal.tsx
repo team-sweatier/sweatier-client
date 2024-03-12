@@ -37,6 +37,10 @@ function LogInModal() {
     modal.close();
   };
 
+  const handleClickLogInWithKaKao = () => {
+    router.push(`${process.env.NEXT_PUBLIC_SERVER_URL}/users/sign-in/kakao`);
+  };
+
   return (
     <Modal>
       <Heading className="text-center">로그인</Heading>
@@ -87,7 +91,10 @@ function LogInModal() {
           </span>
           <div className="flex-1 border-t border-neutral-40"></div>
         </div>
-        <button className="h-10 bg-yellow-300 w-full px-6 rounded-lg font-semibold my-4 transition hover:-translate-y-1 active:translate-y-0">
+        <button
+          onClick={handleClickLogInWithKaKao}
+          className="h-10 bg-yellow-300 w-full px-6 rounded-lg font-semibold my-4 transition hover:-translate-y-1 active:translate-y-0"
+        >
           <div className="h-full flex items-center justify-center">
             <Image
               src="/assets/sign-up_page/kakaotalk.svg"

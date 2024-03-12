@@ -5,26 +5,17 @@ import LogInModal from "@/app/(providers)/(root)/accounts/_components/LogInModal
 import { useAuthStore, useModalStore } from "@/store";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import Authentication from "../Authentication";
 import SearchBox from "./components/SearchBox";
 
 function Header() {
   const modal = useModalStore();
-  const router = useRouter();
-  const { isLoggedIn, logOut, logIn } = useAuthStore();
+  const { isLoggedIn, logIn } = useAuthStore();
+
+  console.log(isLoggedIn);
   const handleClickLogInButton = () => {
     modal.open(<LogInModal />);
   };
-
-  // const handleClickLogOutButton = () => {
-  //   logOut();
-  //   alert("로그아웃 처리 되었습니다."); //toastify 적용 예정
-  // };
-
-  //   if (accessToken) {
-  //     logIn();
-  //   }
-  // }, [logIn]);
 
   return (
     <header className="border shadow-sm ">
@@ -35,29 +26,30 @@ function Header() {
         <div className="flex-grow mx-4 sm:mx-8 md:mx-16 md:h-full h-7">
           <SearchBox />
         </div>
-
-        {isLoggedIn ? (
-          <Link href={"/my-page"} className="w-14 flex justify-end">
-            <Image
-              src={mypageIcon}
-              alt="mypageIcon"
-              width={32}
-              height={32}
-              sizes="100vw"
-              style={{
-                width: "70%",
-                height: "auto",
-              }}
-            />
-          </Link>
-        ) : (
-          <button
-            onClick={handleClickLogInButton}
-            className="font-bold w-14 text-sm text-primary-100"
-          >
-            로그인
-          </button>
-        )}
+        <Authentication>
+          {isLoggedIn ? (
+            <Link href={"/my-page"} className="w-14 flex justify-end">
+              <Image
+                src={mypageIcon}
+                alt="mypageIcon"
+                width={32}
+                height={32}
+                sizes="100vw"
+                style={{
+                  width: "70%",
+                  height: "auto",
+                }}
+              />
+            </Link>
+          ) : (
+            <button
+              onClick={handleClickLogInButton}
+              className="font-bold w-14 text-sm text-primary-100"
+            >
+              로그인
+            </button>
+          )}
+        </Authentication>
       </div>
     </header>
   );

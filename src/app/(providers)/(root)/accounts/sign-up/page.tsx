@@ -11,7 +11,7 @@ import SignUpInput from "./_components/SignUpInput";
 import ValidationMessage from "./_components/ValidationMessage";
 
 function SignUpPage() {
-  const { mutateAsync: signUp, isPending } = useMutation({
+  const { mutateAsync: signUp } = useMutation({
     mutationFn: api.auth.signUp,
   });
 
