@@ -2,6 +2,7 @@
 import BlueButton from "@/components/Buttons/BlueButton";
 import CalendarForm from "@/components/Forms/CalendarForm";
 import DropDownGroup from "@/components/Forms/DropDownGroup";
+import FormOuter from "@/components/Forms/FormOuter";
 import InputForm from "@/components/Forms/InputForm";
 import KakaoMapForm from "@/components/Forms/KakaoMapForm";
 import TextareaForm from "@/components/Forms/TextAreaForm/TextAreaForm";
@@ -89,7 +90,9 @@ function EditMatchForm({ editValues }: MatchFormProps) {
         <CalendarForm editValue={editValues?.matchDay} />
         <DropDownGroup />
         <KakaoMapForm editValues={editValues} />
-        <BlueButton buttonLabel="수정 완료" isValid={isValid} type="submit" />
+        <FormOuter>
+          <BlueButton buttonLabel="수정 완료" isValid={isValid} type="submit" />
+        </FormOuter>
       </form>
     </FormProvider>
   );

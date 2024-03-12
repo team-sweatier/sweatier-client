@@ -51,11 +51,13 @@ function KakaoMapForm({ editValues }: KakaoMapFormProps) {
               />
             )}
           />
-          <BlueButton
-            buttonLabel="검색"
-            isValid={!!keyword}
-            onclick={handleSearch}
-          />
+          <FormOuter>
+            <BlueButton
+              buttonLabel="검색"
+              isValid={!!keyword}
+              onclick={handleSearch}
+            />
+          </FormOuter>
           <CreateKakaoMap keyword={searchKeyword} />
         </div>
       </div>

@@ -14,6 +14,7 @@ import {
 import BlueButton from "../../Buttons/BlueButton";
 import CalendarForm from "../CalendarForm/CalendarForm";
 import DropDownGroup from "../DropDownGroup";
+import FormOuter from "../FormOuter";
 import InputForm from "../InputForm/InputForm";
 import TextareaForm from "../TextAreaForm/TextAreaForm";
 
@@ -23,6 +24,8 @@ function MatchForm() {
     handleSubmit,
     formState: { isValid },
   } = methods;
+
+  console.log("isValid", isValid);
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     const matchDate =
@@ -55,6 +58,8 @@ function MatchForm() {
     //   ...restOfMatchData,
     //   matchTime: matchTime,
     // };
+
+    console.log("data", data);
   };
 
   return (
@@ -87,7 +92,9 @@ function MatchForm() {
         <CalendarForm />
         <DropDownGroup />
         <KakaoMapForm />
-        <BlueButton buttonLabel="작성 완료" isValid={isValid} type="submit" />
+        <FormOuter>
+          <BlueButton buttonLabel="작성 완료" isValid={true} type="submit" />
+        </FormOuter>
       </form>
     </FormProvider>
   );
