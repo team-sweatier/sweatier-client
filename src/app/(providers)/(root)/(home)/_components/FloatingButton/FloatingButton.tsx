@@ -6,18 +6,20 @@ import Link from "next/link";
 
 function FloatingButton() {
   return (
-    <Link
-      href="/match/create"
-      className="fixed bottom-5 z-30  right-0 sm:right-44  hover:scale-110 transition-all"
-    >
-      <Image
-        src={floating}
-        width={78}
-        height={78}
-        alt="carousel-image"
-        priority
-      />
-    </Link>
+    <div className="z-30 sticky bottom-6 flex justify-end items-end h-[50%]">
+      <Link
+        href="/match/create"
+        className="sm:w-[78px] sm:h-[78px] w-14 h-14 hover:scale-105 transition-all"
+      >
+        <Image
+          src={floating}
+          width={78}
+          height={78}
+          alt="carousel-image"
+          priority
+        />
+      </Link>
+    </div>
   );
 }
 

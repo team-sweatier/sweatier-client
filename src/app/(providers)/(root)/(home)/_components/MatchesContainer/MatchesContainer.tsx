@@ -1,19 +1,24 @@
-import matchTypes from "@/utils/matchTypes";
+import { Match } from "@/types/Match.type";
 import FloatingButton from "../FloatingButton";
 import MatchCardsList from "../MatchCardsList";
 import Region from "../RegionButton/RegionButton";
-import TypesList from "../TypesList";
+import SportTypeFilter from "../SportTypeFilter";
 import WeeklyCalendar from "../WeeklyCalendar";
 
-function MatchesContainer() {
-  const sportsList = matchTypes.sports.map((sport) => Object.keys(sport)[0]);
+interface MatchesContainerProps {
+  matches: Match[];
+  date: string;
+  sportType: string;
+  region: string | undefined;
+}
 
+function MatchesContainer(props: MatchesContainerProps) {
   return (
-    <section className="w-full relative">
+    <section className="w-full relative ">
       <WeeklyCalendar />
-      <TypesList typeName="sports" typesList={sportsList} className="px-1" />
+      <SportTypeFilter />
       <Region />
-      <MatchCardsList />
+      <MatchCardsList matches={props.matches} />
       <FloatingButton />
     </section>
   );
