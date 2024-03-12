@@ -1,7 +1,7 @@
 import AccountContainer from "./_components/AccountContainer";
 import Background from "./_components/Background";
+import GetKakaoMap from "./_components/GetKakaoMap";
 import MatchApplyButton from "./_components/MatchApplyButton";
-import MatchMapContainer from "./_components/MatchMapContainer";
 import MatchRuleContainer from "./_components/MatchRuleContainer";
 import MatchUpContainer from "./_components/MatchUpContainer";
 import MatchUpTypeContainer from "./_components/MatchUpTypeContainer";
@@ -17,7 +17,7 @@ function MatchDetailPage(props: { params: { matchId: string } }) {
   //todo 4. AccountContainer에 유저 계좌 정보 보내기
 
   //* 해당 post가 유저가 작성한 글인지 판별하는 임시 변수
-  const isUserPost = false;
+  const isUserPost = true;
 
   return (
     <main className="pb-[50px] mx-auto max-w-screen-md flex flex-col w-full items-center justify-start h-screen relative">
@@ -29,10 +29,10 @@ function MatchDetailPage(props: { params: { matchId: string } }) {
         )}
         <MatchUpContainer isUserPost={isUserPost} />
         <MatchUpTypeContainer />
-        <MatchMapContainer />
+        <GetKakaoMap />
         <MatchRuleContainer />
         <AccountContainer
-          isApply={true}
+          isApply={false} //* 현재 로그인한 유저의 해당 post 신청 유무
           accountBank={"신한은행"}
           accountNumber={"1111-11-11111"}
         />

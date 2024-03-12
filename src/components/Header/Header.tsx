@@ -5,21 +5,21 @@ import LogInModal from "@/app/(providers)/(root)/accounts/_components/LogInModal
 import { useAuthStore, useModalStore } from "@/store";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import SearchBox from "./components/SearchBox";
 
 function Header() {
   const modal = useModalStore();
+  const router = useRouter();
   const { isLoggedIn, logOut, logIn } = useAuthStore();
   const handleClickLogInButton = () => {
     modal.open(<LogInModal />);
   };
 
-  // useEffect(() => {
-  //   // 쿠키의 존재 유무 => 로그인 상태 업데이트
-  //   const accessToken = document.cookie
-  //     .split(";")
-  //     .find((item) => item.startsWith("accessToken="))
-  //     ?.split("=")[1];
+  // const handleClickLogOutButton = () => {
+  //   logOut();
+  //   alert("로그아웃 처리 되었습니다."); //toastify 적용 예정
+  // };
 
   //   if (accessToken) {
   //     logIn();

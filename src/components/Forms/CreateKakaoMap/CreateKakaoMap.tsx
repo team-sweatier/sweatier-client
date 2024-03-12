@@ -8,7 +8,7 @@ interface KakaoMapProps {
   keyword: string;
 }
 
-function KakaoMap({ keyword }: KakaoMapProps) {
+function CreateKakaoMap({ keyword }: KakaoMapProps) {
   const [coordinates, setCoordinates] = useState({
     lat: 37.5685159133492,
     lng: 126.98020965303,
@@ -72,4 +72,4 @@ function KakaoMap({ keyword }: KakaoMapProps) {
   );
 }
 
-export default KakaoMap;
+export default CreateKakaoMap;
