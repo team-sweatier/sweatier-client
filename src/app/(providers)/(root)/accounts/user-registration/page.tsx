@@ -3,6 +3,7 @@
 import api from "@/api";
 import RoundButton from "@/components/Buttons/RoundButton";
 import Page from "@/components/Page";
+import { Gender } from "@/utils/gender";
 import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -10,11 +11,6 @@ import { FormEventHandler, useRef, useState } from "react";
 import DropDownBoxOfBank from "./_components/DropDownBoxOfBank";
 import PhoneNumberInput from "./_components/PhoneNumberInput";
 import RegistrationInput from "./_components/RegistrationInput";
-
-export enum Gender {
-  Male = "male",
-  Female = "female",
-}
 
 const bankName = [
   "국민은행",
