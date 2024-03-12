@@ -12,6 +12,8 @@ function Header() {
   const modal = useModalStore();
   const router = useRouter();
   const { isLoggedIn, logIn } = useAuthStore();
+
+  console.log(isLoggedIn);
   const handleClickLogInButton = () => {
     modal.open(<LogInModal />);
   };

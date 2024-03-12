@@ -18,7 +18,7 @@ async function signInKaKao(code: string) {
 
 async function refreshToken() {
   const response = await client.get<Response<RefreshTokenData>>(
-    `auth/refresh-token`
+    `/users/refresh-token`
   );
   const data = response.data;
 

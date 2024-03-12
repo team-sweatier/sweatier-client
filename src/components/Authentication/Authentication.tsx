@@ -1,3 +1,5 @@
+"use client";
+
 import api from "@/api";
 import { useAuthStore } from "@/store";
 import { useMutation } from "@tanstack/react-query";
@@ -10,20 +12,19 @@ function Authentication({ children }: { children: React.ReactNode }) {
     mutationFn: api.auth.refreshToken,
   });
 
-  const checkAuth = async () => {
-    try {
-      await refreshToken();
-      logIn();
-    } catch (error) {
-      logOut();
-    } finally {
-      setIsAuthInitialized(true);
-    }
-  };
-
   useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        await refreshToken();
+        logIn();
+      } catch (error) {
+        logOut();
+      } finally {
+        setIsAuthInitialized(true);
+      }
+    };
     checkAuth();
-  }, [checkAuth]);
+  }, [logIn, logOut, refreshToken, setIsAuthInitialized]);
 
   if (!isAuthInitialized) return null;
 
