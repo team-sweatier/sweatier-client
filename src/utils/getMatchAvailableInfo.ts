@@ -1,6 +1,4 @@
-import { Match } from "@/types/match.response.type";
-
-export default function getMatchAvailableInfo(match: Match) {
+export default function getMatchAvailableInfo(match: any) {
   const { applicants, capability } = match;
 
   const ratio = applicants / capability;
