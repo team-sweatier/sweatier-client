@@ -9,6 +9,7 @@ export const sports: MatchTypesObject[] = [
   { 축구: "soccer" },
   { 테니스: "tennis" },
 ];
+
 export const newSports = [
   { label: "농구", value: "basketball" },
   { label: "배드민턴", value: "badminton" },
@@ -16,6 +17,14 @@ export const newSports = [
   { label: "축구", value: "soccer" },
   { label: "테니스", value: "tennis" },
 ];
+
+// [
+//   { 농구: "basketball" },
+//   { 배드민턴: "badminton" },
+//   { 야구: "baseball" },
+//   { 축구: "soccer" },
+//   { 테니스: "tennis" },
+// ];
 
 const gender: MatchTypesObject[] = [
   { "남녀 모두": "both" },
