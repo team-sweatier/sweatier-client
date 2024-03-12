@@ -4,11 +4,11 @@ import MatchCardsList from "../(home)/_components/MatchCardsList";
 
 async function SearchPage(props: {
   searchParams: {
-    keyword: string;
+    keywords: string;
   };
 }) {
-  const keyword = props.searchParams.keyword;
-  const matches = await api.match.getMatchesByTitle(keyword);
+  const keywords = props.searchParams.keywords;
+  const matches = await api.match.getMatchesByTitle(keywords);
 
   return (
     <Page>

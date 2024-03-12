@@ -17,11 +17,10 @@ async function getMatches(sportType: string, date: string, region?: string) {
   return matches;
 }
 
-// ?match-name={경기명}
-async function getMatchesByTitle(keyword: string) {
-  const response = await client.get(`/matches`, {
+async function getMatchesByTitle(keywords: string) {
+  const response = await client.get(`/matches/search`, {
     params: {
-      "match-name": keyword,
+      keywords: keywords,
     },
   });
 
