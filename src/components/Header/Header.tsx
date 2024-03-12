@@ -18,16 +18,15 @@ function Header() {
   };
 
   return (
-    <Authentication>
-      <header className="border shadow-sm ">
-        <div className="px-5 py-4 mx-auto max-w-screen-md flex w-full items-center h-16 justify-between">
-          <Link href="/" className="font-bold text-xl">
-            Sweatier
-          </Link>
-          <div className="flex-grow mx-4 sm:mx-8 md:mx-16 md:h-full h-7">
-            <SearchBox />
-          </div>
-
+    <header className="border shadow-sm ">
+      <div className="px-5 py-4 mx-auto max-w-screen-md flex w-full items-center h-16 justify-between">
+        <Link href="/" className="font-bold text-xl">
+          Sweatier
+        </Link>
+        <div className="flex-grow mx-4 sm:mx-8 md:mx-16 md:h-full h-7">
+          <SearchBox />
+        </div>
+        <Authentication>
           {isLoggedIn ? (
             <Link href={"/my-page"} className="w-14 flex justify-end">
               <Image
@@ -50,9 +49,9 @@ function Header() {
               로그인
             </button>
           )}
-        </div>
-      </header>
-    </Authentication>
+        </Authentication>
+      </div>
+    </header>
   );
 }
 
