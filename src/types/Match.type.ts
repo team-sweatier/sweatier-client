@@ -2,7 +2,7 @@ export type Match = {
   id: string;
   hostId: string;
   sportsTypeId: string;
-  tierId: string;
+  tier: string;
   title: string;
   content: string;
   applicants: number;

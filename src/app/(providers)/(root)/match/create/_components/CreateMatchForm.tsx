@@ -1,4 +1,5 @@
 "use client";
+import "@/components/Forms/CalendarForm/calendar.css";
 import ContentTextarea from "@/components/Forms/ContentTextarea/ContentTextarea";
 import GenderSelector from "@/components/Forms/GenderSelector/GenderSelector";
 import MatchCalendar from "@/components/Forms/MatchCalendar/MatchCalendar";

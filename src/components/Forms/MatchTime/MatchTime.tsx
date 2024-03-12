@@ -10,7 +10,7 @@ function MatchTime() {
   return (
     <FormOuter>
       <label
-        className="font-bold pb-2 flex items-center gap-x-1 py-1"
+        className="font-bold flex items-center gap-x-1 pb-4"
         htmlFor="capability"
       >
         <Icon

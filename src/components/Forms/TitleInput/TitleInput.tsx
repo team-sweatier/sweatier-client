@@ -9,7 +9,7 @@ function TitleInput() {
     <FormOuter>
       <div className="flex items-center">
         <label
-          className="font-bold pb-2 flex items-center gap-x-1 py-1"
+          className="font-bold pb-4 flex items-center gap-x-1"
           htmlFor="title"
         >
           <Icon

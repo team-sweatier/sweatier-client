@@ -52,7 +52,7 @@ function CreateKakaoMap({ kakaoMapResult, onSearchResult }: KakaoMapProps) {
     <Map
       center={coordinates}
       level={3}
-      className="w-full col-span-4 h-[210px] sm:h-[360px] rounded-md"
+      className="w-full col-span-5 h-[210px] sm:h-[360px] rounded-md"
     >
       <MapMarker position={coordinates}></MapMarker>
       <div className="customoverlay relative">

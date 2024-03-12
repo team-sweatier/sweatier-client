@@ -11,7 +11,7 @@ function TypesList({
   setSelectedState,
 }: {
   typeName: string;
-  typesList: string[];
+  typesList: readonly string[];
   className?: string;
   selectedState?: string;
   setSelectedState?: Dispatch<SetStateAction<string>>;

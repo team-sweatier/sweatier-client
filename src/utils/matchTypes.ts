@@ -2,7 +2,7 @@ export type MatchTypesObject = {
   [key: string]: string | number;
 };
 
-const sports: MatchTypesObject[] = [
+export const sports: MatchTypesObject[] = [
   { 농구: "basketball" },
   { 배드민턴: "badminton" },
   { 야구: "baseball" },
@@ -67,7 +67,7 @@ const timeHours = [
 
 const timeMinutes = ["00", "30"];
 
-const regions = [
+export const regions = [
   "서울",
   "경기",
   "인천",
@@ -85,7 +85,7 @@ const regions = [
   "전남",
   "전북",
   "제주",
-];
+] as const;
 
 const matchTypes = {
   sports,

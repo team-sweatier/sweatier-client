@@ -1,8 +1,13 @@
+import { Url } from "next/dist/shared/lib/router/router";
+import Link from "next/link";
+
 interface RoundButtonProps {
   label: string;
   onClick?: () => void;
   isSelected?: boolean;
   className?: string;
+  isLink?: boolean;
+  href?: Url;
 }
 
 function RoundButton({
@@ -10,13 +15,21 @@ function RoundButton({
   onClick,
   className,
   isSelected = false,
+  isLink = false,
+  href,
   ...props
 }: RoundButtonProps) {
-  const buttonClassName = `text-xs px-4 py-2.5 rounded-full ${
-    isSelected
-      ? "text-white bg-primary-100 drop-shadow-[0px_0px_2px_#0f8cff] border-[0.0px] font-bold"
-      : "text-natural-50 border-natural-60/90 border-[1px]"
-  } ${className || ""}`;
+  const buttonClassName = `rounded-button ${isSelected ? "selected" : ""} ${
+    className || ""
+  }`;
+
+  if (isLink && href) {
+    return (
+      <Link className={buttonClassName} href={href} {...props}>
+        {label}
+      </Link>
+    );
+  }
 
   return (
     <button
