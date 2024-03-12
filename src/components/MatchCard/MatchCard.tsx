@@ -18,7 +18,7 @@ function MatchCard({ match, className }: { match: Match; className?: string }) {
         <div className="font-bold">{match.matchTime}</div>
         <div className="text-sm">{match.address}</div>
         <div className="text-[11px] flex justify-between">
-          <span className="text-neutral-60">{`${gender} | ${teamCapability}vs${teamCapability} | ${match.tierId}`}</span>
+          <span className="text-neutral-60">{`${gender} | ${teamCapability}vs${teamCapability} | ${match.tier}`}</span>
           <AvailabilityButton
             imagePath={matchAvailableInfo.imagePath}
             label={matchAvailableInfo.label}
