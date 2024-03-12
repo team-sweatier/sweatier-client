@@ -86,7 +86,7 @@ function EditMatchForm({ editValues }: MatchFormProps) {
           typeString={matchTypes.players}
           selectedValue={selectedPlayersKey}
         />
-        <CalendarForm />
+        <CalendarForm editValue={editValues?.matchDay} />
         <DropDownGroup />
         <KakaoMapForm editValues={editValues} />
         <BlueButton buttonLabel="수정 완료" isValid={isValid} type="submit" />

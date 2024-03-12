@@ -17,7 +17,11 @@ function DropDownGroup() {
             control={control}
             name="hour"
             render={({ field }) => (
-              <DropDownBox options={matchTypes.timeHours} {...field} />
+              <DropDownBox
+                options={matchTypes.timeHours}
+                value={field.value}
+                onChange={field.onChange}
+              />
             )}
           />
           <span>시</span>
@@ -28,7 +32,11 @@ function DropDownGroup() {
             control={control}
             name="minute"
             render={({ field }) => (
-              <DropDownBox options={matchTypes.timeHours} {...field} />
+              <DropDownBox
+                options={matchTypes.timeMinutes}
+                value={field.value}
+                onChange={field.onChange}
+              />
             )}
           />
           <span>분</span>

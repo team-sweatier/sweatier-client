@@ -22,8 +22,6 @@ function TypesButtonGroup({
 }: TypesButtonGroupProps) {
   const { control, watch } = useFormContext();
 
-  console.log("selectedValue", selectedValue);
-
   return (
     <FormOuter>
       <Label id={id} label={label} iconSrc={iconSrc} />
