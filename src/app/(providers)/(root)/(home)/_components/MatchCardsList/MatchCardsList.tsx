@@ -1,38 +1,23 @@
-"use client";
 import MatchCard from "@/components/MatchCard";
-import useFilterStore from "@/store/filter.store";
 import { Match } from "@/types/Match.type";
 
-// todo 임시데이터 수정
-const match: Match = {
-  id: "matchId",
-  hostId: "hostId",
-  title: "농구할 사람",
-  content: "농구농구농구농구농구",
-  capability: 6,
-  address: "장충 체육관",
-  matchDay: new Date("2024-03-14T13:00:00"),
-  gender: "both",
-  tierId: "세미 프로",
-  createdAt: new Date(),
-  updatedAt: new Date(),
-  sportsTypeId: "농구",
-  applicants: 2,
-  matchTime: "13:00",
-};
+interface MatchCardsListProps {
+  matches: Match[];
+}
 
-function MatchCardsList() {
-  const { date, region, sports } = useFilterStore();
-  const matchList = [match, match, match, match];
-
-  return (
+function MatchCardsList({ matches }: MatchCardsListProps) {
+  return matches.length ? (
     <ul className="flex flex-col gap-y-4 sm:gap-8">
-      {matchList.map((match, index) => (
-        <li key={index}>
+      {matches.map((match) => (
+        <li key={match.id}>
           <MatchCard match={match} className="mx-1" />
         </li>
       ))}
     </ul>
+  ) : (
+    <div className="flex justify-center mt-24 text-neutral-70 text-sm">
+      일치하는 장소가 없습니다.
+    </div>
   );
 }
 

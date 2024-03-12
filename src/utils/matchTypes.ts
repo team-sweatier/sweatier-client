@@ -2,13 +2,29 @@ export type MatchTypesObject = {
   [key: string]: string | number;
 };
 
-const sports: MatchTypesObject[] = [
+export const sports: MatchTypesObject[] = [
   { 농구: "basketball" },
   { 배드민턴: "badminton" },
   { 야구: "baseball" },
   { 축구: "soccer" },
   { 테니스: "tennis" },
 ];
+
+export const newSports = [
+  { label: "농구", value: "basketball" },
+  { label: "배드민턴", value: "badminton" },
+  { label: "야구", value: "baseball" },
+  { label: "축구", value: "soccer" },
+  { label: "테니스", value: "tennis" },
+];
+
+// [
+//   { 농구: "basketball" },
+//   { 배드민턴: "badminton" },
+//   { 야구: "baseball" },
+//   { 축구: "soccer" },
+//   { 테니스: "tennis" },
+// ];
 
 const gender: MatchTypesObject[] = [
   { "남녀 모두": "both" },
@@ -60,7 +76,7 @@ const timeHours = [
 
 const timeMinutes = ["00", "30"];
 
-const regions = [
+export const regions = [
   "서울",
   "경기",
   "인천",
@@ -78,7 +94,7 @@ const regions = [
   "전남",
   "전북",
   "제주",
-];
+] as const;
 
 const matchTypes = {
   sports,

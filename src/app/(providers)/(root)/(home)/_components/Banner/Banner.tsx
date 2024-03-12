@@ -17,6 +17,7 @@ function Banner() {
         spaceBetween={50}
         slidesPerView={1}
         pagination={{ clickable: true }}
+        className="rounded-3xl"
       >
         <SwiperSlide>
           <Image

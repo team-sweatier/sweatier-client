@@ -30,7 +30,7 @@ function RatingForm({ participants }: { participants: participantDto[] }) {
       <BlueButton
         isValid={isValid}
         buttonLabel="평가 완료"
-        onclick={handleClickButton}
+        onClick={handleClickButton}
       />
     </div>
   );
