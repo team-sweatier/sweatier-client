@@ -18,11 +18,13 @@ function DropDownBoxOfBank({ options, onSelect }: DropDownBoxProps) {
   };
 
   return (
-    <div className="w-1/3">
+    <div className="w-2/5">
       <div className="relative">
         <button
           type="button"
-          className="w-full text-left bg-white text-neutral-70 focus:border-primary-80 outline-none border-2 px-5 py-2 block appearance-none border-natural-30 leading-tight focus:outline-none focus:shadow-outline rounded-full text-natural-50"
+          className={`w-full text-left bg-white focus:border-primary-80 outline-none border-2 px-5 py-2 block appearance-none border-natural-30 leading-tight focus:outline-none focus:shadow-outline rounded-full text-natural-50 ${
+            selectedValue === "은행선택" ? `text-neutral-50` : `text-neutral-70`
+          }`}
           onClick={toggleDropdown}
         >
           {selectedValue}

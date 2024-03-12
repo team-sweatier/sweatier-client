@@ -91,17 +91,14 @@ function UserRegistrationPage() {
     <Page>
       <section className="pb-3 w-full">
         <h2 className="a11y-hidden">유저 정보 등록</h2>
-        <form
-          className="mx-auto max-w-lg py-3 px-5"
-          onSubmit={handleSubmitForm}
-        >
-          <p className="py-4 text-2xl font-black tracking-[-.1em]">
+        <form className="mx-auto max-w-lg " onSubmit={handleSubmitForm}>
+          <p className="pb-4 text-2xl font-black tracking-[-.1em]">
             유저 정보 등록
           </p>
-          <p className="font-bold tracking-tighter">
+          <p className="font-bold text-xs tracking-tighter">
             원활한 서비스 사용을 위해
           </p>
-          <p className="font-bold tracking-tighter">
+          <p className="font-bold text-xs tracking-tighter">
             아래의 필수사항을 입력해주세요
           </p>
           <ul className="flex flex-col py-10 gap-y-7">
@@ -146,7 +143,7 @@ function UserRegistrationPage() {
                     width={20}
                     height={20}
                   />
-                  <span className="text-xs text-neutral-40">
+                  <span className="text-[11px] text-neutral-50">
                     중복되지 않는 닉네임이어야 합니다.
                   </span>
                 </p>
@@ -178,7 +175,7 @@ function UserRegistrationPage() {
             <li className="flex flex-col">
               <label
                 htmlFor="phoneNumber"
-                className="font-bold text-neutral-70"
+                className="font-bold text-neutral-70 mb-[13px]"
               >
                 휴대폰 번호
               </label>
@@ -187,7 +184,7 @@ function UserRegistrationPage() {
             <li className="flex flex-col">
               <label
                 htmlFor="accountNumber"
-                className="font-bold text-neutral-70"
+                className="font-bold text-neutral-70 mb-[13px]"
               >
                 계좌 정보
               </label>
@@ -204,12 +201,12 @@ function UserRegistrationPage() {
             </li>
             <li className="flex flex-col">
               <label htmlFor="oneLiner" className="font-bold text-neutral-70">
-                한 줄 소개
+                자기 소개
               </label>
               <RegistrationInput
                 value={oneLiner}
                 setValue={setOneLiner}
-                placeholder="한 줄 소개를 입력해주세요."
+                placeholder="자기 소개를 한 줄 입력해주세요."
                 id="oneLiner"
               />
             </li>
