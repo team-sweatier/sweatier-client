@@ -3,6 +3,7 @@
 import api from "@/api";
 import RoundButton from "@/components/Buttons/RoundButton";
 import Page from "@/components/Page";
+import { bankName } from "@/utils/bankName";
 import { Gender } from "@/utils/gender";
 import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
@@ -11,18 +12,6 @@ import { FormEventHandler, useRef, useState } from "react";
 import DropDownBoxOfBank from "./_components/DropDownBoxOfBank";
 import PhoneNumberInput from "./_components/PhoneNumberInput";
 import RegistrationInput from "./_components/RegistrationInput";
-
-const bankName = [
-  "국민은행",
-  "기업은행",
-  "농협은행",
-  "신한은행",
-  "우리은행",
-  "하나은행",
-  "우체국",
-  "카카오뱅크",
-  "토스뱅크",
-];
 
 function UserRegistrationPage() {
   const { mutateAsync: registerUser, isPending } = useMutation({
@@ -175,7 +164,7 @@ function UserRegistrationPage() {
             <li className="flex flex-col">
               <label
                 htmlFor="phoneNumber"
-                className="font-bold text-neutral-70 mb-[13px]"
+                className="font-bold text-neutral-70"
               >
                 휴대폰 번호
               </label>
@@ -184,7 +173,7 @@ function UserRegistrationPage() {
             <li className="flex flex-col">
               <label
                 htmlFor="accountNumber"
-                className="font-bold text-neutral-70 mb-[13px]"
+                className="font-bold text-neutral-70"
               >
                 계좌 정보
               </label>

@@ -18,7 +18,7 @@ function DropDownBoxOfBank({ options, onSelect }: DropDownBoxProps) {
   };
 
   return (
-    <div className="w-2/5">
+    <div className="w-2/5 mt-[13px]">
       <div className="relative">
         <button
           type="button"
