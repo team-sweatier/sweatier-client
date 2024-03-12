@@ -9,7 +9,7 @@ function SportTypeFilter() {
   const selectedSportTypeValue = searchParams.get("sportType") || "basketball";
 
   return (
-    <ul className={`flex items-center my-4 gap-1 sm:gap-2 px-1`}>
+    <ul className={`flex items-center my-4 gap-1 sm:gap-2 px-1 h-[34px]`}>
       {newSports.map((sport) => {
         const queryString = new URLSearchParams(searchParams.toString());
         queryString.set("sportType", sport.value);

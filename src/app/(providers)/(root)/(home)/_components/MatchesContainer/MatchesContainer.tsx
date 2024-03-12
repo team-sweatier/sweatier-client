@@ -14,7 +14,7 @@ interface MatchesContainerProps {
 
 function MatchesContainer(props: MatchesContainerProps) {
   return (
-    <section className="w-full relative h-full">
+    <section className="w-full h-full relative">
       <WeeklyCalendar />
       <SportTypeFilter />
       <Region />
