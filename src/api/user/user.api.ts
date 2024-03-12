@@ -22,7 +22,6 @@ async function getMyProfile() {
   if (!data.success) throw new Error(data.message);
 
   const myProfile = data.result;
-  console.log(myProfile);
   return myProfile;
 }
 

@@ -1,4 +1,5 @@
 import api from "@/api";
+import { useAuthStore } from "@/store";
 import useProfileStore from "@/store/profile.store";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
@@ -9,11 +10,18 @@ function MyProfileSection() {
     queryKey: ["myProfile"],
     queryFn: api.user.getMyProfile,
   });
+  const { logOut } = useAuthStore();
   const router = useRouter();
   const { profile } = useProfileStore();
 
   const handleClickProfileEditButton = () => {
     router.push("/my-page/edit-profile");
+  };
+
+  const handleClickLogOut = () => {
+    logOut();
+    alert("로그아웃 처리되었습니다.");
+    router.push("/");
   };
 
   return (
@@ -25,6 +33,12 @@ function MyProfileSection() {
           className="border-neutral-90 border rounded-2xl text-xs ml-4 py-2 px-3 hover:border-primary-100 hover:text-primary-100"
         >
           수정
+        </button>
+        <button
+          onClick={handleClickLogOut}
+          className="border-neutral-90 border rounded-2xl text-xs ml-4 py-2 px-3 hover:border-primary-100 hover:text-primary-100"
+        >
+          로그아웃
         </button>
       </div>
       <div className="rounded-md bg-primary-20 flex px-6 py-4">
