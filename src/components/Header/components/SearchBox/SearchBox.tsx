@@ -14,7 +14,7 @@ function SearchBox() {
         onChange={(e) => setKeyword(e.target.value)}
       />
       <Link
-        href={`search?keyword=${keyword}`}
+        href={`search?match-name=${keyword}`}
         className="absolute right-2 sm:top-1.8 sm:right-3 "
       >
         <Image src={search} width={22} height={22} alt="search-icon" />
