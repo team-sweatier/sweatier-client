@@ -8,18 +8,19 @@ function MyCalendar() {
   const [selected, setSelected] = useState<Date>();
 
   return (
-    <div className="w-full h-full bg-neutral-40 grid grid-cols-1 relative flex-col">
+    <div className="w-full h-full flex flex-col items-center overflow-hidden relative">
       <DayPicker
         mode="single"
         selected={selected}
         onSelect={setSelected}
         fromDate={new Date()}
+        className="text-neutral-20"
         showOutsideDays
         classNames={{
-          table: "w-full border-collapse bg-red-300",
-          head_row: "flex font-medium text-gray-900",
-          head_cell: "m-1 w-full font-normal text-sm",
-          row: "w-full mt-2",
+          table: "border-collapse grid relative",
+          head_row: "flex font-medium text-gray-900  w-full",
+          head_cell: "m-1 w-full font-normal",
+          row: "w-full mt-2 border-neutral-20 border-b-[0.5px]",
           cell: "text-gray-600 rounded-md h-9 w-9 text-center text-base p-0 m-1 mb-2 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-natural-40 [&:has([aria-selected].day-outside)]:text-white [&:has([aria-selected])]:bg-primary-40 rounded-md first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
           day: "h-9 w-9 p-0 font-normal",
           day_range_end: "day-range-end",
