@@ -2,7 +2,6 @@
 
 import KakaoMapForm from "@/components/Forms/KakaoMapForm";
 import TypesButtonGroup from "@/components/Forms/TypesButtonGroup";
-import MatchDto from "@/types/matchDto.type";
 import { matchCreateIcons } from "@/utils/matchIcons";
 import matchTypes from "@/utils/matchTypes";
 import dayjs from "dayjs";
@@ -18,15 +17,8 @@ import DropDownGroup from "../DropDownGroup";
 import InputForm from "../InputForm/InputForm";
 import TextareaForm from "../TextAreaForm/TextAreaForm";
 
-//* 수정데이터가 있다면(editValues) 해당 values를 defaultValues로, 아니면 {}로
-interface MatchFormProps {
-  editValues?: MatchDto;
-}
-
-function MatchForm({ editValues }: MatchFormProps) {
-  const methods = useForm<FieldValues>({
-    defaultValues: editValues || {},
-  });
+function MatchForm() {
+  const methods = useForm<FieldValues>();
   const {
     handleSubmit,
     formState: { isValid },
@@ -63,8 +55,6 @@ function MatchForm({ editValues }: MatchFormProps) {
     //   ...restOfMatchData,
     //   matchTime: matchTime,
     // };
-
-    console.log("requestData", requestData);
   };
 
   return (
@@ -90,18 +80,14 @@ function MatchForm({ editValues }: MatchFormProps) {
         />
         <TypesButtonGroup
           iconSrc={matchCreateIcons.players}
-          id="players"
+          id="capability"
           label="매치유형"
           typeString={matchTypes.players}
         />
         <CalendarForm />
-        <DropDownGroup id="time" label="경기 시작 시간" />
+        <DropDownGroup />
         <KakaoMapForm />
-        <BlueButton
-          buttonLabel={editValues ? "수정 완료" : "작성 완료"}
-          isValid={isValid}
-          type="submit"
-        />
+        <BlueButton buttonLabel="작성 완료" isValid={isValid} type="submit" />
       </form>
     </FormProvider>
   );

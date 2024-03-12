@@ -1,41 +1,27 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useFormContext } from "react-hook-form";
+import { useState } from "react";
 
 interface DropDownBoxProps {
   options: string[];
-  registerId: string;
+  value: string;
+  onChange: (selectedValue: string) => void;
 }
 
-function DropDownBox({ options, registerId }: DropDownBoxProps) {
-  const { setValue, watch, unregister } = useFormContext();
+function DropDownBox({ options, value, onChange }: DropDownBoxProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  //* 현재 선택된 값을 실시간으로 watch
-  const selectedValue = watch(registerId);
 
   //* Dropdown 열고 닫기
   const toggleDropdown = () => setIsOpen(!isOpen);
-
-  //* 클릭한 value로 값을 갱신하고 드롭다운 닫기
-  const handleOptionClick = (value: string) => {
-    setValue(registerId, value, { shouldDirty: true, shouldValidate: true });
-    toggleDropdown();
-  };
-
-  useEffect(() => {
-    return () => unregister(registerId); // 필드가 언마운트될 때 react-hook-form에서 해당 필드를 해제
-  }, [unregister, registerId]);
 
   return (
     <div className="w-24">
       <div className="relative">
         <button
           type="button"
-          className="w-full text-left bg-white border-2 px-5 py-2 block appearance-none border-natural-30 leading-tight focus:outline-none focus:shadow-outline rounded-full text-natural-50"
           onClick={toggleDropdown}
+          className="w-full text-left bg-white border-2 px-5 py-2 block appearance-none border-natural-30 leading-tight focus:outline-none focus:shadow-outline rounded-full text-natural-50"
         >
-          {selectedValue || options[0]}
+          {value || options[0]}
           <span className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
             <svg
               className="w-5 h-5"
@@ -59,21 +45,22 @@ function DropDownBox({ options, registerId }: DropDownBoxProps) {
             </svg>
           </span>
         </button>
-        <ul
-          className={`${
-            isOpen ? "block" : "hidden"
-          } absolute bg-white w-full border border-gray-300 rounded-md mt-1 max-h-60 overflow-auto text-natural-50 scrollbar-hide z-10`}
-        >
-          {options.map((option, index) => (
-            <li
-              key={index}
-              className="px-5 py-2 hover:bg-gray-100 cursor-pointer"
-              onClick={() => handleOptionClick(option)}
-            >
-              {option}
-            </li>
-          ))}
-        </ul>
+        {isOpen && (
+          <ul className="absolute bg-white w-full border border-gray-300 rounded-md mt-1 max-h-60 overflow-auto text-natural-50 z-10">
+            {options.map((option, index) => (
+              <li
+                key={index}
+                className="px-5 py-2 hover:bg-gray-100 cursor-pointer"
+                onClick={() => {
+                  onChange(option);
+                  toggleDropdown();
+                }}
+              >
+                {option}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );

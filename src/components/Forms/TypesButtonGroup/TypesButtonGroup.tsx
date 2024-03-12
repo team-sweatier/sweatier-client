@@ -10,6 +10,7 @@ interface TypesButtonGroupProps {
   id: string;
   typeString: MatchTypesObject[];
   iconSrc: StaticImageData;
+  selectedValue?: string | number;
 }
 
 function TypesButtonGroup({
@@ -17,6 +18,7 @@ function TypesButtonGroup({
   label,
   typeString,
   iconSrc,
+  selectedValue,
 }: TypesButtonGroupProps) {
   const { control, watch } = useFormContext();
 
@@ -35,7 +37,11 @@ function TypesButtonGroup({
                 key={i}
                 label={Object.keys(type)[0]}
                 onClick={() => field.onChange(Object.values(type)[0])}
-                isSelected={watch(id) === Object.values(type)[0]}
+                isSelected={
+                  selectedValue
+                    ? selectedValue === Object.values(type)[0]
+                    : watch(id) === Object.values(type)[0]
+                }
               />
             )}
           />

@@ -1,25 +1,20 @@
 "use client";
 
+import mypageIcon from "@/../public/assets/commons/mypage.svg";
 import LogInModal from "@/app/(providers)/(root)/accounts/_components/LogInModal";
 import { useAuthStore, useModalStore } from "@/store";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import Authentication from "../Authentication";
 import SearchBox from "./components/SearchBox";
 
 function Header() {
   const modal = useModalStore();
-  const router = useRouter();
   const { isLoggedIn, logIn } = useAuthStore();
 
   console.log(isLoggedIn);
   const handleClickLogInButton = () => {
     modal.open(<LogInModal />);
-  };
-
-  const handleClickMyPageButton = () => {
-    router.push("/my-page");
   };
 
   return (
@@ -34,17 +29,19 @@ function Header() {
           </div>
 
           {isLoggedIn ? (
-            <button
-              onClick={handleClickMyPageButton}
-              className="font-bold text-sm text-primary-100 flex justify-end w-8 h-8"
-            >
+            <Link href={"/my-page"} className="w-14 flex justify-end">
               <Image
-                src="assets/commons/myProfile.svg"
-                alt="프로필 아이콘"
+                src={mypageIcon}
+                alt="mypageIcon"
                 width={32}
                 height={32}
+                sizes="100vw"
+                style={{
+                  width: "70%",
+                  height: "auto",
+                }}
               />
-            </button>
+            </Link>
           ) : (
             <button
               onClick={handleClickLogInButton}

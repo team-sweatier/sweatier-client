@@ -29,7 +29,7 @@ function MatchCardsList() {
     <ul className="flex flex-col gap-y-4 sm:gap-8">
       {matchList.map((match, index) => (
         <li key={index}>
-          <MatchCard match={match} />
+          <MatchCard match={match} className="mx-1" />
         </li>
       ))}
     </ul>

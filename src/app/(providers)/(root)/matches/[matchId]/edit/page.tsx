@@ -1,23 +1,31 @@
-import MatchForm from "@/components/Forms/MatchForm/MatchForm";
+import Heading from "@/components/Heading";
 import Page from "@/components/Page";
-import MatchDto from "@/types/matchDto.type";
+import { MatchResonseType } from "@/types/match.response.type";
+import EditMatchForm from "./_components/EditMatchForm";
 
 //todo: 임시 수정 데이터
-const editValues: MatchDto = {
-  title: "기존 제목",
-  content: "기존 내용",
-  players: "2명",
-  gender: "혼성",
-  date: "2024-03-05",
-  time: "15:00",
-  place: "서울",
+const editValues: MatchResonseType = {
+  sport: "tennis",
+  title: "매헌시민의 숲 테니스장",
+  content:
+    "함께 테니스 치실 분 모집합니다. 참가신청 해주세요. 함께 테니스 치실 분 모집합니다. 참가신청 해주세요. 함께 테니스 치실 분 모집합니다. 참가신청 해주세요!",
+  applicants: 1,
+  capability: 4,
+  gender: "female",
+  matchDay: new Date(2024, 3, 15, 21, 30),
+  keyword: "매현시민의 숲 테니스장",
+  address: "서울 서초구 매헌로 99",
+  latitude: 37.4730498033959,
+  longitude: 127.036977084936,
 };
 
 function EditMatchPage() {
   return (
     <Page>
-      <h2>Match 수정 페이지</h2>
-      <MatchForm editValues={editValues} />
+      <div className="w-full relative">
+        <Heading>게시물 수정</Heading>
+        <EditMatchForm editValues={editValues} />
+      </div>
     </Page>
   );
 }
