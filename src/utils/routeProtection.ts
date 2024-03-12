@@ -1,26 +1,28 @@
-import { useAuthStore } from "@/store";
-import useProfileStore from "@/store/profile.store";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+// "use client";
 
-export const protectPrivateRoute = () => {
-  const router = useRouter();
-  const { isLoggedIn } = useAuthStore();
-  const { profile } = useProfileStore();
+// import { useAuthStore } from "@/store";
+// import useProfileStore from "@/store/profile.store";
+// import { useRouter } from "next/router";
+// import { useEffect } from "react";
 
-  useEffect(() => {
-    const hasRegistered = profile?.nickName ? "true" : "false"; // 사용자 정보 등록 상태 체킹
+// export const protectPrivateRoute = () => {
+//   const router = useRouter();
+//   const { isLoggedIn } = useAuthStore();
+//   const { profile } = useProfileStore();
 
-    const path = router.pathname;
+//   useEffect(() => {
+//     const hasRegistered = profile?.nickName ? "true" : "false"; // 사용자 정보 등록 상태 체킹
 
-    if (!isLoggedIn && path === "/my-page") {
-      router.push("/signup");
-      return;
-    }
+//     const path = router.pathname;
 
-    if (isLoggedIn && !hasRegistered && !/^\/user-dashboard/.test(path)) {
-      router.push("/accounts/user-registration");
-      return;
-    }
-  }, [router]);
-};
+//     if (!isLoggedIn && path === "/my-page") {
+//       router.push("/signup");
+//       return;
+//     }
+
+//     if (isLoggedIn && !hasRegistered && !/^\/user-dashboard/.test(path)) {
+//       router.push("/accounts/user-registration");
+//       return;
+//     }
+//   }, [router]);
+// };
