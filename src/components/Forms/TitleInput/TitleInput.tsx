@@ -7,11 +7,8 @@ function TitleInput() {
   const { register } = useFormContext();
   return (
     <FormOuter>
-      <div className="flex items-center">
-        <label
-          className="font-bold pb-4 flex items-center gap-x-1"
-          htmlFor="title"
-        >
+      <div className="flex items-center pb-4">
+        <label className="font-bold flex items-center gap-x-1" htmlFor="title">
           <Icon
             src={matchCreateIcons.title}
             alt="postIcon-icon"
@@ -39,7 +36,7 @@ function TitleInput() {
           },
         })}
         id="title"
-        className="border border-neutral-30 placeholder:text-neutral-50 text-sm rounded-lg focus:ring-primary-100 focus:border-primary-100 block w-full dark:bg-neutral-50 dark:border-neutral-50 dark:placeholder-neutral-50 dark:text-white dark:focus:ring-primary-100 dark:focus:border-primary-100 px-5 py-3 font-light"
+        className="border border-neutral-50 placeholder:text-neutral-50 text-sm rounded-lg focus:ring-primary-100 focus:border-primary-100 block w-full dark:bg-neutral-50 dark:border-neutral-50 dark:placeholder-neutral-50 dark:text-white dark:focus:ring-primary-100 dark:focus:border-primary-100 px-5 py-3 font-light"
         placeholder="제목을 입력해주세요."
       />
     </FormOuter>

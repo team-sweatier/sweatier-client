@@ -8,11 +8,8 @@ function ContentTextarea() {
 
   return (
     <FormOuter>
-      <div className="flex items-center">
-        <label
-          className="font-bold pb-4 flex items-center gap-x-1"
-          htmlFor="title"
-        >
+      <div className="flex items-center pb-4 ">
+        <label className="font-bold flex items-center gap-x-1" htmlFor="title">
           <Icon
             src={matchCreateIcons.content}
             alt="postIcon-icon"
