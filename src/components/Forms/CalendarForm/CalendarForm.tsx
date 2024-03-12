@@ -15,16 +15,14 @@ interface CalendarFormProps {
 }
 
 function CalendarForm({ editValue }: CalendarFormProps) {
-  const { control, setValue, getValues } = useFormContext<MatchResonseType>();
+  const { control, setValue } = useFormContext<MatchResonseType>();
 
-  // 컴포넌트가 마운트될 때, editValue가 있는 경우 해당 값을 사용하여 matchDay 필드를 초기화
   useEffect(() => {
+    // 초기값 설정
     if (editValue) {
-      setValue("matchDay", editValue);
+      setValue("matchDay", editValue, { shouldValidate: true });
     }
   }, [editValue, setValue]);
-
-  console.log("editValue", editValue); // Mon Apr 15 2024 21:30:00 GMT+0900 (한국 표준시)
 
   return (
     <FormOuter>
@@ -34,12 +32,14 @@ function CalendarForm({ editValue }: CalendarFormProps) {
         control={control}
         rules={{ required: "이 필드는 필수입니다." }}
         render={({ field: { onChange, value } }) => {
-          const selectedDay = value || getValues("matchDay") || new Date();
+          const selectedDate = value instanceof Date ? value : new Date(value); // value가 문자열인 경우 Date 객체로 변환
+          console.log("Selected Date: ", selectedDate);
+
           return (
             <DayPicker
               mode="single"
-              selected={selectedDay}
-              onSelect={onChange}
+              selected={new Date(selectedDate)}
+              onSelect={(date) => onChange(date)}
               fromDate={new Date()}
               showOutsideDays
               classNames={{
