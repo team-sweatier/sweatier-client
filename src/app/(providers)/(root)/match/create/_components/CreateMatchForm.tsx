@@ -11,7 +11,7 @@ import SportTypeSelector from "@/components/Forms/SportTypeSelector/SportTypeSel
 import TitleInput from "@/components/Forms/TitleInput/TitleInput";
 import dayjs from "dayjs";
 import { useState } from "react";
-import "react-day-picker/dist/style.css";
+
 import {
   FieldValues,
   FormProvider,
