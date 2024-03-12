@@ -7,15 +7,15 @@ import { CaptionProps, useNavigation } from "react-day-picker";
 function CustomCaption(props: CaptionProps) {
   const { goToMonth, nextMonth, previousMonth } = useNavigation();
   return (
-    <div className="flex item-center justify-center gap-x-3 py-2 mb-4">
+    <div className="flex item-center justify-center gap-x-4 py-2 mb-4 text-center">
       <button
         type="button"
         disabled={!previousMonth}
         onClick={() => previousMonth && goToMonth(previousMonth)}
       >
-        <Icon src={leftArrow} alt="left-arrow" classStyles="h-5 w-5 stroke-2" />
+        <Icon src={leftArrow} alt="left-arrow" classStyles="h-4 w-4 stroke-2" />
       </button>
-      <span className="text-xl text-neutral-70 font-bold">
+      <span className="text-lg text-neutral-90 font-bold mt-1">
         {format(props.displayMonth, "yyyy.M")}
       </span>
       <button
@@ -26,7 +26,7 @@ function CustomCaption(props: CaptionProps) {
         <Icon
           src={rightArrow}
           alt="right-arrow"
-          classStyles="h-5 w-5 stroke-2"
+          classStyles="h-4 w-4 stroke-2"
         />
       </button>
     </div>

@@ -28,7 +28,7 @@ type tierLabel = "티어 평가하기" | "받은 티어평가 보기";
 function MyMatchLists() {
   const matchList = [match, match];
   const tierLabelType: tierLabel = "받은 티어평가 보기";
-  //     <div className="my-4 px-4 border-primary-20 sm:border-l-4 sm:border-t-0 border-t-4 pt-8">
+
   return (
     <div className="my-4 px-4 border-primary-20 pt-8">
       <div className="flex font-bold text-base gap-x-4 mb-8">
@@ -36,7 +36,7 @@ function MyMatchLists() {
         <div className="text-primary-100">3.4 월</div>
       </div>
 
-      <div className="px-2">
+      <div className="">
         <ul className="flex flex-col gap-y-4 sm:gap-8">
           {matchList.map((match, index) => (
             <li key={index}>
