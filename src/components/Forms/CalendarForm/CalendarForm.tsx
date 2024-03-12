@@ -18,9 +18,8 @@ function CalendarForm({ editValue }: CalendarFormProps) {
   const { control, setValue } = useFormContext<MatchResonseType>();
 
   useEffect(() => {
-    // 초기값 설정
     if (editValue) {
-      setValue("matchDay", editValue, { shouldValidate: true });
+      setValue("matchDay", editValue, { shouldValidate: true }); // 초기값 설정
     }
   }, [editValue, setValue]);
 
@@ -38,7 +37,7 @@ function CalendarForm({ editValue }: CalendarFormProps) {
           return (
             <DayPicker
               mode="single"
-              selected={new Date(selectedDate)}
+              selected={selectedDate}
               onSelect={(date) => onChange(date)}
               fromDate={new Date()}
               showOutsideDays
