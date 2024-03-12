@@ -2,19 +2,28 @@ import api from "@/api";
 import useProfileStore from "@/store/profile.store";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 function MyProfileSection() {
   const { data: myProfile } = useQuery({
     queryKey: ["myProfile"],
     queryFn: api.user.getMyProfile,
   });
+  const router = useRouter();
   const { profile } = useProfileStore();
+
+  const handleClickProfileEditButton = () => {
+    router.push("/my-page/edit-profile");
+  };
 
   return (
     <>
       <div className="flex items-center">
         <h4 className="py-4 font-black text-lg">내 정보</h4>
-        <button className="border-neutral-90 border rounded-2xl text-xs ml-4 py-2 px-3 hover:border-primary-100 hover:text-primary-100">
+        <button
+          onClick={handleClickProfileEditButton}
+          className="border-neutral-90 border rounded-2xl text-xs ml-4 py-2 px-3 hover:border-primary-100 hover:text-primary-100"
+        >
           수정
         </button>
       </div>
