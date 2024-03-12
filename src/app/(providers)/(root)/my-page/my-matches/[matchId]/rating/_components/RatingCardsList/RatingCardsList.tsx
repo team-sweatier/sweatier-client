@@ -17,7 +17,7 @@ function RatingCardsList({
     <div className="w-full">
       <ul className="flex flex-col gap-y-4">
         {participants.map((participant) => (
-          <li key={participant.userId}>
+          <li key={participant.id}>
             <RatingCard
               ratingList={ratingList}
               setRatingList={setRatingList}

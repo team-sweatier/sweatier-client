@@ -26,8 +26,8 @@ function RatingCard({
           style={{ objectFit: "cover" }}
         />
       </div>
-      <div className="flex flex-col justify-center gap-y-5">
-        <div>{participant.nickname}</div>
+      <div className="justify-center ">
+        <div className="mt-[15px]">{participant.userProfile.nickName}</div>
         <Stars participant={participant} setRatingList={setRatingList} />
       </div>
     </div>

@@ -17,22 +17,22 @@ function Stars({ participant, setRatingList }: StarsProps) {
     setRating(newRating);
     setRatingList((prev) => {
       const isUserRated = prev.find(
-        (rating) => rating.userId === participant.userId
+        (rating) => rating.participantId === participant.id
       );
       if (isUserRated) {
         return prev.map((rating) =>
-          rating.userId === participant.userId
+          rating.participantId === participant.id
             ? { ...rating, value: newRating }
             : rating
         );
       } else {
-        return [...prev, { userId: participant.userId, value: newRating }];
+        return [...prev, { participantId: participant.id, value: newRating }];
       }
     });
   };
 
   return (
-    <div className="flex">
+    <div className="flex mt-4">
       {[...Array(totalStars)].map((_, index) => {
         const ratingValue = index + 1;
         return (

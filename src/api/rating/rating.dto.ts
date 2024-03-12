@@ -1,4 +1,4 @@
-export type Rating = {
+export type RatingDto = {
   participantId: string;
   value: number;
 };
