@@ -8,9 +8,9 @@ import MatchTime from "@/components/Forms/MatchTime/MatchTime";
 import MatchTypeSelector from "@/components/Forms/MatchTypeSelector/MatchTypeSelector";
 import SportTypeSelector from "@/components/Forms/SportTypeSelector/SportTypeSelector";
 import TitleInput from "@/components/Forms/TitleInput/TitleInput";
-import { MatchResonseType } from "@/types/match.response.type";
 import dayjs from "dayjs";
 import { useState } from "react";
+import "react-day-picker/dist/style.css";
 import {
   FieldValues,
   FormProvider,
@@ -18,11 +18,7 @@ import {
   useForm,
 } from "react-hook-form";
 
-interface MatchFormProps {
-  editValues?: MatchResonseType;
-}
-
-function EditMatchForm({ editValues }: MatchFormProps) {
+function CreateMatchForm() {
   const [kakaoMapResult, setKakaoMapResult] = useState({
     placeName: "웅진IT 본사",
     region: "",
@@ -31,15 +27,8 @@ function EditMatchForm({ editValues }: MatchFormProps) {
     longitude: 126.98020965303,
   }); // 기본 위치 설정 (웅진 본사)
 
-  // todo : 주소 받으면 setKakaoMapResult <- 에 기본 값으로 설정
-
   const methods = useForm({
-    defaultValues: {
-      ...editValues,
-      matchDay: editValues ? dayjs(editValues.matchDay).toDate() : new Date(),
-      hour: editValues ? dayjs(editValues.matchDay).format("HH") : "",
-      minute: editValues ? dayjs(editValues.matchDay).format("mm") : "",
-    },
+    mode: "onChange",
   });
 
   const {
@@ -84,4 +73,4 @@ function EditMatchForm({ editValues }: MatchFormProps) {
   );
 }
 
-export default EditMatchForm;
+export default CreateMatchForm;
