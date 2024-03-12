@@ -39,3 +39,7 @@ body {
   box-sizing: border-box;
   font-family: "Pretendard Variable";
 }
+
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
