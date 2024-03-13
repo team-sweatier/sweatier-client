@@ -1,4 +1,4 @@
 export type Rating = {
-  userId: string;
+  participantId: string;
   value: number;
 };

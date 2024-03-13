@@ -41,6 +41,10 @@ async function createMatch(matchDto: MatchDto) {
       matchDto,
     },
   });
+}
+
+async function getMatch(matchId: string) {
+  const response = await client.get(`/matches/${matchId}`);
 
   const data = response.data;
   if (!data.success) throw new Error(data.error.message);
@@ -99,6 +103,7 @@ async function deleteMatch(matchId: string) {
 
 const matchAPI = {
   getMatches,
+  getMatch,
   getMatchesByTitle,
   createMatch,
   getMatchesByMatchId,

@@ -5,6 +5,7 @@ export type Response<D = null> =
       message: null;
     }
   | {
+      error: any;
       success: false;
       result: null;
       message: string;

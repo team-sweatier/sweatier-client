@@ -1,6 +1,8 @@
 type participantDto = {
-  userId: string;
-  nickname: string;
+  id: string;
+  userProfile: {
+    nickName: string;
+  };
 };
 
 export default participantDto;
