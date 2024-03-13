@@ -6,6 +6,10 @@ import getMatchAvailableInfo from "@/utils/getMatchAvailableInfo";
 import translateGender from "@/utils/translateMatches/translateGender";
 import Link from "next/link";
 
+function isMatchDetail(match: Match | MatchDetail): match is MatchDetail {
+  return (match as MatchDetail).tierType !== undefined;
+}
+
 function MatchCard({
   match,
   className,
@@ -19,6 +23,12 @@ function MatchCard({
   const gender = translateGender(match.gender);
   const matchDay = day(match.matchDay);
   const matchAvailableInfo = getMatchAvailableInfo(match);
+  let tier: string = "";
+  if (isMatchDetail(match)) {
+    tier = match.tierType;
+  } else {
+    tier = match.tier;
+  }
 
   return (
     <Link href={`/matches/${match.id}`}>
@@ -36,7 +46,7 @@ function MatchCard({
         )}
         <div className="text-sm">{match.title}</div>
         <div className="text-[11px] flex justify-between">
-          <span className="text-neutral-60">{`${gender} | ${teamCapability}vs${teamCapability} | ${match.tier}`}</span>
+          <span className="text-neutral-60">{`${gender} | ${teamCapability}vs${teamCapability} | ${tier}`}</span>
           <AvailabilityButton
             imagePath={matchAvailableInfo.imagePath}
             label={matchAvailableInfo.label}
