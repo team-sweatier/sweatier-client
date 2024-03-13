@@ -1,17 +1,31 @@
+"use client";
+import api from "@/api";
 import BlueButton from "@/components/Buttons/BlueButton";
-import Heading from "@/components/Heading";
 import { Rating } from "@/types/Rating.type";
 import participantDto from "@/types/participantDto";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import RatingCardsList from "../RatingCardsList";
 
-function RatingForm({ participants }: { participants: participantDto[] }) {
+function RatingForm({
+  participants,
+  matchId,
+}: {
+  participants: participantDto[];
+  matchId: string;
+}) {
   const [isValid, setIsValid] = useState(false);
-
-  const handleClickButton = () => {
-    console.log(ratingList);
-  };
   const [ratingList, setRatingList] = useState<Rating[]>([]);
+  const router = useRouter();
+
+  const handleClickButton = async () => {
+    const response = await api.rating.rateParticipants({
+      matchId,
+      ratings: ratingList,
+    });
+    console.log(response);
+    router.push("/");
+  };
 
   useEffect(() => {
     ratingList.length > 0 ? setIsValid(true) : setIsValid(false);
@@ -19,9 +33,9 @@ function RatingForm({ participants }: { participants: participantDto[] }) {
 
   return (
     <div className="w-full">
-      <Heading className="sm:text-xl text-sm w-full mb-6 ">
+      <h2 className=" text-base w-full mb-4 font-bold text-natural-90">
         티어평가 하기
-      </Heading>
+      </h2>
       <RatingCardsList
         participants={participants}
         ratingList={ratingList}
@@ -31,6 +45,7 @@ function RatingForm({ participants }: { participants: participantDto[] }) {
         isValid={isValid}
         buttonLabel="평가 완료"
         onClick={handleClickButton}
+        className="mt-8"
       />
     </div>
   );
