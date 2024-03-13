@@ -21,6 +21,12 @@ function MyProfileSection() {
     myProfile?.phoneNumber as string
   );
 
+  const imageUrl = myProfile
+    ? `https://storage.googleapis.com/sweatier-user-profile-image/${
+        myProfile.userId
+      }?timestamp=${new Date().getTime()}`
+    : null;
+
   return (
     <>
       <div className="flex items-center">
@@ -37,7 +43,7 @@ function MyProfileSection() {
           {myProfile ? (
             // ${process.env.DEPLOYED_NEXT_PUBLIC_SERVER_IMAGE_URL}
             <Image
-              src={`https://storage.googleapis.com/sweatier-user-profile-image/${myProfile?.userId}`}
+              src={`${imageUrl}`}
               layout="fill"
               objectFit="cover"
               alt="프로필 이미지"
