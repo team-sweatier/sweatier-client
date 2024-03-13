@@ -36,14 +36,14 @@ async function MatchDetailPage(props: { params: { matchId: string } }) {
   const isUserPost = false;
 
   return (
-    <main className="pb-[50px] mx-auto max-w-screen-md flex flex-col w-full items-center justify-start h-screen relative">
+    <main className="pb-[50px] mx-auto max-w-screen-md flex flex-col w-full items-center justify-start min-h- relative">
       <Background sportType={match["sportType"]}>
         {isUserPost ? (
           <UserPostControlButtons matchId={matchId} />
         ) : (
           <MatchApplyButton state={translateMatchAvailable(match)} />
         )}
-        <MatchUpContainer match={match} />
+        <MatchUpContainer match={match} matchId={matchId} />
         <MatchUpTypeContainer match={match} />
         <GetKakaoMap match={match} />
         <MatchRuleContainer />

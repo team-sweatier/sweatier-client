@@ -2,26 +2,7 @@ import translateSportType from "@/utils/translateMatches/translateSportType";
 import dayjs from "dayjs";
 import ApplyButton from "./ApplyButton";
 
-//todo : date, time 포매팅하기
-const temporaryData = {
-  sport: "테니스",
-  time: "7:30",
-  date: "3월 12일 화요일",
-  title: "매헌시민의 숲 테니스장",
-  content:
-    "함께 테니스 치실 분 모집합니다. 참가신청 해주세요. 함께 테니스 치실 분 모집합니다. 참가신청 해주세요. 함께 테니스 치실 분 모집합니다. 참가신청 해주세요. ",
-};
-
-interface MatchUpContainerProps {
-  isUserPost: boolean;
-  sport: string;
-  time: string;
-  date: string;
-  title: string;
-  content: string;
-}
-
-function MatchUpContainer({ match }: { match: any }) {
+function MatchUpContainer({ match, matchId }: { match: any; matchId: string }) {
   const { sportType, matchDay, title, content } = match;
   const matchDate = dayjs(matchDay).format("M월 D일 dddd");
   const matchTime = dayjs(matchDay).format("h:mm");
@@ -42,7 +23,7 @@ function MatchUpContainer({ match }: { match: any }) {
           <div className="text-neutral-90 text-xl">{title}</div>
         </div>
 
-        {!isUserPost && <ApplyButton isAbledApply={true} />}
+        {!isUserPost && <ApplyButton isAbledApply={true} matchId={matchId} />}
       </div>
       <div className="mt-6 pb-8 text-neutral-70 tex-sm leading-7">
         {content}

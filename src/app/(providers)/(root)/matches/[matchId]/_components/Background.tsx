@@ -16,7 +16,7 @@ function Background({
   const matchSportBannerSrc = matchBanner[matchSportType];
 
   return (
-    <div className="relative h-full w-full overflow-y-auto scrollbar-hide">
+    <div className="relative w-full scrollbar-hide">
       <Image
         src={matchSportBannerSrc}
         sizes="100vw"
