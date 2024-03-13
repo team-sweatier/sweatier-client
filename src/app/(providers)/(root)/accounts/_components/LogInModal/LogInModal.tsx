@@ -83,13 +83,23 @@ function LogInModal() {
               onChange={(e) => setPassword(e.target.value)}
             />
             <button onClick={() => setIsPasswordVisible(!isPasswordVisible)}>
-              <Image
-                src="/assets/sign-up_page/password_view.svg"
-                alt="비밀번호 보이기"
-                width={17}
-                height={17}
-                className="absolute right-[14px] top-[12px]"
-              />
+              {isPasswordVisible ? (
+                <Image
+                  src="/assets/sign-up_page/password_hide.svg"
+                  alt="비밀번호 가리기"
+                  width={17}
+                  height={17}
+                  className="absolute right-[14px] top-[12px]"
+                />
+              ) : (
+                <Image
+                  src="/assets/sign-up_page/password_view.svg"
+                  alt="비밀번호 보이기"
+                  width={17}
+                  height={17}
+                  className="absolute right-[14px] top-[12px]"
+                />
+              )}
             </button>
           </li>
         </ul>

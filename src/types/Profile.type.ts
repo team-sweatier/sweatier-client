@@ -13,3 +13,19 @@ export type Profile = {
   };
   imageUrl: string;
 };
+
+export type UpdatedProfile = {
+  editedProfile: {
+    userId: string;
+    gender: "male" | "female";
+    phoneNumber: string;
+    nickName: string;
+    nickNameUpdatedAt?: string;
+    oneLiner?: string;
+    bankName: string;
+    accountNumber: string;
+    createAt: string;
+    updatedAt: string;
+  };
+  imageUrl: string;
+};
