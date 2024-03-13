@@ -46,7 +46,7 @@ function Stars({ participant, setRatingList }: StarsProps) {
           />
         );
       })}
-      <div className="ml-4">{`${rating} / 5`}</div>
+      <div className="ml-4 text-xs pt-1">{`${rating} / 5`}</div>
     </div>
   );
 }

@@ -26,8 +26,10 @@ function RatingCard({
           style={{ objectFit: "cover" }}
         />
       </div>
-      <div className="justify-center ">
-        <div className="mt-[15px]">{participant.userProfile.nickName}</div>
+      <div className="justify-center">
+        <div className="mt-[15px] text-sm font-bold">
+          {participant.userProfile.nickName}
+        </div>
         <Stars participant={participant} setRatingList={setRatingList} />
       </div>
     </div>

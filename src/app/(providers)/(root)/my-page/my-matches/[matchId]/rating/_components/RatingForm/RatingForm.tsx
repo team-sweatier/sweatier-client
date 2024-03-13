@@ -1,7 +1,6 @@
 "use client";
 import api from "@/api";
 import BlueButton from "@/components/Buttons/BlueButton";
-import Heading from "@/components/Heading";
 import { Rating } from "@/types/Rating.type";
 import participantDto from "@/types/participantDto";
 import { useRouter } from "next/navigation";
@@ -34,7 +33,9 @@ function RatingForm({
 
   return (
     <div className="w-full">
-      <Heading className="text-base w-full mb-6 py-0 ">티어평가 하기</Heading>
+      <h2 className=" text-base w-full mb-4 font-bold text-natural-90">
+        티어평가 하기
+      </h2>
       <RatingCardsList
         participants={participants}
         ratingList={ratingList}
