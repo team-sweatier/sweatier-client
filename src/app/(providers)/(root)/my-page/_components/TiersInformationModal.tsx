@@ -55,11 +55,11 @@ function TiersInformationModal() {
       <ul className="flex flex-col gap-y-5 pb-10">
         {sortedTierInformations?.map((tierInformation) => (
           <li key={tierInformation.value}>
-            <dl className="flex flex-col gap-y-2">
+            <dl className="flex flex-col gap-y-1">
               <dt className="font-bold text-neutral-90 text-[11px] tracking-tighter">
                 {tierInformation.value}
               </dt>
-              <dd className="text-neutral-70 text-[11px] tracking-tighter">
+              <dd className="text-neutral-70 text-[11px] tracking-tighter pb-2">
                 {tierInformation.description}
               </dd>
               <hr className="border-neutral-30"></hr>

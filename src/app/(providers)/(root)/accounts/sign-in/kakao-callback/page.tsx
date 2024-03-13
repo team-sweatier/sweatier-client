@@ -22,7 +22,8 @@ const KakaoCallbackPage = ({
     const signInAndRedirect = async () => {
       await api.auth.signInKaKao(code);
 
-      if (!myProfile?.nickName) {
+      const nickname = myProfile?.nickName;
+      if (nickname) {
         router.push("/accounts/user-registration");
       } else {
         router.push("/");
