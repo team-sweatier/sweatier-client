@@ -1,5 +1,8 @@
 "use client";
+import api from "@/api";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface controlButtonsType {
   label: string;
@@ -12,14 +15,23 @@ interface UserPostControlButtonsProps {
 
 function UserPostControlButtons({ matchId }: UserPostControlButtonsProps) {
   const router = useRouter();
+
+  const handleDelete = async () => {
+    try {
+      const response = await api.match.deleteMatch(matchId);
+      toast.success("게시물이 삭제되었습니다.");
+      router.replace("/");
+      return response;
+    } catch (error) {
+      console.error("Match creation failed:", error);
+    }
+  };
+
   const controlButtons: controlButtonsType[] = [
     { label: "수정", onClick: () => router.push(`${matchId}/edit`) },
     {
       label: "삭제",
-      onClick: () => {
-        // 여기에 삭제 모달을 표시하는 로직을 추가
-        console.log("삭제 모달 표시");
-      },
+      onClick: () => handleDelete(),
     },
   ];
 

@@ -33,6 +33,17 @@ async function getMatchesByTitle(keywords: string) {
   return matches;
 }
 
+async function getMatch(matchId: string) {
+  const response = await client.get<Response>(`/matches/${matchId}`);
+
+  const data = response.data;
+  if (!data.success) throw new Error(data.error.message);
+
+  const result = data.result;
+
+  return result;
+}
+
 //* match 게시물 작성
 async function createMatch(matchDto: any) {
   const response = await client.post(`/matches`, {
@@ -45,19 +56,9 @@ async function createMatch(matchDto: any) {
   if (!data.success) throw new Error(data.error.message);
 
   const matches = data.result;
+  const { id } = matches;
 
-  return matches;
-}
-
-async function getMatch(matchId: string) {
-  const response = await client.get<Response>(`/matches/${matchId}`);
-
-  const data = response.data;
-  if (!data.success) throw new Error(data.error.message);
-
-  const result = data.result;
-
-  return result;
+  return { matchId: id };
 }
 
 //* match 상세 페이지 조회

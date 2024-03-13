@@ -15,6 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 // return toast.info("로그인이 필요한 서비스입니다.");
 
+import api from "@/api";
 import { useRouter } from "next/navigation";
 import {
   FieldValues,
@@ -47,7 +48,7 @@ function CreateMatchForm() {
     const matchDateTime = dayjs(data.matchDay)
       .hour(parseInt(data.hour))
       .minute(parseInt(data.minute))
-      .toDate();
+      .toISOString();
 
     const { hour, minute, ...rest } = data;
 
@@ -59,8 +60,14 @@ function CreateMatchForm() {
 
     console.log("보낼 데이터 :", finalData);
 
-    // const response = await api.match.createMatch(finalData);
-    // return response;
+    try {
+      const response = await api.match.createMatch(finalData);
+      return response;
+      // 성공 로직, 예: 페이지 전환
+    } catch (error) {
+      console.error("Match creation failed:", error);
+      // 실패 시 사용자에게 알리기
+    }
   };
 
   return (
