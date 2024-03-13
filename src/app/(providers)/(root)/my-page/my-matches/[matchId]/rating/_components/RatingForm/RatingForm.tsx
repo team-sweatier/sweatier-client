@@ -1,9 +1,10 @@
 "use client";
+import api from "@/api";
 import BlueButton from "@/components/Buttons/BlueButton";
 import Heading from "@/components/Heading";
-import useMutationRating from "@/hooks/services/matches/useMutationRating";
 import { Rating } from "@/types/Rating.type";
 import participantDto from "@/types/participantDto";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import RatingCardsList from "../RatingCardsList";
 
@@ -16,14 +17,15 @@ function RatingForm({
 }) {
   const [isValid, setIsValid] = useState(false);
   const [ratingList, setRatingList] = useState<Rating[]>([]);
+  const router = useRouter();
 
-  const { mutateAsync: rateParticipants } = useMutationRating(
-    matchId,
-    ratingList
-  );
-
-  const handleClickButton = () => {
-    rateParticipants(ratingList);
+  const handleClickButton = async () => {
+    const response = await api.rating.rateParticipants({
+      matchId,
+      ratings: ratingList,
+    });
+    console.log(response);
+    router.push("/");
   };
 
   useEffect(() => {
