@@ -47,8 +47,12 @@ function ProfileEditPage() {
       setSelectedBankName(myProfile.bankName);
       setAccountNumber(myProfile.accountNumber);
       setOneLiner(myProfile.oneLiner as string);
-      const imageURL = `https://storage.googleapis.com/sweatier-user-profile-image/${myProfile.userId}`;
-      setImageUrl(imageURL);
+      const imageUrl = myProfile
+        ? `https://storage.googleapis.com/sweatier-user-profile-image/${
+            myProfile.userId
+          }?timestamp=${new Date().getTime()}`
+        : null;
+      setImageUrl(imageUrl);
     }
   }, [myProfile]);
 
