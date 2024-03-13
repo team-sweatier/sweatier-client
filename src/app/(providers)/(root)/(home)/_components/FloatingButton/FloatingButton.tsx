@@ -4,6 +4,8 @@ import floating from "@/../public/assets/main_page/floating.svg";
 import { useAuthStore } from "@/store";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function FloatingButton() {
   const { isLoggedIn } = useAuthStore();
@@ -12,7 +14,7 @@ function FloatingButton() {
     if (isLoggedIn) {
       router.push("/match/create");
     } else {
-      alert("로그인이 필요합니다.");
+      toast.info("로그인이 필요한 서비스입니다.");
     }
   };
   return (
