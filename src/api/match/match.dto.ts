@@ -1,9 +1,9 @@
-export type MatchDto = {
+export type CreateMatchDto = {
   title: string;
   content: string;
   gender: "male" | "female" | "both";
   capability: number;
-  sportsTypeName: string;
+  sportsTypeName: "baseball" | "basketball" | "soccer" | "tennis" | "badminton";
   latitude: number;
   longitude: number;
   placeName: string;

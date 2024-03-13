@@ -11,7 +11,11 @@ import SportTypeSelector from "@/components/Forms/SportTypeSelector/SportTypeSel
 import TitleInput from "@/components/Forms/TitleInput/TitleInput";
 import dayjs from "dayjs";
 import { useState } from "react";
+import "react-toastify/dist/ReactToastify.css";
 
+// return toast.info("로그인이 필요한 서비스입니다.");
+
+import { useRouter } from "next/navigation";
 import {
   FieldValues,
   FormProvider,
@@ -20,14 +24,6 @@ import {
 } from "react-hook-form";
 
 function CreateMatchForm() {
-  const [kakaoMapResult, setKakaoMapResult] = useState({
-    placeName: "웅진IT 본사",
-    region: "",
-    address: "",
-    latitude: 37.5685159133492,
-    longitude: 126.98020965303,
-  }); // 기본 위치 설정 (웅진 본사)
-
   const methods = useForm({
     mode: "onChange",
   });
@@ -37,7 +33,17 @@ function CreateMatchForm() {
     formState: { isValid },
   } = methods;
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  const router = useRouter();
+
+  const [kakaoMapResult, setKakaoMapResult] = useState({
+    placeName: "웅진IT 본사",
+    region: "서울",
+    address: "서울특별시 중구 청계천로 24",
+    latitude: 37.5685159133492,
+    longitude: 126.98020965303,
+  }); // 기본 위치 설정 (웅진 본사)
+
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const matchDateTime = dayjs(data.matchDay)
       .hour(parseInt(data.hour))
       .minute(parseInt(data.minute))
@@ -51,7 +57,10 @@ function CreateMatchForm() {
       matchDay: matchDateTime,
     };
 
-    console.log(finalData);
+    console.log("보낼 데이터 :", finalData);
+
+    // const response = await api.match.createMatch(finalData);
+    // return response;
   };
 
   return (

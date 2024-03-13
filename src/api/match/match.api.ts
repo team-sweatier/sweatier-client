@@ -1,6 +1,5 @@
 import { Response } from "@/types/Response.type";
 import { client } from "..";
-import { MatchDto } from "./match.dto";
 
 async function getMatches(sportType: string, date: string, region?: string) {
   const response = await client.get("/matches", {
@@ -35,12 +34,19 @@ async function getMatchesByTitle(keywords: string) {
 }
 
 //* match 게시물 작성
-async function createMatch(matchDto: MatchDto) {
+async function createMatch(matchDto: any) {
   const response = await client.post(`/matches`, {
     data: {
       matchDto,
     },
   });
+
+  const data = response.data;
+  if (!data.success) throw new Error(data.error.message);
+
+  const matches = data.result;
+
+  return matches;
 }
 
 async function getMatch(matchId: string) {
@@ -72,6 +78,9 @@ async function participateToMatch(matchId: string) {
     `/matches/${matchId}/participate`
   );
   const data = response.data;
+
+  console.log(data);
+
   if (!data.success) throw new Error(data.message);
 
   const match = data.result;
@@ -90,7 +99,7 @@ async function editMatch(matchId: string) {
   return match;
 }
 
-//* match 게사물 삭제
+//* match 게시물 삭제
 async function deleteMatch(matchId: string) {
   const response = await client.delete<Response>(`/matches/${matchId}`);
   const data = response.data;

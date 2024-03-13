@@ -1,4 +1,5 @@
 import api from "@/api";
+import { MatchDetail } from "@/types/match.response.type";
 import dayjs from "dayjs";
 import "dayjs/locale/ko";
 import AccountContainer from "./_components/AccountContainer";
@@ -17,17 +18,18 @@ async function MatchDetailPage(props: { params: { matchId: string } }) {
   const match = await api.match.getMatchesByMatchId(matchId);
   if (!match) return null;
 
-  const sportsType = (match as Match).sportsType.name;
-  const sportsRules = (match as Match).sportsType.rules;
+  const sportsType = (match as MatchDetail).sportsType.name;
+  const sportsRules = (match as MatchDetail).sportsType.rules;
 
   // const { match, isLoading, error } = useQueryMatchById(matchId);
   // if (error) return <div>에러 발생 !</div>;
   // if (isLoading) return <LoadingSpinner />;
 
-  // console.log("match :", match);
+  console.log("match :", match);
 
   /*
    * todo List
+   * '경기 상세 페이지"
    * 2. 신청 가능 상태일 경우 -> 신청 모달 (post 요청) (🔥 participating)
    * 3. match any -> 타입 정의
    */

@@ -1,4 +1,4 @@
-type matchDto = {
+export type matchDto = {
   title: string;
   content: string;
   players: string;
@@ -8,4 +8,16 @@ type matchDto = {
   place: string;
 };
 
-export default matchDto;
+export type CreateMatchDto = {
+  title: string;
+  content: string;
+  gender: "male" | "female" | "both";
+  capability: number;
+  sportsTypeName: "baseball" | "basketball" | "soccer" | "tennis" | "badminton";
+  latitude: number;
+  longitude: number;
+  placeName: string;
+  region: string;
+  address: string;
+  matchDay: Date;
+};

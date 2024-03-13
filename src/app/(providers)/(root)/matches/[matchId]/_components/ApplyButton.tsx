@@ -47,9 +47,12 @@ function ApplyButton({ isAbledApply, matchId }: ApplyButtonProps) {
     });
   };
 
+  console.log("마감전이지 ? :", isAbledApply);
+  console.log("나 해당 경기에 신청한 적 없지? :", isApply);
+
   return (
     <>
-      {!isAbledApply && !isApply ? (
+      {isAbledApply && !isApply ? (
         <button
           type="button"
           className="ext-sm px-5 py-6 rounded-3xl font-bold border-[0.7px] bg-primary-100 text-white border-primary-100 drop-shadow-[0px_0px_2px_#0f8cff]"
@@ -64,7 +67,7 @@ function ApplyButton({ isAbledApply, matchId }: ApplyButtonProps) {
       ) : (
         <button
           type="button"
-          className="text-sm px-5 py-6 rounded-3xl font-bold border-[0.7px] bg-neutral-20 text-neutral-40 border-[#E6E6E6]"
+          className="text-sm px-8 py-6 rounded-3xl font-bold border-[0.7px] bg-neutral-20 text-neutral-40 border-[#E6E6E6]"
           onClick={() => {
             toast.error("신청 마감되었습니다.");
           }}

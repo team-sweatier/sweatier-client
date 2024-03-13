@@ -54,6 +54,7 @@ export type MatchDetail = {
   };
   sportsType: {
     name: string;
+    rules: string;
   };
   participate: [
     {
