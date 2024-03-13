@@ -1,3 +1,5 @@
+import translateSportType from "@/utils/translateMatches/translateSportType";
+import dayjs from "dayjs";
 import ApplyButton from "./ApplyButton";
 
 //todo : date, time 포매팅하기
@@ -19,25 +21,23 @@ interface MatchUpContainerProps {
   content: string;
 }
 
-function MatchUpContainer({
-  isUserPost,
-  sport,
-  time,
-  date,
-  title,
-  content,
-}: MatchUpContainerProps) {
-  //todo : 게시물의 글 정보 가져오기
+function MatchUpContainer({ match }: { match: any }) {
+  const { sportType, matchDay, title, content } = match;
+  const matchDate = dayjs(matchDay).format("M월 D일 dddd");
+  const matchTime = dayjs(matchDay).format("h:mm");
+
+  const isUserPost = false; //todo
+
   return (
     <div>
       <div className="text-neutral-70 font-bold text-sm pb-3">
-        {temporaryData.sport}
+        {translateSportType(sportType)}
       </div>
       <div className="flex items-center justify-between">
         <div>
           <div className="text-neutral-90 font-bold text-xl gap-x-4 flex pb-3">
-            <span>{time}</span>
-            <span>{date}</span>
+            <span>{matchTime}</span>
+            <span>{matchDate}</span>
           </div>
           <div className="text-neutral-90 text-xl">{title}</div>
         </div>

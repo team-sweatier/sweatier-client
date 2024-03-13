@@ -1,4 +1,5 @@
 import api from "@/api";
+import translateMatchAvailable from "@/utils/translateMatches/translateMatchAvailable";
 import dayjs from "dayjs";
 import "dayjs/locale/ko";
 import AccountContainer from "./_components/AccountContainer";
@@ -18,22 +19,21 @@ async function MatchDetailPage(props: { params: { matchId: string } }) {
   const match = await api.match.getMatchesByMatchId(matchId);
   if (!match) return null;
 
-  console.log("mactch :", match);
+  /*
+* todo List
 
-  // console.log("sportType :", match["sportType"])
+* 2. 로그인한 유저 id와 hostId 비교 -> 수정/삭제 모드 or 신청 모드 변환 (isUserPost)
 
-  // todo 1: 로그인한 유저 정보 가져오기
+* 5. 신청 가능 상태일 경우 -> 신청 모달 (post 요청) (🔥 participating)
 
-  // todo 2: 로그인한 유저 id와 hostId 비교 -> 수정/삭제 모드 or 신청 모드 변환 (isUserPost)
+* 7. 유저 프로필 사진
 
-  //todo 3: participants에 로그인한 유저 id가 있는지 확인 -> 있다면 account 정보 보여주기
+* 8. match any -> 타입 정의
 
-  //todo 4: 정원에 따른 MatchApplyButton에 state 보내주기 (신청, 마감 등)
-
-  //todo 5: 신청 모달
+*/
 
   //* 해당 post가 유저가 작성한 글인지 판별하는 임시 변수
-  const isUserPost = true;
+  const isUserPost = false;
 
   return (
     <main className="pb-[50px] mx-auto max-w-screen-md flex flex-col w-full items-center justify-start h-screen relative">
@@ -41,32 +41,14 @@ async function MatchDetailPage(props: { params: { matchId: string } }) {
         {isUserPost ? (
           <UserPostControlButtons matchId={matchId} />
         ) : (
-          <MatchApplyButton state="마감 임박" />
+          <MatchApplyButton state={translateMatchAvailable(match)} />
         )}
-        <MatchUpContainer
-          isUserPost={isUserPost}
-          sport={match["sportType"]}
-          time={dayjs(match["matchDay"]).format("h:mm")}
-          date={dayjs(match["matchDay"]).format("M월 D일 dddd")}
-          title={match["title"]}
-          content={match["content"]}
-        />
-        <MatchUpTypeContainer
-        // matchUpData={{
-        //   gender: match["gender"] as string,
-        //   matchType: "모집유형",
-        //   capability: `${match["applicants"]} / ${match["capability"]}`,
-        //   tier: match["tier"],
-        // }}
-        />
-        <GetKakaoMap />
+        <MatchUpContainer match={match} />
+        <MatchUpTypeContainer match={match} />
+        <GetKakaoMap match={match} />
         <MatchRuleContainer />
-        <AccountContainer
-          isApply={true} //* 현재 로그인한 유저의 해당 post 신청 유무
-          accountBank={match["hostBankName"]}
-          accountNumber={match["hostAccountNumber"]}
-        />
-        <UserProfileContainer />
+        <AccountContainer match={match} />
+        <UserProfileContainer match={match} />
       </Background>
     </main>
   );

@@ -2,7 +2,7 @@ import AvailabilityButton from "@/components/Buttons/AvailabilityButton";
 import { Match } from "@/types/Match.type";
 
 import getMatchAvailableInfo from "@/utils/getMatchAvailableInfo";
-import translateGender from "@/utils/translateGender";
+import translateGender from "@/utils/translateMatches/translateGender";
 import Link from "next/link";
 
 function MatchCard({ match, className }: { match: Match; className?: string }) {
