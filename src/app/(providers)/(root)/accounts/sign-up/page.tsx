@@ -62,7 +62,10 @@ function SignUpPage() {
     setIsPasswordCheckValid(e.target.value === password);
   };
 
-  const handleClickSignUpButton = async () => {
+  const handleSubmitSignUpForm = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
     if (
       isEmailValid &&
       isCombinationOfPasswordValid &&
@@ -106,18 +109,15 @@ function SignUpPage() {
     <Page>
       <section className="pb-3 w-full" onClick={handleClickOutside}>
         <h2 className="a11y-hidden">회원가입하기</h2>
-        <form
-          onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}
-          className="mx-auto max-w-lg py-3 px-5"
-        >
-          <p className="py-4 text-2xl font-black tracking-[-.1em]">
+        <form onSubmit={handleSubmitSignUpForm} className="mx-auto max-w-lg">
+          <p className="pb-4 text-2xl font-[800] tracking-[-.1em]">
             수준별 운동 매칭 서비스
           </p>
           <p className="font-bold tracking-tighter">
             지금 스웨티어에 가입하세요
           </p>
-          <ul className="flex flex-col py-5">
-            <li className="flex flex-col">
+          <ul className="flex flex-col pt-10 gap-y-7">
+            <li className="flex flex-col relative">
               <SignUpInput
                 ref={emailRef}
                 htmlFor="email"
@@ -138,7 +138,7 @@ function SignUpPage() {
                 message="이메일 주소는 유효한 형식이어야 합니다."
               />
             </li>
-            <li className="flex flex-col">
+            <li className="flex flex-col relative">
               <SignUpInput
                 ref={passwordRef}
                 htmlFor="password"
@@ -167,7 +167,7 @@ function SignUpPage() {
                 message="대소문자, 특수문자가 최소 1개씩 포함되어야 합니다."
               />
             </li>
-            <li className="flex flex-col">
+            <li className="flex flex-col relative">
               <SignUpInput
                 ref={passwordCheckRef}
                 htmlFor="passwordCheck"
@@ -190,8 +190,8 @@ function SignUpPage() {
             </li>
           </ul>
           <button
-            onClick={handleClickSignUpButton}
-            className={`w-full px-6 rounded-md text-white font-semibold h-12 mt-10 mb-10 transition active:translate-y-0 ${
+            type="submit"
+            className={`w-full px-6 rounded-lg text-white font-bold h-12 mt-10 mb-10 transition active:translate-y-0 ${
               isEmailValid &&
               isLengthOfPasswordValid &&
               isCombinationOfPasswordValid &&
@@ -209,21 +209,22 @@ function SignUpPage() {
             </span>
             <div className="flex-1 border-t border-neutral-40"></div>
           </div>
-          <button
-            onClick={handleClickKaKaoButton}
-            className="bg-yellow-300 w-full px-6 rounded-md font-semibold h-12 mt-10 transition hover:-translate-y-1 active:translate-y-0"
-          >
-            <div className="h-full flex items-center justify-center">
-              <Image
-                src="/assets/sign-up_page/kakaotalk.svg"
-                alt="카카오톡"
-                width={24}
-                height={24}
-              />
-              <span>카카오로 계속하기</span>
-            </div>
-          </button>
         </form>
+        <button
+          onClick={handleClickKaKaoButton}
+          type="button"
+          className="bg-[#FEE500] text-[#392020] w-full px-6 rounded-lg font-bold h-12 mt-10 transition hover:-translate-y-1 active:translate-y-0"
+        >
+          <div className="h-full flex items-center justify-center">
+            <Image
+              src="/assets/sign-up_page/kakaotalk.svg"
+              alt="카카오톡"
+              width={24}
+              height={24}
+            />
+            <span>카카오로 계속하기</span>
+          </div>
+        </button>
       </section>
     </Page>
   );
