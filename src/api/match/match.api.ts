@@ -87,16 +87,13 @@ async function participateToMatch(matchId: string) {
 
 //* match 게사물 수정
 async function updateMatch(matchId: string, matchDto: any) {
-  const response = await client.put<Response>(`/matches/${matchId}`, {
-    data: matchDto,
-  });
+  const response = await client.put<Response>(`/matches/${matchId}`, matchDto);
 
   const data = response.data;
-  if (!data.success) throw new Error(data.message);
+  if (!data.success) throw new Error(data.error.message);
 
-  const match = data.result;
-
-  return match;
+  const matches = data.result;
+  return matches;
 }
 
 //* match 게시물 삭제

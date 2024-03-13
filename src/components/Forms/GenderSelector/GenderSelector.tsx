@@ -32,7 +32,7 @@ function GenderSelector() {
             key={i}
             name="gender"
             control={control}
-            render={({ field: { onChange, value } }) => (
+            render={({ field: { onChange } }) => (
               <RoundButton
                 label={Object.keys(genderType)[0]}
                 onClick={() => onChange(Object.values(genderType)[0])}

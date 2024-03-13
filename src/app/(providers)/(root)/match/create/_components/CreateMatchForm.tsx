@@ -1,28 +1,27 @@
 "use client";
+import api from "@/api";
 import "@/components/Forms/CalendarForm/calendar.css";
 import ContentTextarea from "@/components/Forms/ContentTextarea/ContentTextarea";
 import GenderSelector from "@/components/Forms/GenderSelector/GenderSelector";
 import MatchCalendar from "@/components/Forms/MatchCalendar/MatchCalendar";
-import MatchKakaoMap from "@/components/Forms/MatchKakaoMap/MatchKakaoMap";
 import MatchSubmitButton from "@/components/Forms/MatchSubmitButton/MatchSubmitButton";
 import MatchTime from "@/components/Forms/MatchTime/MatchTime";
 import MatchTypeSelector from "@/components/Forms/MatchTypeSelector/MatchTypeSelector";
 import SportTypeSelector from "@/components/Forms/SportTypeSelector/SportTypeSelector";
 import TitleInput from "@/components/Forms/TitleInput/TitleInput";
 import dayjs from "dayjs";
-import { useState } from "react";
-import "react-toastify/dist/ReactToastify.css";
-
-// return toast.info("로그인이 필요한 서비스입니다.");
-
-import api from "@/api";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import {
   FieldValues,
   FormProvider,
   SubmitHandler,
   useForm,
 } from "react-hook-form";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+// return toast.info("로그인이 필요한 서비스입니다.");
 
 function CreateMatchForm() {
   const methods = useForm({
@@ -58,15 +57,12 @@ function CreateMatchForm() {
       matchDay: matchDateTime,
     };
 
-    console.log("보낼 데이터 :", finalData);
-
     try {
-      const response = await api.match.createMatch(finalData);
-      return response;
-      // 성공 로직, 예: 페이지 전환
+      const { matchId } = await api.match.createMatch(finalData);
+      toast.success("게시물이 작성되었습니다!");
+      router.replace(`/matches/${matchId}`);
     } catch (error) {
-      console.error("Match creation failed:", error);
-      // 실패 시 사용자에게 알리기
+      toast.success("게시물 작성에 실패했습니다.");
     }
   };
 
@@ -80,10 +76,10 @@ function CreateMatchForm() {
         <MatchTypeSelector />
         <MatchCalendar />
         <MatchTime />
-        <MatchKakaoMap
+        {/* <MatchKakaoMap
           kakaoMapResult={kakaoMapResult}
           setKakaoMapResult={setKakaoMapResult}
-        />
+        /> */}
         <MatchSubmitButton isValid={isValid} />
       </form>
     </FormProvider>
