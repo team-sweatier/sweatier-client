@@ -1,6 +1,6 @@
 import api from "@/api";
-import { useAuthStore } from "@/store";
 import useProfileStore from "@/store/profile.store";
+import { formatPhoneNumber } from "@/utils/formatPhoneNumber";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -10,7 +10,6 @@ function MyProfileSection() {
     queryKey: ["myProfile"],
     queryFn: api.user.getMyProfile,
   });
-  const { logOut } = useAuthStore();
   const router = useRouter();
   const { profile } = useProfileStore();
 
@@ -18,11 +17,9 @@ function MyProfileSection() {
     router.push("/my-page/edit-profile");
   };
 
-  const handleClickLogOut = () => {
-    logOut();
-    alert("로그아웃 처리되었습니다.");
-    router.push("/");
-  };
+  const formattedPhoneNumber = formatPhoneNumber(
+    myProfile?.phoneNumber as string
+  );
 
   return (
     <>
@@ -30,18 +27,12 @@ function MyProfileSection() {
         <h4 className="py-4 font-black text-lg">내 정보</h4>
         <button
           onClick={handleClickProfileEditButton}
-          className="border-neutral-90 border rounded-2xl text-xs ml-4 py-2 px-3 hover:border-primary-100 hover:text-primary-100"
+          className="border-neutral-90 border rounded-2xl text-[11px] ml-4 py-[2px] px-[6px] hover:border-primary-100 hover:text-primary-100"
         >
           수정
         </button>
-        <button
-          onClick={handleClickLogOut}
-          className="border-neutral-90 border rounded-2xl text-xs ml-4 py-2 px-3 hover:border-primary-100 hover:text-primary-100"
-        >
-          로그아웃
-        </button>
       </div>
-      <div className="rounded-md bg-primary-20 flex px-6 py-4">
+      <div className="rounded-md bg-primary-20 flex px-6 py-4 mb-2">
         <div className="w-20 h-20 relative rounded-full overflow-hidden bg-neutral-50 flex items-center justify-center">
           {myProfile ? (
             // ${process.env.DEPLOYED_NEXT_PUBLIC_SERVER_IMAGE_URL}
@@ -56,20 +47,20 @@ function MyProfileSection() {
           )}
         </div>
         <div className="flex flex-col justify-center gap-y-2 mx-7">
-          <h6 className="font-bold">{myProfile?.nickName}</h6>
-          <p className="text-sm">{myProfile?.oneLiner}</p>
+          <h6 className="font-bold text-sm">{myProfile?.nickName}</h6>
+          <p className="text-xs">{myProfile?.oneLiner}</p>
         </div>
       </div>
       <ul>
         <li>
-          <span className="font-bold inline-block text-xs w-1/5">
+          <span className="font-bold inline-block text-xs w-1/5 mr-2">
             휴대폰 번호
           </span>
           <span className="text-neutral-70">|</span>
-          <span className="text-xs pl-3">{myProfile?.phoneNumber}</span>
+          <span className="text-xs pl-3">{formattedPhoneNumber}</span>
         </li>
         <li>
-          <span className="font-bold inline-block text-xs w-1/5">
+          <span className="font-bold inline-block text-xs w-1/5 mr-2">
             계좌 정보
           </span>
           <span className="text-neutral-70">|</span>
