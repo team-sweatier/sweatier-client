@@ -21,7 +21,7 @@ function RatingCardsList({
 
   return (
     <div className="w-full">
-      <ul className="flex flex-col gap-y-4">
+      <ul className="flex flex-col gap-y-4 sm:grid sm:grid-cols-2 sm:gap-x-7">
         {participantsWithoutUser.map((participant) => (
           <li key={participant.id}>
             <RatingCard
