@@ -44,7 +44,7 @@ async function createMatch(matchDto: MatchDto) {
 }
 
 async function getMatch(matchId: string) {
-  const response = await client.get(`/matches/${matchId}`);
+  const response = await client.get<Response>(`/matches/${matchId}`);
 
   const data = response.data;
   if (!data.success) throw new Error(data.error.message);
