@@ -1,3 +1,4 @@
+import { Match } from "@/types/Match.type";
 import { Response } from "@/types/Response.type";
 import { client } from "..";
 import {
@@ -41,10 +42,22 @@ async function updateMyProfile(formData: FormData) {
   return updatedMyProfile;
 }
 
+async function getMyMatches() {
+  const url = "/users/matches";
+  const response = await client.get<Response<Match[]>>(url);
+  const data = response.data;
+
+  if (!data.success) throw new Error(data.message);
+
+  const matches = data.result;
+  return matches;
+}
+
 const userAPI = {
   registerUser,
   getMyProfile,
   updateMyProfile,
+  getMyMatches,
 };
 
 export default userAPI;

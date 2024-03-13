@@ -21,7 +21,7 @@ function MyMatchCard({ match, className, children }: MyMatchCardProps) {
         <div className="font-bold">{match.matchTime}</div>
         <div className="text-sm">{match.address}</div>
         <div className="text-[11px] flex justify-between">
-          <span className="text-neutral-60">{`${gender} | ${teamCapability}vs${teamCapability} | ${match.tierId}`}</span>
+          {/* <span className="text-neutral-60">{`${gender} | ${teamCapability}vs${teamCapability} | ${match.tierId}`}</span> */}
           {children}
         </div>
       </div>

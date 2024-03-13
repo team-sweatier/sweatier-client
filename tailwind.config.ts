@@ -13,9 +13,12 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      boxShadow: {
+        card: "0px 5px 20px 0px rgba(0, 0, 0, 0.05)",
+      },
       colors: {
         primary: {
-          100: "#127cFF",
+          100: "#128CFF",
           90: "#2595FD",
           80: "#409CF3",
           70: "#74B1EA",
