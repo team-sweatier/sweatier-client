@@ -1,5 +1,5 @@
 import MatchCard from "@/components/MatchCard";
-import { Match } from "@/types/Match.type";
+import { Match } from "@/types/match.response.type";
 
 interface MatchCardsListProps {
   matches: Match[];

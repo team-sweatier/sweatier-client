@@ -1,6 +1,5 @@
 import AvailabilityButton from "@/components/Buttons/AvailabilityButton";
-import { Match } from "@/types/Match.type";
-import { MatchDetail } from "@/types/match.response.type";
+import { Match, MatchDetail } from "@/types/match.response.type";
 import day from "@/utils/day";
 
 import getMatchAvailableInfo from "@/utils/getMatchAvailableInfo";
