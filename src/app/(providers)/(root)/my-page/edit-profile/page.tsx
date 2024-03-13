@@ -5,7 +5,7 @@ import RoundButton from "@/components/Buttons/RoundButton";
 import Page from "@/components/Page";
 import { bankName } from "@/utils/bankName";
 import { Gender } from "@/utils/gender";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FormEventHandler, useEffect, useRef, useState } from "react";
@@ -14,9 +14,15 @@ import PhoneNumberInput from "../../accounts/user-registration/_components/Phone
 import RegistrationInput from "../../accounts/user-registration/_components/RegistrationInput";
 
 function ProfileEditPage() {
+  const queryClient = useQueryClient();
   const { data: myProfile } = useQuery({
     queryKey: ["myProfile"],
     queryFn: api.user.getMyProfile,
+  });
+  const { mutateAsync: updateUser, isPending } = useMutation({
+    mutationFn: api.user.updateMyProfile,
+    onSuccess: () =>
+      queryClient.invalidateQueries({ exact: true, queryKey: ["myProfile"] }),
   });
 
   // 지역상태 초기값으로 받아온 프로필 데이터 값 저장.
@@ -49,23 +55,24 @@ function ProfileEditPage() {
   const handleSubmitEditForm: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
 
-    // try {
-    //   const formData = new FormData();
-    //   if (!file) return alert("프로필 이미지는 필수입니다!");
-    //   if (file) formData.append("file", file);
-    //   formData.append("gender", gender);
-    //   formData.append("phoneNumber", phoneNumber);
-    //   formData.append("bankName", selectedBankName);
-    //   formData.append("accountNumber", accountNumber);
-    //   formData.append("nickName", nickname);
-    //   formData.append("oneLiner", oneLiner);
+    try {
+      const formData = new FormData();
+      if (!file && !imageUrl) return alert("프로필 이미지는 필수입니다!");
+      if (file) formData.append("file", file);
+      formData.append("gender", gender);
+      formData.append("phoneNumber", phoneNumber);
+      formData.append("bankName", selectedBankName);
+      formData.append("accountNumber", accountNumber);
+      formData.append("nickName", nickname);
+      formData.append("oneLiner", oneLiner);
 
-    //   const updatedProfile = await updateUser(formData);
-    //   alert(`정보가 업데이트되었습니다, ${nickname}님!!`);
-    //   router.push("/my-page");
-    // } catch (error) {
-    //   alert("유저 정보 수정에 실패하였습니다.");
-    // }
+      const updatedProfile = await updateUser(formData);
+      console.log(updatedProfile);
+      alert(`프로필 업데이트에 성공하였습니다.`);
+      router.push("/my-page");
+    } catch (error) {
+      console.log(error);
+    }
   };
   // 성별선택
   const handleSelectGender = (gender: Gender) => {
@@ -228,7 +235,7 @@ function ProfileEditPage() {
                     : `bg-primary-100 hover:-translate-y-1`
                 }`}
               >
-                등록하기
+                저장하기
               </button>
             </li>
           </ul>
