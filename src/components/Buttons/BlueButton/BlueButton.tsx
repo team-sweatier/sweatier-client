@@ -12,7 +12,6 @@ function BlueButton({
   buttonLabel,
   isValid,
   onClick,
-  className,
   type = "button",
 }: BlueButtonProps) {
   return (
@@ -20,7 +19,7 @@ function BlueButton({
       <input
         type={type}
         value={buttonLabel}
-        className={`bg-primary-100 text-white font-medium rounded-lg text-sm px-5 text-center disabled:cursor-not-allowed cursor-pointer w-full disabled:bg-natural-20 disabled:text-natural-40 sm:py-3 py-2 ${className}`}
+        className="bg-primary-100 text-white font-medium rounded-lg text-sm sm:px-5 text-center disabled:cursor-not-allowed cursor-pointer w-full disabled:bg-neutral-20 disabled:text-neutral-40 sm:py-3 py-2"
         disabled={!isValid}
         onClick={onClick}
       />

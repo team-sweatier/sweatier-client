@@ -18,14 +18,6 @@ export const newSports = [
   { label: "테니스", value: "tennis" },
 ];
 
-// [
-//   { 농구: "basketball" },
-//   { 배드민턴: "badminton" },
-//   { 야구: "baseball" },
-//   { 축구: "soccer" },
-//   { 테니스: "tennis" },
-// ];
-
 const gender: MatchTypesObject[] = [
   { "남녀 모두": "both" },
   { 남성: "male" },

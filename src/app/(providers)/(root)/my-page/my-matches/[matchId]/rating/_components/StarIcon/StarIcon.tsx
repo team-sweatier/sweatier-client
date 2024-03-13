@@ -1,9 +1,9 @@
 interface RatingStarProps {
   selected: boolean;
-  hovered: boolean;
-  onMouseOver: () => void;
-  onMouseLeave: () => void;
-  onClick: () => void;
+  hovered?: boolean;
+  onMouseOver?: () => void;
+  onMouseLeave?: () => void;
+  onClick?: () => void;
 }
 
 function RatingStar({

@@ -1,21 +1,21 @@
 "use client";
-import BlueButton from "@/components/Buttons/BlueButton";
-import CalendarForm from "@/components/Forms/CalendarForm";
-import DropDownGroup from "@/components/Forms/DropDownGroup";
-import InputForm from "@/components/Forms/InputForm";
-import KakaoMapForm from "@/components/Forms/KakaoMapForm";
-import TextareaForm from "@/components/Forms/TextAreaForm/TextAreaForm";
-import TypesButtonGroup from "@/components/Forms/TypesButtonGroup";
+import ContentTextarea from "@/components/Forms/ContentTextarea/ContentTextarea";
+import GenderSelector from "@/components/Forms/GenderSelector/GenderSelector";
+import MatchCalendar from "@/components/Forms/MatchCalendar/MatchCalendar";
+import MatchKakaoMap from "@/components/Forms/MatchKakaoMap/MatchKakaoMap";
+import MatchSubmitButton from "@/components/Forms/MatchSubmitButton/MatchSubmitButton";
+import MatchTime from "@/components/Forms/MatchTime/MatchTime";
+import MatchTypeSelector from "@/components/Forms/MatchTypeSelector/MatchTypeSelector";
+import SportTypeSelector from "@/components/Forms/SportTypeSelector/SportTypeSelector";
+import TitleInput from "@/components/Forms/TitleInput/TitleInput";
 import { MatchResonseType } from "@/types/match.response.type";
-import { matchCreateIcons } from "@/utils/matchIcons";
-import matchTypes from "@/utils/matchTypes";
 import dayjs from "dayjs";
+import { useState } from "react";
 import {
   FieldValues,
   FormProvider,
   SubmitHandler,
   useForm,
-  useWatch,
 } from "react-hook-form";
 
 interface MatchFormProps {
@@ -23,6 +23,16 @@ interface MatchFormProps {
 }
 
 function EditMatchForm({ editValues }: MatchFormProps) {
+  const [kakaoMapResult, setKakaoMapResult] = useState({
+    placeName: "웅진IT 본사",
+    region: "",
+    address: "",
+    latitude: 37.5685159133492,
+    longitude: 126.98020965303,
+  }); // 기본 위치 설정 (웅진 본사)
+
+  // todo : 주소 받으면 setKakaoMapResult <- 에 기본 값으로 설정
+
   const methods = useForm({
     defaultValues: {
       ...editValues,
@@ -35,66 +45,43 @@ function EditMatchForm({ editValues }: MatchFormProps) {
   const {
     handleSubmit,
     formState: { isValid },
-    control,
   } = methods;
 
-  const watchedCapability = useWatch({
-    control,
-    name: "capability",
-  });
-
-  const selectedPlayersKey = Object.entries(matchTypes.players).find(
-    ([_, value]) => typeof value === "number" && value === watchedCapability
-  )?.[0];
-
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    const matchDate = dayjs(data?.matchDay).format("YYYY-MM-DD HH:mm");
+    const matchDateTime = dayjs(data.matchDay)
+      .hour(parseInt(data.hour))
+      .minute(parseInt(data.minute))
+      .toDate();
 
-    const requestData = {
-      ...data,
-      matchDate,
+    const { hour, minute, ...rest } = data;
+
+    const finalData = {
+      ...rest,
+      ...kakaoMapResult,
+      matchDay: matchDateTime,
     };
 
-    console.log("Form Submission", requestData);
+    console.log(finalData);
   };
 
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <TypesButtonGroup
-          iconSrc={matchCreateIcons.post}
-          id="sport"
-          label="종목"
-          typeString={matchTypes.sports}
+        <SportTypeSelector />
+        <TitleInput />
+        <ContentTextarea />
+        <GenderSelector />
+        <MatchTypeSelector />
+        <MatchCalendar />
+        <MatchTime />
+        <MatchKakaoMap
+          kakaoMapResult={kakaoMapResult}
+          setKakaoMapResult={setKakaoMapResult}
         />
-        <InputForm label="제목" id="title" placeholder="제목을 입력해주세요." />
-        <TextareaForm
-          label="내용"
-          id="content"
-          placeholder="내용을 입력해주세요."
-        />
-        <TypesButtonGroup
-          iconSrc={matchCreateIcons.gender}
-          id="gender"
-          label="모집성별"
-          typeString={matchTypes.gender}
-        />
-        <TypesButtonGroup
-          iconSrc={matchCreateIcons.players}
-          id="capability"
-          label="매치유형"
-          typeString={matchTypes.players}
-          selectedValue={selectedPlayersKey}
-        />
-        <CalendarForm editValue={editValues?.matchDay} />
-        <DropDownGroup />
-        <KakaoMapForm editValues={editValues} />
-        <BlueButton buttonLabel="수정 완료" isValid={isValid} type="submit" />
+        <MatchSubmitButton isValid={isValid} />
       </form>
     </FormProvider>
   );
 }
 
 export default EditMatchForm;
-
-// matchDay : Fri Apr 12 2024 19:30:00 GMT+0900 (한국 표준시)

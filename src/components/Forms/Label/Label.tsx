@@ -14,7 +14,7 @@ function Label({ id, label, iconSrc }: LabelProps) {
       className="font-bold pb-2 flex items-center gap-x-1 py-1"
       htmlFor={id}
     >
-      <Icon src={iconSrc} alt="postIcon-icon" classStyles="mb-1" />
+      <Icon src={iconSrc} alt="postIcon-icon" classStyles="mb-[2px]" />
       {label}
     </label>
   );
