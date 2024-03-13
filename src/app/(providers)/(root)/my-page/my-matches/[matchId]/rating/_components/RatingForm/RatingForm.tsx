@@ -34,7 +34,7 @@ function RatingForm({
 
   return (
     <div className="w-full">
-      <Heading className="text-[16px] w-full mb-6 py-0 ">티어평가 하기</Heading>
+      <Heading className="text-base w-full mb-6 py-0 ">티어평가 하기</Heading>
       <RatingCardsList
         participants={participants}
         ratingList={ratingList}
