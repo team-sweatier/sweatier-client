@@ -17,11 +17,14 @@ async function MatchDetailPage(props: { params: { matchId: string } }) {
   const match = await api.match.getMatchesByMatchId(matchId);
   if (!match) return null;
 
+  const sportsType = (match as Match).sportsType.name;
+  const sportsRules = (match as Match).sportsType.rules;
+
   // const { match, isLoading, error } = useQueryMatchById(matchId);
   // if (error) return <div>에러 발생 !</div>;
   // if (isLoading) return <LoadingSpinner />;
 
-  console.log(match);
+  // console.log("match :", match);
 
   /*
    * todo List
@@ -31,7 +34,7 @@ async function MatchDetailPage(props: { params: { matchId: string } }) {
 
   return (
     <main className="pb-[50px] mx-auto max-w-screen-md flex flex-col w-full items-center justify-start min-h- relative">
-      <Background sportType={match["sportType"]}>
+      <Background sportType={sportsType}>
         {/* ✨ 유저가 게시물 작성자일 땐 수정/삭제모드 <-> 아니라면 apply상태 */}
         <MatchControlContainer matchId={matchId} match={match} />
         {/* ✨ 종목, 시간, 날짜, 제목, 내용 & 타 유저의 글이라면 신청하기 버튼 visible */}
@@ -41,7 +44,7 @@ async function MatchDetailPage(props: { params: { matchId: string } }) {
         {/* ✨ kakaomap */}
         <GetKakaoMap match={match} />
         {/* ✨ 스포츠 종목별 경기 규칙 */}
-        <MatchRuleContainer />
+        <MatchRuleContainer sportRules={sportsRules} />
         {/* ✨ 게시물 작성자의 입금계좌 정보 */}
         <AccountContainer match={match} />
         {/* ✨ 게시물 작성자의 프로필 정보 */}

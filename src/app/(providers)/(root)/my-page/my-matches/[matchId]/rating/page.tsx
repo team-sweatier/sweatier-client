@@ -3,7 +3,7 @@ import MatchCard from "@/components/MatchCard";
 import Page from "@/components/Page";
 import { Match } from "@/types/Match.type";
 import participantDto from "@/types/participantDto";
-import RatingForm from "./_components/RatingForm";
+// import RatingForm from "./_components/RatingForm/RatingForm";
 
 const match: Match = {
   id: "matchId",
@@ -35,7 +35,7 @@ function RatingPage() {
         <MatchCard match={match} />
       </div>
       <div className="w-screen sm:w-full border-b-4 border-primary-20 my-6" />
-      <RatingForm participants={participants} />
+      {/* <RatingForm participants={participants} /> */}
     </Page>
   );
 }
