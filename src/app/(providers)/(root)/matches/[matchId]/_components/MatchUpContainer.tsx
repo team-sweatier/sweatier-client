@@ -1,13 +1,17 @@
+"use client";
+import { useAuthStore } from "@/store";
 import translateSportType from "@/utils/translateMatches/translateSportType";
 import dayjs from "dayjs";
 import ApplyButton from "./ApplyButton";
+dayjs.locale("ko");
 
 function MatchUpContainer({ match, matchId }: { match: any; matchId: string }) {
   const { sportType, matchDay, title, content } = match;
   const matchDate = dayjs(matchDay).format("M월 D일 dddd");
   const matchTime = dayjs(matchDay).format("h:mm");
 
-  const isUserPost = false; //todo
+  const { userId } = useAuthStore();
+  const isUserPost = match.hostId === userId;
 
   return (
     <div>

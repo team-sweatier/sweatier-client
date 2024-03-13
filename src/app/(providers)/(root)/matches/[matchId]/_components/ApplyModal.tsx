@@ -1,36 +1,12 @@
 import Modal from "@/components/Modal";
-import { useModalStore } from "@/store";
-import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
+import { Id } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 interface ApplyModalProps {
-  matchId: string;
+  handleApplyMatch: () => Id | undefined;
 }
 
-function ApplyModal({ matchId }: ApplyModalProps) {
-  const router = useRouter();
-  const { close } = useModalStore();
-
-  //* 로그인 여부 임시 변수
-  const isLoggedIn = false;
-
-  const handleApply = () => {
-    //* 로그인 정보 확인 (유저 id가 없다면 -> alert 띄운 후, 메인페이지로 이동)
-    if (!isLoggedIn) {
-      close();
-      router.replace("/"); //메인 페이지로 이동
-      return toast.info("로그인이 필요한 서비스입니다.");
-    }
-    //* 해당 경기에 신청하는 post api 호출 -> 신청 완료되면 alert 띄운 후, "신청 완료"로 상태 변경
-
-    //* 신청 api
-    //* 신청 success 시 => toast.success("신청되었습니다!");
-    //* 신청 error 시 => toast.error("신청에 실패하였습니다");
-    //* 모달 닫기
-    //* 신청여부 변경
-  };
-
+function ApplyModal({ handleApplyMatch }: ApplyModalProps) {
   return (
     <Modal>
       <ul className="max-w-lg w-full mx-auto flex flex-col items-center justify-center px-4">
@@ -49,7 +25,7 @@ function ApplyModal({ matchId }: ApplyModalProps) {
             취소
           </button>
           <button
-            onClick={handleApply}
+            onClick={handleApplyMatch}
             className="w-full py-2 text-sm font-bold rounded-[10px] bg-primary-100 text-white "
           >
             확인
