@@ -10,3 +10,11 @@ export interface SearchResult {
   x: string;
   y: string;
 }
+
+export interface KakaoMapResultType {
+  placeName: string;
+  region: string;
+  address: string;
+  latitude: number;
+  longitude: number;
+}

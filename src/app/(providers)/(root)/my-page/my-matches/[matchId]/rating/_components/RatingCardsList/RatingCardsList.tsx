@@ -2,7 +2,7 @@ import { useAuthStore } from "@/store";
 import { Rating } from "@/types/Rating.type";
 import participantDto from "@/types/participantDto";
 import { Dispatch, SetStateAction } from "react";
-import RatingCard from "../RatingCard";
+import RatingCard from "../RatingCard/RatingCard";
 
 interface RatingCardsListProps {
   participants: participantDto[];

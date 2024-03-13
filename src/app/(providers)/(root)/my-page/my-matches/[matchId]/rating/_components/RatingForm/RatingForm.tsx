@@ -5,7 +5,7 @@ import { Rating } from "@/types/Rating.type";
 import participantDto from "@/types/participantDto";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import RatingCardsList from "../RatingCardsList";
+import RatingCardsList from "../RatingCardsList/RatingCardsList";
 
 function RatingForm({
   participants,

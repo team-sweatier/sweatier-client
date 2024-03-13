@@ -24,7 +24,6 @@ export type Match = {
   sportsType: string;
   applicants: number;
 };
-
 export type MatchDetail = {
   id: string;
   hostId: string;

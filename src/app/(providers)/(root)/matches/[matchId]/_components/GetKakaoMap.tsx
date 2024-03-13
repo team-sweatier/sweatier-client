@@ -3,24 +3,18 @@ import Icon from "@/components/Icon";
 import { matchDetailIcons } from "@/utils/matchIcons";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 
-const temporaryDataLabel = {
-  //todo: 장소 위치 받아오기
-  keyword: "매현시민의 숲 테니스장",
-  address: "서울 서초구 매헌로 99",
-  latitude: 37.4730498033959,
-  longitude: 127.036977084936,
-};
+function GetKakaoMap({ match }: { match: any }) {
+  const { latitude, longitude, placeName, address } = match;
 
-function GetKakaoMap() {
   const coordinates = {
-    lat: temporaryDataLabel.latitude,
-    lng: temporaryDataLabel.longitude,
+    lat: latitude,
+    lng: longitude,
   };
 
   const onMarkerClick = () => {
     const url = `https://map.kakao.com/link/map/${encodeURIComponent(
-      temporaryDataLabel.keyword
-    )},${temporaryDataLabel.latitude},${temporaryDataLabel.longitude}`;
+      placeName
+    )},${latitude},${longitude}`;
     window.open(url, "_blank");
   };
 
@@ -32,9 +26,9 @@ function GetKakaoMap() {
           src={matchDetailIcons.address}
           classStyles="mb-1"
         />
-        <div className="font-bold tex-sm">{temporaryDataLabel.keyword}</div>
+        <div className="font-bold tex-sm">{placeName}</div>
       </div>
-      <div className="text-sm pl-6 pt-2 pb-4">{temporaryDataLabel.address}</div>
+      <div className="text-sm pl-6 pt-2 pb-4">{address}</div>
       <Map
         center={coordinates}
         level={3}

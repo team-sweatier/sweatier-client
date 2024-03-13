@@ -4,7 +4,7 @@ import { MatchDetail } from "@/types/match.response.type";
 import day from "@/utils/day";
 
 import getMatchAvailableInfo from "@/utils/getMatchAvailableInfo";
-import translateGender from "@/utils/translateGender";
+import translateGender from "@/utils/translateMatches/translateGender";
 import Link from "next/link";
 
 function MatchCard({
