@@ -2,7 +2,8 @@
 
 import Heading from "@/components/Heading";
 import Page from "@/components/Page";
-import { useModalStore } from "@/store";
+import { useAuthStore, useModalStore } from "@/store";
+import { getMilliseconds } from "date-fns";
 import { useRouter } from "next/navigation";
 import ButtonToHistory from "./_components/ButtonToHistory";
 import MyProfileSection from "./_components/MyProfileSection";
@@ -12,6 +13,8 @@ import TiersInformationModal from "./_components/TiersInformationModal";
 function MyPage() {
   const modal = useModalStore();
   const router = useRouter();
+  const { userId } = useAuthStore();
+  console.log("마이페이지", getMilliseconds, userId);
 
   const handleClickInformationButton = () => {
     modal.open(<TiersInformationModal />);

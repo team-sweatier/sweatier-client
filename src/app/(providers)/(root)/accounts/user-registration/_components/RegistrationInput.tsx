@@ -18,7 +18,7 @@ function RegistrationInput({
     <input
       onChange={handleChange}
       value={value}
-      className={`h-12 border border-slate-300 rounded-md pl-4 mt-2 focus:border-primary-80 outline-none transition-all duration-500 ease-in-out`}
+      className={`h-12 border border-neutral-50 rounded-xl pl-[26px] mt-4 focus:border-primary-80 outline-none transition-all duration-500 ease-in-out`}
       {...props}
     />
   );

@@ -32,14 +32,14 @@ function PhoneNumberInput({
   };
 
   return (
-    <div className="flex justify-between items-center mt-2 ">
+    <div className="flex justify-between items-center mt-[13px]">
       <input
         ref={firstInputRef}
         maxLength={3}
         onChange={handleFirstInputChange}
         type="text"
         placeholder="010"
-        className="border border-slate-300 h-12 rounded-md w-1/4 text-center focus:border-primary-80 outline-none transition-all duration-500 ease-in-out"
+        className="border border-neutral-50 placeholder:text-neutral-50 h-12 rounded-md w-1/4 pl-5 focus:border-primary-80 outline-none transition-all duration-500 ease-in-out"
       />
       <span className="text-3xl text-neutral-40 w-1/8text-center">-</span>
       <input
@@ -48,7 +48,7 @@ function PhoneNumberInput({
         onChange={handleSecondInputChange}
         type="text"
         placeholder="1234"
-        className="border border-slate-300 h-12 rounded-md w-1/4 text-center focus:border-primary-80 outline-none transition-all duration-500 ease-in-out"
+        className="border border-neutral-50 placeholder:text-neutral-50 h-12 rounded-md w-1/4 pl-5 focus:border-primary-80 outline-none transition-all duration-500 ease-in-out"
       />
       <span className="text-3xl text-neutral-40 w-1/8 text-center">-</span>
       <input
@@ -57,7 +57,7 @@ function PhoneNumberInput({
         onChange={handleThirdInputChange}
         type="text"
         placeholder="5678"
-        className="border border-slate-300 h-12 rounded-md w-1/4 text-center focus:border-primary-80 outline-none transition-all duration-500 ease-in-out"
+        className="border border-neutral-50 placeholder:text-neutral-50 h-12 rounded-md w-1/4 pl-5 focus:border-primary-80 outline-none transition-all duration-500 ease-in-out"
       />
     </div>
   );
