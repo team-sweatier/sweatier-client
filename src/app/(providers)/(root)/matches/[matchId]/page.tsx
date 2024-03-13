@@ -19,6 +19,8 @@ async function MatchDetailPage(props: { params: { matchId: string } }) {
   const match = await api.match.getMatchesByMatchId(matchId);
   if (!match) return null;
 
+  console.log(match);
+
   /*
 * todo List
 
@@ -26,7 +28,6 @@ async function MatchDetailPage(props: { params: { matchId: string } }) {
 
 * 5. 신청 가능 상태일 경우 -> 신청 모달 (post 요청) (🔥 participating)
 
-* 7. 유저 프로필 사진
 
 * 8. match any -> 타입 정의
 

@@ -1,4 +1,3 @@
-import defaultProfileImg from "@/../public/assets/match_detail_page/default-profile.jpeg";
 import Image from "next/legacy/image";
 
 interface UserProfileContainerProps {
@@ -7,13 +6,13 @@ interface UserProfileContainerProps {
 }
 
 function UserProfileContainer({ match }: { match: any }) {
-  const { hostNickname, hostOneLiner } = match;
+  const { hostNickname, hostOneLiner, hostProfileImgSrc } = match;
 
   return (
     <div className="border border-none bg-primary-20 text-sm rounded-lg w-full dark:bg-natural-50 dark:border-natural-50 dark:text-white p-5 items-center flex">
       <div className="relative w-24 h-24 rounded-full overflow-hidden">
         <Image
-          src={defaultProfileImg}
+          src={hostProfileImgSrc}
           alt="user-profile-image"
           layout="fill"
           objectFit="cover"
