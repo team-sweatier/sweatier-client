@@ -6,6 +6,8 @@ interface AuthState {
   logOut: () => void;
   isAuthInitialized: boolean;
   setIsAuthInitialized: (isInitialized: boolean) => void;
+  userId: string | undefined;
+  setUserId: (userId: string) => void;
 }
 
 const useAuthStore = create<AuthState>((set) => ({
@@ -15,6 +17,8 @@ const useAuthStore = create<AuthState>((set) => ({
   isAuthInitialized: false,
   setIsAuthInitialized: (isInitialized) =>
     set(() => ({ isAuthInitialized: isInitialized })),
+  userId: "",
+  setUserId: (userId) => set({ userId }),
 }));
 
 export default useAuthStore;

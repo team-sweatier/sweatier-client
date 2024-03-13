@@ -8,7 +8,7 @@ import { Gender } from "@/utils/gender";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { FormEventHandler, useEffect, useRef, useState } from "react";
 import DropDownBoxOfBank from "../../accounts/user-registration/_components/DropDownBoxOfBank";
 import PhoneNumberInput from "../../accounts/user-registration/_components/PhoneNumberInput";
 import RegistrationInput from "../../accounts/user-registration/_components/RegistrationInput";
@@ -46,8 +46,27 @@ function ProfileEditPage() {
     }
   }, [myProfile]);
 
-  const handleSubmitEditForm = () => {};
+  const handleSubmitEditForm: FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
 
+    // try {
+    //   const formData = new FormData();
+    //   if (!file) return alert("프로필 이미지는 필수입니다!");
+    //   if (file) formData.append("file", file);
+    //   formData.append("gender", gender);
+    //   formData.append("phoneNumber", phoneNumber);
+    //   formData.append("bankName", selectedBankName);
+    //   formData.append("accountNumber", accountNumber);
+    //   formData.append("nickName", nickname);
+    //   formData.append("oneLiner", oneLiner);
+
+    //   const updatedProfile = await updateUser(formData);
+    //   alert(`정보가 업데이트되었습니다, ${nickname}님!!`);
+    //   router.push("/my-page");
+    // } catch (error) {
+    //   alert("유저 정보 수정에 실패하였습니다.");
+    // }
+  };
   // 성별선택
   const handleSelectGender = (gender: Gender) => {
     setGender(gender);
@@ -163,10 +182,7 @@ function ProfileEditPage() {
               >
                 휴대폰 번호
               </label>
-              <PhoneNumberInput
-                phoneNumber={phoneNumber}
-                setPhoneNumber={setPhoneNumber}
-              />
+              <PhoneNumberInput setPhoneNumber={setPhoneNumber} />
             </li>
             <li className="flex flex-col">
               <label
