@@ -66,7 +66,9 @@ export type MatchDetail = {
   hostOneLiner: string;
   hostBankName: string;
   hostAccountNumber: string;
+  hostProfileImgSrc: string;
   applicants: number;
   tierType: string;
   sportType: string;
+  participating: boolean;
 };

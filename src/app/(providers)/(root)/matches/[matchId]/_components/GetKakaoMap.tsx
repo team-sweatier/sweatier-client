@@ -1,9 +1,10 @@
 "use client";
 import Icon from "@/components/Icon";
+import { MatchDetail } from "@/types/match.response.type";
 import { matchDetailIcons } from "@/utils/matchIcons";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 
-function GetKakaoMap({ match }: { match: any }) {
+function GetKakaoMap({ match }: { match: MatchDetail }) {
   const { latitude, longitude, placeName, address } = match;
 
   const coordinates = {

@@ -1,10 +1,12 @@
+import { MatchDetail } from "@/types/match.response.type";
+
 interface AccountContainerProps {
   isApply: boolean;
   accountBank: string;
   accountNumber: string;
 }
 
-function AccountContainer({ match }: { match: any }) {
+function AccountContainer({ match }: { match: MatchDetail }) {
   const { hostBankName, hostAccountNumber, participating } = match;
 
   return (

@@ -1,4 +1,5 @@
 import Icon from "@/components/Icon";
+import { MatchDetail } from "@/types/match.response.type";
 import { matchDetailIcons } from "@/utils/matchIcons";
 import translateGender from "@/utils/translateMatches/translateGender";
 import translateMatchType from "@/utils/translateMatches/translateMatchType";
@@ -15,7 +16,7 @@ interface Icons {
 
 const matchIcons: Icons = matchDetailIcons as Icons;
 
-function MatchUpTypeContainer({ match }: { match: any }) {
+function MatchUpTypeContainer({ match }: { match: MatchDetail }) {
   const { gender, tierType, capability, applicants } = match;
 
   const matchIpTypekeys: { [key: string]: string } = {

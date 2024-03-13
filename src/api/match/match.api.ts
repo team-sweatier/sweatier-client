@@ -46,11 +46,7 @@ async function getMatch(matchId: string) {
 
 //* match 게시물 작성
 async function createMatch(matchDto: any) {
-  const response = await client.post(`/matches`, {
-    data: {
-      matchDto,
-    },
-  });
+  const response = await client.post(`/matches`, matchDto);
 
   const data = response.data;
   if (!data.success) throw new Error(data.error.message);
@@ -90,8 +86,11 @@ async function participateToMatch(matchId: string) {
 }
 
 //* match 게사물 수정
-async function editMatch(matchId: string) {
-  const response = await client.put<Response>(`/matches/${matchId}`);
+async function updateMatch(matchId: string, matchDto: any) {
+  const response = await client.put<Response>(`/matches/${matchId}`, {
+    data: matchDto,
+  });
+
   const data = response.data;
   if (!data.success) throw new Error(data.message);
 
@@ -118,7 +117,7 @@ const matchAPI = {
   createMatch,
   getMatchesByMatchId,
   participateToMatch,
-  editMatch,
+  updateMatch,
   deleteMatch,
 };
 

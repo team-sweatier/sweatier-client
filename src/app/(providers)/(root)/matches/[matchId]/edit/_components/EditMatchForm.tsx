@@ -1,4 +1,5 @@
 "use client";
+import api from "@/api";
 import ContentTextarea from "@/components/Forms/ContentTextarea/ContentTextarea";
 import GenderSelector from "@/components/Forms/GenderSelector/GenderSelector";
 import MatchCalendar from "@/components/Forms/MatchCalendar/MatchCalendar";
@@ -8,7 +9,7 @@ import MatchTime from "@/components/Forms/MatchTime/MatchTime";
 import MatchTypeSelector from "@/components/Forms/MatchTypeSelector/MatchTypeSelector";
 import SportTypeSelector from "@/components/Forms/SportTypeSelector/SportTypeSelector";
 import TitleInput from "@/components/Forms/TitleInput/TitleInput";
-import { MatchResonseType } from "@/types/match.response.type";
+import { MatchDetail } from "@/types/match.response.type";
 import dayjs from "dayjs";
 import { useState } from "react";
 import {
@@ -19,10 +20,11 @@ import {
 } from "react-hook-form";
 
 interface MatchFormProps {
-  editValues?: MatchResonseType;
+  matchId: string;
+  editValues?: MatchDetail;
 }
 
-function EditMatchForm({ editValues }: MatchFormProps) {
+function EditMatchForm({ matchId, editValues }: MatchFormProps) {
   const [kakaoMapResult, setKakaoMapResult] = useState({
     placeName: "웅진IT 본사",
     region: "",
@@ -47,11 +49,11 @@ function EditMatchForm({ editValues }: MatchFormProps) {
     formState: { isValid },
   } = methods;
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const matchDateTime = dayjs(data.matchDay)
       .hour(parseInt(data.hour))
       .minute(parseInt(data.minute))
-      .toDate();
+      .toISOString();
 
     const { hour, minute, ...rest } = data;
 
@@ -61,7 +63,14 @@ function EditMatchForm({ editValues }: MatchFormProps) {
       matchDay: matchDateTime,
     };
 
-    console.log(finalData);
+    try {
+      const response = await api.match.updateMatch(matchId, finalData);
+      return response;
+      // 성공 로직, 예: 페이지 전환
+    } catch (error) {
+      console.error("Match creation failed:", error);
+      // 실패 시 사용자에게 알리기
+    }
   };
 
   return (
