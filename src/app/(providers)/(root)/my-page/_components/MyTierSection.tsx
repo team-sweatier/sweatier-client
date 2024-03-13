@@ -43,12 +43,10 @@ function MyTierSection({ onClickTierModal }: { onClickTierModal: () => void }) {
     }
   });
 
-  console.log(TranslatedMyTiers);
-
   return (
     <>
-      <div className="flex items-center">
-        <h4 className="py-4 font-black text-lg pr-1">나의 티어</h4>
+      <div className="flex items-center pb-6">
+        <h4 className="font-black pr-1">나의 티어</h4>
         <button onClick={onClickTierModal}>
           <Image
             src="/assets/Info@3x.svg"

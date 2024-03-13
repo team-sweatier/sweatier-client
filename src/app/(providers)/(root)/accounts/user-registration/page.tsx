@@ -69,10 +69,12 @@ function UserRegistrationPage() {
       formData.append("oneLiner", oneLiner);
 
       const profile = await registerUser(formData);
+      console.log(profile);
       alert(`환영합니다 ${nickname}님!!`);
       router.push("/my-page");
     } catch (error) {
-      alert("유저 정보 등록에 실패하였습니다."); // 현재 타입에러 때문에 임시로 에러메시지 수기작성함. => 추후 백엔드 에러메시지 띄울 예정.
+      // console.log(error);
+      alert("유저 정보 등록에 실패하였습니다.");
     }
   };
 
@@ -225,3 +227,6 @@ function UserRegistrationPage() {
 }
 
 export default UserRegistrationPage;
+
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50VHlwZSI6InVzZXIiLCJlbWFpbCI6bnVsbCwiaWF0IjoxNzEwMzMzNjMyLCJleHAiOjE3MTAzNDA4MzIsInN1YiI6IjMzODE5NjM0MjgifQ.n96d-M7FiRsTPmnXL76f1F4CoQ7Yxq88Jc0zpMVug-E
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50VHlwZSI6InVzZXIiLCJlbWFpbCI6ImJhZXNqYWUxMjEyQG5hdmVyLmNvbSIsImlhdCI6MTcxMDMzNDA1OSwiZXhwIjoxNzEwMzQxMjU5LCJzdWIiOiJsRFd1aGxyekZyc2RKLVhld2oifQ.eUaaKtbTSSUgiCWoEiWYvYv00w5CCirXWVWZRzIgnQE
