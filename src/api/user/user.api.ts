@@ -1,6 +1,10 @@
 import { Response } from "@/types/Response.type";
 import { client } from "..";
-import { GetUserProfileData, RegisterUserData } from "./user.data";
+import {
+  GetUserProfileData,
+  RegisterUserData,
+  UpdateMyProfileData,
+} from "./user.data";
 
 async function registerUser(formData: FormData) {
   const response = await client.post<Response<RegisterUserData>>(
@@ -25,9 +29,22 @@ async function getMyProfile() {
   return myProfile;
 }
 
+async function updateMyProfile(formData: FormData) {
+  const response = await client.put<Response<UpdateMyProfileData>>(
+    "/users/profile",
+    formData
+  );
+  const data = response.data;
+  if (!data.success) throw new Error(data.message);
+
+  const updatedMyProfile = data.result;
+  return updatedMyProfile;
+}
+
 const userAPI = {
   registerUser,
   getMyProfile,
+  updateMyProfile,
 };
 
 export default userAPI;
