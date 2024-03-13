@@ -75,17 +75,12 @@ function ProfileEditPage() {
   return (
     <Page>
       <section className="pb-3 w-full">
-        <h2 className="a11y-hidden">유저 정보 수정</h2>
+        <h2 className="a11y-hidden">내 정보 수정</h2>
         <form className="mx-auto max-w-lg" onSubmit={handleSubmitEditForm}>
           <p className="py-4 text-2xl font-black tracking-[-.1em]">
-            유저 정보 수정
+            내 정보 수정
           </p>
-          <p className="font-bold tracking-tighter text-xs">
-            30일 내에 닉네임 변경 이력이 있으면
-          </p>
-          <p className="font-bold tracking-tighter text-xs">
-            닉네임 변경이 불가합니다.
-          </p>
+
           <ul className="flex flex-col py-10 gap-y-7">
             <li className="flex flex-col pb-6">
               <div className="w-32 h-32 mx-auto relative">
@@ -115,6 +110,10 @@ function ProfileEditPage() {
                   />
                 </button>
               </div>
+              <p className="tracking-tighter text-[11px] text-neutral-50 mx-auto max-w-[198px] mt-1">
+                오프라인 운동 시 팀원들이 알아볼 수 있게 본인의 사진을 프로필로
+                등록해주세요!
+              </p>
             </li>
             <li className="flex flex-col">
               <div className="flex">
@@ -164,7 +163,10 @@ function ProfileEditPage() {
               >
                 휴대폰 번호
               </label>
-              <PhoneNumberInput setPhoneNumber={setPhoneNumber} />
+              <PhoneNumberInput
+                phoneNumber={phoneNumber}
+                setPhoneNumber={setPhoneNumber}
+              />
             </li>
             <li className="flex flex-col">
               <label
@@ -205,7 +207,7 @@ function ProfileEditPage() {
                   !phoneNumber ||
                   !accountNumber ||
                   selectedBankName === "은행선택" ||
-                  !file
+                  !imageUrl
                     ? `bg-neutral-20 text-neutral-40`
                     : `bg-primary-100 hover:-translate-y-1`
                 }`}

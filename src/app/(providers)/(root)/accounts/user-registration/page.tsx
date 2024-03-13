@@ -168,7 +168,10 @@ function UserRegistrationPage() {
               >
                 휴대폰 번호
               </label>
-              <PhoneNumberInput setPhoneNumber={setPhoneNumber} />
+              <PhoneNumberInput
+                phoneNumber={phoneNumber}
+                setPhoneNumber={setPhoneNumber}
+              />
             </li>
             <li className="flex flex-col">
               <label

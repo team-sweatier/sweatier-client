@@ -1,8 +1,10 @@
 import React, { useRef } from "react";
 
 function PhoneNumberInput({
+  phoneNumber,
   setPhoneNumber,
 }: {
+  phoneNumber: string;
   setPhoneNumber: (phoneNumber: string) => void;
 }) {
   const firstInputRef = useRef<HTMLInputElement>(null);
@@ -37,6 +39,7 @@ function PhoneNumberInput({
         ref={firstInputRef}
         maxLength={3}
         onChange={handleFirstInputChange}
+        value={phoneNumber.slice(0, 3)}
         type="text"
         placeholder="010"
         className="border border-neutral-50 placeholder:text-neutral-50 h-12 rounded-md w-1/4 pl-5 focus:border-primary-80 outline-none transition-all duration-500 ease-in-out"
@@ -46,6 +49,7 @@ function PhoneNumberInput({
         ref={secondInputRef}
         maxLength={4}
         onChange={handleSecondInputChange}
+        value={phoneNumber.slice(3, 7)}
         type="text"
         placeholder="1234"
         className="border border-neutral-50 placeholder:text-neutral-50 h-12 rounded-md w-1/4 pl-5 focus:border-primary-80 outline-none transition-all duration-500 ease-in-out"
@@ -55,6 +59,7 @@ function PhoneNumberInput({
         ref={thirdInputRef}
         maxLength={4}
         onChange={handleThirdInputChange}
+        value={phoneNumber.slice(7, 11)}
         type="text"
         placeholder="5678"
         className="border border-neutral-50 placeholder:text-neutral-50 h-12 rounded-md w-1/4 pl-5 focus:border-primary-80 outline-none transition-all duration-500 ease-in-out"
