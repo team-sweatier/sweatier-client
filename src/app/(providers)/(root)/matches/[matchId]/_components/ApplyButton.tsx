@@ -1,7 +1,6 @@
 "use client";
 import useMutationApplyMatch from "@/hooks/services/matches/useMutationApplyMatch";
 import { useAuthStore, useModalStore } from "@/store";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -18,7 +17,7 @@ interface ApplyButtonProps {
 function ApplyButton({ isAbledApply, matchId }: ApplyButtonProps) {
   const { open, close } = useModalStore();
   const { userId } = useAuthStore();
-  const router = useRouter();
+
   const [isApply, setIsApply] = useState<boolean>(false);
   const { mutate: applyMatch } = useMutationApplyMatch(matchId);
 
@@ -27,13 +26,12 @@ function ApplyButton({ isAbledApply, matchId }: ApplyButtonProps) {
   console.log("userId :", userId);
 
   const handleApplyMatch = () => {
-    // //* 1. 신청 시 로그인 상태인지 확인
-    // if (!userId) {
-    //   //* userId가 없다면 모달 닫고 & alert 띄우고 & 메인페이지로 이동
-    //   close();
-    //   router.replace("/"); //메인 페이지로 이동
-    //   return toast.info("로그인이 필요한 서비스입니다.");
-    // }
+    //* 1. 신청 시 로그인 상태인지 확인
+    if (!userId) {
+      //* userId가 없다면 모달 닫고 & alert 띄우기
+      close();
+      return toast.info("로그인이 필요한 서비스입니다.");
+    }
 
     //* 2. 로그인 상태라면 신청
     applyMatch(matchId, {
@@ -49,11 +47,6 @@ function ApplyButton({ isAbledApply, matchId }: ApplyButtonProps) {
     });
   };
 
-  console.log("isAbledApply 마감했니 ?", isAbledApply);
-  //true 라면 마감
-  console.log("isApply 내가 이전에 신청 했었니 ?", isApply);
-  //true 라면 마감
-
   return (
     <>
       {!isAbledApply && !isApply ? (
@@ -61,7 +54,9 @@ function ApplyButton({ isAbledApply, matchId }: ApplyButtonProps) {
           type="button"
           className="ext-sm px-5 py-6 rounded-3xl font-bold border-[0.7px] bg-primary-100 text-white border-primary-100 drop-shadow-[0px_0px_2px_#0f8cff]"
           onClick={() =>
-            open(<ApplyModal handleApplyMatch={handleApplyMatch} />)
+            open(
+              <ApplyModal handleApplyMatch={handleApplyMatch} close={close} />
+            )
           }
         >
           신청하기

@@ -4,9 +4,10 @@ import "react-toastify/dist/ReactToastify.css";
 
 interface ApplyModalProps {
   handleApplyMatch: () => Id | undefined;
+  close: () => void;
 }
 
-function ApplyModal({ handleApplyMatch }: ApplyModalProps) {
+function ApplyModal({ handleApplyMatch, close }: ApplyModalProps) {
   return (
     <Modal>
       <ul className="max-w-lg w-full mx-auto flex flex-col items-center justify-center px-4">
