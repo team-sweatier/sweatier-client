@@ -1,8 +1,10 @@
 "use client";
 
 import { useAuth } from "@/contexts/auth.context";
+import { useProfile } from "@/contexts/profile.context";
 import useMutationApplyMatch from "@/hooks/services/matches/useMutationApplyMatch";
 import { useModalStore } from "@/store";
+import isUserParticipating from "@/utils/isUserParticipating";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ApplyModal from "./ApplyModal";
@@ -15,10 +17,12 @@ interface ApplyButtonProps {
 function ApplyButton({ match, matchId }: ApplyButtonProps) {
   const { open, close } = useModalStore();
   const { isLoggedIn } = useAuth();
+  const profile = useProfile();
   const { mutate: applyMatch } = useMutationApplyMatch(matchId);
 
   const isFull = match.applicants / match.capability >= 1; //* 1. 정원 확인하기
-  const hasApplied = match.participating; //* 2. 기신청 여부 확인하기
+  const hasApplied = isUserParticipating(match, profile!.id); //* 2. 기신청 여부 확인하기
+  // const hasApplied = match.participating;
 
   // ! ============================================================ !
 
