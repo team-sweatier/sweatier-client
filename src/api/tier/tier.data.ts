@@ -1,6 +1,8 @@
 type TierData = {
+  id: string;
   value: string;
   sportType: {
+    id: number;
     name: string;
   };
 };
