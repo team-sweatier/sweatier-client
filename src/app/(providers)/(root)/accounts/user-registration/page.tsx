@@ -59,17 +59,19 @@ function UserRegistrationPage() {
 
     try {
       if (!file) return alert("프로필 이미지는 필수입니다!");
+
       const formData = new FormData();
-      formData.append("file", file);
+
       formData.append("gender", gender);
       formData.append("phoneNumber", phoneNumber);
       formData.append("bankName", selectedBankName);
       formData.append("accountNumber", accountNumber);
       formData.append("nickName", nickname);
       formData.append("oneLiner", oneLiner);
+      formData.append("file", file);
 
-      const profile = await registerUser(formData);
-      console.log(profile);
+      await registerUser(formData);
+
       alert(`환영합니다 ${nickname}님!!`);
       router.push("/my-page");
     } catch (error) {
