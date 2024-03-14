@@ -3,9 +3,10 @@
 import api from "@/api";
 import RoundButton from "@/components/Buttons/RoundButton";
 import Page from "@/components/Page";
+import { useProfile } from "@/contexts/profile.context";
 import { bankName } from "@/utils/bankName";
 import { Gender } from "@/utils/gender";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FormEventHandler, useEffect, useRef, useState } from "react";
@@ -15,10 +16,7 @@ import RegistrationInput from "../../accounts/user-registration/_components/Regi
 
 function ProfileEditPage() {
   const queryClient = useQueryClient();
-  const { data: myProfile } = useQuery({
-    queryKey: ["myProfile"],
-    queryFn: api.user.getMyProfile,
-  });
+  const profile = useProfile();
   const { mutateAsync: updateUser, isPending } = useMutation({
     mutationFn: api.user.updateMyProfile,
     onSuccess: () =>
@@ -39,22 +37,22 @@ function ProfileEditPage() {
   const router = useRouter();
 
   useEffect(() => {
-    if (myProfile) {
-      setNickname(myProfile.nickName);
-      setGender(myProfile.gender as Gender);
+    if (profile) {
+      setNickname(profile.nickName);
+      setGender(profile.gender as Gender);
 
-      setPhoneNumber(myProfile.phoneNumber);
-      setSelectedBankName(myProfile.bankName);
-      setAccountNumber(myProfile.accountNumber);
-      setOneLiner(myProfile.oneLiner as string);
-      const imageUrl = myProfile
+      setPhoneNumber(profile.phoneNumber);
+      setSelectedBankName(profile.bankName);
+      setAccountNumber(profile.accountNumber);
+      setOneLiner(profile.oneLiner as string);
+      const imageUrl = profile
         ? `https://storage.googleapis.com/sweatier-user-profile-image/${
-            myProfile.userId
+            profile.id
           }?timestamp=${new Date().getTime()}`
         : null;
       setImageUrl(imageUrl);
     }
-  }, [myProfile]);
+  }, [profile]);
 
   const handleSubmitEditForm: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
