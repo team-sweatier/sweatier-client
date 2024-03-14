@@ -23,7 +23,6 @@ function RatingForm({
       matchId,
       ratings: ratingList,
     });
-    console.log(response);
     router.push("/");
   };
 

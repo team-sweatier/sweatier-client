@@ -1,30 +1,36 @@
 "use client";
 import useMutationApplyMatch from "@/hooks/services/matches/useMutationApplyMatch";
 import { useAuthStore, useModalStore } from "@/store";
-import { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ApplyModal from "./ApplyModal";
 
 interface ApplyButtonProps {
-  isAbledApply: boolean;
+  match: any;
   matchId: string;
 }
 
-//! isAbledApply : 신청 가능 여부 (마감 되었는지 안되었는지)
-//! isApply : 나의 신청 여부 (내가 신청했는지 안했는지)
-
-function ApplyButton({ isAbledApply, matchId }: ApplyButtonProps) {
+function ApplyButton({ match, matchId }: ApplyButtonProps) {
   const { open, close } = useModalStore();
   const { userId } = useAuthStore();
-
-  const [isApply, setIsApply] = useState<boolean>(false);
   const { mutate: applyMatch } = useMutationApplyMatch(matchId);
 
-  if (!applyMatch) return null;
+  const isFull = match.applicants / match.capability >= 1; //* 1. 정원 확인하기
+  const hasApplied = match.participating; //* 2. 기신청 여부 확인하기
 
-  console.log("userId :", userId);
+  // ! ============================================================ !
 
+  //* 1. 신청하기 시 모달 open handler
+  const handleOpenApplyModal = () =>
+    open(<ApplyModal handleApplyMatch={handleApplyMatch} close={close} />);
+
+  //* 2. 마감 시 handler
+  const handleAlreadyExpired = () => toast.error("신청 마감된 게시물입니다.");
+
+  //* 2. 신청 완료 시 handler
+  const handleAlreadyApply = () => toast.error("이미 신청된 게시물입니다.");
+
+  //* 4. 신청 시 handler (props로 전달)
   const handleApplyMatch = () => {
     //* 1. 신청 시 로그인 상태인지 확인
     if (!userId) {
@@ -36,7 +42,6 @@ function ApplyButton({ isAbledApply, matchId }: ApplyButtonProps) {
     //* 2. 로그인 상태라면 신청
     applyMatch(matchId, {
       onSuccess: () => {
-        setIsApply(true); //* 1. 신청 상태로 바꿔준다.
         close();
         return toast.success("해당 매치에 신청되었습니다!");
       },
@@ -47,32 +52,37 @@ function ApplyButton({ isAbledApply, matchId }: ApplyButtonProps) {
     });
   };
 
+  // ! ============================================================ !
+
+  const buttonProps = (() => {
+    if (isFull) {
+      return {
+        className:
+          "text-sm px-8 py-6 rounded-3xl font-bold border-[0.7px] bg-neutral-20 text-neutral-40 border-[#E6E6E6]",
+        onClick: handleAlreadyExpired,
+        label: "마감",
+      };
+    } else if (hasApplied) {
+      return {
+        className:
+          "text-sm px-8 py-6 rounded-3xl font-bold border-[0.7px] bg-neutral-20 text-neutral-40 border-[#E6E6E6]",
+        onClick: handleAlreadyApply,
+        label: "신청완료",
+      };
+    } else {
+      return {
+        className:
+          "text-sm px-5 py-6 rounded-3xl font-bold border-[0.7px] bg-primary-100 text-white border-primary-100 drop-shadow-[0px_0px_2px_#0f8cff]",
+        onClick: handleOpenApplyModal,
+        label: "신청하기",
+      };
+    }
+  })();
+
   return (
-    <>
-      {!isAbledApply && !isApply ? (
-        <button
-          type="button"
-          className="ext-sm px-5 py-6 rounded-3xl font-bold border-[0.7px] bg-primary-100 text-white border-primary-100 drop-shadow-[0px_0px_2px_#0f8cff]"
-          onClick={() =>
-            open(
-              <ApplyModal handleApplyMatch={handleApplyMatch} close={close} />
-            )
-          }
-        >
-          신청하기
-        </button>
-      ) : (
-        <button
-          type="button"
-          className="text-sm px-5 py-6 rounded-3xl font-bold border-[0.7px] bg-neutral-20 text-neutral-40 border-[#E6E6E6]"
-          onClick={() => {
-            toast.error("신청 마감되었습니다.");
-          }}
-        >
-          마감
-        </button>
-      )}
-    </>
+    <button className={buttonProps.className} onClick={buttonProps.onClick}>
+      {buttonProps.label}
+    </button>
   );
 }
 

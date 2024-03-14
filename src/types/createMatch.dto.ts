@@ -9,5 +9,5 @@ export type CreateMatchDto = {
   placeName: string;
   region: string;
   address: string;
-  matchDay: Date;
+  matchDay: string;
 };

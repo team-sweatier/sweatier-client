@@ -8,19 +8,13 @@ import ApplyButton from "./ApplyButton";
 dayjs.locale("ko");
 
 function MatchUpContainer({ match, matchId }: { match: any; matchId: string }) {
-  const { sportType, matchDay, title, content } = match;
-  const matchDate = dayjs(matchDay).format("M월 D일 dddd");
-  const matchTime = dayjs(matchDay).format("hh:mm");
-
   const { userId } = useAuthStore();
   const isUserPost = match.hostId === userId;
 
-  // 현재 날짜 및 시간
-  const now = dayjs();
-  const matchDayDate = dayjs(matchDay);
+  const { sportType, matchDay, title, content } = match;
 
-  const isAbledApply = !matchDayDate.isBefore(now);
-  console.log("isAbledApply :", isAbledApply);
+  const matchDate = dayjs(matchDay).format("M월 D일 dddd");
+  const matchTime = dayjs(matchDay).format("hh:mm");
 
   return (
     <div>
@@ -36,9 +30,7 @@ function MatchUpContainer({ match, matchId }: { match: any; matchId: string }) {
           <div className="text-neutral-90 text-xl">{title}</div>
         </div>
 
-        {!isUserPost && (
-          <ApplyButton isAbledApply={isAbledApply} matchId={matchId} />
-        )}
+        {!isUserPost && <ApplyButton match={match} matchId={matchId} />}
       </div>
       <div className="mt-6 pb-8 text-neutral-70 tex-sm leading-7">
         {content}
