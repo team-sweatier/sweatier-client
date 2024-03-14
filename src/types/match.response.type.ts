@@ -24,7 +24,6 @@ export type Match = {
   sportsType: string;
   applicants: number;
 };
-
 export type MatchDetail = {
   id: string;
   hostId: string;
@@ -39,7 +38,7 @@ export type MatchDetail = {
   placeName: string;
   region: string;
   address: string;
-  matchDay: string;
+  matchDay: Date;
   createdAt: Date;
   updatedAt: Date | null;
   participants: [
@@ -55,7 +54,8 @@ export type MatchDetail = {
   };
   sportsType: {
     name: string;
-    rules: string;
+    rule: any;
+    rules: any;
   };
   participate: [
     {
@@ -67,9 +67,7 @@ export type MatchDetail = {
   hostOneLiner: string;
   hostBankName: string;
   hostAccountNumber: string;
-  hostProfileImgSrc: string;
   applicants: number;
   tierType: string;
   sportType: string;
-  participating: boolean;
 };

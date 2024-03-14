@@ -1,14 +1,12 @@
 import api from "@/api";
 import MatchCard from "@/components/MatchCard";
 import Page from "@/components/Page";
-import { MatchDetail } from "@/types/match.response.type";
-import participantDto from "@/types/participantDto";
 import RatingForm from "./_components/RatingForm";
 
 async function RatingPage(props: { params: { matchId: string } }) {
   const matchId = props.params.matchId;
-  const match: MatchDetail = await api.match.getMatch(matchId);
-  const participants: participantDto[] = match.participants;
+  const match: any = await api.match.getMatch(matchId);
+  const participants: any[] = match.participants;
   // const participants: participantDto[] = match.participants.filter(
   //   (participant) => participant.id !== userId
   // );

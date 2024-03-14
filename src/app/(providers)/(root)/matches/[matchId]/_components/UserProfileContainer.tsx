@@ -1,4 +1,3 @@
-import { MatchDetail } from "@/types/match.response.type";
 import Image from "next/legacy/image";
 
 interface UserProfileContainerProps {
@@ -6,7 +5,7 @@ interface UserProfileContainerProps {
   hostOneLiner?: string;
 }
 
-function UserProfileContainer({ match }: { match: MatchDetail }) {
+function UserProfileContainer({ match }: { match: any }) {
   const { hostNickname, hostOneLiner, hostProfileImgSrc } = match;
 
   return (

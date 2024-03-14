@@ -1,6 +1,5 @@
 "use client";
 import { useAuthStore } from "@/store";
-import { MatchDetail } from "@/types/match.response.type";
 import translateSportType from "@/utils/translateMatches/translateSportType";
 import dayjs from "dayjs";
 import "dayjs/locale/ko";
@@ -8,13 +7,7 @@ import ApplyButton from "./ApplyButton";
 
 dayjs.locale("ko");
 
-function MatchUpContainer({
-  match,
-  matchId,
-}: {
-  match: MatchDetail;
-  matchId: string;
-}) {
+function MatchUpContainer({ match, matchId }: { match: any; matchId: string }) {
   const { userId } = useAuthStore();
   const isUserPost = match.hostId === userId;
 

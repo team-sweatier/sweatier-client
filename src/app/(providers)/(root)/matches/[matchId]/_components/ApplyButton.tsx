@@ -1,13 +1,12 @@
 "use client";
 import useMutationApplyMatch from "@/hooks/services/matches/useMutationApplyMatch";
 import { useAuthStore, useModalStore } from "@/store";
-import { MatchDetail } from "@/types/match.response.type";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ApplyModal from "./ApplyModal";
 
 interface ApplyButtonProps {
-  match: MatchDetail;
+  match: any;
   matchId: string;
 }
 

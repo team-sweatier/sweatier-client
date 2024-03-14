@@ -2,12 +2,11 @@
 import api from "@/api";
 import MatchCard from "@/components/MatchCard";
 import Page from "@/components/Page";
-import { MatchDetail } from "@/types/match.response.type";
 import { useEffect, useState } from "react";
 import RatingCheckCardsList from "./_components/RatingCheckCardsList";
 function RatingCheckPage(props: { params: { matchId: string } }) {
   const matchId = props.params.matchId;
-  const [match, setMatch] = useState<MatchDetail>();
+  const [match, setMatch] = useState<any>();
   const [myRatings, setMyRatings] = useState();
   const getRatingInfo = async () => {
     const [match, myRatings] = await Promise.all([
