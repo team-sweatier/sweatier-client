@@ -1,5 +1,6 @@
 "use client";
 
+import logo from "@/../public/assets/commons/logo.svg";
 import mypageIcon from "@/../public/assets/commons/mypage.svg";
 import LogInModal from "@/app/(providers)/(root)/accounts/_components/LogInModal";
 import { useAuthStore, useModalStore } from "@/store";
@@ -20,7 +21,17 @@ function Header() {
     <header className="border shadow-sm ">
       <div className="px-5 py-4 mx-auto max-w-screen-md flex w-full items-center h-16 justify-between">
         <Link href="/" className="font-bold text-xl">
-          Sweatier
+          <Image
+            src={logo}
+            alt="logo"
+            width={107}
+            height={33}
+            sizes="100vw"
+            style={{
+              width: "200%",
+              height: "auto",
+            }}
+          />
         </Link>
         <div className="flex-grow mx-4 sm:mx-8 md:mx-16 md:h-full h-7">
           <SearchBox />
@@ -35,7 +46,7 @@ function Header() {
                 height={32}
                 sizes="100vw"
                 style={{
-                  width: "70%",
+                  width: "60%",
                   height: "auto",
                 }}
               />

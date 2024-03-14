@@ -58,12 +58,9 @@ function RegionModal({ initialSelectedRegion }: RegionModalProps) {
           ))}
         </ul>
 
-        <BlueButton
-          className="mt-11"
-          buttonLabel="확인"
-          onClick={handleClickConfirm}
-          isValid
-        />
+        <div className=" w-full mt-11">
+          <BlueButton buttonLabel="확인" onClick={handleClickConfirm} isValid />
+        </div>
       </div>
     </Modal>
   );

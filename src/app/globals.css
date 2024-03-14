@@ -19,7 +19,7 @@
   }
 
   .rounded-button {
-    @apply text-xs px-4 py-2.5 rounded-3xl text-neutral-50 border-neutral-50 border-[1px];
+    @apply text-xs px-3.5 py-2.5 rounded-3xl text-neutral-50 border-neutral-50 border-[1px];
   }
 
   .rounded-button.selected {
