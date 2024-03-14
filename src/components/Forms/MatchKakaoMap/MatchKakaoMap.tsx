@@ -55,15 +55,16 @@ function MatchKakaoMap({
                 placeholder="경기장명을 입력하세요."
                 onChange={onChange}
                 value={value}
-                className="border border-neutral-30 placeholder:text-neutral-50 text-sm rounded-lg focus:ring-primary-100 focus:border-primary-100 block w-full dark:bg-neutral-50 dark:border-neutral-50 dark:placeholder-neutral-50 dark:text-white dark:focus:ring-primary-100 dark:focus:border-primary-100 px-5 py-3 font-light col-span-4"
+                className="border border-neutral-30 placeholder:text-neutral-50 text-sm rounded-lg focus:ring-primary-100 focus:border-primary-100 block w-full dark:bg-neutral-50 dark:border-neutral-50 dark:placeholder-neutral-50 dark:text-white dark:focus:ring-primary-100 dark:focus:border-primary-100 px-5 py-3 font-light sm:col-span-4 col-span-3"
               />
             )}
           />
-          <div className="py-6">
+          <div className="py-4">
             <BlueButton
               buttonLabel="검색"
               isValid={!!selectedPlaceName || false}
               onClick={handleSearch}
+              buttonClass="max-h-12 min-w-18 col-span-3"
             />
           </div>
           <CreateKakaoMap
