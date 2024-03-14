@@ -1,9 +1,8 @@
 "use client";
 
-import api from "@/api";
 import { Match } from "@/types/match.response.type";
 import day from "@/utils/day";
-import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 type tierLabel = "티어 평가하기" | "받은 티어평가 보기";
 
@@ -17,12 +16,6 @@ interface MatchesOnDateProps {
 }
 
 function MatchesOnDate({ label, date, matches }: MatchesOnDateProps) {
-  const tierLabelType: tierLabel = "받은 티어평가 보기";
-
-  useEffect(() => {
-    api.user.getMyMatches().then((res) => console.log(res));
-  }, []);
-
   return (
     <div className="px-4 border-primary-20 w-full">
       <div className="flex font-bold text-base gap-x-4 mb-8">
@@ -48,12 +41,11 @@ interface MatchCardProps {
 }
 
 function MatchCard({ match }: MatchCardProps) {
+  const router = useRouter();
+
   return (
     <div className="shadow-card bg-white rounded-[10px] py-[14px] px-5 grid grid-cols-1 gap-y-4">
-      <time
-        className="font-bold text-neutral-90"
-        dateTime={match.matchDay.toISOString()}
-      >
+      <time className="font-bold text-neutral-90" dateTime={match.matchDay}>
         {day(match.matchDay).format("hh:mm")}
       </time>
       <h6>{match.title}</h6>
@@ -62,7 +54,10 @@ function MatchCard({ match }: MatchCardProps) {
         <p className="text-[11px] text-neutral-60">
           남녀모두 | 6vs6 | 모든레벨
         </p>
-        <button className="border-primary-100 border rounded-[30px] w-[98px] text-[11px] font-bold bg-white py-[5.5px] text-center">
+        <button
+          onClick={() => router.push(`/my-page/my-matches/${match.id}/rating`)}
+          className="border-primary-100 border rounded-[30px] w-[98px] text-[11px] font-bold bg-white py-[5.5px] text-center text-primary-100"
+        >
           티어평가 하기
         </button>
       </div>

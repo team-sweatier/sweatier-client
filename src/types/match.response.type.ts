@@ -12,9 +12,9 @@ export type Match = {
   placeName: string;
   region: string;
   address: string;
-  matchDay: Date;
-  createdAt: Date;
-  updatedAt: Date | null;
+  matchDay: string;
+  createdAt: string;
+  updatedAt: string | null;
   participants: [
     {
       id: string;

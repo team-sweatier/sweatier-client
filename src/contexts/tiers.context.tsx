@@ -11,7 +11,6 @@ export const useTiers = () => useContext(TiersContext);
 
 export function TiersProvider({ children }: PropsWithChildren) {
   const { data: tiers } = useQueryGetMyTiers();
-  console.log(tiers);
 
   return (
     <TiersContext.Provider value={tiers || null}>
