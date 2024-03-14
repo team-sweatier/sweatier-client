@@ -1,10 +1,9 @@
 import Heading from "@/components/Heading";
 import Page from "@/components/Page";
-import { MatchResonseType } from "@/types/match.response.type";
 import EditMatchForm from "./_components/EditMatchForm";
 
 //todo: 임시 수정 데이터
-const editValues: MatchResonseType = {
+const editValues: any = {
   sport: "tennis",
   title: "매헌시민의 숲 테니스장",
   content:

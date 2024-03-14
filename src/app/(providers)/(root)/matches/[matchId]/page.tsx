@@ -1,4 +1,5 @@
 import api from "@/api";
+import { MatchDetail } from "@/types/match.response.type";
 import dayjs from "dayjs";
 import "dayjs/locale/ko";
 import AccountContainer from "./_components/AccountContainer";
@@ -17,8 +18,8 @@ async function MatchDetailPage(props: { params: { matchId: string } }) {
   const match = await api.match.getMatchesByMatchId(matchId);
   if (!match) return null;
 
-  const sportsType = (match as Match).sportsType.name;
-  const sportsRules = (match as Match).sportsType.rules;
+  const sportsType = (match as MatchDetail).sportsType.name;
+  const sportsRules = (match as MatchDetail).sportsType.rules;
 
   // const { match, isLoading, error } = useQueryMatchById(matchId);
   // if (error) return <div>에러 발생 !</div>;
