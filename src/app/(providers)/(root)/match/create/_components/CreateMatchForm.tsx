@@ -80,7 +80,6 @@ function CreateMatchForm() {
             value: Object.values(sportType)[0],
           }))}
         />
-
         <TitleInput />
         <ContentTextarea />
         <FormSelector
@@ -101,7 +100,6 @@ function CreateMatchForm() {
             value: Object.values(playType)[0],
           }))}
         />
-
         <MatchCalendar />
         <MatchTime />
         <MatchKakaoMap

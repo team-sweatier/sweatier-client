@@ -1,12 +1,13 @@
 "use client";
 import ContentTextarea from "@/components/Forms/ContentTextarea/ContentTextarea";
-import GenderSelector from "@/components/Forms/GenderSelector/GenderSelector";
+import FormSelector from "@/components/Forms/FormSelector";
 import MatchCalendar from "@/components/Forms/MatchCalendar/MatchCalendar";
+import MatchKakaoMap from "@/components/Forms/MatchKakaoMap";
 import MatchSubmitButton from "@/components/Forms/MatchSubmitButton/MatchSubmitButton";
 import MatchTime from "@/components/Forms/MatchTime/MatchTime";
-import MatchTypeSelector from "@/components/Forms/MatchTypeSelector/MatchTypeSelector";
-import SportTypeSelector from "@/components/Forms/SportTypeSelector/SportTypeSelector";
 import TitleInput from "@/components/Forms/TitleInput/TitleInput";
+import { matchCreateIcons } from "@/utils/matchIcons";
+import matchTypes from "@/utils/matchTypes";
 import dayjs from "dayjs";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -80,17 +81,41 @@ function EditMatchForm({ matchId, editValues }: MatchFormProps) {
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <SportTypeSelector />
+        <FormSelector
+          name="sportsTypeName"
+          label="종목"
+          iconSrc={matchCreateIcons.sport}
+          options={matchTypes.sports.map((sportType) => ({
+            label: Object.keys(sportType)[0],
+            value: Object.values(sportType)[0],
+          }))}
+        />
         <TitleInput />
         <ContentTextarea />
-        <GenderSelector />
-        <MatchTypeSelector />
+        <FormSelector
+          name="gender"
+          label="모집성별"
+          iconSrc={matchCreateIcons.gender}
+          options={matchTypes.gender.map((genderType) => ({
+            label: Object.keys(genderType)[0],
+            value: Object.values(genderType)[0],
+          }))}
+        />
+        <FormSelector
+          name="capability"
+          label="매치유형"
+          iconSrc={matchCreateIcons.players}
+          options={matchTypes.players.map((playType) => ({
+            label: Object.keys(playType)[0],
+            value: Object.values(playType)[0],
+          }))}
+        />
         <MatchCalendar />
         <MatchTime />
-        {/* <MatchKakaoMap
+        <MatchKakaoMap
           kakaoMapResult={kakaoMapResult}
           setKakaoMapResult={setKakaoMapResult}
-        /> */}
+        />
         <MatchSubmitButton isValid={isValid} />
       </form>
     </FormProvider>
