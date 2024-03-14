@@ -1,17 +1,16 @@
 import api from "@/api";
-import { CreateMatchDto } from "@/types/createMatch.dto";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-export default function useMutationCreateMatch(matchDto: CreateMatchDto) {
+export default function useMutationApplyMatch(matchId: string) {
   const queryClient = useQueryClient();
-  const mutationFn = api.match.createMatch;
+  const mutationFn = api.match.participateToMatch;
 
   return useMutation({
     mutationFn,
     onSuccess: () =>
       queryClient.invalidateQueries({
         exact: true,
-        queryKey: ["match-create", matchDto],
+        queryKey: ["match-apply", matchId],
       }),
   });
 }

@@ -1,5 +1,3 @@
-import FormOuter from "../../Forms/FormOuter";
-
 interface BlueButtonProps {
   buttonLabel: string;
   isValid: boolean;
@@ -15,7 +13,7 @@ function BlueButton({
   type = "button",
 }: BlueButtonProps) {
   return (
-    <FormOuter>
+    <div className="grid grid-cols-1 w-full relative">
       <input
         type={type}
         value={buttonLabel}
@@ -23,7 +21,7 @@ function BlueButton({
         disabled={!isValid}
         onClick={onClick}
       />
-    </FormOuter>
+    </div>
   );
 }
 

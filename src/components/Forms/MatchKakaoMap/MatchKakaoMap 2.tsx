@@ -1,12 +1,12 @@
 "use client";
 import BlueButton from "@/components/Buttons/BlueButton";
+import CreateKakaoMap from "@/components/Forms/CreateKakaoMap";
 import FormOuter from "@/components/Forms/FormOuter";
 import Icon from "@/components/Icon";
 import { KakaoMapResultType } from "@/types/kakaoMap.type";
 import { matchCreateIcons } from "@/utils/matchIcons";
 import { Dispatch, SetStateAction } from "react";
 import { Controller, useFormContext, useWatch } from "react-hook-form";
-import CreateKakaoMap from "../CreateKakaoMap";
 
 interface MatchKakaoMapProps {
   kakaoMapResult: KakaoMapResultType;
@@ -29,6 +29,10 @@ function MatchKakaoMap({
       ...kakaoMapResult,
       placeName: selectedPlaceName,
     }));
+  };
+
+  const handleKakaoMapSearchResult = (result: any) => {
+    setKakaoMapResult(result);
   };
 
   return (
@@ -59,16 +63,14 @@ function MatchKakaoMap({
               />
             )}
           />
-          <div className="py-6">
-            <BlueButton
-              buttonLabel="검색"
-              isValid={!!selectedPlaceName || false}
-              onClick={handleSearch}
-            />
-          </div>
+          <BlueButton
+            buttonLabel="검색"
+            isValid={!!selectedPlaceName || false}
+            onClick={handleSearch}
+          />
           <CreateKakaoMap
             kakaoMapResult={kakaoMapResult}
-            setKakaoMapResult={setKakaoMapResult}
+            onSearchResult={handleKakaoMapSearchResult}
           />
         </div>
       </div>

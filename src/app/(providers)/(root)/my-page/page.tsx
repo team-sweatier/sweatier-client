@@ -14,8 +14,6 @@ function MyPage() {
   const router = useRouter();
   const { logOut, userId } = useAuthStore();
 
-  console.log("마이페이지", typeof userId);
-
   const handleClickInformationButton = () => {
     modal.open(<TiersInformationModal />);
   };
