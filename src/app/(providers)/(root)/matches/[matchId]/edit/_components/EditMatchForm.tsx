@@ -66,9 +66,6 @@ function EditMatchForm({ matchId, editValues }: MatchFormProps) {
       matchDay: matchDateTime,
     };
 
-    // todo : finalData 이 놈을 내가 수동으로 수정해줘야 함
-    console.log("editData", editData);
-
     const finalEditData: CreateMatchDto = {
       address: editData.address,
       capability: editData.capability,
@@ -149,32 +146,3 @@ function EditMatchForm({ matchId, editValues }: MatchFormProps) {
 }
 
 export default EditMatchForm;
-
-// const {
-//   sportType,
-//   title,
-//   content,
-//   address,
-//   capability,
-//   region,
-//   placeName,
-//   matchDay,
-//   latitude,
-//   longitude,
-// } = editMatches;
-
-// console.log(editMatches);
-
-// const editValues = {
-//   sportsTypeName: sportType[0],
-//   title: title,
-//   content: content,
-//   address: address || "서울특별시 중구 청계천로 24",
-//   capability: capability,
-//   gender: "both",
-//   latitude: latitude,
-//   longitude: longitude,
-//   matchDay: matchDay,
-//   placeName: placeName || "웅진IT 본사",
-//   region: region || "서울",
-// };

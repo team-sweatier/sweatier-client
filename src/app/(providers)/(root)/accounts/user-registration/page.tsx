@@ -73,7 +73,6 @@ function UserRegistrationPage() {
       alert(`환영합니다 ${nickname}님!!`);
       router.push("/my-page");
     } catch (error) {
-      // console.log(error);
       alert("유저 정보 등록에 실패하였습니다.");
     }
   };

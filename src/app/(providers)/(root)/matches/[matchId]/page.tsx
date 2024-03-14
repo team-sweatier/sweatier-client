@@ -21,7 +21,7 @@ async function MatchDetailPage(props: { params: { matchId: string } }) {
   const sportsType = (match as MatchDetail).sportsType.name;
   const sportsRules = (match as MatchDetail).sportsType.rules;
 
-  console.log("match :", match);
+  // console.log("match :", match);
 
   /*
    * todo List
