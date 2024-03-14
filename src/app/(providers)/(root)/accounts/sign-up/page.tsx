@@ -77,7 +77,7 @@ function SignUpPage() {
         await signUp({ email, password });
         logIn(); // isLoggedIn 전역상태를 true로 변경
         alert("회원가입에 성공하였습니다!");
-        router.push("user-registration");
+        router.push("/");
       } catch (e) {
         alert("회원가입에 실패하였습니다."); // alert창 toastify로 바꿀예정
       }

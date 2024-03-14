@@ -3,6 +3,7 @@
 import api from "@/api";
 import RoundButton from "@/components/Buttons/RoundButton";
 import Page from "@/components/Page";
+import useQueryGetProfile from "@/react-query/queries/useQuery.getProfile";
 import { bankName } from "@/utils/bankName";
 import { Gender } from "@/utils/gender";
 import { useMutation } from "@tanstack/react-query";
@@ -17,6 +18,7 @@ function UserRegistrationPage() {
   const { mutateAsync: registerUser, isPending } = useMutation({
     mutationFn: api.user.registerUser,
   });
+
   const [nickname, setNickname] = useState<string>("");
   const [gender, setGender] = useState<Gender | "">("");
   const [file, setFile] = useState<File | null>(null);
@@ -28,6 +30,7 @@ function UserRegistrationPage() {
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+  const { refetch: refetchProfile } = useQueryGetProfile();
 
   // 성별선택
   const handleSelectGender = (gender: Gender) => {
@@ -71,9 +74,10 @@ function UserRegistrationPage() {
       formData.append("file", file);
 
       await registerUser(formData);
+      await refetchProfile();
 
       alert(`환영합니다 ${nickname}님!!`);
-      router.push("/my-page");
+      router.push("/");
     } catch (error) {
       alert("유저 정보 등록에 실패하였습니다.");
     }
