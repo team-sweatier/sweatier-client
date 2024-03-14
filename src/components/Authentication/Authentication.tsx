@@ -1,9 +1,11 @@
 "use client";
 
 import api from "@/api";
-import { useAuthStore } from "@/store";
+import { useAuthStore, useModalStore } from "@/store";
 import { useMutation, useQuery } from "@tanstack/react-query";
+import { usePathname } from "next/navigation";
 import React, { useEffect } from "react";
+import NoUserProfileModal from "../NoUserProfileModal";
 
 function Authentication({ children }: { children: React.ReactNode }) {
   const {
@@ -14,15 +16,41 @@ function Authentication({ children }: { children: React.ReactNode }) {
     setIsAuthInitialized,
     setUserId,
   } = useAuthStore();
+  const { open } = useModalStore();
+  const pathname = usePathname();
   const { mutateAsync: refreshToken } = useMutation({
     mutationFn: api.auth.refreshToken,
   });
-
-  const { data: myProfile } = useQuery({
+  const { data: myProfile, isFetched: isProfileFetched } = useQuery({
     queryKey: ["myProfile"],
     queryFn: api.user.getMyProfile,
     enabled: isLoggedIn,
+    retry: false,
   });
+
+  useEffect(() => {
+    console.log(1);
+    if (!isAuthInitialized) return;
+    console.log(2);
+    if (!isLoggedIn) return;
+    console.log(3);
+    if (pathname === "/accounts/user-registration") return;
+    console.log(4, isProfileFetched);
+    if (!isProfileFetched) return;
+    console.log(5);
+    if (myProfile) return;
+    console.log(6);
+
+    open(<NoUserProfileModal />);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    myProfile,
+    isAuthInitialized,
+    isLoggedIn,
+    pathname,
+    myProfile,
+    isProfileFetched,
+  ]);
 
   useEffect(() => {
     const checkAuth = async () => {
