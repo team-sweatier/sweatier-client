@@ -21,14 +21,7 @@ async function MatchDetailPage(props: { params: { matchId: string } }) {
   const sportsType = (match as MatchDetail).sportsType.name;
   const sportsRules = (match as MatchDetail).sportsType.rules;
 
-  // console.log("match :", match);
-
-  /*
-   * todo List
-   * '경기 상세 페이지"
-   * 2. 신청 가능 상태일 경우 -> 신청 모달 (post 요청) (🔥 participating)
-   * 3. match any -> 타입 정의
-   */
+  console.log("match :", match);
 
   return (
     <main className="pb-[50px] mx-auto max-w-screen-md flex flex-col w-full items-center justify-start min-h- relative">

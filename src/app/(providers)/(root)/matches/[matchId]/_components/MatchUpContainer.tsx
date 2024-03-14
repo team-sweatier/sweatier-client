@@ -17,7 +17,7 @@ function MatchUpContainer({ match, matchId }: { match: any; matchId: string }) {
   const matchTime = dayjs(matchDay).format("hh:mm");
 
   return (
-    <div className="bg-red-300">
+    <div>
       <div className="text-neutral-70 font-bold text-base pb-2">
         {translateSportType(sportType[0])}
       </div>
