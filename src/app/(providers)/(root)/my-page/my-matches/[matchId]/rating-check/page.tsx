@@ -1,31 +1,39 @@
+"use client";
+
 import api from "@/api";
-import { MyRatings } from "@/api/rating/rating.dto";
 import MatchCard from "@/components/MatchCard";
 import Page from "@/components/Page";
 import { MatchDetail } from "@/types/match.response.type";
+import { useEffect, useState } from "react";
 import RatingCheckCardsList from "./_components/RatingCheckCardsList";
 
-async function RatingCheckPage(props: { params: { matchId: string } }) {
+function RatingCheckPage(props: { params: { matchId: string } }) {
   const matchId = props.params.matchId;
+  const [match, setMatch] = useState<MatchDetail>();
+  const [myRatings, setMyRatings] = useState();
 
-  const match: MatchDetail = await api.match.getMatch(matchId);
-  // const myRatings: MyRatings[] = await api.rating.checkMyRatings(matchId);
+  const getRatingInfo = async () => {
+    const [match, myRatings] = await Promise.all([
+      api.match.getMatch(matchId),
+      api.rating.checkMyRatings(matchId),
+    ]);
 
-  const myRatings: MyRatings[] = [
-    { raterId: "rater1", value: 1 },
-    {
-      raterId: "rater2",
-      value: 2,
-    },
-    { raterId: "rater3", value: 3 },
-  ];
+    setMatch(match);
+    setMyRatings(myRatings);
+  };
+
+  useEffect(() => {
+    getRatingInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Page>
       <div className="w-full px-1">
-        <MatchCard isFinished match={match} />
+        {match && <MatchCard isFinished match={match} />}
       </div>
       <div className="w-screen sm:w-full border-b-4 border-primary-20 my-6" />
-      <RatingCheckCardsList myRatings={myRatings} />
+      {myRatings && <RatingCheckCardsList myRatings={myRatings} />}
     </Page>
   );
 }

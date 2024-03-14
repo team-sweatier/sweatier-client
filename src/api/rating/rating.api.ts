@@ -1,6 +1,5 @@
-import { Response } from "@/types/Response.type";
 import { client } from "..";
-import { MyRatings, RatingDto } from "./rating.dto";
+import { RatingDto } from "./rating.dto";
 
 async function rateParticipants({
   matchId,
@@ -25,9 +24,7 @@ async function rateParticipants({
 }
 
 async function checkMyRatings(matchId: string) {
-  const response = await client.get<Response<MyRatings[]>>(
-    `/users/${matchId}/rates`
-  );
+  const response = await client.get(`/users/${matchId}/rates`);
 
   const data = response.data;
   if (!data.success) throw new Error(data.error.message);
