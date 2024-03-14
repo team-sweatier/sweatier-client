@@ -1,9 +1,11 @@
 "use client";
 
 import api from "@/api";
-import { useAuthStore } from "@/store";
+import { useAuthStore, useModalStore } from "@/store";
 import { useMutation, useQuery } from "@tanstack/react-query";
+import { usePathname } from "next/navigation";
 import React, { useEffect } from "react";
+import NoUserProfileModal from "../NoUserProfileModal";
 
 function Authentication({ children }: { children: React.ReactNode }) {
   const {
@@ -14,15 +16,23 @@ function Authentication({ children }: { children: React.ReactNode }) {
     setIsAuthInitialized,
     setUserId,
   } = useAuthStore();
+  const { open } = useModalStore();
+  const pathname = usePathname();
   const { mutateAsync: refreshToken } = useMutation({
     mutationFn: api.auth.refreshToken,
   });
-
   const { data: myProfile } = useQuery({
     queryKey: ["myProfile"],
     queryFn: api.user.getMyProfile,
     enabled: isLoggedIn,
   });
+
+  useEffect(() => {
+    if (!myProfile && pathname !== "/accounts/user-registration") {
+      open(<NoUserProfileModal />);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [myProfile]);
 
   useEffect(() => {
     const checkAuth = async () => {
