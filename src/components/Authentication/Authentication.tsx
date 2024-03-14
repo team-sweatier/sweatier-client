@@ -28,11 +28,15 @@ function Authentication({ children }: { children: React.ReactNode }) {
   });
 
   useEffect(() => {
-    if (!myProfile && pathname !== "/accounts/user-registration") {
+    if (
+      isAuthInitialized &&
+      !myProfile &&
+      pathname !== "/accounts/user-registration"
+    ) {
       open(<NoUserProfileModal />);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [myProfile]);
+  }, [isAuthInitialized, myProfile, pathname]);
 
   useEffect(() => {
     const checkAuth = async () => {
