@@ -59,11 +59,13 @@ function MatchKakaoMap({
               />
             )}
           />
-          <BlueButton
-            buttonLabel="검색"
-            isValid={!!selectedPlaceName || false}
-            onClick={handleSearch}
-          />
+          <div className="py-6">
+            <BlueButton
+              buttonLabel="검색"
+              isValid={!!selectedPlaceName || false}
+              onClick={handleSearch}
+            />
+          </div>
           <CreateKakaoMap
             kakaoMapResult={kakaoMapResult}
             setKakaoMapResult={setKakaoMapResult}

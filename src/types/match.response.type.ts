@@ -24,6 +24,7 @@ export type Match = {
   sportsType: string;
   applicants: number;
 };
+
 export type MatchDetail = {
   id: string;
   hostId: string;
@@ -38,7 +39,7 @@ export type MatchDetail = {
   placeName: string;
   region: string;
   address: string;
-  matchDay: Date;
+  matchDay: string;
   createdAt: Date;
   updatedAt: Date | null;
   participants: [

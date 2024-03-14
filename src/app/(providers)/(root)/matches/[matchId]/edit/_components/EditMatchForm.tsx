@@ -1,4 +1,5 @@
 "use client";
+import api from "@/api";
 import ContentTextarea from "@/components/Forms/ContentTextarea/ContentTextarea";
 import FormSelector from "@/components/Forms/FormSelector";
 import MatchCalendar from "@/components/Forms/MatchCalendar/MatchCalendar";
@@ -6,6 +7,7 @@ import MatchKakaoMap from "@/components/Forms/MatchKakaoMap";
 import MatchSubmitButton from "@/components/Forms/MatchSubmitButton/MatchSubmitButton";
 import MatchTime from "@/components/Forms/MatchTime/MatchTime";
 import TitleInput from "@/components/Forms/TitleInput/TitleInput";
+import { CreateMatchDto } from "@/types/createMatch.dto";
 import { matchCreateIcons } from "@/utils/matchIcons";
 import matchTypes from "@/utils/matchTypes";
 import dayjs from "dayjs";
@@ -58,7 +60,7 @@ function EditMatchForm({ matchId, editValues }: MatchFormProps) {
 
     const { hour, minute, ...rest } = data;
 
-    const editData = {
+    const editData: any = {
       ...rest,
       ...kakaoMapResult,
       matchDay: matchDateTime,
@@ -67,24 +69,24 @@ function EditMatchForm({ matchId, editValues }: MatchFormProps) {
     // todo : finalData 이 놈을 내가 수동으로 수정해줘야 함
     console.log("editData", editData);
 
-    const finalEditData = {
-      address: "서울특별시 중구 청계천로 24",
-      capability: 22,
-      content: "fdsfdsfsdfdsfdsfs",
-      gender: "both",
-      latitude: 37.5685159133492,
-      longitude: 126.98020965303,
+    const finalEditData: CreateMatchDto = {
+      address: editData.address,
+      capability: editData.capability,
+      content: editData.content,
+      gender: editData.gender,
+      latitude: editData.latitude,
+      longitude: editData.longitude,
       matchDay: "2024-03-15T00:00:00.000Z",
-      placeName: "웅진IT 본사",
-      region: "서울",
-      sportsTypeName: "soccer",
-      title: "수정되었니 ???",
+      placeName: editData.placeName,
+      region: editData.region,
+      sportsTypeName: editData.sportType[0],
+      title: editData.title,
     };
 
     try {
-      // const { id } = await api.match.updateMatch(matchId, finalData);
-      // toast.success("게시물이 수정되었습니다!");
-      // router.replace(`/matches/${id}`);
+      const { id } = await api.match.updateMatch(matchId, finalEditData);
+      toast.success("게시물이 수정되었습니다!");
+      router.prefetch(`/matches/${id}`);
     } catch (error) {
       console.error("Match creation failed:", error);
       toast.success("게시물 수정에 실패했습니다.");

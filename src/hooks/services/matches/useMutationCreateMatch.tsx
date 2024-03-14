@@ -1,5 +1,5 @@
 import api from "@/api";
-import { CreateMatchDto } from "@/types/matchDto.type";
+import { CreateMatchDto } from "@/types/createMatch.dto";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export default function useMutationCreateMatch(matchDto: CreateMatchDto) {
