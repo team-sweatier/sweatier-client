@@ -1,11 +1,9 @@
-import { Match } from "@/types/Match.type";
-
-import translateGender from "@/utils/translateGender";
+import translateGender from "@/utils/translateMatches/translateGender";
 import Link from "next/link";
 import { PropsWithChildren } from "react";
 
 type MyMatchCardProps = PropsWithChildren<{
-  match: Match;
+  match: any;
   className?: string;
 }>;
 

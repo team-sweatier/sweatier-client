@@ -1,5 +1,5 @@
-import { Match } from "@/types/Match.type";
 import { Response } from "@/types/Response.type";
+import { Match } from "@/types/match.response.type";
 import { client } from "..";
 import {
   GetUserProfileData,

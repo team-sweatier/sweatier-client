@@ -1,5 +1,5 @@
 import { MyRatings } from "@/api/rating/rating.dto";
-import StarIcon from "../../../rating/_components/StarIcon";
+import StarIcon from "@/app/(providers)/(root)/my-page/(my-menu)/my-matches/[matchId]/rating/_components/StarIcon";
 
 function MyStars({ rating }: { rating: MyRatings }) {
   const totalStars = 5;

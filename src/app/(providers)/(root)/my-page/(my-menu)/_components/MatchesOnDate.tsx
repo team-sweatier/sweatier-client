@@ -1,7 +1,7 @@
 "use client";
 
 import api from "@/api";
-import { Match } from "@/types/Match.type";
+import { Match } from "@/types/match.response.type";
 import day from "@/utils/day";
 import { useEffect } from "react";
 
@@ -32,15 +32,13 @@ function MatchesOnDate({ label, date, matches }: MatchesOnDateProps) {
         </div>
       </div>
 
-      <div className="">
-        <ul className="flex flex-col gap-y-4 sm:gap-8">
-          {matches.map((match) => (
-            <li key={match.id}>
-              <MatchCard match={match} />
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ul className="flex flex-col gap-y-4 sm:gap-8">
+        {matches.map((match) => (
+          <li key={match.id}>
+            <MatchCard match={match} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -51,7 +49,7 @@ interface MatchCardProps {
 
 function MatchCard({ match }: MatchCardProps) {
   return (
-    <div className="shadow-card drop-shadow-lg bg-white rounded-[10px] py-[14px] px-5 grid grid-cols-1 gap-y-4">
+    <div className="shadow-card bg-white rounded-[10px] py-[14px] px-5 grid grid-cols-1 gap-y-4">
       <time
         className="font-bold text-neutral-90"
         dateTime={match.matchDay.toISOString()}
@@ -59,6 +57,15 @@ function MatchCard({ match }: MatchCardProps) {
         {day(match.matchDay).format("hh:mm")}
       </time>
       <h6>{match.title}</h6>
+
+      <div className="flex justify-between">
+        <p className="text-[11px] text-neutral-60">
+          남녀모두 | 6vs6 | 모든레벨
+        </p>
+        <button className="border-primary-100 border rounded-[30px] w-[98px] text-[11px] font-bold bg-white py-[5.5px] text-center">
+          티어평가 하기
+        </button>
+      </div>
     </div>
   );
 }

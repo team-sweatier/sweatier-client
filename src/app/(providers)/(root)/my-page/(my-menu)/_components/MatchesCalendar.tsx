@@ -2,7 +2,7 @@
 
 import CustomCaption from "@/components/Forms/CalendarForm/CustomCaption";
 import "@/components/Forms/CalendarForm/calendar.css";
-import { Match } from "@/types/Match.type";
+import { Match } from "@/types/match.response.type";
 import { ko } from "date-fns/locale";
 import dayjs from "dayjs";
 import Link from "next/link";
