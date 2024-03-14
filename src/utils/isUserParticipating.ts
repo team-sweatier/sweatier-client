@@ -4,7 +4,7 @@ function isUserParticipating(
   matchDetail: MatchDetail,
   userId: string
 ): boolean {
-  return matchDetail.participate.some(
+  return matchDetail.participants.some(
     (participant) => participant.id === userId
   );
 }
