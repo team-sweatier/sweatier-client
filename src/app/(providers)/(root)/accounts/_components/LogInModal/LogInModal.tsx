@@ -10,6 +10,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function LogInModal() {
   const { mutateAsync: signIn, isPending } = useMutation({
@@ -28,10 +30,10 @@ function LogInModal() {
       await signIn({ email, password });
       logIn();
       modal.close();
-      alert("로그인 처리되었습니다"); // toastify 적용예정
+      toast.success("로그인 처리되었습니다"); // toastify 적용예정
       router.push("/");
     } catch (e) {
-      alert("로그인에 실패하였습니다.");
+      toast.error("로그인에 실패하였습니다.");
     }
   };
 

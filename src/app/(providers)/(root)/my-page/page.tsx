@@ -5,6 +5,8 @@ import Page from "@/components/Page";
 import { useAuth } from "@/contexts/auth.context";
 import { useModalStore } from "@/store";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import ButtonToHistory from "./_components/ButtonToHistory";
 import MyProfileSection from "./_components/MyProfileSection";
 import MyTierSection from "./_components/MyTierSection";
@@ -29,7 +31,7 @@ function MyPage() {
 
   const handleClickLogOut = () => {
     logOut();
-    alert("로그아웃 처리되었습니다.");
+    toast.error("로그아웃 처리되었습니다.");
     router.push("/");
   };
 

@@ -10,6 +10,8 @@ import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FormEventHandler, useRef, useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import DropDownBoxOfBank from "./_components/DropDownBoxOfBank";
 import PhoneNumberInput from "./_components/PhoneNumberInput";
 import RegistrationInput from "./_components/RegistrationInput";
@@ -61,8 +63,7 @@ function UserRegistrationPage() {
     e.preventDefault();
 
     try {
-      if (!file) return alert("프로필 이미지는 필수입니다!");
-
+      if (!file) return toast.info("프로필 이미지는 필수입니다!");
       const formData = new FormData();
 
       formData.append("gender", gender);
@@ -75,8 +76,8 @@ function UserRegistrationPage() {
 
       await registerUser(formData);
       await refetchProfile();
+      toast.success(`환영합니다 ${nickname}님!`);
 
-      alert(`환영합니다 ${nickname}님!!`);
       router.push("/");
     } catch (error) {
       alert("유저 정보 등록에 실패하였습니다.");
@@ -245,6 +246,3 @@ function UserRegistrationPage() {
 }
 
 export default UserRegistrationPage;
-
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50VHlwZSI6InVzZXIiLCJlbWFpbCI6bnVsbCwiaWF0IjoxNzEwMzMzNjMyLCJleHAiOjE3MTAzNDA4MzIsInN1YiI6IjMzODE5NjM0MjgifQ.n96d-M7FiRsTPmnXL76f1F4CoQ7Yxq88Jc0zpMVug-E
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50VHlwZSI6InVzZXIiLCJlbWFpbCI6ImJhZXNqYWUxMjEyQG5hdmVyLmNvbSIsImlhdCI6MTcxMDMzNDA1OSwiZXhwIjoxNzEwMzQxMjU5LCJzdWIiOiJsRFd1aGxyekZyc2RKLVhld2oifQ.eUaaKtbTSSUgiCWoEiWYvYv00w5CCirXWVWZRzIgnQE

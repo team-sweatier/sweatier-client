@@ -7,6 +7,8 @@ import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import SignUpInput from "./_components/SignUpInput";
 import ValidationMessage from "./_components/ValidationMessage";
 
@@ -76,10 +78,10 @@ function SignUpPage() {
       try {
         await signUp({ email, password });
         logIn(); // isLoggedIn 전역상태를 true로 변경
-        alert("회원가입에 성공하였습니다!");
+        toast.success("회원가입에 성공하였습니다!");
         router.push("/");
       } catch (e) {
-        alert("회원가입에 실패하였습니다."); // alert창 toastify로 바꿀예정
+        toast.error("회원가입에 실패하였습니다."); // alert창 toastify로 바꿀예정
       }
     } else {
       if (!isEmailValid) {

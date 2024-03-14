@@ -112,7 +112,7 @@ function MyTierSection({ onClickTierModal }: { onClickTierModal: () => void }) {
                   height={25}
                   className="absolute top-[35px] left-[34px]"
                 />
-                <span className="absolute top-16 left-7 text-[12px] font-bold text-neutral-70">
+                <span className="absolute top-16 left-[26px] text-[12px] font-bold text-neutral-70">
                   {myTier.sportType.name}
                 </span>
               </div>
