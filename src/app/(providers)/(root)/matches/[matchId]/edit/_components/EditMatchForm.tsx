@@ -8,7 +8,6 @@ import MatchTime from "@/components/Forms/MatchTime/MatchTime";
 import MatchTypeSelector from "@/components/Forms/MatchTypeSelector/MatchTypeSelector";
 import SportTypeSelector from "@/components/Forms/SportTypeSelector/SportTypeSelector";
 import TitleInput from "@/components/Forms/TitleInput/TitleInput";
-import { MatchResonseType } from "@/types/match.response.type";
 import dayjs from "dayjs";
 import { useState } from "react";
 import {
@@ -19,7 +18,7 @@ import {
 } from "react-hook-form";
 
 interface MatchFormProps {
-  editValues?: MatchResonseType;
+  editValues?: any;
 }
 
 function EditMatchForm({ editValues }: MatchFormProps) {
