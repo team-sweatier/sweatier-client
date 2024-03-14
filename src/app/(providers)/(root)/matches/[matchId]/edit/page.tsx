@@ -3,8 +3,6 @@ import Heading from "@/components/Heading";
 import Page from "@/components/Page";
 import EditMatchForm from "./_components/EditMatchForm";
 
-//todo: 임시 수정 데이터
-
 async function EditMatchPage(props: { params: { matchId: string } }) {
   const matchId = props.params.matchId;
   const editValues = await api.match.getMatchesByMatchId(matchId);

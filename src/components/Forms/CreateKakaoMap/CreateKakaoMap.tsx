@@ -1,29 +1,31 @@
 "use client";
 
 import { KakaoMapResultType, SearchResult } from "@/types/kakaoMap.type";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { CustomOverlayMap, Map, MapMarker } from "react-kakao-maps-sdk";
 
 interface KakaoMapProps {
-  kakaoMapResult: KakaoMapResultType;
+  placeName: string;
   onSearchResult: (result: KakaoMapResultType) => void;
 }
 
-function CreateKakaoMap({ kakaoMapResult, onSearchResult }: KakaoMapProps) {
-  // 기본 좌표를 사용하여 지도 중심을 설정
-  const coordinates = {
+function CreateKakaoMap({ placeName, onSearchResult }: KakaoMapProps) {
+  const [coordinates, setCoordinates] = useState({
     lat: 37.5685159133492,
     lng: 126.98020965303,
-  };
-
-  const placeName = kakaoMapResult.placeName;
+  });
 
   useEffect(() => {
+    console.log("전달", placeName);
+
     function loadKakaoMap() {
       if (!window.kakao || !window.kakao.maps) return;
+
       window.kakao.maps.load(() => {
         if (!placeName) return;
+
         const places = new window.kakao.maps.services.Places();
+
         places.keywordSearch(placeName, (data: SearchResult[], status: any) => {
           if (status === window.kakao.maps.services.Status.OK && data[0]) {
             const firstResult = data[0];
@@ -38,6 +40,11 @@ function CreateKakaoMap({ kakaoMapResult, onSearchResult }: KakaoMapProps) {
               latitude: parseFloat(firstResult.y),
               longitude: parseFloat(firstResult.x),
             };
+
+            setCoordinates(() => ({
+              lat: result.latitude,
+              lng: result.longitude,
+            }));
 
             onSearchResult(result);
           }
@@ -74,4 +81,4 @@ function CreateKakaoMap({ kakaoMapResult, onSearchResult }: KakaoMapProps) {
   );
 }
 
-export default CreateKakaoMap;
+export default React.memo(CreateKakaoMap);

@@ -32,7 +32,7 @@ function SportTypeSelector() {
             key={i}
             name="sportsTypeName"
             control={control}
-            render={({ field: { onChange, value } }) => (
+            render={({ field: { onChange } }) => (
               <RoundButton
                 label={Object.keys(sport)[0]}
                 onClick={() => onChange(Object.values(sport)[0])}

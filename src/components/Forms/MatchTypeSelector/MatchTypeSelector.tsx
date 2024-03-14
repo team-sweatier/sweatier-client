@@ -27,16 +27,16 @@ function MatchTypeSelector() {
         매치유형
       </label>
       <div className="flex flex-wrap gap-2 gap-y-2.5">
-        {matchTypes.players.map((genderType, i) => (
+        {matchTypes.players.map((playerType, i) => (
           <Controller
             key={i}
             name="capability"
             control={control}
-            render={({ field: { onChange, value } }) => (
+            render={({ field: { onChange } }) => (
               <RoundButton
-                label={Object.keys(genderType)[0]}
-                onClick={() => onChange(Object.values(genderType)[0])}
-                isSelected={selectedCapability === Object.values(genderType)[0]}
+                label={Object.keys(playerType)[0]}
+                onClick={() => onChange(Object.values(playerType)[0])}
+                isSelected={selectedCapability === Object.values(playerType)[0]}
               />
             )}
           />

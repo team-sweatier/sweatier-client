@@ -1,12 +1,12 @@
 "use client";
 import BlueButton from "@/components/Buttons/BlueButton";
-import CreateKakaoMap from "@/components/Forms/CreateKakaoMap";
 import FormOuter from "@/components/Forms/FormOuter";
 import Icon from "@/components/Icon";
 import { KakaoMapResultType } from "@/types/kakaoMap.type";
 import { matchCreateIcons } from "@/utils/matchIcons";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useCallback } from "react";
 import { Controller, useFormContext, useWatch } from "react-hook-form";
+import CreateKakaoMap from "../CreateKakaoMap";
 
 interface MatchKakaoMapProps {
   kakaoMapResult: KakaoMapResultType;
@@ -31,9 +31,12 @@ function MatchKakaoMap({
     }));
   };
 
-  const handleKakaoMapSearchResult = (result: any) => {
-    setKakaoMapResult(result);
-  };
+  const handleKakaoMapSearchResult = useCallback(
+    () => (result: any) => {
+      setKakaoMapResult(result);
+    },
+    [setKakaoMapResult]
+  );
 
   return (
     <FormOuter>
@@ -69,7 +72,7 @@ function MatchKakaoMap({
             onClick={handleSearch}
           />
           <CreateKakaoMap
-            kakaoMapResult={kakaoMapResult}
+            placeName={kakaoMapResult.placeName}
             onSearchResult={handleKakaoMapSearchResult}
           />
         </div>
