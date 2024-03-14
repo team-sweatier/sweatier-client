@@ -17,22 +17,21 @@ function MatchUpContainer({ match, matchId }: { match: any; matchId: string }) {
   const matchTime = dayjs(matchDay).format("hh:mm");
 
   return (
-    <div>
-      <div className="text-neutral-70 font-bold text-sm pb-3">
+    <div className="bg-red-300">
+      <div className="text-neutral-70 font-bold text-base pb-2">
         {translateSportType(sportType[0])}
       </div>
       <div className="flex items-center justify-between">
         <div>
-          <div className="text-neutral-90 font-bold text-xl gap-x-4 flex pb-3">
+          <div className="text-neutral-90 font-bold text-xl gap-x-3 flex pb-2">
             <span>{matchTime}</span>
             <span>{matchDate}</span>
           </div>
           <div className="text-neutral-90 text-xl">{title}</div>
         </div>
-
         {!isUserPost && <ApplyButton match={match} matchId={matchId} />}
       </div>
-      <div className="mt-6 pb-8 text-neutral-70 tex-sm leading-7">
+      <div className="mt-4 pb-6 text-neutral-70 tex-sm leading-7">
         {content}
       </div>
     </div>
