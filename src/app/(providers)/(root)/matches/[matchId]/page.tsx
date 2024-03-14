@@ -21,8 +21,6 @@ async function MatchDetailPage(props: { params: { matchId: string } }) {
   const sportsType = (match as MatchDetail).sportsType.name;
   const sportsRules = (match as MatchDetail).sportsType.rules;
 
-  console.log("match :", match);
-
   return (
     <main className="pb-[50px] mx-auto max-w-screen-md flex flex-col w-full items-center justify-start min-h- relative">
       <Background sportType={sportsType}>

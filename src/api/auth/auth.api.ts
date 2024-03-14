@@ -5,7 +5,7 @@ import { SignInDto, SignUpDto } from "./auth.dto";
 
 async function signUp(dto: SignUpDto) {
   const response = await client.post("/users/sign-up", dto);
-  console.log(response);
+  return response;
 }
 
 async function signIn(dto: SignInDto) {
