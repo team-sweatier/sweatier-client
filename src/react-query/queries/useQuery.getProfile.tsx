@@ -1,10 +1,10 @@
 import api from "@/api";
+import { useAuth } from "@/contexts/auth.context";
 import { Profile } from "@/contexts/profile.context";
-import { useAuthStore } from "@/store";
 import { useQuery } from "@tanstack/react-query";
 
 export default function useQueryGetProfile() {
-  const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
+  const { isLoggedIn } = useAuth();
 
   return useQuery<
     Awaited<ReturnType<typeof api.user.getMyProfile>>,

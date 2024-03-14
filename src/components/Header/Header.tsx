@@ -3,15 +3,14 @@
 import logo from "@/../public/assets/commons/logo.svg";
 import mypageIcon from "@/../public/assets/commons/mypage.svg";
 import LogInModal from "@/app/(providers)/(root)/accounts/_components/LogInModal";
-import { useAuthStore, useModalStore } from "@/store";
+import { useModalStore } from "@/store";
 import Image from "next/image";
 import Link from "next/link";
-import Authentication from "../Authentication";
+import AuthWrapper from "../AuthWrapper";
 import SearchBox from "./components/SearchBox";
 
 function Header() {
   const modal = useModalStore();
-  const { isLoggedIn, logIn } = useAuthStore();
 
   const handleClickLogInButton = () => {
     modal.open(<LogInModal />);
@@ -36,8 +35,8 @@ function Header() {
         <div className="flex-grow mx-4 sm:mx-8 md:mx-16 md:h-full h-7">
           <SearchBox />
         </div>
-        <Authentication>
-          {isLoggedIn ? (
+        <AuthWrapper
+          loggedInElement={
             <Link href={"/my-page"} className="w-14 flex justify-end">
               <Image
                 src={mypageIcon}
@@ -51,15 +50,16 @@ function Header() {
                 }}
               />
             </Link>
-          ) : (
+          }
+          notLoggedInElement={
             <button
               onClick={handleClickLogInButton}
               className="font-bold w-14 text-sm text-primary-100"
             >
               로그인
             </button>
-          )}
-        </Authentication>
+          }
+        />
       </div>
     </header>
   );

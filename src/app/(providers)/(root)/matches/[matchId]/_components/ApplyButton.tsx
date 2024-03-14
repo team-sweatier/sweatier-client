@@ -1,6 +1,8 @@
 "use client";
+
+import { useAuth } from "@/contexts/auth.context";
 import useMutationApplyMatch from "@/hooks/services/matches/useMutationApplyMatch";
-import { useAuthStore, useModalStore } from "@/store";
+import { useModalStore } from "@/store";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ApplyModal from "./ApplyModal";
@@ -12,7 +14,7 @@ interface ApplyButtonProps {
 
 function ApplyButton({ match, matchId }: ApplyButtonProps) {
   const { open, close } = useModalStore();
-  const { userId } = useAuthStore();
+  const { isLoggedIn } = useAuth();
   const { mutate: applyMatch } = useMutationApplyMatch(matchId);
 
   const isFull = match.applicants / match.capability >= 1; //* 1. 정원 확인하기
@@ -33,7 +35,7 @@ function ApplyButton({ match, matchId }: ApplyButtonProps) {
   //* 4. 신청 시 handler (props로 전달)
   const handleApplyMatch = () => {
     //* 1. 신청 시 로그인 상태인지 확인
-    if (!userId) {
+    if (!isLoggedIn) {
       //* userId가 없다면 모달 닫고 & alert 띄우기
       close();
       return toast.info("로그인이 필요한 서비스입니다.");

@@ -1,4 +1,4 @@
-import { useAuthStore } from "@/store";
+import { useProfile } from "@/contexts/profile.context";
 import { Rating } from "@/types/Rating.type";
 import participantDto from "@/types/participantDto";
 import { Dispatch, SetStateAction } from "react";
@@ -14,10 +14,10 @@ function RatingCardsList({
   ratingList,
   setRatingList,
 }: RatingCardsListProps) {
-  const { userId } = useAuthStore();
-  const participantsWithoutUser = participants.filter(
-    (participant) => participant.id !== userId
-  );
+  const profile = useProfile();
+  const participantsWithoutUser = profile
+    ? participants.filter((participant) => participant.id !== profile.id)
+    : participants;
 
   return (
     <div className="w-full">

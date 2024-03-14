@@ -2,7 +2,8 @@
 
 import Heading from "@/components/Heading";
 import Page from "@/components/Page";
-import { useAuthStore, useModalStore } from "@/store";
+import { useAuth } from "@/contexts/auth.context";
+import { useModalStore } from "@/store";
 import { useRouter } from "next/navigation";
 import ButtonToHistory from "./_components/ButtonToHistory";
 import MyProfileSection from "./_components/MyProfileSection";
@@ -12,7 +13,7 @@ import TiersInformationModal from "./_components/TiersInformationModal";
 function MyPage() {
   const modal = useModalStore();
   const router = useRouter();
-  const { logOut, userId } = useAuthStore();
+  const { logOut } = useAuth();
 
   const handleClickInformationButton = () => {
     modal.open(<TiersInformationModal />);
