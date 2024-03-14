@@ -21,22 +21,36 @@ function Authentication({ children }: { children: React.ReactNode }) {
   const { mutateAsync: refreshToken } = useMutation({
     mutationFn: api.auth.refreshToken,
   });
-  const { data: myProfile } = useQuery({
+  const { data: myProfile, isFetched: isProfileFetched } = useQuery({
     queryKey: ["myProfile"],
     queryFn: api.user.getMyProfile,
     enabled: isLoggedIn,
+    retry: false,
   });
 
   useEffect(() => {
-    if (
-      isAuthInitialized &&
-      !myProfile &&
-      pathname !== "/accounts/user-registration"
-    ) {
-      open(<NoUserProfileModal />);
-    }
+    console.log(1);
+    if (!isAuthInitialized) return;
+    console.log(2);
+    if (!isLoggedIn) return;
+    console.log(3);
+    if (pathname === "/accounts/user-registration") return;
+    console.log(4, isProfileFetched);
+    if (!isProfileFetched) return;
+    console.log(5);
+    if (myProfile) return;
+    console.log(6);
+
+    open(<NoUserProfileModal />);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthInitialized, myProfile, pathname]);
+  }, [
+    myProfile,
+    isAuthInitialized,
+    isLoggedIn,
+    pathname,
+    myProfile,
+    isProfileFetched,
+  ]);
 
   useEffect(() => {
     const checkAuth = async () => {
