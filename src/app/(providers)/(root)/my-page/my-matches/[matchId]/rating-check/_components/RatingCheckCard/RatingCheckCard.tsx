@@ -9,7 +9,7 @@ function RatingCheckCard({
   index: number;
 }) {
   return (
-    <div className="w-full flex px-6 py-4 rounded-[10px] bg-primary-20 gap-x-11 items-center h-full">
+    <div className="w-full flex px-6 py-4 rounded-[10px] bg-primary-20 gap-x-11 sm:gap-x-8 items-center h-full">
       <div className="font-bold text-sm">{`Player${index + 1}`}</div>
       <RatingCheckStar rating={rating} />
     </div>
