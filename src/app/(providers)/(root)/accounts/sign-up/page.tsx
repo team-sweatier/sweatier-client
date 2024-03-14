@@ -107,9 +107,15 @@ function SignUpPage() {
 
   return (
     <Page>
-      <section className="pb-3 w-full" onClick={handleClickOutside}>
+      <section
+        className="pb-3 w-[390px] text-neutral-90"
+        onClick={handleClickOutside}
+      >
         <h2 className="a11y-hidden">회원가입하기</h2>
-        <form onSubmit={handleSubmitSignUpForm} className="mx-auto max-w-lg">
+        <form
+          onSubmit={handleSubmitSignUpForm}
+          className="mx-auto max-w-[350px]"
+        >
           <p className="pb-4 text-2xl font-[800] tracking-[-.1em]">
             수준별 운동 매칭 서비스
           </p>
@@ -210,21 +216,23 @@ function SignUpPage() {
             <div className="flex-1 border-t border-neutral-40"></div>
           </div>
         </form>
-        <button
-          onClick={handleClickKaKaoButton}
-          type="button"
-          className="bg-[#FEE500] text-[#392020] w-full px-6 rounded-lg font-bold h-12 mt-10 transition hover:-translate-y-1 active:translate-y-0"
-        >
-          <div className="h-full flex items-center justify-center">
-            <Image
-              src="/assets/sign-up_page/kakaotalk.svg"
-              alt="카카오톡"
-              width={24}
-              height={24}
-            />
-            <span>카카오로 계속하기</span>
-          </div>
-        </button>
+        <div className="mx-auto max-w-[350px]">
+          <button
+            onClick={handleClickKaKaoButton}
+            type="button"
+            className="bg-[#FEE500] text-[#392020] w-full px-6 rounded-lg font-bold h-12 mt-10 transition hover:-translate-y-1 active:translate-y-0"
+          >
+            <div className="h-full flex items-center justify-center">
+              <Image
+                src="/assets/sign-up_page/kakaotalk.svg"
+                alt="카카오톡"
+                width={24}
+                height={24}
+              />
+              <span>카카오로 계속하기</span>
+            </div>
+          </button>
+        </div>
       </section>
     </Page>
   );

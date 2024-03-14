@@ -32,7 +32,7 @@ function MyProfileSection() {
           수정
         </button>
       </div>
-      <div className="rounded-md bg-primary-20 flex px-6 py-4 mb-2">
+      <div className="rounded-xl bg-primary-20 flex px-6 py-4 mb-2 lg:w-[350px] mx-auto">
         <div className="w-20 h-20 relative rounded-full overflow-hidden bg-neutral-50 flex items-center justify-center">
           {profile ? (
             // ${process.env.DEPLOYED_NEXT_PUBLIC_SERVER_IMAGE_URL}
@@ -51,15 +51,15 @@ function MyProfileSection() {
           <p className="text-xs">{profile?.oneLiner}</p>
         </div>
       </div>
-      <ul>
-        <li>
+      <ul className="lg:w-[350px] mx-auto lg:flex lg:flex-col lg:justify-center">
+        <li className="w-full lg:ml-12">
           <span className="font-bold inline-block text-xs w-1/5 mr-2">
             휴대폰 번호
           </span>
           <span className="text-neutral-70">|</span>
           <span className="text-xs pl-3">{formattedPhoneNumber}</span>
         </li>
-        <li>
+        <li className="w-full lg:ml-12">
           <span className="font-bold inline-block text-xs w-1/5 mr-2">
             계좌 정보
           </span>

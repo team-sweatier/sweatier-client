@@ -85,16 +85,19 @@ function UserRegistrationPage() {
 
   return (
     <Page>
-      <section className="pb-3 w-full">
+      <section className="pb-3 w-full lg:max-w-[768px] text-neutral-90">
         <h2 className="a11y-hidden">유저 정보 등록</h2>
-        <form className="mx-auto max-w-lg " onSubmit={handleSubmitForm}>
-          <p className="pb-4 text-2xl font-black tracking-[-.1em]">
+        <form
+          className="mx-auto max-w-lg lg:max-w-[768px]"
+          onSubmit={handleSubmitForm}
+        >
+          <p className="pb-4 text-2xl font-black tracking-[-.1em] lg:text-[28px]">
             유저 정보 등록
           </p>
-          <p className="font-bold text-xs tracking-tighter">
+          <p className="font-bold text-xs tracking-tighter lg:hidden">
             원활한 서비스 사용을 위해
           </p>
-          <p className="font-bold text-xs tracking-tighter">
+          <p className="font-bold text-xs tracking-tighter lg:hidden">
             아래의 필수사항을 입력해주세요
           </p>
           <ul className="flex flex-col py-10 gap-y-7">
@@ -126,10 +129,17 @@ function UserRegistrationPage() {
                   />
                 </button>
               </div>
+              <p className="tracking-tighter text-[11px] text-neutral-50 mx-auto max-w-[198px] mt-1 lg:pt-3 hidden lg:block">
+                오프라인 운동 시 팀원들이 알아볼 수 있게 본인의 사진을 프로필로
+                등록해주세요!
+              </p>
             </li>
             <li className="flex flex-col">
               <div className="flex">
-                <label htmlFor="nickname" className="font-bold text-neutral-70">
+                <label
+                  htmlFor="nickname"
+                  className="font-bold text-neutral-70 lg:text-[18px]"
+                >
                   닉네임
                 </label>
                 <p className="flex items-center">
@@ -139,7 +149,7 @@ function UserRegistrationPage() {
                     width={20}
                     height={20}
                   />
-                  <span className="text-[11px] text-neutral-50">
+                  <span className="text-[11px] lg:text-[13px] text-neutral-50">
                     중복되지 않는 닉네임이어야 합니다.
                   </span>
                 </p>
@@ -152,7 +162,7 @@ function UserRegistrationPage() {
               />
             </li>
             <li className="flex flex-col gap-y-4">
-              <p className="font-bold text-neutral-70">성별</p>
+              <p className="font-bold text-neutral-70 lg:text-[18px]">성별</p>
               <div className="flex items-center gap-x-3">
                 <RoundButton
                   label="남성"
@@ -171,7 +181,7 @@ function UserRegistrationPage() {
             <li className="flex flex-col">
               <label
                 htmlFor="phoneNumber"
-                className="font-bold text-neutral-70"
+                className="font-bold text-neutral-70 lg:text-[18px]"
               >
                 휴대폰 번호
               </label>
@@ -180,7 +190,7 @@ function UserRegistrationPage() {
             <li className="flex flex-col">
               <label
                 htmlFor="accountNumber"
-                className="font-bold text-neutral-70"
+                className="font-bold text-neutral-70 lg:text-[18px]"
               >
                 계좌 정보
               </label>
@@ -196,20 +206,23 @@ function UserRegistrationPage() {
               />
             </li>
             <li className="flex flex-col">
-              <label htmlFor="oneLiner" className="font-bold text-neutral-70">
+              <label
+                htmlFor="oneLiner"
+                className="font-bold text-neutral-70 lg:text-[18px]"
+              >
                 자기 소개
               </label>
               <RegistrationInput
                 value={oneLiner}
                 setValue={setOneLiner}
-                placeholder="자기 소개를 한 줄 입력해주세요."
+                placeholder="나를 소개해보세요!"
                 id="oneLiner"
               />
             </li>
-            <li>
+            <li className="flex justify-center">
               <button
                 type="submit"
-                className={`w-full px-6 rounded-md text-white font-semibold h-12 mt-10 mb-10 transition active:translate-y-0 border-2 focus:border-primary-80 outline-none 
+                className={`w-full px-6 rounded-lg text-white font-semibold h-12 mt-10 mb-10 transition active:translate-y-0 border-2 focus:border-primary-80 outline-none lg:max-w-[350px] lg:mx-auto
                 ${
                   !gender ||
                   !nickname ||
