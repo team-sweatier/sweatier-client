@@ -25,11 +25,16 @@ async function refreshToken() {
   if (!data.success) throw new Error(data.message);
 }
 
+async function logOut() {
+  await client.delete("/users/sign-out");
+}
+
 const authAPI = {
   signUp,
   signIn,
   signInKaKao,
   refreshToken,
+  logOut,
 };
 
 export default authAPI;

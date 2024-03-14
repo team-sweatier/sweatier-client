@@ -27,7 +27,10 @@ export function AuthProvider({ children }: PropsWithChildren) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const logIn = useCallback(() => setIsLoggedIn(true), []);
-  const logOut = useCallback(() => setIsLoggedIn(false), []);
+  const logOut = useCallback(async () => {
+    await api.auth.logOut();
+    setIsLoggedIn(false);
+  }, []);
 
   const value: typeof initialValue = useMemo(
     () => ({
