@@ -73,7 +73,7 @@ function ProfileEditPage() {
       alert(`프로필 업데이트에 성공하였습니다.`);
       router.push("/my-page");
     } catch (error) {
-      console.log(error);
+      throw new Error();
     }
   };
   // 성별선택
