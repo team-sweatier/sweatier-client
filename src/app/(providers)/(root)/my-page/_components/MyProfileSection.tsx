@@ -1,29 +1,23 @@
-import api from "@/api";
-import useProfileStore from "@/store/profile.store";
+import { useProfile } from "@/contexts/profile.context";
 import { formatPhoneNumber } from "@/utils/formatPhoneNumber";
-import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 function MyProfileSection() {
-  const { data: myProfile } = useQuery({
-    queryKey: ["myProfile"],
-    queryFn: api.user.getMyProfile,
-  });
+  const profile = useProfile();
   const router = useRouter();
-  const { profile } = useProfileStore();
 
   const handleClickProfileEditButton = () => {
     router.push("/my-page/edit-profile");
   };
 
   const formattedPhoneNumber = formatPhoneNumber(
-    myProfile?.phoneNumber as string
+    profile?.phoneNumber as string
   );
 
-  const imageUrl = myProfile
+  const imageUrl = profile
     ? `https://storage.googleapis.com/sweatier-user-profile-image/${
-        myProfile.userId
+        profile.id
       }?timestamp=${new Date().getTime()}`
     : null;
 
@@ -40,7 +34,7 @@ function MyProfileSection() {
       </div>
       <div className="rounded-md bg-primary-20 flex px-6 py-4 mb-2">
         <div className="w-20 h-20 relative rounded-full overflow-hidden bg-neutral-50 flex items-center justify-center">
-          {myProfile ? (
+          {profile ? (
             // ${process.env.DEPLOYED_NEXT_PUBLIC_SERVER_IMAGE_URL}
             <Image
               src={`${imageUrl}`}
@@ -53,8 +47,8 @@ function MyProfileSection() {
           )}
         </div>
         <div className="flex flex-col justify-center gap-y-2 mx-7">
-          <h6 className="font-bold text-sm">{myProfile?.nickName}</h6>
-          <p className="text-xs">{myProfile?.oneLiner}</p>
+          <h6 className="font-bold text-sm">{profile?.nickName}</h6>
+          <p className="text-xs">{profile?.oneLiner}</p>
         </div>
       </div>
       <ul>
@@ -71,7 +65,7 @@ function MyProfileSection() {
           </span>
           <span className="text-neutral-70">|</span>
           <span className="text-xs pl-3">
-            {myProfile?.bankName} {myProfile?.accountNumber}
+            {profile?.bankName} {profile?.accountNumber}
           </span>
         </li>
       </ul>

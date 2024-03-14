@@ -2,7 +2,7 @@
 
 import api from "@/api";
 import Page from "@/components/Page";
-import useAuthStore from "@/store/auth.store";
+import { useAuth } from "@/contexts/auth.context";
 import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -11,11 +11,7 @@ import SignUpInput from "./_components/SignUpInput";
 import ValidationMessage from "./_components/ValidationMessage";
 
 function SignUpPage() {
-  const { mutateAsync: signUp } = useMutation({
-    mutationFn: api.auth.signUp,
-  });
-
-  const { logIn } = useAuthStore();
+  const { logIn } = useAuth();
   const router = useRouter();
 
   const [email, setEmail] = useState<string>("");
@@ -29,6 +25,10 @@ function SignUpPage() {
   const [isPasswordCheckValid, setIsPasswordCheckValid] =
     useState<boolean>(false);
   const [focusedInput, setFocusedInput] = useState<string>("");
+
+  const { mutateAsync: signUp } = useMutation({
+    mutationFn: api.auth.signUp,
+  });
 
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -77,7 +77,7 @@ function SignUpPage() {
         await signUp({ email, password });
         logIn(); // isLoggedIn 전역상태를 true로 변경
         alert("회원가입에 성공하였습니다!");
-        router.push("user-registration");
+        router.push("/");
       } catch (e) {
         alert("회원가입에 실패하였습니다."); // alert창 toastify로 바꿀예정
       }

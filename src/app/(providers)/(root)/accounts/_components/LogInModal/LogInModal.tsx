@@ -3,7 +3,8 @@
 import api from "@/api";
 import Heading from "@/components/Heading";
 import Modal from "@/components/Modal";
-import { useAuthStore, useModalStore } from "@/store";
+import { useAuth } from "@/contexts/auth.context";
+import { useModalStore } from "@/store";
 import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,7 +15,7 @@ function LogInModal() {
   const { mutateAsync: signIn, isPending } = useMutation({
     mutationFn: api.auth.signIn,
   });
-  const { logIn } = useAuthStore();
+  const { logIn } = useAuth();
   const modal = useModalStore();
   const router = useRouter();
 

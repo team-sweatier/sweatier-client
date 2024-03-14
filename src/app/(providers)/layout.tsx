@@ -1,16 +1,16 @@
-"use client";
-
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { AuthProvider } from "@/contexts/auth.context";
+import { ProfileProvider } from "@/contexts/profile.context";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-
-const client = new QueryClient();
+import ReactQueryProvider from "./_providers/reactQuery.providers";
 
 function ProvidersLayout({ children }: { children: React.ReactNode }) {
   return (
-    <QueryClientProvider client={client}>
-      {children}
+    <ReactQueryProvider>
+      <AuthProvider>
+        <ProfileProvider>{children}</ProfileProvider>
+      </AuthProvider>
       <ReactQueryDevtools />
-    </QueryClientProvider>
+    </ReactQueryProvider>
   );
 }
 

@@ -1,5 +1,5 @@
 "use client";
-import { useAuthStore } from "@/store";
+import { useProfile } from "@/contexts/profile.context";
 import translateSportType from "@/utils/translateMatches/translateSportType";
 import dayjs from "dayjs";
 import "dayjs/locale/ko";
@@ -8,8 +8,8 @@ import ApplyButton from "./ApplyButton";
 dayjs.locale("ko");
 
 function MatchUpContainer({ match, matchId }: { match: any; matchId: string }) {
-  const { userId } = useAuthStore();
-  const isUserPost = match.hostId === userId;
+  const profile = useProfile();
+  const isUserPost = profile && match.hostId === profile.id;
 
   const { sportType, matchDay, title, content } = match;
 
