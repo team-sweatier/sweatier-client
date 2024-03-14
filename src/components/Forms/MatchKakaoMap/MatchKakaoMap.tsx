@@ -4,7 +4,7 @@ import FormOuter from "@/components/Forms/FormOuter";
 import Icon from "@/components/Icon";
 import { KakaoMapResultType } from "@/types/kakaoMap.type";
 import { matchCreateIcons } from "@/utils/matchIcons";
-import { Dispatch, SetStateAction, useCallback } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { Controller, useFormContext, useWatch } from "react-hook-form";
 import CreateKakaoMap from "../CreateKakaoMap";
 
@@ -30,13 +30,6 @@ function MatchKakaoMap({
       placeName: selectedPlaceName,
     }));
   };
-
-  const handleKakaoMapSearchResult = useCallback(
-    () => (result: any) => {
-      setKakaoMapResult(result);
-    },
-    [setKakaoMapResult]
-  );
 
   return (
     <FormOuter>
@@ -72,8 +65,8 @@ function MatchKakaoMap({
             onClick={handleSearch}
           />
           <CreateKakaoMap
-            placeName={kakaoMapResult.placeName}
-            onSearchResult={handleKakaoMapSearchResult}
+            kakaoMapResult={kakaoMapResult}
+            setKakaoMapResult={setKakaoMapResult}
           />
         </div>
       </div>

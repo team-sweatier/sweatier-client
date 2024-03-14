@@ -1,23 +1,23 @@
 "use client";
 
 import { KakaoMapResultType, SearchResult } from "@/types/kakaoMap.type";
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect } from "react";
 import { CustomOverlayMap, Map, MapMarker } from "react-kakao-maps-sdk";
 
 interface KakaoMapProps {
-  placeName: string;
-  onSearchResult: (result: KakaoMapResultType) => void;
+  kakaoMapResult: KakaoMapResultType;
+  setKakaoMapResult: Dispatch<SetStateAction<KakaoMapResultType>>;
 }
 
-function CreateKakaoMap({ placeName, onSearchResult }: KakaoMapProps) {
-  const [coordinates, setCoordinates] = useState({
-    lat: 37.5685159133492,
-    lng: 126.98020965303,
-  });
+function CreateKakaoMap({ kakaoMapResult, setKakaoMapResult }: KakaoMapProps) {
+  const { placeName } = kakaoMapResult;
+
+  const coordinates = {
+    lat: kakaoMapResult.latitude,
+    lng: kakaoMapResult.longitude,
+  };
 
   useEffect(() => {
-    console.log("전달", placeName);
-
     function loadKakaoMap() {
       if (!window.kakao || !window.kakao.maps) return;
 
@@ -41,19 +41,14 @@ function CreateKakaoMap({ placeName, onSearchResult }: KakaoMapProps) {
               longitude: parseFloat(firstResult.x),
             };
 
-            setCoordinates(() => ({
-              lat: result.latitude,
-              lng: result.longitude,
-            }));
-
-            onSearchResult(result);
+            setKakaoMapResult(() => result);
           }
         });
       });
     }
 
     loadKakaoMap();
-  }, [placeName, onSearchResult]);
+  }, [placeName, setKakaoMapResult]);
 
   return (
     <Map

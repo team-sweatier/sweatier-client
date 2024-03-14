@@ -10,7 +10,7 @@ import { matchCreateIcons } from "@/utils/matchIcons";
 import matchTypes from "@/utils/matchTypes";
 import dayjs from "dayjs";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FieldValues,
   FormProvider,
@@ -27,15 +27,13 @@ interface MatchFormProps {
 function EditMatchForm({ matchId, editValues }: MatchFormProps) {
   const [kakaoMapResult, setKakaoMapResult] = useState({
     placeName: "웅진IT 본사",
-    region: "",
-    address: "",
+    region: "서울",
+    address: "서울특별시 중구 청계천로 24",
     latitude: 37.5685159133492,
     longitude: 126.98020965303,
   }); // 기본 위치 설정 (웅진 본사)
 
   const router = useRouter();
-
-  // todo : 주소 받으면 setKakaoMapResult <- 에 기본 값으로 설정
 
   const methods = useForm({
     defaultValues: {
@@ -60,13 +58,28 @@ function EditMatchForm({ matchId, editValues }: MatchFormProps) {
 
     const { hour, minute, ...rest } = data;
 
-    const finalData = {
+    const editData = {
       ...rest,
       ...kakaoMapResult,
       matchDay: matchDateTime,
     };
 
-    console.log("finalData", finalData);
+    // todo : finalData 이 놈을 내가 수동으로 수정해줘야 함
+    console.log("editData", editData);
+
+    const finalEditData = {
+      address: "서울특별시 중구 청계천로 24",
+      capability: 22,
+      content: "fdsfdsfsdfdsfdsfs",
+      gender: "both",
+      latitude: 37.5685159133492,
+      longitude: 126.98020965303,
+      matchDay: "2024-03-15T00:00:00.000Z",
+      placeName: "웅진IT 본사",
+      region: "서울",
+      sportsTypeName: "soccer",
+      title: "수정되었니 ???",
+    };
 
     try {
       // const { id } = await api.match.updateMatch(matchId, finalData);
@@ -77,6 +90,17 @@ function EditMatchForm({ matchId, editValues }: MatchFormProps) {
       toast.success("게시물 수정에 실패했습니다.");
     }
   };
+
+  //* 최초 마운팅 시 editvalues의 주소 정보로 초기값 설정
+  useEffect(() => {
+    setKakaoMapResult(() => ({
+      placeName: editValues.placeName,
+      region: editValues.region,
+      address: editValues.address,
+      latitude: editValues.latitude,
+      longitude: editValues.longitude,
+    }));
+  }, [editValues]);
 
   return (
     <FormProvider {...methods}>

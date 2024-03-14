@@ -42,8 +42,6 @@ function CreateMatchForm() {
     longitude: 126.98020965303,
   }); // 기본 위치 설정 (웅진 본사)
 
-  console.log("kakaoMapResult", kakaoMapResult);
-
   //* form 제출 handler
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const matchDateTime = dayjs(data.matchDay)
@@ -58,6 +56,8 @@ function CreateMatchForm() {
       ...kakaoMapResult,
       matchDay: matchDateTime,
     };
+
+    console.log("바꿨니?", finalData);
 
     try {
       const { matchId } = await api.match.createMatch(finalData);

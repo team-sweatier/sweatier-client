@@ -21,10 +21,6 @@ async function MatchDetailPage(props: { params: { matchId: string } }) {
   const sportsType = (match as MatchDetail).sportsType.name;
   const sportsRules = (match as MatchDetail).sportsType.rules;
 
-  // const { match, isLoading, error } = useQueryMatchById(matchId);
-  // if (error) return <div>에러 발생 !</div>;
-  // if (isLoading) return <LoadingSpinner />;
-
   console.log("match :", match);
 
   /*
