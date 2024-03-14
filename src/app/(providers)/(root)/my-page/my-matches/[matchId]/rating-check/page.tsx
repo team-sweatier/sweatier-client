@@ -2,13 +2,12 @@ import api from "@/api";
 import { MyRatings } from "@/api/rating/rating.dto";
 import MatchCard from "@/components/MatchCard";
 import Page from "@/components/Page";
-import { MatchDetail } from "@/types/match.response.type";
 import RatingCheckCardsList from "./_components/RatingCheckCardsList";
 
 async function RatingCheckPage(props: { params: { matchId: string } }) {
   const matchId = props.params.matchId;
 
-  const match: MatchDetail = await api.match.getMatch(matchId);
+  const match = await api.match.getMatch(matchId);
   // const myRatings: MyRatings[] = await api.rating.checkMyRatings(matchId);
 
   const myRatings: MyRatings[] = [
