@@ -57,8 +57,6 @@ function CreateMatchForm() {
       matchDay: matchDateTime,
     };
 
-    console.log("바꿨니?", finalData);
-
     try {
       const { matchId } = await api.match.createMatch(finalData);
       toast.success("게시물이 작성되었습니다!");

@@ -1,5 +1,4 @@
 import { Response } from "@/types/Response.type";
-import { CreateMatchDto } from "@/types/createMatch.dto";
 import { client } from "..";
 
 async function getMatches(sportType: string, date: string, region?: string) {
@@ -46,7 +45,7 @@ async function getMatch(matchId: string) {
 }
 
 //* match 게시물 작성
-async function createMatch(matchDto: CreateMatchDto) {
+async function createMatch(matchDto: any) {
   const response = await client.post(`/matches`, matchDto);
 
   const data = response.data;
@@ -85,7 +84,7 @@ async function participateToMatch(matchId: string) {
 }
 
 //* match 게사물 수정
-async function updateMatch(matchId: string, matchDto: CreateMatchDto) {
+async function updateMatch(matchId: string, matchDto: any) {
   const response = await client.put<Response>(`/matches/${matchId}`, matchDto);
 
   const data = response.data;
