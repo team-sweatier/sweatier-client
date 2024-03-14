@@ -1,4 +1,4 @@
-import { Match } from "@/types/Match.type";
+import { Match } from "@/types/match.response.type";
 import FloatingButton from "../FloatingButton";
 import MatchCardsList from "../MatchCardsList";
 import Region from "../RegionButton/RegionButton";

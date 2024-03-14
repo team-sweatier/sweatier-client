@@ -1,5 +1,8 @@
 "use client";
-import BannerImage from "@/../public/assets/main_page/carousel-image-1.svg";
+import Banner1 from "@/../public/assets/main_page/banner1.svg";
+import Banner2 from "@/../public/assets/main_page/banner2.svg";
+import Banner3 from "@/../public/assets/main_page/banner3.svg";
+
 import Image from "next/image";
 import { A11y, Pagination } from "swiper/modules";
 
@@ -17,11 +20,10 @@ function Banner() {
         spaceBetween={50}
         slidesPerView={1}
         pagination={{ clickable: true }}
-        className="rounded-3xl"
       >
         <SwiperSlide>
           <Image
-            src={BannerImage}
+            src={Banner1}
             sizes="100vw"
             style={{
               width: "100%",
@@ -35,7 +37,7 @@ function Banner() {
         </SwiperSlide>
         <SwiperSlide>
           <Image
-            src={BannerImage}
+            src={Banner2}
             sizes="100vw"
             style={{
               width: "100%",
@@ -49,7 +51,7 @@ function Banner() {
         </SwiperSlide>
         <SwiperSlide>
           <Image
-            src={BannerImage}
+            src={Banner3}
             sizes="100vw"
             style={{
               width: "100%",

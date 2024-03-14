@@ -8,7 +8,7 @@ function SearchBox() {
   const router = useRouter();
   const handleActiveEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      router.push(`search?keywords=${keywords}`);
+      router.push(`/search?keywords=${keywords}`);
     }
   };
   return (
