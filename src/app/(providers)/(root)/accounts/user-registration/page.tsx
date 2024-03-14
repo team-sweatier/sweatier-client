@@ -63,7 +63,7 @@ function UserRegistrationPage() {
     e.preventDefault();
 
     try {
-      if (!file) return toast.info("프로필 이미지는 필수입니다!");
+      if (!file) return alert("프로필 이미지는 필수입니다!");
       const formData = new FormData();
 
       formData.append("gender", gender);
