@@ -18,7 +18,7 @@ export default function useQueryGetProfile() {
     select: ({ userId, ...profile }) => ({
       id: userId,
       ...profile,
-      // imageUrl: imageUrl || "",
+      imageUrl: "",
     }),
   });
 }
