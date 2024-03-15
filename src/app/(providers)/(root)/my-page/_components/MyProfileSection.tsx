@@ -15,6 +15,7 @@ function MyProfileSection() {
     profile?.phoneNumber as string
   );
 
+  console.log(profile);
   return (
     <>
       <div className="flex items-center">

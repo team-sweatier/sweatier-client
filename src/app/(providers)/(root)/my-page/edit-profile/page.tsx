@@ -69,8 +69,10 @@ function ProfileEditPage() {
       formData.append("oneLiner", oneLiner);
 
       const updatedProfile = await updateUser(formData);
+      console.log(updatedProfile);
       setImageUrl(updatedProfile?.imageUrl);
       alert(`프로필 업데이트에 성공하였습니다.`);
+      router.prefetch("/my-page");
       router.push("/my-page");
     } catch (error) {
       throw new Error();
