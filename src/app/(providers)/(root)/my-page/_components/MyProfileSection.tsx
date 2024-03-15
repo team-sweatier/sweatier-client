@@ -15,14 +15,6 @@ function MyProfileSection() {
     profile?.phoneNumber as string
   );
 
-  console.log(profile);
-
-  // const imageUrl = profile
-  //   ? `https://storage.googleapis.com/sweatier-user-profile-image/${
-  //       profile.id
-  //     }?timestamp=${new Date().getTime()}`
-  //   : null;
-
   return (
     <>
       <div className="flex items-center">

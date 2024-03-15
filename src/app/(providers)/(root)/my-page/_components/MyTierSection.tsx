@@ -41,7 +41,6 @@ function MyTierSection({ onClickTierModal }: { onClickTierModal: () => void }) {
       };
     }
   });
-  console.log(TranslatedMyTiers);
 
   const tierImagePath: { [key: string]: string } = {
     beginner: "/assets/my_page/beginner.svg",
