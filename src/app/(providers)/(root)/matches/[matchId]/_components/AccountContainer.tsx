@@ -1,9 +1,16 @@
+"use client";
+import { useProfile } from "@/contexts/profile.context";
 import isUserParticipating from "@/utils/isUserParticipating";
 
 function AccountContainer({ match }: { match: any }) {
-  const { hostBankName, hostAccountNumber, profile } = match;
+  const { hostBankName, hostAccountNumber } = match;
+  const myProfile = useProfile();
 
-  const hasApplied = profile ? isUserParticipating(match, profile.id) : false; //* 2. 기신청 여부 확인하기
+  const hasApplied = myProfile
+    ? isUserParticipating(match, myProfile.id)
+    : false; //* 2. 기신청 여부 확인하기
+
+  console.log(hasApplied);
 
   return (
     <div className="border border-none bg-primary-20 text-sm rounded-lg block w-full dark:bg-natural-50 dark:border-natural-50 dark:text-white p-5 items-center mb-8">
