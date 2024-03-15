@@ -16,11 +16,11 @@ interface ApplyButtonProps {
 }
 
 function ApplyButton({ match, matchId }: ApplyButtonProps) {
-  const router = useRouter();
   const { open, close } = useModalStore();
   const { isLoggedIn } = useAuth();
   const profile = useProfile();
-  const { mutate: applyMatch } = useMutationApplyMatch(matchId);
+  const router = useRouter();
+  const { mutate: applyMatch, isSuccess } = useMutationApplyMatch(matchId);
 
   const isFull = match.applicants / match.capability >= 1; //* 1. 정원 확인하기
   const hasApplied = profile ? isUserParticipating(match, profile.id) : false; //* 2. 기신청 여부 확인하기
@@ -52,6 +52,7 @@ function ApplyButton({ match, matchId }: ApplyButtonProps) {
     applyMatch(matchId, {
       onSuccess: () => {
         close();
+        window.location.reload();
         return toast.success("해당 매치에 신청되었습니다!");
       },
       onError: () => {

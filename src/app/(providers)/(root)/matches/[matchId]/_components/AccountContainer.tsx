@@ -1,17 +1,15 @@
-interface AccountContainerProps {
-  isApply: boolean;
-  accountBank: string;
-  accountNumber: string;
-}
+import isUserParticipating from "@/utils/isUserParticipating";
 
 function AccountContainer({ match }: { match: any }) {
-  const { hostBankName, hostAccountNumber, participating } = match;
+  const { hostBankName, hostAccountNumber, profile } = match;
+
+  const hasApplied = profile ? isUserParticipating(match, profile.id) : false; //* 2. 기신청 여부 확인하기
 
   return (
     <div className="border border-none bg-primary-20 text-sm rounded-lg block w-full dark:bg-natural-50 dark:border-natural-50 dark:text-white p-5 items-center mb-8">
       <div className="flex">
         <span className="font-bold pr-8">입금계좌</span>
-        {participating ? (
+        {hasApplied ? (
           <div>
             <span className="pr-2">{hostBankName}</span>
             <span>{hostAccountNumber}</span>
