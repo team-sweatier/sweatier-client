@@ -7,7 +7,7 @@ const nextConfig = {
       "storage.googleapis.com",
     ],
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
 };
 
 export default nextConfig;
