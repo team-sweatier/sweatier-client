@@ -56,7 +56,7 @@ function ApplyButton({ match, matchId }: ApplyButtonProps) {
       },
       onError: () => {
         close();
-        return toast.error("신청에 실패하였습니다");
+        return toast.error("티어에 맞는 경기만 신청할 수 있습니다.");
       },
     });
   };
