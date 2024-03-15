@@ -16,7 +16,7 @@ export type Profile = {
   oneLiner?: string;
   bankName: string;
   accountNumber: string;
-  imgUrl: string;
+  imageUrl: string;
   createAt: string;
   updatedAt: string;
 };

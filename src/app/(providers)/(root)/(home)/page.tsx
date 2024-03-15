@@ -1,3 +1,5 @@
+// "use client";
+
 import api from "@/api";
 import Page from "@/components/Page";
 import day from "@/utils/day";
@@ -19,6 +21,9 @@ async function HomePage(props: {
   } = props.searchParams;
 
   const matches = await api.match.getMatches(sportType, date, region);
+  // const { tierId } = useProfileStore();
+  // console.log(tierId);
+  // tierId 타입은 string[]
 
   return (
     <Page>
