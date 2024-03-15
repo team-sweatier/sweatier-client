@@ -5,6 +5,8 @@ import Page from "@/components/Page";
 import { useAuth } from "@/contexts/auth.context";
 import { useModalStore } from "@/store";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import ButtonToHistory from "./_components/ButtonToHistory";
 import MyProfileSection from "./_components/MyProfileSection";
 import MyTierSection from "./_components/MyTierSection";
@@ -29,23 +31,23 @@ function MyPage() {
 
   const handleClickLogOut = () => {
     logOut();
-    alert("로그아웃 처리되었습니다.");
+    toast.error("로그아웃 처리되었습니다.");
     router.push("/");
   };
 
   return (
     <Page>
-      <section className="pb-6 w-full border-b-2 border-[#F8F8F8]">
+      <section className="pb-6 w-full border-b-2 border-[#F8F8F8] text-neutral-90">
         <Heading className="text-2xl">마이페이지</Heading>
         <MyProfileSection />
       </section>
 
-      <section className="py-6 w-full border-b-2 border-[#F8F8F8]">
+      <section className="py-6 w-full border-b-2 border-[#F8F8F8] text-neutral-90">
         <MyTierSection onClickTierModal={handleClickInformationButton} />
       </section>
-      <section className="w-full pt-2 pb-6 border-b-2 border-[#F8F8F8]">
+      <section className="w-full pt-2 pb-6 border-b-2 border-[#F8F8F8] text-neutral-90">
         <h4 className="py-4 font-black pr-1">나의 경기</h4>
-        <div className="flex items-center gap-x-5 text-sm">
+        <div className="flex items-center gap-x-5 text-sm lg:max-w-[350px] lg:mx-auto">
           <ButtonToHistory
             label="신청 내역 조회"
             onClick={handleClickButtonToMyApplication}
@@ -56,7 +58,7 @@ function MyPage() {
           />
         </div>
       </section>
-      <section className="w-full flex flex-start my-6 ">
+      <section className="w-full flex flex-start my-6 text-neutral-90">
         <button
           onClick={handleClickLogOut}
           className="h-[18px] font-black pr-1 hover:border-primary-100 hover:text-primary-100"

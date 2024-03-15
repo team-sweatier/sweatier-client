@@ -10,6 +10,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function LogInModal() {
   const { mutateAsync: signIn, isPending } = useMutation({
@@ -28,10 +30,10 @@ function LogInModal() {
       await signIn({ email, password });
       logIn();
       modal.close();
-      alert("로그인 처리되었습니다"); // toastify 적용예정
+      toast.success("로그인 처리되었습니다"); // toastify 적용예정
       router.push("/");
     } catch (e) {
-      alert("로그인에 실패하였습니다.");
+      toast.error("로그인에 실패하였습니다.");
     }
   };
 
@@ -44,8 +46,10 @@ function LogInModal() {
   };
 
   return (
-    <Modal className="px-5 py-[27px]">
-      <Heading className="text-center text-base py-0 mb-6">로그인</Heading>
+    <Modal className="px-5 py-[27px] lg:px-5 lg:max-w-[390px] text-neutral-90">
+      <Heading className="text-center text-base py-0 mb-6 lg:text-[18px]">
+        로그인
+      </Heading>
       <form
         action=""
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}
@@ -62,7 +66,7 @@ function LogInModal() {
             <input
               type="text"
               id="email"
-              className="h-10 border text-neutral-70 border-neutral-30 focus:border-primary-100 outline-none transition rounded-lg placeholder:text-neutral-50 text-[11px] pl-6"
+              className="h-10 border text-neutral-70 border-neutral-30 focus:border-primary-100 outline-none transition rounded-lg placeholder:text-neutral-50 text-[11px] pl-6 placeholder-pretendard"
               value={email}
               placeholder="이메일을 입력해주세요."
               onChange={(e) => setEmail(e.target.value)}
@@ -78,7 +82,7 @@ function LogInModal() {
             <input
               type={isPasswordVisible ? "text" : "password"}
               id="password"
-              className="h-10 border text-neutral-50 border-neutral-30 focus:border-primary-100 outline-none transition rounded-lg placeholder:text-neutral-50 text-[11px] pl-6"
+              className="h-10 border text-neutral-50 border-neutral-30 focus:border-primary-100 outline-none transition rounded-lg placeholder:text-neutral-50 text-[11px] pl-6 placeholder-pretendard"
               value={password}
               placeholder="비밀번호를 입력해주세요."
               onChange={(e) => setPassword(e.target.value)}
@@ -115,7 +119,7 @@ function LogInModal() {
         ) : (
           <button
             disabled={isPending}
-            className="h-8 bg-neutral-20 text-neutral-40 rounded-[10px] text-sm font-semibold my-[6px] transition hover:-translate-y-1 active:translate-y-0"
+            className="h-8 bg-neutral-20 text-neutral-40 rounded-[10px] text-sm font-semibold my-[6px]"
           >
             확인
           </button>

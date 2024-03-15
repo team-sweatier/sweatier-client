@@ -1,7 +1,6 @@
 import api from "@/api";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import Hexagon from "./Hexagon";
 
 function MyTierSection({ onClickTierModal }: { onClickTierModal: () => void }) {
   const { data: userTiers } = useQuery({
@@ -43,6 +42,14 @@ function MyTierSection({ onClickTierModal }: { onClickTierModal: () => void }) {
     }
   });
 
+  const tierImagePath: { [key: string]: string } = {
+    beginner: "/assets/my_page/beginner.svg",
+    amateur: "/assets/my_page/amateur.svg",
+    semiPro: "/assets/my_page/semi-pro.svg",
+    professional: "/assets/my_page/pro.svg",
+    master: "/assets/my_page/master.svg",
+  };
+
   return (
     <>
       <div className="flex items-center pb-6">
@@ -58,28 +65,60 @@ function MyTierSection({ onClickTierModal }: { onClickTierModal: () => void }) {
         <p className="pl-3 text-xs">매일 오전 12시에 티어가 재배정됩니다.</p>
       </div>
       <div className="flex justify-center gap-x-4 py-4">
-        {TranslatedMyTiers?.slice(0, 3)?.map(
-          (myTier) =>
+        {TranslatedMyTiers?.slice(0, 3)?.map((myTier) => {
+          const tierValue = myTier.value as string;
+          const tierImage = tierImagePath[tierValue as string];
+          return (
             myTier?.sportType?.name && (
-              <Hexagon
-                key={myTier.sportType.name}
-                tier={myTier.value}
-                sportType={myTier.sportType.name}
-              />
+              <div className="relative">
+                <Image
+                  src="/assets/my_page/polygon.svg"
+                  alt="육각형"
+                  width={92}
+                  height={92}
+                />
+                <Image
+                  src={tierImage}
+                  alt={tierValue}
+                  width={25}
+                  height={25}
+                  className="absolute top-[35px] left-[34px]"
+                />
+                <span className="absolute top-16 left-[30px] text-[12px] font-bold text-neutral-70">
+                  {myTier.sportType.name}
+                </span>
+              </div>
             )
-        )}
+          );
+        })}
       </div>
       <div className="flex justify-center gap-x-4">
-        {TranslatedMyTiers?.slice(3, 5)?.map(
-          (myTier) =>
+        {TranslatedMyTiers?.slice(3, 5)?.map((myTier) => {
+          const tierValue = myTier.value as string;
+          const tierImage = tierImagePath[tierValue as string];
+          return (
             myTier?.sportType?.name && (
-              <Hexagon
-                key={myTier.sportType.name}
-                tier={myTier.value}
-                sportType={myTier.sportType.name}
-              />
+              <div className="relative">
+                <Image
+                  src="/assets/my_page/polygon.svg"
+                  alt="육각형"
+                  width={92}
+                  height={92}
+                />
+                <Image
+                  src={tierImage}
+                  alt={tierValue}
+                  width={25}
+                  height={25}
+                  className="absolute top-[35px] left-[34px]"
+                />
+                <span className="absolute top-16 left-[26px] text-[12px] font-bold text-neutral-70">
+                  {myTier.sportType.name}
+                </span>
+              </div>
             )
-        )}
+          );
+        })}
       </div>
     </>
   );

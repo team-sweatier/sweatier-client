@@ -45,12 +45,12 @@ function ProfileEditPage() {
       setSelectedBankName(profile.bankName);
       setAccountNumber(profile.accountNumber);
       setOneLiner(profile.oneLiner as string);
-      const imageUrl = profile
-        ? `https://storage.googleapis.com/sweatier-user-profile-image/${
-            profile.id
-          }?timestamp=${new Date().getTime()}`
-        : null;
-      setImageUrl(imageUrl);
+      // const imageUrl = profile
+      //   ? `https://storage.googleapis.com/sweatier-user-profile-image/${
+      //       profile.id
+      //     }?timestamp=${new Date().getTime()}`
+      //   : null;
+      setImageUrl(profile.imageUrl);
     }
   }, [profile]);
 
@@ -69,8 +69,10 @@ function ProfileEditPage() {
       formData.append("oneLiner", oneLiner);
 
       const updatedProfile = await updateUser(formData);
+      console.log(updatedProfile);
       setImageUrl(updatedProfile?.imageUrl);
       alert(`프로필 업데이트에 성공하였습니다.`);
+      router.prefetch("/my-page");
       router.push("/my-page");
     } catch (error) {
       throw new Error();
@@ -102,10 +104,13 @@ function ProfileEditPage() {
 
   return (
     <Page>
-      <section className="pb-3 w-full">
+      <section className="pb-3 w-full text-neutral-90 lg:max-w-[768px]">
         <h2 className="a11y-hidden">내 정보 수정</h2>
-        <form className="mx-auto max-w-lg" onSubmit={handleSubmitEditForm}>
-          <p className="py-4 text-2xl font-black tracking-[-.1em]">
+        <form
+          className="mx-auto max-w-lg lg:max-w-[768px]"
+          onSubmit={handleSubmitEditForm}
+        >
+          <p className="py-4 text-2xl font-black tracking-[-.1em] lg:text-[28px]">
             내 정보 수정
           </p>
 
@@ -138,7 +143,7 @@ function ProfileEditPage() {
                   />
                 </button>
               </div>
-              <p className="tracking-tighter text-[11px] text-neutral-50 mx-auto max-w-[198px] mt-1">
+              <p className="tracking-tighter text-[11px] text-neutral-50 mx-auto max-w-[198px] mt-1 lg:pt-3">
                 오프라인 운동 시 팀원들이 알아볼 수 있게 본인의 사진을 프로필로
                 등록해주세요!
               </p>
@@ -218,14 +223,14 @@ function ProfileEditPage() {
               <RegistrationInput
                 value={oneLiner}
                 setValue={setOneLiner}
-                placeholder="자기 소개를 한 줄 입력해주세요."
+                placeholder="나를 소개해 보세요!"
                 id="oneLiner"
               />
             </li>
             <li>
               <button
                 type="submit"
-                className={`w-full px-6 rounded-md text-white font-semibold h-12 mt-10 mb-10 transition active:translate-y-0 border-2 focus:border-primary-80 outline-none 
+                className={`w-full lg:max-w-[350px] lg:mx-auto lg:block px-6 rounded-lg text-white font-semibold h-12 mt-10 mb-10 transition active:translate-y-0 border-2 focus:border-primary-80 outline-none
                 ${
                   !gender ||
                   !nickname ||
