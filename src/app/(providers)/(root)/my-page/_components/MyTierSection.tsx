@@ -41,6 +41,7 @@ function MyTierSection({ onClickTierModal }: { onClickTierModal: () => void }) {
       };
     }
   });
+  console.log(TranslatedMyTiers);
 
   const tierImagePath: { [key: string]: string } = {
     beginner: "/assets/my_page/beginner.svg",
@@ -84,7 +85,7 @@ function MyTierSection({ onClickTierModal }: { onClickTierModal: () => void }) {
                   height={25}
                   className="absolute top-[35px] left-[34px]"
                 />
-                <span className="absolute top-16 left-[34px] text-[12px] font-bold text-neutral-70">
+                <span className="absolute top-16 left-[30px] text-[12px] font-bold text-neutral-70">
                   {myTier.sportType.name}
                 </span>
               </div>

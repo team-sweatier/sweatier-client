@@ -15,11 +15,13 @@ function MyProfileSection() {
     profile?.phoneNumber as string
   );
 
-  const imageUrl = profile
-    ? `https://storage.googleapis.com/sweatier-user-profile-image/${
-        profile.id
-      }?timestamp=${new Date().getTime()}`
-    : null;
+  console.log(profile);
+
+  // const imageUrl = profile
+  //   ? `https://storage.googleapis.com/sweatier-user-profile-image/${
+  //       profile.id
+  //     }?timestamp=${new Date().getTime()}`
+  //   : null;
 
   return (
     <>
@@ -35,9 +37,8 @@ function MyProfileSection() {
       <div className="rounded-xl bg-primary-20 flex px-6 py-4 mb-2 lg:w-[350px] mx-auto">
         <div className="w-20 h-20 relative rounded-full overflow-hidden bg-neutral-50 flex items-center justify-center">
           {profile ? (
-            // ${process.env.DEPLOYED_NEXT_PUBLIC_SERVER_IMAGE_URL}
             <Image
-              src={`${imageUrl}`}
+              src={`${profile.imageUrl}`}
               layout="fill"
               objectFit="cover"
               alt="프로필 이미지"
