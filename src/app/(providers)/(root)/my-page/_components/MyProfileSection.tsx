@@ -1,10 +1,10 @@
-import { useProfile } from "@/contexts/profile.context";
+import useQueryGetProfile from "@/react-query/queries/useQuery.getProfile";
 import { formatPhoneNumber } from "@/utils/formatPhoneNumber";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 function MyProfileSection() {
-  const profile = useProfile();
+    const { data: profile, isFetched: isProfileFetched } = useQueryGetProfile();
   const router = useRouter();
   
   const handleClickProfileEditButton = () => {
@@ -16,7 +16,7 @@ function MyProfileSection() {
   );
 
   return (
-    profile && <>
+    isProfileFetched &&<>
       <div className="flex items-center">
         <h4 className="py-4 font-black text-lg">내 정보</h4>
         <button

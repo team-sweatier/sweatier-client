@@ -10,6 +10,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FormEventHandler, useEffect, useRef, useState } from "react";
+import { toast } from "react-toastify";
 import DropDownBoxOfBank from "../../accounts/user-registration/_components/DropDownBoxOfBank";
 import PhoneNumberInput from "../../accounts/user-registration/_components/PhoneNumberInput";
 import RegistrationInput from "../../accounts/user-registration/_components/RegistrationInput";
@@ -68,8 +69,8 @@ function ProfileEditPage() {
       formData.append("nickName", nickname);
       formData.append("oneLiner", oneLiner);
 
-      const updatedProfile = await updateUser(formData);
-      alert(`프로필 업데이트에 성공하였습니다.`);
+      await updateUser(formData);
+      toast.success(`프로필 업데이트에 성공하였습니다.`);
       router.prefetch("/my-page");
       router.push("/my-page");
     } catch (error) {
