@@ -70,7 +70,7 @@ function MyTierSection({ onClickTierModal }: { onClickTierModal: () => void }) {
           const tierImage = tierImagePath[tierValue as string];
           return (
             myTier?.sportType?.name && (
-              <div className="relative">
+              <div key={myTier.sportType.id} className="relative">
                 <Image
                   src="/assets/my_page/polygon.svg"
                   alt="육각형"
@@ -98,7 +98,7 @@ function MyTierSection({ onClickTierModal }: { onClickTierModal: () => void }) {
           const tierImage = tierImagePath[tierValue as string];
           return (
             myTier?.sportType?.name && (
-              <div className="relative">
+              <div key={myTier.sportType.id} className="relative">
                 <Image
                   src="/assets/my_page/polygon.svg"
                   alt="육각형"
