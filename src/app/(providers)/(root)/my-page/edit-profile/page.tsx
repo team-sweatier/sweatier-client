@@ -10,6 +10,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FormEventHandler, useEffect, useRef, useState } from "react";
+import { toast } from "react-toastify";
 import DropDownBoxOfBank from "../../accounts/user-registration/_components/DropDownBoxOfBank";
 import PhoneNumberInput from "../../accounts/user-registration/_components/PhoneNumberInput";
 import RegistrationInput from "../../accounts/user-registration/_components/RegistrationInput";
