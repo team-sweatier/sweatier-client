@@ -68,8 +68,8 @@ function ProfileEditPage() {
       formData.append("nickName", nickname);
       formData.append("oneLiner", oneLiner);
 
-      const updatedProfile = await updateUser(formData);
-      alert(`프로필 업데이트에 성공하였습니다.`);
+      await updateUser(formData);
+      toast.success(`프로필 업데이트에 성공하였습니다.`);
       router.prefetch("/my-page");
       router.push("/my-page");
     } catch (error) {
