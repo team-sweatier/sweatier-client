@@ -26,6 +26,6 @@ export type UpdatedProfile = {
     accountNumber: string;
     createAt: string;
     updatedAt: string;
+    imageUrl: string;
   };
-  imageUrl: string;
 };

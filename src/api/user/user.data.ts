@@ -4,4 +4,4 @@ export type RegisterUserData = Profile;
 
 export type GetUserProfileData = Profile["profile"];
 
-export type UpdateMyProfileData = Profile;
+export type UpdateMyProfileData = Profile["profile"];
