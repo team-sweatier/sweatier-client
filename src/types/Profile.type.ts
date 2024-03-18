@@ -10,9 +10,8 @@ export type Profile = {
     accountNumber: string;
     createAt: string;
     updatedAt: string;
-    // imageUrl: string;
+    imageUrl: string;
   };
-  imageUrl: string;
 };
 
 export type UpdatedProfile = {

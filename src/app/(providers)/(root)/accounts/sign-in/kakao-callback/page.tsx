@@ -36,7 +36,7 @@ const KakaoCallbackPage = ({
     };
 
     signInAndRedirect();
-  }, [code, router]);
+  }, [code, logIn, myProfile?.nickName, router]);
 
   return null;
 };
