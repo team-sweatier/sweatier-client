@@ -23,6 +23,7 @@ async function getMyProfile() {
   const response = await client.get<Response<GetUserProfileData>>(
     "/users/profile"
   );
+
   const data = response.data;
   if (!data.success) throw new Error(data.message);
 

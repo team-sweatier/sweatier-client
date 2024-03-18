@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 function MyProfileSection() {
   const profile = useProfile();
   const router = useRouter();
-
+  
   const handleClickProfileEditButton = () => {
     router.push("/my-page/edit-profile");
   };
@@ -15,9 +15,8 @@ function MyProfileSection() {
     profile?.phoneNumber as string
   );
 
-  console.log(profile);
   return (
-    <>
+    profile && <>
       <div className="flex items-center">
         <h4 className="py-4 font-black text-lg">내 정보</h4>
         <button
@@ -27,11 +26,11 @@ function MyProfileSection() {
           수정
         </button>
       </div>
-      <div className="rounded-xl bg-primary-20 flex px-6 py-4 mb-2 lg:w-[350px] mx-auto">
+      <div className="rounded-xl bg-primary-20 flex px-6 py-4 mb-2">
         <div className="w-20 h-20 relative rounded-full overflow-hidden bg-neutral-50 flex items-center justify-center">
           {profile ? (
             <Image
-              src={`${profile.imageUrl}`}
+              src={`${profile?.imageUrl}`}
               layout="fill"
               objectFit="cover"
               alt="프로필 이미지"
@@ -45,15 +44,15 @@ function MyProfileSection() {
           <p className="text-xs">{profile?.oneLiner}</p>
         </div>
       </div>
-      <ul className="lg:w-[350px] mx-auto lg:flex lg:flex-col lg:justify-center">
-        <li className="w-full lg:ml-12">
+      <ul className="lg:flex lg:flex-col lg:justify-center">
+        <li className="w-full">
           <span className="font-bold inline-block text-xs w-1/5 mr-2">
             휴대폰 번호
           </span>
           <span className="text-neutral-70">|</span>
           <span className="text-xs pl-3">{formattedPhoneNumber}</span>
         </li>
-        <li className="w-full lg:ml-12">
+        <li className="w-full">
           <span className="font-bold inline-block text-xs w-1/5 mr-2">
             계좌 정보
           </span>

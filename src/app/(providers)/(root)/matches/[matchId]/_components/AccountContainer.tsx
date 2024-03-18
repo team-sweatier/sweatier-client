@@ -10,8 +10,6 @@ function AccountContainer({ match }: { match: any }) {
     ? isUserParticipating(match, myProfile.id)
     : false; //* 2. 기신청 여부 확인하기
 
-  console.log(hasApplied);
-
   return (
     <div className="border border-none bg-primary-20 text-sm rounded-lg block w-full dark:bg-natural-50 dark:border-natural-50 dark:text-white p-5 items-center mb-8">
       <div className="flex">

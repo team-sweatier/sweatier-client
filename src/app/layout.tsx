@@ -16,6 +16,7 @@ export default function HTMLLayout({
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
         />
         <Script strategy="beforeInteractive" src={KAKAO_SDK_URL} />
+        <link rel="icon" type="image/png" sizes="192x192"  href="/assets/commons/favicon.png"/>
       </head>
       <body>{children}</body>
     </html>
