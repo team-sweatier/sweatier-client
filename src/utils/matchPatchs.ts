@@ -1,5 +1,5 @@
 export const matchCreateIconsPath: { [key: string]: string } = {
-  sport: "/assets/match_create_page/postIcon.svg",
+  sportsTypeName: "/assets/match_create_page/sportsTypeName.svg",
   title: "/assets/match_create_page/titleIcon.svg",
   content: "/assets/match_create_page/contentIcon.svg",
   gender: "/assets/match_create_page/genderIcon.svg",

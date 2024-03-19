@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import { ToastContainer } from "react-toastify";
 
 function RootLayout({ children }: { children: React.ReactNode }) {
-  const { isOpened, modalElement } = useModalStore();
+  const { modalElement } = useModalStore();
 
   return (
     <Suspense>
