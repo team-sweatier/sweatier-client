@@ -1,4 +1,5 @@
 import { Response } from "@/types/Response.type";
+import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { client } from "..";
 
 async function getMatches(sportType: string, date: string, region?: string) {
@@ -58,8 +59,15 @@ async function createMatch(matchDto: any) {
 }
 
 //* match 상세 페이지 조회
-async function getMatchesByMatchId(matchId: string) {
-  const response = await client.get<Response>(`/matches/${matchId}`);
+async function getMatchesByMatchId(
+  matchId: string,
+  accessToken?: RequestCookie
+) {
+  const response = await client.get<Response>(`/matches/${matchId}`, {
+    headers: {
+      Cookie: `${accessToken?.name}=${accessToken?.value}`,
+    },
+  });
 
   const data = response.data;
   if (!data.success) throw new Error(data.message);

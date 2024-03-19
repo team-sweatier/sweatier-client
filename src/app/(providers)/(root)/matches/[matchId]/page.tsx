@@ -2,6 +2,7 @@ import api from "@/api";
 import { MatchDetail } from "@/types/match.response.type";
 import dayjs from "dayjs";
 import "dayjs/locale/ko";
+import { cookies } from "next/headers";
 import AccountContainer from "./_components/AccountContainer";
 import Background from "./_components/Background";
 import GetKakaoMap from "./_components/GetKakaoMap";
@@ -14,8 +15,10 @@ dayjs.locale("ko");
 
 async function MatchDetailPage(props: { params: { matchId: string } }) {
   const matchId = props.params.matchId;
+  const cookieStore = cookies();
+  const accessToken = cookieStore.get("accessToken");
 
-  const match = await api.match.getMatchesByMatchId(matchId);
+  const match = await api.match.getMatchesByMatchId(matchId, accessToken);
   if (!match) return null;
 
   const sportsType = (match as MatchDetail).sportsType.name;
