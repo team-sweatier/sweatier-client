@@ -1,4 +1,5 @@
 "use client";
+
 import api from "@/api";
 import "@/components/Forms/CalendarForm/calendar.css";
 import ContentTextarea from "@/components/Forms/ContentTextarea/ContentTextarea";
@@ -8,7 +9,7 @@ import MatchKakaoMap from "@/components/Forms/MatchKakaoMap";
 import MatchSubmitButton from "@/components/Forms/MatchSubmitButton/MatchSubmitButton";
 import MatchTime from "@/components/Forms/MatchTime/MatchTime";
 import TitleInput from "@/components/Forms/TitleInput/TitleInput";
-import { matchCreateIcons } from "@/utils/matchIcons";
+import { matchCreateIconsPath } from "@/utils/matchIcons";
 import matchTypes from "@/utils/matchTypes";
 import dayjs from "dayjs";
 import { useRouter } from "next/navigation";
@@ -72,10 +73,10 @@ function CreateMatchForm() {
         <FormSelector
           name="sportsTypeName"
           label="종목"
-          iconSrc={matchCreateIcons.sport}
-          options={matchTypes.sports.map((sportType) => ({
-            label: Object.keys(sportType)[0],
-            value: Object.values(sportType)[0],
+          iconSrc={matchCreateIconsPath.sport}
+          options={matchTypes.sports.map((type) => ({
+            label: Object.keys(type)[0],
+            value: Object.values(type)[0],
           }))}
         />
         <TitleInput />
@@ -83,19 +84,19 @@ function CreateMatchForm() {
         <FormSelector
           name="gender"
           label="모집성별"
-          iconSrc={matchCreateIcons.gender}
-          options={matchTypes.gender.map((genderType) => ({
-            label: Object.keys(genderType)[0],
-            value: Object.values(genderType)[0],
+          iconSrc={matchCreateIconsPath.gender}
+          options={matchTypes.gender.map((type) => ({
+            label: Object.keys(type)[0],
+            value: Object.values(type)[0],
           }))}
         />
         <FormSelector
           name="capability"
           label="매치유형"
-          iconSrc={matchCreateIcons.players}
-          options={matchTypes.players.map((playType) => ({
-            label: Object.keys(playType)[0],
-            value: Object.values(playType)[0],
+          iconSrc={matchCreateIconsPath.players}
+          options={matchTypes.players.map((type) => ({
+            label: Object.keys(type)[0],
+            value: Object.values(type)[0],
           }))}
         />
         <MatchCalendar />

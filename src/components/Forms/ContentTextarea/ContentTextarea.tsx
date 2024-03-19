@@ -1,6 +1,6 @@
 import FormOuter from "@/components/Forms/FormOuter";
 import Icon from "@/components/Icon";
-import { matchCreateIcons } from "@/utils/matchIcons";
+import { matchCreateIconsPath } from "@/utils/matchIcons";
 import { useFormContext } from "react-hook-form";
 
 function ContentTextarea() {
@@ -11,7 +11,7 @@ function ContentTextarea() {
       <div className="flex items-center pb-4 ">
         <label className="font-bold flex items-center gap-x-1" htmlFor="title">
           <Icon
-            src={matchCreateIcons.content}
+            src={matchCreateIconsPath.content}
             alt="postIcon-icon"
             classStyles="mb-[2px]"
           />
@@ -19,7 +19,7 @@ function ContentTextarea() {
         </label>
         <div className="flex pl-1 items-center">
           <Icon
-            src={matchCreateIcons.grayDot}
+            src={matchCreateIconsPath.grayDot}
             alt="title-required-message"
             classStyles="pb-1"
           />

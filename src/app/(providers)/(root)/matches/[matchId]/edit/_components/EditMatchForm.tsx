@@ -8,7 +8,7 @@ import MatchSubmitButton from "@/components/Forms/MatchSubmitButton/MatchSubmitB
 import MatchTime from "@/components/Forms/MatchTime/MatchTime";
 import TitleInput from "@/components/Forms/TitleInput/TitleInput";
 import { CreateMatchDto } from "@/types/createMatch.dto";
-import { matchCreateIcons } from "@/utils/matchIcons";
+import { matchCreateIconsPath } from "@/utils/matchIcons";
 import matchTypes from "@/utils/matchTypes";
 import dayjs from "dayjs";
 import { useRouter } from "next/navigation";
@@ -108,7 +108,7 @@ function EditMatchForm({ matchId, editValues }: MatchFormProps) {
         <FormSelector
           name="sportsTypeName"
           label="종목"
-          iconSrc={matchCreateIcons.sport}
+          iconSrc={matchCreateIconsPath.sport}
           options={matchTypes.sports.map((sportType) => ({
             label: Object.keys(sportType)[0],
             value: Object.values(sportType)[0],
@@ -119,7 +119,7 @@ function EditMatchForm({ matchId, editValues }: MatchFormProps) {
         <FormSelector
           name="gender"
           label="모집성별"
-          iconSrc={matchCreateIcons.gender}
+          iconSrc={matchCreateIconsPath.gender}
           options={matchTypes.gender.map((genderType) => ({
             label: Object.keys(genderType)[0],
             value: Object.values(genderType)[0],
@@ -128,7 +128,7 @@ function EditMatchForm({ matchId, editValues }: MatchFormProps) {
         <FormSelector
           name="capability"
           label="매치유형"
-          iconSrc={matchCreateIcons.players}
+          iconSrc={matchCreateIconsPath.players}
           options={matchTypes.players.map((playType) => ({
             label: Object.keys(playType)[0],
             value: Object.values(playType)[0],

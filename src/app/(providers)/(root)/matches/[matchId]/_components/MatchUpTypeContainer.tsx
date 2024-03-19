@@ -1,5 +1,5 @@
 import Icon from "@/components/Icon";
-import { matchDetailIcons } from "@/utils/matchIcons";
+import { matchDetailIconsPath } from "@/utils/matchIcons";
 import translateGender from "@/utils/translateMatches/translateGender";
 import translateMatchType from "@/utils/translateMatches/translateMatchType";
 import translateTier from "@/utils/translateMatches/translateTier";
@@ -13,7 +13,7 @@ interface Icons {
   [key: string]: string | StaticImageData;
 }
 
-const matchIcons: Icons = matchDetailIcons as Icons;
+const matchIcons: Icons = matchDetailIconsPath as Icons;
 
 function MatchUpTypeContainer({ match }: { match: any }) {
   const { gender, tierType, capability, applicants } = match;
