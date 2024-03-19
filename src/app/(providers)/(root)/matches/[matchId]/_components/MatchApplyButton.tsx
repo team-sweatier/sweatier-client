@@ -1,5 +1,5 @@
 import Icon from "@/components/Icon";
-import { matchDetailIconsPath } from "@/utils/matchIcons";
+import { matchDetailIconsPath } from "@/utils/matchPatchs";
 
 interface MatchApplyButtonProps {
   state: "신청 가능" | "마감 임박" | "마감" | "신청 완료";

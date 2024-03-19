@@ -1,4 +1,4 @@
-import { matchBanner } from "@/utils/matchBanner";
+import { matchBannerPath } from "@/utils/matchPatchs";
 import Image from "next/legacy/image";
 import { PropsWithChildren } from "react";
 import OverlayBackground from "./OverlayBackground";
@@ -11,9 +11,8 @@ function Background({
   sportType,
   children,
 }: PropsWithChildren<BackgroundProps>) {
-  //todo : matchSportType --> 경기 종목 (sport)
   const matchSportType = sportType || "tennis";
-  const matchSportBannerSrc = matchBanner[matchSportType];
+  const matchSportBannerSrc = matchBannerPath[matchSportType];
 
   return (
     <div className="relative w-full scrollbar-hide">

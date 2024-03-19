@@ -8,7 +8,7 @@ import MatchSubmitButton from "@/components/Forms/MatchSubmitButton/MatchSubmitB
 import MatchTime from "@/components/Forms/MatchTime/MatchTime";
 import TitleInput from "@/components/Forms/TitleInput/TitleInput";
 import { CreateMatchDto } from "@/types/createMatch.dto";
-import { matchCreateIconsPath } from "@/utils/matchIcons";
+import { matchCreateIconsPath } from "@/utils/matchPatchs";
 import matchTypes from "@/utils/matchTypes";
 import dayjs from "dayjs";
 import { useRouter } from "next/navigation";

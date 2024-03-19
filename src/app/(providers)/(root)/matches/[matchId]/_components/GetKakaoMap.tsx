@@ -1,6 +1,6 @@
 "use client";
 import Icon from "@/components/Icon";
-import { matchDetailIconsPath } from "@/utils/matchIcons";
+import { matchDetailIconsPath } from "@/utils/matchPatchs";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 
 function GetKakaoMap({ match }: { match: any }) {

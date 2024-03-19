@@ -20,3 +20,11 @@ export const matchDetailIconsPath: { [key: string]: string } = {
   alarm: "/assets/match_detail_page/icons/apply_white.svg",
   apply: "/assets/match_detail_page/icons/apply_white.svg",
 };
+
+export const matchBannerPath: { [key: string]: string } = {
+  badminton: "/assets/match_detail_page/banners/banner_badminton_mobile.svg",
+  baseball: "/assets/match_detail_page/banners/banner_baseball_mobile.svg",
+  basketball: "/assets/match_detail_page/banners/banner_basketball_mobile.svg",
+  soccer: "/assets/match_detail_page/banners/banner_soccer_mobile.svg",
+  tennis: "/assets/match_detail_page/banners/banner_tennis_mobile.svg",
+};

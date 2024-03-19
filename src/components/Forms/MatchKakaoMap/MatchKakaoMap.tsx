@@ -3,7 +3,7 @@ import BlueButton from "@/components/Buttons/BlueButton";
 import FormOuter from "@/components/Forms/FormOuter";
 import Icon from "@/components/Icon";
 import { KakaoMapResultType } from "@/types/kakaoMap.type";
-import { matchCreateIconsPath } from "@/utils/matchIcons";
+import { matchCreateIconsPath } from "@/utils/matchPatchs";
 import { Dispatch, SetStateAction } from "react";
 import { Controller, useFormContext, useWatch } from "react-hook-form";
 import CreateKakaoMap from "../CreateKakaoMap";
