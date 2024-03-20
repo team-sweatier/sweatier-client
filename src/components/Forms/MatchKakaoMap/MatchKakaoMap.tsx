@@ -3,7 +3,7 @@ import BlueButton from "@/components/Buttons/BlueButton";
 import FormOuter from "@/components/Forms/FormOuter";
 import Icon from "@/components/Icon";
 import { KakaoMapResultType } from "@/types/kakaoMap.type";
-import { matchCreateIcons } from "@/utils/matchIcons";
+import { matchCreateIconsPath } from "@/utils/matchPaths";
 import { Dispatch, SetStateAction } from "react";
 import { Controller, useFormContext, useWatch } from "react-hook-form";
 import CreateKakaoMap from "../CreateKakaoMap";
@@ -38,7 +38,7 @@ function MatchKakaoMap({
         htmlFor="placeName"
       >
         <Icon
-          src={matchCreateIcons.place}
+          src={matchCreateIconsPath.place}
           alt="postIcon-icon"
           classStyles="mb-[2px]"
         />

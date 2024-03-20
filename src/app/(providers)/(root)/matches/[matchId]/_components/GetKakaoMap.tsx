@@ -1,6 +1,6 @@
 "use client";
 import Icon from "@/components/Icon";
-import { matchDetailIcons } from "@/utils/matchIcons";
+import { matchDetailIconsPath } from "@/utils/matchPaths";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 
 function GetKakaoMap({ match }: { match: any }) {
@@ -23,7 +23,7 @@ function GetKakaoMap({ match }: { match: any }) {
       <div className="flex item-center w-full gap-x-2">
         <Icon
           alt={"경기 장소"}
-          src={matchDetailIcons.address}
+          src={matchDetailIconsPath.address}
           classStyles="mb-1"
         />
         <div className="font-bold tex-sm">{placeName}</div>

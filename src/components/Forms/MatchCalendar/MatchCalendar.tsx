@@ -1,7 +1,7 @@
 import CustomCaption from "@/components/Forms/CalendarForm/CustomCaption";
 import FormOuter from "@/components/Forms/FormOuter";
 import Icon from "@/components/Icon";
-import { matchCreateIcons } from "@/utils/matchIcons";
+import { matchCreateIconsPath } from "@/utils/matchPaths";
 import { DayPicker } from "react-day-picker";
 import { Controller, useFormContext } from "react-hook-form";
 import "./calendar.css";
@@ -16,7 +16,7 @@ function MatchCalendar() {
         htmlFor="capability"
       >
         <Icon
-          src={matchCreateIcons.post}
+          src={matchCreateIconsPath.post}
           alt="postIcon-icon"
           classStyles="mb-[2px]"
         />

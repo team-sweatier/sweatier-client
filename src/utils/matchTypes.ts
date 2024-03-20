@@ -2,7 +2,7 @@ export type MatchTypesObject = {
   [key: string]: string | number;
 };
 
-export const sports: MatchTypesObject[] = [
+export const sportsTypeName: MatchTypesObject[] = [
   { 농구: "basketball" },
   { 배드민턴: "badminton" },
   { 야구: "baseball" },
@@ -24,7 +24,7 @@ const gender: MatchTypesObject[] = [
   { 여성: "female" },
 ];
 
-const players: MatchTypesObject[] = [
+const capability: MatchTypesObject[] = [
   { "1:1": 2 },
   { "2:2": 4 },
   { "3:3": 6 },
@@ -89,8 +89,8 @@ export const regions = [
 ] as const;
 
 const matchTypes = {
-  sports,
-  players,
+  sportsTypeName,
+  capability,
   gender,
   timeHours,
   timeMinutes,

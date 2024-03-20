@@ -1,9 +1,8 @@
 import Modal from "@/components/Modal";
-import { Id } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 interface ApplyModalProps {
-  handleApplyMatch: () => Id | undefined;
+  handleApplyMatch: () => void;
   close: () => void;
 }
 

@@ -1,5 +1,5 @@
 import Icon from "@/components/Icon";
-import { matchDetailIcons } from "@/utils/matchIcons";
+import { matchDetailIconsPath } from "@/utils/matchPaths";
 
 interface MatchApplyButtonProps {
   state: "신청 가능" | "마감 임박" | "마감" | "신청 완료";
@@ -20,7 +20,9 @@ function MatchApplyButton({ state }: MatchApplyButtonProps) {
   };
 
   const iconSrc =
-    state === "신청 가능" ? matchDetailIcons.apply : matchDetailIcons.alarm;
+    state === "신청 가능"
+      ? matchDetailIconsPath.apply
+      : matchDetailIconsPath.alarm;
 
   const buttonClass = getButtonClass(state);
   const isIconVisible = state === "신청 가능" || state === "마감 임박";

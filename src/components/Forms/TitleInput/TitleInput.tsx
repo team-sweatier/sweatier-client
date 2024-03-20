@@ -1,6 +1,6 @@
 import FormOuter from "@/components/Forms/FormOuter";
 import Icon from "@/components/Icon";
-import { matchCreateIcons } from "@/utils/matchIcons";
+import { matchCreateIconsPath } from "@/utils/matchPaths";
 import { useFormContext } from "react-hook-form";
 
 function TitleInput() {
@@ -10,7 +10,7 @@ function TitleInput() {
       <div className="flex items-center pb-4">
         <label className="font-bold flex items-center gap-x-1" htmlFor="title">
           <Icon
-            src={matchCreateIcons.title}
+            src={matchCreateIconsPath.title}
             alt="postIcon-icon"
             classStyles="mb-[2px]"
           />
@@ -18,7 +18,7 @@ function TitleInput() {
         </label>
         <div className="flex pl-1 items-center">
           <Icon
-            src={matchCreateIcons.grayDot}
+            src={matchCreateIconsPath.grayDot}
             alt="title-required-message"
             classStyles="pb-1"
           />
