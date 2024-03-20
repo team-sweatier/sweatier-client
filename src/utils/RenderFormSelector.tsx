@@ -4,7 +4,7 @@ import matchTypes from "./matchTypes";
 
 type MatchTypeKeys = keyof typeof matchTypes;
 
-const renderFormSelector = (name: MatchTypeKeys, label: string) => {
+const RenderFormSelector = (name: MatchTypeKeys, label: string) => {
   const optionObj = matchTypes[name];
   if (!optionObj) null;
 
@@ -21,4 +21,4 @@ const renderFormSelector = (name: MatchTypeKeys, label: string) => {
   );
 };
 
-export default renderFormSelector;
+export default RenderFormSelector;
