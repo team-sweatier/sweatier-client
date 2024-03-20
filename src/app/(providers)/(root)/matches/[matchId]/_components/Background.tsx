@@ -11,7 +11,6 @@ function Background({
   sportType,
   children,
 }: PropsWithChildren<BackgroundProps>) {
-  //todo : matchSportType --> 경기 종목 (sport)
   const matchSportType = sportType || "tennis";
   const matchSportBannerSrc = matchBannerPath[matchSportType];
 
@@ -22,8 +21,9 @@ function Background({
         sizes="100vw"
         priority
         objectFit="cover"
-        alt="Tennis background Image"
-        className="w-full"
+        alt={`${matchSportType} Image`}
+        width={100}
+        height={20}
       />
       <OverlayBackground>{children}</OverlayBackground>
     </div>

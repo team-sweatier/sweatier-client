@@ -10,7 +10,7 @@ type IconProps = {
   classStyles?: string;
 };
 
-function Icon({ src, alt, classStyles, width, height }: IconProps) {
+function Icon({ src, alt, classStyles, width = 20, height = 20 }: IconProps) {
   return (
     <div className={`flex items-center ${classStyles}`}>
       <Image

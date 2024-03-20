@@ -3,7 +3,7 @@
 import api from "@/api";
 import RoundButton from "@/components/Buttons/RoundButton";
 import Page from "@/components/Page";
-import useQueryGetProfile from "@/react-query/queries/useQuery.getProfile";
+import useQueryGetProfile from "@/hooks/services/userProfile/useQuery.getProfile";
 import { bankName } from "@/utils/bankName";
 import { Gender } from "@/utils/gender";
 import { useMutation } from "@tanstack/react-query";

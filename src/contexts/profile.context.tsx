@@ -1,7 +1,7 @@
 "use client";
 
 import NoUserProfileModal from "@/components/NoUserProfileModal";
-import useQueryGetProfile from "@/react-query/queries/useQuery.getProfile";
+import useQueryGetProfile from "@/hooks/services/userProfile/useQuery.getProfile";
 import { useModalStore } from "@/store";
 import { usePathname } from "next/navigation";
 import { PropsWithChildren, createContext, useContext, useEffect } from "react";

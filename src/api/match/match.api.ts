@@ -67,10 +67,7 @@ async function createMatch(matchDto: any) {
 }
 
 //* match 상세 페이지 조회
-async function getMatchesByMatchId(
-  matchId: string,
-  accessToken?: RequestCookie
-) {
+async function getMatchByMatchId(matchId: string, accessToken?: RequestCookie) {
   const response = await client.get<Response>(`/matches/${matchId}`, {
     headers: {
       Cookie: `${accessToken?.name}=${accessToken?.value}`,
@@ -129,7 +126,7 @@ const matchAPI = {
   getMatch,
   getMatchesByTitle,
   createMatch,
-  getMatchesByMatchId,
+  getMatchByMatchId,
   participateToMatch,
   updateMatch,
   deleteMatch,

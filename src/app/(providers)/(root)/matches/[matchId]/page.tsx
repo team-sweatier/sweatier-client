@@ -18,7 +18,7 @@ async function MatchDetailPage(props: { params: { matchId: string } }) {
   const cookieStore = cookies();
   const accessToken = cookieStore.get("accessToken");
 
-  const match = await api.match.getMatchesByMatchId(matchId, accessToken);
+  const match = await api.match.getMatchByMatchId(matchId, accessToken);
   if (!match) return null;
 
   const sportsType = (match as MatchDetail).sportsType.name;

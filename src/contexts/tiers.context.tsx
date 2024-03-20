@@ -1,6 +1,6 @@
 "use client";
 
-import useQueryGetMyTiers from "@/react-query/queries/useQuery.getTiers";
+import useQueryGetMyTiers from "@/hooks/services/userProfile/useQuery.getTiers";
 import { PropsWithChildren, createContext, useContext } from "react";
 
 export type Tiers = Record<string, string>;
