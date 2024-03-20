@@ -3,14 +3,14 @@ import { useQuery } from "@tanstack/react-query";
 
 export default function useQueryMatchById(matchId: string) {
   const {
-    data: match,
-    isLoading,
-    error,
+    data,
+
+    refetch,
   } = useQuery({
     queryKey: ["match", matchId],
-    queryFn: () => api.match.getMatchesByMatchId(matchId),
+    queryFn: () => api.match.getMatchByMatchId(matchId),
     refetchOnWindowFocus: true,
   });
 
-  return { match, isLoading, error };
+  return { data, refetch };
 }

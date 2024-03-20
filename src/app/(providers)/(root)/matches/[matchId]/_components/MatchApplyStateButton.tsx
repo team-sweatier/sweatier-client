@@ -1,13 +1,24 @@
 import Icon from "@/components/Icon";
+import isUserParticipating from "@/utils/isUserParticipating";
 import { matchDetailIconsPath } from "@/utils/matchPatchs";
+import translateMatchAvailable from "@/utils/translateMatches/translateMatchAvailable";
 
-interface MatchApplyButtonProps {
-  state: "신청 가능" | "마감 임박" | "마감" | "신청 완료";
+interface MatchApplyStateButtonProps {
+  match: any;
+  userId: string;
 }
 
-function MatchApplyButton({ state }: MatchApplyButtonProps) {
-  const getButtonClass = (state: string) => {
-    switch (state) {
+function MatchApplyStateButton({ match, userId }: MatchApplyStateButtonProps) {
+  //* 1. 기신청 여부 확인하기
+  const hasApplied = userId ? isUserParticipating(match, userId) : false;
+  const applyState = translateMatchAvailable(
+    match.applicants,
+    match.capability,
+    hasApplied
+  );
+
+  const getButtonClass = (applyState: string) => {
+    switch (applyState) {
       case "신청 완료":
         return "bg-neutral-80 text-white";
       case "마감 임박":
@@ -20,19 +31,20 @@ function MatchApplyButton({ state }: MatchApplyButtonProps) {
   };
 
   const iconSrc =
-    state === "신청 가능"
+    applyState === "신청 가능"
       ? matchDetailIconsPath.apply
       : matchDetailIconsPath.alarm;
 
-  const buttonClass = getButtonClass(state);
-  const isIconVisible = state === "신청 가능" || state === "마감 임박";
+  const buttonClass = getButtonClass(applyState);
+  const isIconVisible =
+    applyState === "신청 가능" || applyState === "마감 임박";
 
   return (
     <div className="flex items-center mb-5">
       <button
         type="button"
         className={`${buttonClass} ${
-          state === "마감" ? "text-neutral-40" : ""
+          applyState === "마감" ? "text-neutral-40" : ""
         } text-sm py-[6px] px-3 w-28 rounded-full font-bold flex items-center justify-center gap-x-2`}
       >
         {isIconVisible && (
@@ -44,10 +56,10 @@ function MatchApplyButton({ state }: MatchApplyButtonProps) {
             classStyles="sm:mb-[1px] mb-1"
           />
         )}
-        {state}
+        {applyState}
       </button>
     </div>
   );
 }
 
-export default MatchApplyButton;
+export default MatchApplyStateButton;

@@ -15,7 +15,7 @@ dayjs.locale("ko");
 async function MatchDetailPage(props: { params: { matchId: string } }) {
   const matchId = props.params.matchId;
 
-  const match = await api.match.getMatchesByMatchId(matchId);
+  const match = await api.match.getMatchByMatchId(matchId);
   if (!match) return null;
 
   const sportsType = (match as MatchDetail).sportsType.name;

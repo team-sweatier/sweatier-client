@@ -81,7 +81,6 @@ function EditMatchForm({ matchId, editValues }: MatchFormProps) {
     try {
       const { id } = await api.match.updateMatch(matchId, finalEditData);
       toast.success("게시물이 수정되었습니다!");
-      router.prefetch(`/matches/${id}`);
       router.push(`/matches/${id}`);
     } catch (error) {
       console.error("Match creation failed:", error);

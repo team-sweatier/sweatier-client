@@ -1,15 +1,15 @@
 import LoadingSpinner from "@/components/LoadingSpinner";
-import useQueryGetProfile from "@/react-query/queries/useQuery.getProfile";
+import useQueryGetProfile from "@/hooks/services/userProfile/useQuery.getProfile";
 import { formatPhoneNumber } from "@/utils/formatPhoneNumber";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 function MyProfileSection() {
-    const { data: profile, isFetched: isProfileFetched } = useQueryGetProfile();
+  const { data: profile, isFetched: isProfileFetched } = useQueryGetProfile();
   const router = useRouter();
-  
+
   const navigateToProfileEdit = () => router.push("/my-page/edit-profile");
-  const formattedPhoneNumber = formatPhoneNumber(profile?.phoneNumber ?? '');
+  const formattedPhoneNumber = formatPhoneNumber(profile?.phoneNumber ?? "");
 
   return isProfileFetched ? (
     <>
@@ -59,7 +59,9 @@ function MyProfileSection() {
         </li>
       </ul>
     </>
-  ) : <LoadingSpinner /> ;
+  ) : (
+    <LoadingSpinner />
+  );
 }
 
 export default MyProfileSection;

@@ -58,7 +58,7 @@ async function createMatch(matchDto: any) {
 }
 
 //* match 상세 페이지 조회
-async function getMatchesByMatchId(matchId: string) {
+async function getMatchByMatchId(matchId: string) {
   const response = await client.get<Response>(`/matches/${matchId}`);
 
   const data = response.data;
@@ -113,7 +113,7 @@ const matchAPI = {
   getMatch,
   getMatchesByTitle,
   createMatch,
-  getMatchesByMatchId,
+  getMatchByMatchId,
   participateToMatch,
   updateMatch,
   deleteMatch,

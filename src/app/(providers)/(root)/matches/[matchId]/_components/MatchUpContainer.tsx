@@ -4,15 +4,14 @@ import translateSportType from "@/utils/translateMatches/translateSportType";
 import dayjs from "dayjs";
 import "dayjs/locale/ko";
 import ApplyButton from "./ApplyButton";
-
 dayjs.locale("ko");
 
 function MatchUpContainer({ match, matchId }: { match: any; matchId: string }) {
   const profile = useProfile();
+  if (!profile) return null;
   const isUserPost = profile && match.hostId === profile.id;
 
   const { sportType, matchDay, title, content } = match;
-
   const matchDate = dayjs(matchDay).format("M월 D일 dddd");
   const matchTime = dayjs(matchDay).format("hh:mm");
 
@@ -29,7 +28,9 @@ function MatchUpContainer({ match, matchId }: { match: any; matchId: string }) {
           </div>
           <div className="text-neutral-90 text-xl">{title}</div>
         </div>
-        {!isUserPost && <ApplyButton match={match} matchId={matchId} />}
+        {!isUserPost && (
+          <ApplyButton match={match} matchId={matchId} userId={profile.id} />
+        )}
       </div>
       <div className="mt-4 pb-6 text-neutral-70 tex-sm leading-7">
         {content}
