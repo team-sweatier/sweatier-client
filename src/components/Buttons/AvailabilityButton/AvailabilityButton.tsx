@@ -12,7 +12,7 @@ function AvailabilityButton({
   const conditionClass =
     label === "신청 가능"
       ? "border border-primary-100 text-primary-100"
-      : label === "마감"
+      : label === "마감" || label === "신청 완료"
       ? "bg-[#E7E7E7] text-[#9BA2A8]"
       : "border border-warning text-warning";
 

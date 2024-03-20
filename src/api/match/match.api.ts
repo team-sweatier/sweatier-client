@@ -2,8 +2,16 @@ import { Response } from "@/types/Response.type";
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { client } from "..";
 
-async function getMatches(sportType: string, date: string, region?: string) {
+async function getMatches(
+  sportType: string,
+  date: string,
+  region?: string,
+  accessToken?: RequestCookie
+) {
   const response = await client.get("/matches", {
+    headers: {
+      Cookie: `${accessToken?.name}=${accessToken?.value}`,
+    },
     params: {
       sportType,
       date,
