@@ -5,7 +5,7 @@ import EditMatchForm from "./_components/EditMatchForm";
 
 async function EditMatchPage(props: { params: { matchId: string } }) {
   const matchId = props.params.matchId;
-  const editValues = await api.match.getMatchesByMatchId(matchId);
+  const editValues = await api.match.getMatchByMatchId(matchId);
   if (!editValues) return null;
 
   return (
