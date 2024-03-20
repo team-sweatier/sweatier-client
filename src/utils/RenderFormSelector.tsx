@@ -1,5 +1,9 @@
 import FormSelector from "@/components/Forms/FormSelector";
+<<<<<<< HEAD
 import { matchCreateIconsPath } from "./matchPatchs";
+=======
+import { matchCreateIconsPath } from "./matchPaths";
+>>>>>>> develop
 import matchTypes from "./matchTypes";
 
 type MatchTypeKeys = keyof typeof matchTypes;

@@ -1,6 +1,6 @@
 import FormOuter from "@/components/Forms/FormOuter";
 import Icon from "@/components/Icon";
-import { matchCreateIconsPath } from "@/utils/matchPatchs";
+import { matchCreateIconsPath } from "@/utils/matchPaths";
 import { useFormContext } from "react-hook-form";
 
 function TitleInput() {

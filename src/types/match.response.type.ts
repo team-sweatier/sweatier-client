@@ -15,6 +15,7 @@ export type Match = {
   matchDay: string;
   createdAt: string;
   updatedAt: string | null;
+  participating: boolean;
   participants: [
     {
       id: string;
@@ -41,6 +42,7 @@ export type MatchDetail = {
   matchDay: Date;
   createdAt: Date;
   updatedAt: Date | null;
+  participating: boolean;
   participants: [
     {
       id: string;

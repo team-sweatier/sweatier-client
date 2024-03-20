@@ -1,5 +1,5 @@
 import Icon from "@/components/Icon";
-import { matchDetailIconsPath } from "@/utils/matchPatchs";
+import { matchDetailIconsPath } from "@/utils/matchPaths";
 import translateGender from "@/utils/translateMatches/translateGender";
 import translateMatchType from "@/utils/translateMatches/translateMatchType";
 import translateTier from "@/utils/translateMatches/translateTier";

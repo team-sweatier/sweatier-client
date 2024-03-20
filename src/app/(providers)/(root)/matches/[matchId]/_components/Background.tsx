@@ -1,4 +1,4 @@
-import { matchBannerPath } from "@/utils/matchPatchs";
+import { matchBannerPath } from "@/utils/matchPaths";
 import Image from "next/legacy/image";
 import { PropsWithChildren } from "react";
 import OverlayBackground from "./OverlayBackground";
