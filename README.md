@@ -10,7 +10,8 @@
 [4. 주요 기능]()  
 [5. 시현 화면]()  
 [6. 팀원별 트러블 슈팅]()  
-[7. 주요 문서 링크]()
+[7. Github 전략]()  
+[8. 주요 문서 링크]()
 
 <br />
 
@@ -38,21 +39,66 @@
 
 ## 3. 기술 스택
 
+[![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1711104938851?alt=media&token=b813ab14-5301-4c83-8475-abe250651424)](https://github.com/msdio/stackticon)
+
 <br />
 
 ## 4. 주요 기능
+
+- 회원 인증 절차 (회원가입 / 로그인 / 로그아웃)  
+  ...
 
 <br />
 
 ## 5. 시현 화면
 
+### 회원 인증
+
+### 메인페이지
+
+### 게시물 페이지
+
+### 마이페이지
+
+### 티어 평가 ・ 조회페이지
+
 <br />
 
 ## 6. 팀원별 트러블 슈팅
 
+### 심효은
+
+### 배성재
+
+### 장은혜
+
 <br />
 
-## 7. 주요 문서 링크
+## 7. Github 전략
+
+### Branch 관리 규칙
+
+- **develop** : 개발 서버에 배포하는 데 사용되는 주요 개발 브랜치
+- **feat** : GitHub 이슈에 대응하여 개발 서버에 배포하기 위한 기능을 개발하는 브랜치
+- **hotfix** :개발 서버에 배포된 버전에 문제가 발생했을 때 해결하기 위해 사용되는 브랜치
+
+### Commit Convention
+
+- commitlint & Husky 활용
+
+|   유형   |                 설명                 |
+| :------: | :----------------------------------: |
+|   feat   |       새로운 기능에 대한 커밋        |
+|   fix    |        버그 수정에 대한 커밋         |
+|  chore   |    그 외 자잘한 수정에 대한 커밋     |
+|   docs   |        문서 수정에 대한 커밋         |
+|  style   | 코드 스타일 혹은 포맷 등에 관한 커밋 |
+| refactor |      코드 리팩토링에 대한 커밋       |
+|   test   |     테스트 코드 수정에 대한 커밋     |
+
+<br />
+
+## 8. 주요 문서 링크
 
 [🔗 유저플로우](<https://www.figma.com/file/7YYZRa9AEO4YM1jG93BwLv/UserFlow-(Community)?type=whiteboard&t=suFE8Cmnz7qvelJ2-0>)  
 [🔗 화면정의서](https://www.figma.com/file/Upx7Oq28OJtC8o7W73QeCz/%ED%99%94%EB%A9%B4%EC%A0%95%EC%9D%98%EC%84%9C?type=design&node-id=0-1&mode=design&t=ruSkyqk9zO33uDmp-0)  
