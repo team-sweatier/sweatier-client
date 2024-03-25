@@ -2,8 +2,8 @@ import AvailabilityButton from "@/components/Buttons/AvailabilityButton";
 import { Match, MatchDetail } from "@/types/match.response.type";
 import day from "@/utils/day";
 
-import getMatchAvailableInfo from "@/utils/getMatchAvailableInfo";
 import translateGender from "@/utils/translateMatches/translateGender";
+import translateTier from "@/utils/translateMatches/translateTier";
 import Link from "next/link";
 
 export function isMatchDetail(
@@ -24,7 +24,6 @@ function MatchCard({
   const teamCapability = match.capability / 2;
   const gender = translateGender(match.gender);
   const matchDay = day(match.matchDay);
-  const matchAvailableInfo = getMatchAvailableInfo(match);
   let matchTier: string;
   if (isMatchDetail(match)) {
     matchTier = match.tierType;
@@ -48,7 +47,9 @@ function MatchCard({
         )}
         <div className="text-sm">{match.title}</div>
         <div className="text-[11px] flex justify-between">
-          <span className="text-neutral-60">{`${gender} | ${teamCapability}vs${teamCapability} | ${matchTier}`}</span>
+          <span className="text-neutral-60">{`${gender} | ${teamCapability}vs${teamCapability} | ${translateTier(
+            matchTier
+          )}`}</span>
           <AvailabilityButton match={match} />
         </div>
       </div>
