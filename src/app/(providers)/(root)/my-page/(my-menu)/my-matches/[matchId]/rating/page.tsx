@@ -7,9 +7,6 @@ async function RatingPage(props: { params: { matchId: string } }) {
   const matchId = props.params.matchId;
   const match: any = await api.match.getMatch(matchId);
   const participants: any[] = match.participants;
-  // const participants: participantDto[] = match.participants.filter(
-  //   (participant) => participant.id !== userId
-  // );
 
   return (
     <Page>
