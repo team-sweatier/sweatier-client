@@ -22,7 +22,7 @@ export type Match = {
     }
   ];
   tier: string;
-  sportsType: string;
+  sportsType: string[];
   applicants: number;
 };
 export type MatchDetail = {
