@@ -25,8 +25,9 @@ function AvailabilityButton({ match }: { match: MatchDetail | Match }) {
     sportsType = match.sportsType[0];
   }
   const isSameTier = userTiers ? userTiers[sportsType] === matchTier : true;
-  const isAvailableGender = profile ? profile.gender === match.gender : true;
-
+  const isAvailableGender = profile
+    ? profile.gender === match.gender || match.gender === "both"
+    : true;
   const applyState = getMatchAvailableInfo(
     match.applicants,
     match.capability,
