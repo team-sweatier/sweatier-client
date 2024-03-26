@@ -1,5 +1,3 @@
-// "use client";
-
 import api from "@/api";
 import Page from "@/components/Page";
 import day from "@/utils/day";
@@ -21,14 +19,15 @@ async function HomePage(props: {
     region = undefined,
   } = props.searchParams;
 
-
   const cookieStore = cookies();
   const accessToken = cookieStore.get("accessToken");
-  
-  const matches = await api.match.getMatches(sportType, date, region, accessToken);
-  // const { tierId } = useProfileStore();
-  // console.log(tierId);
-  // tierId 타입은 string[]
+
+  const matches = await api.match.getMatches(
+    sportType,
+    date,
+    region,
+    accessToken
+  );
 
   return (
     <Page>

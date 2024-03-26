@@ -44,7 +44,7 @@ function RatingForm({
         isValid={isValid}
         buttonLabel="평가 완료"
         onClick={handleClickButton}
-        className="mt-8"
+        buttonClass="mt-8 sm:mt-12"
       />
     </div>
   );
