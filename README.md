@@ -4,14 +4,14 @@
 
 ## 💧 목차
 
-[1. 프로젝트 및 서비스 소개]()  
-[2. 팀원 소개]()  
-[3. 기술 스택]()  
-[4. 주요 기능]()  
-[5. 시현 화면]()  
-[6. 팀원별 트러블 슈팅]()  
-[7. Github 전략]()  
-[8. 주요 문서 링크]()
+[1. 프로젝트 및 서비스 소개](https://github.com/team-sweatier/sweatier-client?tab=readme-ov-file#1-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B0%8F-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%86%8C%EA%B0%9C)  
+[2. 팀원 소개](https://github.com/team-sweatier/sweatier-client?tab=readme-ov-file#2-%ED%8C%80%EC%9B%90-%EC%86%8C%EA%B0%9C)  
+[3. 기술 스택](https://github.com/team-sweatier/sweatier-client?tab=readme-ov-file#3-%EA%B8%B0%EC%88%A0-%EC%8A%A4%ED%83%9D)  
+[4. 주요 기능](https://github.com/team-sweatier/sweatier-client?tab=readme-ov-file#4-%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5)  
+[5. 시현 화면](https://github.com/team-sweatier/sweatier-client?tab=readme-ov-file#5-%EC%8B%9C%ED%98%84-%ED%99%94%EB%A9%B4)  
+[6. 팀원별 트러블 슈팅](https://github.com/team-sweatier/sweatier-client?tab=readme-ov-file#6-%ED%8C%80%EC%9B%90%EB%B3%84-%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85)  
+[7. Github 전략](https://github.com/team-sweatier/sweatier-client?tab=readme-ov-file#7-github-%EC%A0%84%EB%9E%B5)  
+[8. 주요 문서 링크](https://github.com/team-sweatier/sweatier-client?tab=readme-ov-file#8-%EC%A3%BC%EC%9A%94-%EB%AC%B8%EC%84%9C-%EB%A7%81%ED%81%ACs)
 
 <br />
 
@@ -45,32 +45,69 @@
 
 ## 4. 주요 기능
 
-- 회원 인증 절차 (회원가입 / 로그인 / 로그아웃)  
-  ...
+#### 사용자
+
+- 회원가입 및 로그인
+- 유저 정보 등록 및 프로필 변경
+- 신청내역 및 경기내역 조회
+- 티어 정보 조회
+- 관심 종목 설정
+
+#### 경기
+
+- 경기 리스트 조회
+- 경기 상세 정보 조회 및 참여 가능 여부 확인
+- 경기 참여 신청
+- 경기 모집글 수정 및 관리
+- 경기 결과 등록 및 평가
 
 <br />
 
 ## 5. 시현 화면
 
-### 회원 인증
+### 👀 회원 인증
 
-### 메인페이지
+### 👀 메인페이지
 
-### 게시물 페이지
+### 👀 게시물 페이지 (심효은)
 
-### 마이페이지
+|             게시물 생성 (Create)             |                   게시물 조회 (Read)                   |
+| :------------------------------------------: | :----------------------------------------------------: |
+| ![게시물 생성 페이지](readme.asset/생성.gif) | ![게시물 상세 페이지(타유저)](readme.asset/디테일.gif) |
 
-### 티어 평가 ・ 조회페이지
+|             게시물 수정 (Update)             |                 게시물 삭제 (Delete)                 |
+| :------------------------------------------: | :--------------------------------------------------: |
+| ![게시물 생성 페이지](readme.asset/수정.gif) | ![게시물 상세 페이지(타유저)](readme.asset/삭제.gif) |
+
+#### 게시물 생성 (Create)
+
+- 종목, 제목, 내용, 모집 성별, 매칭 유형, 날짜, 경기 시작 시간, 경기장 위치 를 모두 입력해야 게시물 생성 가능
+- 한 페이지 내 Input 및 Select box 등 여러 입력 필드로 인해 불필요한 렌더링이 발생하는 것을 방지하기 위해 **제출 시에만** 값을 동기화 하도록 **비제어 컴포넌트 구현**
+- `react-kakao-map-sdk` 라이브러리를 사용해 경기장 위치를 kakao map 기반으로 검색 가능
+
+#### 게시물 조회 (Read)
+
+- 타유저 / 유저의 게시물 유효성 검사
+  - 타 유저의 게시물일 경우, 신청 여부에 따라 `신청하기` 또는 `신청 완료` 여부 확인 가능
+    - 마감 여부에 따라 `마감` 여부 확인 가능
+    - 총 모집 정원의 80% 이상 모집되었을 시, `마감 임박`으로 표시
+  - 유저의 게시물일 결우, `수정` 및 `삭제` 가능
+- 경기 참여 신청을 한 경기의 게시물인 경우에만 호스트 유저의 계좌번호 확인 가능
+
+#### 게시물 수정 (Update)
+
+- 유저가 작성한 게시물에만 수정 버튼이 보이도록 조건부 렌더링
+- 게시물 작성 컴포넌트 재사용
+- 수정 전 데이터값이 `default value`로 설정
+
+#### 게시물 삭제 (Delete)
+
+- 유저의 게시물일때만 삭제 버튼이 보이도록 조건부 렌더링
+- `삭제`후, 메인페이지로 redirect
 
 <br />
 
-## 6. 팀원별 트러블 슈팅
-
-### 심효은
-
-### 배성재
-
-### 장은혜
+## 6. 팀원별 트러블 슈팅 (추가 예정)
 
 <br />
 
