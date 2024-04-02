@@ -9,9 +9,8 @@
 [3. 기술 스택](https://github.com/team-sweatier/sweatier-client?tab=readme-ov-file#3-%EA%B8%B0%EC%88%A0-%EC%8A%A4%ED%83%9D)  
 [4. 주요 기능](https://github.com/team-sweatier/sweatier-client?tab=readme-ov-file#4-%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5)  
 [5. 시현 화면](https://github.com/team-sweatier/sweatier-client?tab=readme-ov-file#5-%EC%8B%9C%ED%98%84-%ED%99%94%EB%A9%B4)  
-[6. 팀원별 트러블 슈팅](https://github.com/team-sweatier/sweatier-client?tab=readme-ov-file#6-%ED%8C%80%EC%9B%90%EB%B3%84-%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85)  
-[7. Github 전략](https://github.com/team-sweatier/sweatier-client?tab=readme-ov-file#7-github-%EC%A0%84%EB%9E%B5)  
-[8. 주요 문서 링크](https://github.com/team-sweatier/sweatier-client?tab=readme-ov-file#8-%EC%A3%BC%EC%9A%94-%EB%AC%B8%EC%84%9C-%EB%A7%81%ED%81%ACs)
+[6. Github 전략](https://github.com/team-sweatier/sweatier-client?tab=readme-ov-file#7-github-%EC%A0%84%EB%9E%B5)  
+[7. 주요 문서 링크](https://github.com/team-sweatier/sweatier-client?tab=readme-ov-file#8-%EC%A3%BC%EC%9A%94-%EB%AC%B8%EC%84%9C-%EB%A7%81%ED%81%ACs)
 
 <br />
 
@@ -65,8 +64,6 @@
 
 ## 5. 시현 화면
 
-### 👀 회원 인증
-
 ### 👀 메인페이지 / 경기 검색 페이지 (장은혜)
 
 |                 메인 페이지                 |                   경기 검색 페이지                   |
@@ -106,7 +103,6 @@
 - 평가자의 정보는 익명으로 평점 제공
 
 <br>
-<hr>
 
 ### 👀 게시물 페이지 (심효은)
 
@@ -146,11 +142,8 @@
 
 <br />
 
-## 6. 팀원별 트러블 슈팅 (추가 예정)
 
-<br />
-
-## 7. Github 전략
+## 6. Github 전략
 
 ### Branch 관리 규칙
 
@@ -174,7 +167,7 @@
 
 <br />
 
-## 8. 주요 문서 링크
+## 7. 주요 문서 링크
 
 [🔗 유저플로우](<https://www.figma.com/file/7YYZRa9AEO4YM1jG93BwLv/UserFlow-(Community)?type=whiteboard&t=suFE8Cmnz7qvelJ2-0>)  
 [🔗 화면정의서](https://www.figma.com/file/Upx7Oq28OJtC8o7W73QeCz/%ED%99%94%EB%A9%B4%EC%A0%95%EC%9D%98%EC%84%9C?type=design&node-id=0-1&mode=design&t=ruSkyqk9zO33uDmp-0)  
