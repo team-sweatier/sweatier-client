@@ -14,7 +14,7 @@ import "swiper/css/scrollbar";
 import { Swiper, SwiperSlide } from "swiper/react";
 function Banner() {
   return (
-    <div className="w-full mb-5">
+    <div className="w-full mb-5 bg-red-100">
       <Swiper
         modules={[Pagination, A11y]}
         spaceBetween={50}
@@ -23,44 +23,35 @@ function Banner() {
       >
         <SwiperSlide>
           <Image
+            loading="lazy"
             src={Banner1}
-            sizes="100vw"
+            rel="preload"
+            alt="carousel-image"
             style={{
               width: "100%",
-              height: "auto",
             }}
-            width={350}
-            height={114}
-            alt="carousel-image"
-            priority
           />
         </SwiperSlide>
         <SwiperSlide>
           <Image
+            loading="lazy"
             src={Banner2}
-            sizes="100vw"
+            rel="preload"
+            alt="carousel-image"
             style={{
               width: "100%",
-              height: "auto",
             }}
-            width={350}
-            height={114}
-            alt="carousel-image"
-            priority
           />
         </SwiperSlide>
         <SwiperSlide>
           <Image
+            loading="lazy"
             src={Banner3}
-            sizes="100vw"
+            rel="preload"
+            alt="carousel-image"
             style={{
               width: "100%",
-              height: "auto",
             }}
-            width={350}
-            height={114}
-            alt="carousel-image"
-            priority
           />
         </SwiperSlide>
       </Swiper>
