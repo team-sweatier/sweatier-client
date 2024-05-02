@@ -1,6 +1,6 @@
 "use client";
 
-import arrow from "@/../public/assets/main_page/arrow.svg";
+import arrow from "@/../public/assets/main_page/arrow.png";
 import day from "@/utils/day";
 import Image from "next/image";
 import Day from "../Day";

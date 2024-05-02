@@ -37,8 +37,8 @@ function AvailabilityButton({ match }: { match: MatchDetail | Match }) {
   );
 
   const imagePath: { [key: string]: string } = {
-    "신청 가능": "/assets/main_page/event_available.svg",
-    "마감 임박": "/assets/main_page/alarm.svg",
+    "신청 가능": "/assets/main_page/event_available.png",
+    "마감 임박": "/assets/main_page/alarm.png",
   };
 
   const baseClass =

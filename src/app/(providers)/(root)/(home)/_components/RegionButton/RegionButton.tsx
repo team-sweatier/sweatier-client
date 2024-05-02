@@ -1,5 +1,5 @@
 "use client";
-import filter from "@/../public/assets/main_page/filter.svg";
+import filter from "@/../public/assets/main_page/filter.png";
 import { useModalStore } from "@/store";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
@@ -21,13 +21,7 @@ function RegionButton() {
         <span className="text-sm font-bold text-neutral-60">{`${
           selectedRegion || "지역"
         }`}</span>
-        <Image
-          src={filter}
-          width={20}
-          height={20}
-          alt="alarm-image"
-          className="object-cover"
-        />
+        <Image src={filter} alt="alarm-image" />
       </div>
     </div>
   );

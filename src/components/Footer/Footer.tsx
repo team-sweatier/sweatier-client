@@ -1,6 +1,6 @@
-import facebook from "@/../public/assets/commons/facebook.svg";
-import instagram from "@/../public/assets/commons/instagram.svg";
-import youtube from "@/../public/assets/commons/youtube.svg";
+import facebook from "@/../public/assets/commons/facebook.png";
+import instagram from "@/../public/assets/commons/instagram.png";
+import youtube from "@/../public/assets/commons/youtube.png";
 import Image from "next/image";
 
 function Footer() {
