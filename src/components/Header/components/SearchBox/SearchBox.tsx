@@ -12,7 +12,7 @@ function SearchBox() {
     }
   };
   return (
-    <div className="relative h-full flex items-center">
+    <div className="relative max-w-[437px] h-full flex items-center">
       <input
         className="w-full bg-primary-20 rounded-[20px] h-full px-5 text-sm"
         type="search"
