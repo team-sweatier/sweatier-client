@@ -1,6 +1,6 @@
 "use client";
 
-import floating from "@/../public/assets/main_page/floating.svg";
+import floating from "@/../public/assets/main_page/floating.png";
 import { useAuth } from "@/contexts/auth.context";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
