@@ -28,7 +28,14 @@ function Header() {
         <AuthWrapper
           loggedInElement={
             <Link href={"/my-page"} className="w-14 flex justify-end">
-              <Image src={profile} alt="profile" priority />
+              <Image
+                src={profile}
+                alt="profile"
+                priority
+                width={34}
+                height={34}
+                style={{ width: 34, height: 34 }}
+              />
             </Link>
           }
           notLoggedInElement={

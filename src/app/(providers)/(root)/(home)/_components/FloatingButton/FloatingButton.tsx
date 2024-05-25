@@ -23,13 +23,7 @@ function FloatingButton() {
         onClick={handleClickButton}
         className="sm:w-[78px] sm:h-[78px] w-14 h-14 hover:scale-105 transition-all hover:cursor-pointer"
       >
-        <Image
-          src={floating}
-          width={78}
-          height={78}
-          alt="carousel-image"
-          priority
-        />
+        <Image src={floating} alt="carousel-image" priority />
       </div>
     </div>
   );

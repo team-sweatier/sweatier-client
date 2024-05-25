@@ -16,7 +16,8 @@ function Day({ day }: { day: Dayjs }) {
   return (
     <Link
       href={{ query: queryString.toString() }}
-      className={`flex justify-center items-center w-[58px] h-14 text-center border-b-2 border-transparent cursor-pointer ${
+      className={`flex justify-center items-center w-[58px] h-14 text-center border-b-2 border-transparent cursor-pointer hover:border-b-black
+      ${
         isSelected
           ? "font-bold border-b-2 border-b-black"
           : "border-b-2 border-b-transparent"
