@@ -1,6 +1,6 @@
 "use client";
 
-import floating from "@/../public/assets/main_page/floating.svg";
+import floating from "@/../public/assets/main_page/floating.png";
 import { useAuth } from "@/contexts/auth.context";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -23,13 +23,7 @@ function FloatingButton() {
         onClick={handleClickButton}
         className="sm:w-[78px] sm:h-[78px] w-14 h-14 hover:scale-105 transition-all hover:cursor-pointer"
       >
-        <Image
-          src={floating}
-          width={78}
-          height={78}
-          alt="carousel-image"
-          priority
-        />
+        <Image src={floating} alt="carousel-image" priority />
       </div>
     </div>
   );

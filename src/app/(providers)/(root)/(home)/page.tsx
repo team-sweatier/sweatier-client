@@ -6,6 +6,13 @@ import { cookies } from "next/headers";
 import Banner from "./_components/Banner";
 import MatchesContainer from "./_components/MatchesContainer";
 
+async function getTier() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/users/tier`, {
+    credentials: "include",
+  });
+  return res.json();
+}
+
 async function HomePage(props: {
   searchParams: {
     date: string;
@@ -28,7 +35,8 @@ async function HomePage(props: {
     region,
     accessToken
   );
-
+  const data = await getTier();
+  console.log("data", data);
   return (
     <Page>
       <Banner />

@@ -42,7 +42,7 @@ function RegionModal({ initialSelectedRegion }: RegionModalProps) {
               label="전체"
               isSelected={selectedRegion === undefined}
               onClick={() => setSelectedRegion(undefined)}
-              className="px-3.5"
+              className="px-3.5 hover:text-white hover:font-bold hover:border-transparent hover:bg-primary-50 focus:bg-primary-100"
             />
           </li>
 
@@ -52,14 +52,19 @@ function RegionModal({ initialSelectedRegion }: RegionModalProps) {
                 label={region}
                 isSelected={selectedRegion === region}
                 onClick={() => setSelectedRegion(region)}
-                className="px-3.5"
+                className="px-3.5 hover:text-white hover:font-bold hover:border-transparent hover:bg-primary-50 focus:bg-primary-100"
               />
             </li>
           ))}
         </ul>
 
-        <div className=" w-full mt-11">
-          <BlueButton buttonLabel="확인" onClick={handleClickConfirm} isValid />
+        <div className=" w-full mt-7 sm:mt-9">
+          <BlueButton
+            buttonLabel="확인"
+            onClick={handleClickConfirm}
+            isValid
+            buttonClass="sm:w-[286px] mx-auto h-11"
+          />
         </div>
       </div>
     </Modal>

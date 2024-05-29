@@ -1,7 +1,7 @@
 "use client";
-import Banner1 from "@/../public/assets/main_page/banner1.svg";
-import Banner2 from "@/../public/assets/main_page/banner2.svg";
-import Banner3 from "@/../public/assets/main_page/banner3.svg";
+import Banner1 from "@/../public/assets/main_page/banner1.png";
+import Banner2 from "@/../public/assets/main_page/banner2.png";
+import Banner3 from "@/../public/assets/main_page/banner3.png";
 
 import Image from "next/image";
 import { A11y, Pagination } from "swiper/modules";
@@ -14,7 +14,7 @@ import "swiper/css/scrollbar";
 import { Swiper, SwiperSlide } from "swiper/react";
 function Banner() {
   return (
-    <div className="w-full mb-5 bg-red-100">
+    <div className="w-full max-h-[237px] mb-5">
       <Swiper
         modules={[Pagination, A11y]}
         spaceBetween={50}
@@ -23,36 +23,17 @@ function Banner() {
       >
         <SwiperSlide>
           <Image
-            loading="lazy"
             src={Banner1}
-            rel="preload"
-            alt="carousel-image"
-            style={{
-              width: "100%",
-            }}
+            alt="banner-image-1"
+            priority
+            className="flex items-center justify-center"
           />
         </SwiperSlide>
-        <SwiperSlide>
-          <Image
-            loading="lazy"
-            src={Banner2}
-            rel="preload"
-            alt="carousel-image"
-            style={{
-              width: "100%",
-            }}
-          />
+        <SwiperSlide className="relative w-full h-full">
+          <Image src={Banner2} alt="banner-image-2" />
         </SwiperSlide>
         <SwiperSlide>
-          <Image
-            loading="lazy"
-            src={Banner3}
-            rel="preload"
-            alt="carousel-image"
-            style={{
-              width: "100%",
-            }}
-          />
+          <Image src={Banner3} alt="banner-image-3" />
         </SwiperSlide>
       </Swiper>
     </div>

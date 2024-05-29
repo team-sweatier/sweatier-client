@@ -21,6 +21,7 @@ function SportTypeFilter() {
               isSelected={sport.value === selectedSportTypeValue}
               isLink
               href={{ query: queryString.toString() }}
+              className="hover:text-white hover:font-bold hover:border-transparent hover:bg-primary-50 focus:bg-primary-100"
             />
           </li>
         );
