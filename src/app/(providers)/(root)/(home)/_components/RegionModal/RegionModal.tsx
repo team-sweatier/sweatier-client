@@ -42,7 +42,7 @@ function RegionModal({ initialSelectedRegion }: RegionModalProps) {
               label="전체"
               isSelected={selectedRegion === undefined}
               onClick={() => setSelectedRegion(undefined)}
-              className="px-3.5 hover:text-white hover:font-bold hover:border-transparent hover:bg-primary-50 focus:bg-primary-100"
+              className="px-3.5"
             />
           </li>
 
@@ -52,7 +52,7 @@ function RegionModal({ initialSelectedRegion }: RegionModalProps) {
                 label={region}
                 isSelected={selectedRegion === region}
                 onClick={() => setSelectedRegion(region)}
-                className="px-3.5 hover:text-white hover:font-bold hover:border-transparent hover:bg-primary-50 focus:bg-primary-100"
+                className="px-3.5"
               />
             </li>
           ))}
